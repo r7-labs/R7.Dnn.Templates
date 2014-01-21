@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CE16D027-2FF6-419D-A696-113E21041E10}</ProjectGuid>
+    <Packages>
+      <Packages>
+        <Package name="Install package">
+          <Builder targetFile="..\R7.DnnTemplates-Install-0.1.3.zip" platform="Windows" configuration="Release" ctype="BinariesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="..\R7.DnnTemplates\R7.DnnTemplates.csproj" />
+            </ChildEntries>
+            <ExcludedFiles>
+              <File>R7.DnnTemplates,ProgramFiles,R7.DnnTemplates.dll</File>
+            </ExcludedFiles>
+            <RootEntry path="..\R7.DnnTemplates.sln" id=":root:" />
+          </Builder>
+        </Package>
+        <Package name="Source package">
+          <Builder targetFile="..\R7.DnnTemplates-Sources-0.1.3.zip" format="MonoDevelop.Projects.FileFormat" ctype="SourcesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="..\R7.DnnTemplates\R7.DnnTemplates.csproj" />
+              <SolutionItemReference path="Packages.mdproj" />
+            </ChildEntries>
+            <RootEntry path="..\R7.DnnTemplates.sln" id=":root:" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>

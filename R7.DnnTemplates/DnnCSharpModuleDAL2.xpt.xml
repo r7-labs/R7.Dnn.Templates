@@ -1,0 +1,1609 @@
+<?xml version="1.0"?>
+<Template originator="Roman M. Yagodin" created="2012/08/10" lastModified="2014/01/21">
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>C# compiled module with DAL 2</_Name>
+		<_Category>C#/DNN Platform</_Category>
+		<Icon>md-project-web</Icon>
+		<LanguageName>C#</LanguageName>
+		<_Description>Creates a new DNN Platform C# compiled module project with DAL 2, based on PetaPOCO micro-ORM.
+
+NOTE: By default, choose '~\DesktopModules' folder for project location and uncheck 'Create directory for solution' flag.</_Description>
+	</TemplateConfiguration>
+	<!-- Actions -->
+	<Actions>
+		<Open filename="doc/install.txt" />
+	</Actions>
+	<!-- Template Content -->
+	<Combine name="${ProjectName}" directory=".">
+		<Options>
+			<StartupProject>"${ProjectName}</StartupProject>
+		</Options>
+		<Project name="${ProjectName}" directory="." type="AspNetApp">
+			<!-- Causes errors in ASP.NET code completition! 
+				<Options Target="Library" TargetFrameworkVersion="4.0" /> 
+			-->
+			<References>
+				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Assembly" refto="..\..\bin\DotNetNuke.dll" />
+				<Reference type="Assembly" refto="..\..\bin\DotNetNuke.Web.dll" />
+				<Reference type="Assembly" refto="..\..\bin\Telerik.Web.UI.dll" />
+			</References>
+			<!-- Other refrences for future use:
+	<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+	<Reference type="Package" refto="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
+	<Reference type="Package" refto="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+	<Reference type="Package" refto="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
+	<Reference type="Package" refto="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
+	<Reference type="Package" refto="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+	<Reference type="Package" refto="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+	<Reference type="Package" refto="System.Web.DynamicData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+	<Reference type="Package" refto="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
+	<Reference type="Package" refto="Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+-->
+			<Files>
+				<Directory name="js" />
+				<File name="module.css"><![CDATA[/* Place module CSS here */
+
+.${ProjectName}_ContentList { width:100% }				
+.${ProjectName}_ContentListItem { text-align: left }
+.${ProjectName}_UserName { font-weight:bold }
+.${ProjectName}_CreateOnDate { font-style:italic }
+.${ProjectName}_Content { clear:both }
+
+]]></File>
+				<File name="01.00.00.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
+-- replace {databaseOwner} and {objectQualifier} with real values. 
+-- Defaults is "dbo." for database owner and "" for object qualifier 
+
+-- Create tables
+
+IF NOT EXISTS (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+	BEGIN
+		CREATE TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
+		(
+			[${ProjectName}ID] int NOT NULL IDENTITY(1, 1),
+			[ModuleID] int NOT NULL,
+			[Content] nvarchar(max) NOT NULL,
+			[CreatedByUser] int NOT NULL,
+			[CreatedOnDate] datetime NOT NULL
+		)
+
+		ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
+			ADD CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED  ([${ProjectName}ID])
+			
+		CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${ProjectName}_${ProjectName}s_ModuleID] 
+			ON {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] ([ModuleID])
+
+		ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] WITH NOCHECK 
+			ADD CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Modules] FOREIGN KEY ([ModuleID]) REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]) ON DELETE CASCADE NOT FOR REPLICATION
+			
+		ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
+			ADD CONSTRAINT [DF_{objectQualifier}${ProjectName}_${ProjectName}s_CreatedOnDate] DEFAULT (getdate()) FOR [CreatedOnDate]
+	END
+GO
+
+-- Drop existing stored procedures
+
+---- Just example:
+-- IF EXISTS (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}${ProjectName}_Get${ProjectName}s]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--	DROP PROCEDURE {databaseOwner}{objectQualifier}${ProjectName}_Get${ProjectName}s
+-- GO
+
+-- Create stored procedures
+
+---- Just example:
+-- CREATE PROCEDURE {databaseOwner}{objectQualifier}${ProjectName}_Get${ProjectName}s
+--	@ModuleId int
+-- AS 
+-- SELECT [${ProjectName}ID]
+--	[ModuleID],
+--	[Content],
+--	[CreatedByUser],
+--	[CreatedOnDate],
+--	'CreatedByUserName' = {objectQualifier}Users.FirstName + ' ' + {objectQualifier}Users.LastName
+-- FROM {objectQualifier}${ProjectName}_${ProjectName}s
+-- INNER JOIN {objectQualifier}Users on {objectQualifier}${ProjectName}_${ProjectName}s.CreatedByUser = {objectQualifier}Users.UserId
+-- WHERE [ModuleID] = @ModuleId
+-- GO
+]]></File>
+				<File name="Uninstall.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
+-- replace {databaseOwner} and {objectQualifier} with real values. 
+-- Defaults is "dbo." for database owner and "" for object qualifier 
+
+-- Drop tables
+
+ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
+	DROP CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Modules]
+GO
+
+ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
+	DROP CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s]
+GO
+
+DROP INDEX {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s].[IX_{objectQualifier}${ProjectName}_${ProjectName}s_ModuleID]
+GO
+
+DROP TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
+GO
+
+-- Drop stored procedures
+
+-- DROP PROCEDURE {databaseOwner}[{objectQualifier}${ProjectName}_Get${ProjectName}s]
+-- GO
+]]></File>
+				<Directory name="App_LocalResources">
+					<File name="View${ProjectName}.ascx.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddContent.Action" xml:space="preserve">
+    <value>Add Content</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>&lt;P&gt;A ${ProjectName} module&lt;/P&gt;</value>
+  </data>
+  <data name="DefaultContent.Text" xml:space="preserve">
+    <value>Here is some sample content</value>
+  </data>
+  <data name="NothingToDisplay.Text" xml:space="preserve">
+  	<value>Nothing to display, add some items.</value>
+  </data>
+</root>]]></File>
+					<File name="View${ProjectName}.ascx.ru-RU.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="AddContent.Action" xml:space="preserve">
+    <value>Добавить содержимое</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>&lt;P&gt; Модуль ${ProjectName}&lt;/P&gt;</value>
+  </data>
+  <data name="DefaultContent.Text" xml:space="preserve">
+    <value>Что-то вместо содержимого</value>
+  </data>
+  <data name="NothingToDisplay.Text" xml:space="preserve">
+  	<value>Нечего отображать, добавьте элементы.</value>
+  </data>
+</root>]]></File>
+					<File name="Edit${ProjectName}.ascx.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="lblContent.Text" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="lblContent.Help" xml:space="preserve">
+    <value>Enter the Content</value>
+  </data>
+  <data name="valContent.ErrorMessage" xml:space="preserve">
+    <value>&lt;br&gt;Content is required</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>&lt;P&gt;A ${ProjectName} module&lt;/P&gt;</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Edit ${ProjectName}</value>
+  </data>
+</root>]]></File>
+					<File name="Edit${ProjectName}.ascx.ru-RU.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="lblContent.Text" xml:space="preserve">
+    <value>Содержимое</value>
+  </data>
+  <data name="lblContent.Help" xml:space="preserve">
+    <value>Введите содержимое</value>
+  </data>
+  <data name="valContent.ErrorMessage" xml:space="preserve">
+    <value>&lt;br&gt;Содержимое обязательно!</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>&lt;P&gt;Модуль ${ProjectName}&lt;/P&gt;</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>Редактировать ${ProjectName}</value>
+  </data>
+</root>]]></File>
+					<File name="Settings${ProjectName}.ascx.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="lblTemplate.Text" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="lblTemplate.Help" xml:space="preserve">
+    <value>Allows you to provide a custom template for displaying the items. Use parameters for dynamic substitution ( ie. [CONTENT] [CREATEDONDATE] [CREATEDBYUSER] [CREATEDBYUSERNAME] )</value>
+  </data>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>${ProjectName} Settings</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>About ${ProjectName} Settings</value>
+  </data>
+</root>]]></File>
+					<File name="Settings${ProjectName}.ascx.ru-RU.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="lblTemplate.Text" xml:space="preserve">
+    <value>Шаблон</value>
+  </data>
+  <data name="lblTemplate.Help" xml:space="preserve">
+    <value>Позволяет задать пользовательский шаблон для отображения элементов. Используйте параметры для замены: [CONTENT] [CREATEDONDATE] [CREATEDBYUSER] [CREATEDBYUSERNAME]</value>
+  </data>
+  <data name="ControlTitle_settings.Text" xml:space="preserve">
+    <value>Настройки ${ProjectName}</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>О настройках ${ProjectName}</value>
+  </data>
+</root>]]></File>
+				</Directory>
+				<Directory name="lib">
+					<File name="${ProjectName}Settings.cs" AddStandardHeader="True"><![CDATA[using System;
+					
+using System.ComponentModel;
+using System.Collections;
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.UI.Modules;
+
+namespace ${ProjectName}
+{
+	/// <summary>
+	/// Provides strong typed access to settings used by module
+	/// </summary>
+	public partial class ${ProjectName}Settings
+	{
+		protected ModuleController ctrl;
+		protected IModuleControl module;
+		
+		/// <summary>
+		/// Initializes a new instance of the <see cref="${ProjectName}.${ProjectName}Settings"/> class.
+		/// </summary>
+		/// <param name='moduleId'>
+		/// Module identifier.
+		/// </param>
+		/// <param name='tabModuleId'>
+		/// TabModule identifier.
+		/// </param>
+		public ${ProjectName}Settings (IModuleControl module)
+		{
+			ctrl = new ModuleController (); 
+			this.module = module;
+		}
+
+		/// <summary>
+		/// Reads module setting.
+		/// </summary>
+		/// <returns>
+		/// The setting value.
+		/// </returns>
+		/// <param name='settingName'>
+		/// Setting name.
+		/// </param>
+		/// <param name='defaultValue'>
+		/// Default value for setting.
+		/// </param>
+		/// <param name='tabSpecific'>
+		/// If set to <c>true</c>, read tab-specific setting.
+		/// </param>
+		/// <typeparam name='T'>
+		/// Type of the setting
+		/// </typeparam>
+		protected T ReadSetting<T> (string settingName, T defaultValue, bool tabSpecific)
+		{
+			var settings = (tabSpecific) ? 
+            	ctrl.GetTabModuleSettings (module.ModuleContext.TabModuleId) :
+            	ctrl.GetModuleSettings (module.ModuleContext.ModuleId);
+           
+			T ret = default(T);
+
+			if (settings.ContainsKey (settingName))
+			{
+				var tc = TypeDescriptor.GetConverter (typeof(T));
+				try
+				{
+					ret = (T)tc.ConvertFrom (settings [settingName]);
+				}
+				catch
+				{
+					ret = defaultValue;
+				}
+			}
+			else
+				ret = defaultValue;
+
+			return ret;
+		}
+	
+		/// <summary>
+		/// Writes module setting.
+		/// </summary>
+		/// <param name='settingName'>
+		/// Setting name.
+		/// </param>
+		/// <param name='value'>
+		/// Setting value.
+		/// </param>
+		/// <param name='tabSpecific'>
+		/// If set to <c>true</c>, setting is for this module on current tab.
+		/// If set to <c>false</c>, setting is for this module on all tabs.
+		/// </param>
+		protected void WriteSetting<T> (string settingName, T value, bool tabSpecific)
+		{
+			if (tabSpecific)
+				ctrl.UpdateTabModuleSetting (module.ModuleContext.TabModuleId, settingName, value.ToString());
+			else
+				ctrl.UpdateModuleSetting (module.ModuleContext.ModuleId, settingName, value.ToString());
+		}
+	}
+}
+]]></File>
+<File name="Utils.cs" AddStandardHeader="True"><![CDATA[using System;
+using System.Web;
+using System.IO;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
+using DotNetNuke.UI.Modules;
+using DotNetNuke.Common;
+
+namespace ${ProjectName}
+{
+	/// <summary>
+	/// Message severities
+	/// </summary>
+	public enum MessageSeverity 
+	{ 
+		Info, 
+		Warning, 
+		Error 
+	}
+
+	public class Utils 
+	{	
+		/// <summary>
+		/// Determines if the specified file is an images.
+		/// </summary>
+		/// <returns></returns>
+		/// <param name="fileName">File name.</param>
+		public static bool IsImage (string fileName)
+		{
+			if (!string.IsNullOrWhiteSpace(fileName))
+				return Globals.glbImageFileTypes.Contains(
+					Path.GetExtension(fileName).Substring(1).ToLowerInvariant());
+			else
+				return false;
+		}
+
+		/// <summary>
+		/// Formats the URL by DNN rules.
+		/// </summary>
+		/// <returns>Formatted URL.</returns>
+		/// <param name="module">A module reference.</param>
+		/// <param name="link">A link value. May be TabID, FileID=something or in other valid forms.</param>
+		/// <param name="trackClicks">If set to <c>true</c> then track clicks.</param>
+		public static string FormatURL (IModuleControl module, string link, bool trackClicks)
+		{
+			return DotNetNuke.Common.Globals.LinkClick 
+				(link, module.ModuleContext.TabId, module.ModuleContext.ModuleId, trackClicks);
+		}
+		
+		/// <summary>
+		/// Formats the Edit control URL by DNN rules (popups supported).
+		/// </summary>
+		/// <returns>Formatted Edit control URL.</returns>
+		/// <param name="module">A module reference.</param>
+		/// <param name="controlKey">Edit control key.</param>
+		/// <param name="args">Additional parameters.</param>
+		public static string EditUrl (IModuleControl module, string controlKey, params string [] args)
+		{
+			var argList = new List<string>(args); 
+			argList.Add ("mid");
+			argList.Add (module.ModuleContext.ModuleId.ToString());
+
+			return module.ModuleContext.NavigateUrl (module.ModuleContext.TabId, controlKey, false, argList.ToArray());
+		}
+		
+		/// <summary>
+		/// Finds the item index by it's value in ListControl-type list.
+		/// </summary>
+		/// <returns>Item index.</returns>
+		/// <param name="list">List control.</param>
+		/// <param name="value">A value.</param>
+		/// <param name="defaultIndex">Default index (in case item not found).</param>
+		public static int FindIndexByValue (ListControl list, object value, int defaultIndex)
+		{ 
+			var index = 0;
+			var strvalue = value.ToString();
+			foreach (ListItem item in list.Items)
+			{
+				if (item.Value == strvalue) return index;
+				index++;
+			}
+			return defaultIndex; 
+		}
+		
+		/// <summary>
+		/// Sets the selected index of ListControl-type list.
+		/// </summary>
+		/// <param name="list">List control.</param>
+		/// <param name="value">A value.</param>
+		/// <param name="defaultIndex">Default index (in case item not found).</param>
+		public static void SetIndexByValue (ListControl list, object value, int defaultIndex)
+		{
+			list.SelectedIndex = FindIndexByValue(list, value, defaultIndex);
+		}
+		
+		/// <summary>
+		/// Display a message at the top of the specified module.
+		/// </summary>
+		/// <param name="module">Module reference.</param>
+		/// <param name="severity">Message severity level.</param>
+		/// <param name="message">Message text.</param>
+		public static void Message (IModuleControl module, MessageSeverity severity, string message)
+		{
+			var label = new Label();
+			label.CssClass = "dnnFormMessage dnnForm" + severity;
+			label.Text = message;
+
+			module.Control.Controls.AddAt(0, label);
+		}
+	} // class
+} // namespace
+]]>	
+</File>		
+<FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
+				</Directory>
+				<Directory name="components">
+					<File name="${ProjectName}Settings.cs" AddStandardHeader="True"><![CDATA[using System;
+
+namespace ${ProjectName}
+{
+	/// <summary>
+	/// Provides strong typed access to settings used by module
+	/// </summary>
+	public partial class ${ProjectName}Settings
+	{
+		#region Properties for settings
+
+		/// <summary>
+		/// Template used to render the module content
+		/// </summary>
+		public string Template
+		{
+			get 
+			{ 
+				return ReadSetting<string> ("template", 
+					"<i>[CREATEDONDATE]<i> <b>[CREATEDBYUSERNAME]</b>:<br />[CONTENT]", 
+					true); 
+			}
+			set { WriteSetting<string> ("template", value, true); }
+		}
+
+        #endregion
+	}
+}
+]]></File>
+					<File name="${ProjectName}Controller.cs" AddStandardHeader="True"><![CDATA[using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Xml;
+using System.Linq;
+
+using DotNetNuke.Collections;
+using DotNetNuke.Data;
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Services.Search;
+
+namespace ${ProjectName}
+{
+	public partial class ${ProjectName}Controller : ISearchable, IPortable
+	{
+        #region Public methods
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="${ProjectName}.${ProjectName}Controller"/> class.
+		/// </summary>
+		public ${ProjectName}Controller()
+		{ 
+
+		}
+
+		/// <summary>
+		/// Adds a new T object into the database
+		/// </summary>
+		/// <param name='info'></param>
+		public void Add<T> (T info) where T: class
+		{
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				repo.Insert (info);
+			}
+		}
+
+		/// <summary>
+		/// Get single object from the database
+		/// </summary>
+		/// <returns>
+		/// The object
+		/// </returns>
+		/// <param name='itemId'>
+		/// Item identifier.
+		/// </param>
+		public T Get<T> (int itemId) where T: class
+		{
+			T info;
+
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				info = repo.GetById (itemId);
+			}
+
+			return info;
+		}
+		
+		/// <summary>
+		/// Get single object from the database
+		/// </summary>
+		/// <returns>
+		/// The object
+		/// </returns>
+		/// <param name='itemId'>
+		/// Item identifier.
+		/// </param>
+		/// <param name='scopeId'>
+		/// Scope identifier (like moduleId)
+		/// </param>
+		public T Get<T> (int itemId, int scopeId) where T: class
+		{
+			T info;
+
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				info = repo.GetById (itemId, scopeId);
+			}
+
+			return info;
+		}
+		
+		/// <summary>
+		/// Updates an object already stored in the database
+		/// </summary>
+		/// <param name='info'>
+		/// Info.
+		/// </param>
+		public void Update<T> (T info) where T: class
+		{
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				repo.Update (info);
+			}
+		}
+
+		/// <summary>
+		/// Gets all objects for items matching scopeId
+		/// </summary>
+		/// <param name='scopeId'>
+		/// Scope identifier (like moduleId)
+		/// </param>
+		/// <returns></returns>
+		public IEnumerable<T> GetObjects<T> (int scopeId) where T: class
+		{
+			IEnumerable<T> infos = null;
+
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				infos = repo.Get (scopeId);
+				
+				// Without [Scope("ModuleID")] it should be like:
+				// infos = repo.Find ("WHERE ModuleID = @0", moduleId);
+			}
+
+			return infos;
+		}
+		
+		/// <summary>
+		/// Gets all objects of type T from database
+		/// </summary>
+		/// <returns></returns>
+		public IEnumerable<T> GetObjects<T> () where T: class
+		{
+			IEnumerable<T> infos = null;
+
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				infos = repo.Get ();
+			}
+
+			return infos;
+		}
+		
+		/// <summary>
+		/// Gets the all objects of type T from result of a dynamic sql query
+		/// </summary>
+		/// <returns>Enumerable with objects of type T</returns>
+		/// <param name="sqlCondition">SQL command condition.</param>
+		/// <param name="args">SQL command arguments.</param>
+		/// <typeparam name="T">Type of objects.</typeparam>
+		public IEnumerable<T> GetObjects<T> (string sqlConditon, params object [] args) where T: class
+		{
+			IEnumerable<T> infos = null;
+			
+			using (var ctx = DataContext.Instance()) 
+			{
+				var repo = ctx.GetRepository<T> ();
+				infos = repo.Find (sqlConditon, args);
+			}
+			
+			return infos;
+		}
+
+		/// <summary>
+		/// Gets the all objects of type T from result of a dynamic sql query
+		/// </summary>
+		/// <returns>Enumerable with objects of type T</returns>
+		/// <param name="cmdType">Type of an SQL command.</param>
+		/// <param name="sql">SQL command.</param>
+		/// <param name="args">SQL command arguments.</param>
+		/// <typeparam name="T">Type of objects.</typeparam>
+		public IEnumerable<T> GetObjects<T> (System.Data.CommandType cmdType, string sql, params object [] args) where T: class
+		{
+			IEnumerable<T> infos = null;
+			
+			using (var ctx = DataContext.Instance()) 
+			{
+				infos = ctx.ExecuteQuery<T>	( cmdType, sql, args);
+			}
+			
+			return infos;
+		}
+			
+		/// <summary>
+		/// Gets one page of objects of type T
+		/// </summary>
+		/// <param name="scopeId">Scope identifier (like moduleId)</param>
+		/// <param name="index">a page index</param>
+		/// <param name="size">a page size</param>
+		/// <returns>A paged list of T objects</returns>
+		public IPagedList<T> GetPage<T> (int scopeId, int index, int size) where T: class
+		{
+			IPagedList<T> infos;
+
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				infos = repo.GetPage (scopeId, index, size);
+			}
+
+			return infos;
+		}
+		
+		/// <summary>
+		/// Gets one page of objects of type T
+		/// </summary>
+		/// <param name="index">a page index</param>
+		/// <param name="size">a page size</param>
+		/// <returns>A paged list of T objects</returns>
+		public IPagedList<T> GetPage<T> (int index, int size) where T: class
+		{
+			IPagedList<T> infos;
+
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				infos = repo.GetPage (index, size);
+			}
+
+			return infos;
+		}
+
+		/// <summary>
+		/// Delete a given item from the database by instance
+		/// </summary>
+		/// <param name='info'></param>
+		public void Delete<T> (T info) where T: class
+		{
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				repo.Delete (info);
+		
+			}
+		}
+		
+		/// <summary>
+		/// Delete a given item from the database by ID
+		/// </summary>
+		/// <param name='itemId'></param>
+		public void Delete<T> (int itemId) where T: class
+		{
+			using (var ctx = DataContext.Instance())
+			{
+				var repo = ctx.GetRepository<T> ();
+				repo.Delete(repo.GetById(itemId));
+			}
+		}
+		
+        #endregion
+        
+        #region Class-specific members
+       	
+       	// TODO: Implement class-specific controller members here.
+       
+		#endregion
+
+        #region ISearchable members
+
+		/// <summary>
+		/// Implements the search interface required to allow DNN to index/search the content of your
+		/// module
+		/// </summary>
+		/// <param name="modInfo"></param>
+		/// <returns></returns>
+		public DotNetNuke.Services.Search.SearchItemInfoCollection GetSearchItems (ModuleInfo modInfo)
+		{
+			var searchItems = new SearchItemInfoCollection ();
+			var infos = GetObjects<${ProjectName}Info> (modInfo.ModuleID);
+
+			foreach (${ProjectName}Info info in infos)
+			{
+				searchItems.Add (
+					new SearchItemInfo (
+						modInfo.ModuleTitle, 
+						info.Content, 
+						info.CreatedByUser, 
+						info.CreatedOnDate,
+                        modInfo.ModuleID, 
+                        info.${ProjectName}ID.ToString (),
+                        info.Content, 
+                        "Item=" + info.${ProjectName}ID.ToString ())
+				);
+			}
+
+			return searchItems;
+		}
+
+        #endregion
+
+        #region IPortable members
+
+		/// <summary>
+		/// Exports a module to XML
+		/// </summary>
+		/// <param name="ModuleID">a module ID</param>
+		/// <returns>XML string with module representation</returns>
+		public string ExportModule (int moduleId)
+		{
+			var sb = new StringBuilder ();
+			var infos = GetObjects<${ProjectName}Info> (moduleId);
+
+			if (infos != null)
+			{
+				sb.Append ("<${ProjectName}s>");
+				foreach (var info in infos)
+				{
+					sb.Append ("<${ProjectName}>");
+					sb.Append ("<content>");
+					sb.Append (XmlUtils.XMLEncode (info.Content));
+					sb.Append ("</content>");
+					sb.Append ("</${ProjectName}>");
+				}
+				sb.Append ("</${ProjectName}s>");
+			}
+			
+			return sb.ToString ();
+		}
+
+		/// <summary>
+		/// Imports a module from an XML
+		/// </summary>
+		/// <param name="ModuleID"></param>
+		/// <param name="Content"></param>
+		/// <param name="Version"></param>
+		/// <param name="UserID"></param>
+		public void ImportModule (int ModuleID, string Content, string Version, int UserID)
+		{
+			var infos = DotNetNuke.Common.Globals.GetContent (Content, "${ProjectName}s");
+		
+			foreach (XmlNode info in infos.SelectNodes("${ProjectName}"))
+			{
+				var item = new ${ProjectName}Info ();
+				item.ModuleID = ModuleID;
+				item.Content = info.SelectSingleNode ("content").InnerText;
+				item.CreatedByUser = UserID;
+
+				Add<${ProjectName}Info> (item);
+			}
+		}
+		
+        #endregion
+	}
+}
+]]></File>
+<!--<FileTemplateReference TemplateID="DotNetNuke PetaPOCO class" name="${ProjectName}Info.cs" />-->
+<File name="${ProjectName}Info.cs" AddStandardHeader="True"><![CDATA[using System;
+using System.Linq;
+
+using DotNetNuke.Data;
+using DotNetNuke.ComponentModel.DataAnnotations;
+using DotNetNuke.Entities.Portals;
+using DotNetNuke.Entities.Users;
+
+namespace ${ProjectName}
+{
+	// More attributes for class:
+	// Set caching for table: [Cacheable("${ProjectName}_${Name}s", CacheItemPriority.Default, 20)] 
+	// Explicit mapping declaration: [DeclareColumns]
+	
+	// More attributes for class properties:
+	// Custom column name: [ColumnName("${ProjectName}ID")]
+	// Explicit include column: [IncludeColumn]
+	// Note: DAL 2 has no AutoJoin analogs from PetaPOCO at this time
+	
+	[TableName("${ProjectName}_${ProjectName}s")]
+	[PrimaryKey("${ProjectName}ID", AutoIncrement = true)]
+	[Scope("ModuleID")]
+	public class ${ProjectName}Info
+	{
+        #region Fields
+        
+		private string createdByUserName = null;
+
+		#endregion
+		
+		/// <summary>
+		/// Empty default cstor
+		/// </summary>
+		public ${ProjectName}Info ()
+		{
+		}
+
+        #region Properties
+
+		public int ${ProjectName}ID { get; set; }
+
+		public int ModuleID { get; set; }
+
+		public string Content { get; set; }
+
+		public int CreatedByUser { get; set; }
+
+		[ReadOnlyColumn]
+		public DateTime CreatedOnDate { get; set; }
+        
+		[IgnoreColumn]
+		public string CreatedByUserName
+		{
+			get
+			{
+				if (createdByUserName == null)
+				{
+					var portalId = PortalController.GetCurrentPortalSettings ().PortalId;
+					var user = UserController.GetUserById (portalId, CreatedByUser);
+					createdByUserName = user.DisplayName;
+				}
+
+				return createdByUserName; 
+			}
+		}
+
+        #endregion
+        
+        /* // Joins example
+     	
+     	// foreign key
+     	public int AnotherID { get; set; }
+     	
+     	// private object reference
+     	private AnotherInfo _another;
+     	
+     	// public object reference
+     	public AnotherInfo Another 
+     	{
+     	   	// this getter method hide underlying access to database, 
+     	   	// and perform simple caching by storing reference
+     	   	// to retrived AnotherInfo object in a private field "_another"
+     		get 
+     		{
+     			if (_other == null)
+     			{
+     				// load joined object to reference it
+     				var ctrl = new ${ProjectName}Controller();
+     				_another = ctrl.Get<AnotherInfo>(AnotherID);
+     			}
+     			return _another;	
+     		}
+     		set 
+     		{
+     			_another = value;
+     		}
+     	}      
+     	
+     	/// <summary>
+     	/// Nullifies all private fields with references to joined objects,
+     	/// so next access to corresponding object properties 
+     	/// results in reloading them from the database  
+     	/// </summary>
+     	public void ResetJoins ()
+     	{
+     		_another = null;
+     	}
+        
+        // Now we have ability to use ${ProjectName}Info objects
+        // to access members of joined AnotherInfo objects 
+        
+       	// Get ${ProjectName}Info object by it's primary key (ID):
+       	// var ctrl = new ${ProjectName}Controller();
+     	// var item = ctrl.Get<${ProjectName}Info>(itemId);
+     	
+     	// Now simply get data from another table:
+     	// Console.WriteLine(item.Another.SomeProperty);
+     	
+        // True is, that it is not very effective way to retrieve multiple objects, 
+        // but it is 1) simple and 2) object-oriented, so then PetaPOCO AutoJoin 
+        // attribute will be included in DAL 2, existing business logic code 
+        // can be upgraded with almost no efforts.
+       
+        */
+     }
+}
+]]></File>
+
+				</Directory>
+				<AspNetFile name="View${ProjectName}.ascx" DefaultExtension=".ascx">
+					<!-- <File name="View${ProjectName}.ascx"> -->
+					<FileText><![CDATA[<%@ Control Language="${AspNetLanguage}" AutoEventWireup="true" CodeBehind="View${ProjectName}.ascx.cs" Inherits="${ProjectName}.View${ProjectName}" %>
+<asp:DataList ID="lstContent" DataKeyField="${ProjectName}ID" runat="server" CssClass="${ProjectName}_ContentList" OnItemDataBound="lstContent_ItemDataBound">
+	<ItemTemplate>
+		<asp:HyperLink ID="linkEdit" runat="server">
+			<asp:Image ID="imageEdit" runat="server" ImageUrl="~/images/edit.gif" AlternateText="Edit" ResourceKey="Edit" />
+		</asp:HyperLink>
+		<asp:Label ID="lblUserName" runat="server" CssClass="${ProjectName}_UserName" />
+		<asp:Label ID="lblCreatedOnDate" runat="server" CssClass="${ProjectName}_CreatedOnDate" /> 
+		<asp:Label ID="lblContent" runat="server" CssClass="${ProjectName}_Content" />
+	</ItemTemplate>
+	<ItemStyle CssClass="${ProjectName}_ContentListItem" />
+</asp:DataList>
+<!-- Label for debug info -->
+<asp:Label ID="lblDebug" runat="server" />
+]]></FileText>
+				</AspNetFile>
+				<File name="View${ProjectName}.ascx.cs" DependsOn="View${ProjectName}.ascx" AddStandardHeader="True"><![CDATA[using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Linq;
+
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Entities.Modules.Actions;
+using DotNetNuke.Services.Exceptions;
+using DotNetNuke.Services.Localization;
+
+namespace ${ProjectName}
+{
+	public partial class View${ProjectName} : PortalModuleBase, IActionable
+	{
+    	#region Handlers 
+    	
+    	/// <summary>
+		/// Handles Init event for a control
+		/// </summary>
+		/// <param name="e">Event args.</param>
+    	protected override void OnInit(EventArgs e)
+		{
+			base.OnInit (e);
+		}
+    	    	
+    	/// <summary>
+		/// Handles Load event for a control
+		/// </summary>
+		/// <param name="e">Event args.</param>
+		protected override void OnLoad (EventArgs e)
+		{
+			base.OnLoad(e);
+			
+			try
+			{
+				if (!IsPostBack)
+				{
+					var ctrl = new ${ProjectName}Controller ();
+					var items = ctrl.GetObjects<${ProjectName}Info> (this.ModuleId);
+
+					// check if we have some content to display, 
+					// otherwise display a message for module editors.
+					if (items == null && IsEditable)
+					{
+						Utils.Message (this, MessageSeverity.Info, Localization.GetString("NothingToDisplay.Text", LocalResourceFile));
+					}
+					else
+					{
+						// bind the data
+						lstContent.DataSource = items;
+						lstContent.DataBind ();
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Exceptions.ProcessModuleLoadException (this, ex);
+			}
+		}
+		
+		#endregion		
+			
+        #region IActionable implementation
+        
+		public DotNetNuke.Entities.Modules.Actions.ModuleActionCollection ModuleActions
+		{
+			get
+			{
+				// create a new action to add an item, this will be added 
+				// to the controls dropdown menu
+				var actions = new ModuleActionCollection ();
+				actions.Add (
+					GetNextActionID (), 
+					Localization.GetString (ModuleActionType.AddContent, this.LocalResourceFile),
+                    ModuleActionType.AddContent, 
+                    "", 
+                    "", 
+                    Utils.EditUrl (this, "Edit"),
+                    false, 
+                    DotNetNuke.Security.SecurityAccessLevel.Edit,
+                    true, 
+                    false
+                );
+
+				return actions;
+			}
+		}
+
+        #endregion
+
+		/// <summary>
+		/// Handles the items being bound to the datalist control. In this method we merge the data with the
+		/// template defined for this control to produce the result to display to the user
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		protected void lstContent_ItemDataBound (object sender, System.Web.UI.WebControls.DataListItemEventArgs e)
+		{
+			// use e.Item.DataItem as object of ${ProjectName}Info class,
+			// as we really know it is:
+			var item = e.Item.DataItem as ${ProjectName}Info;
+			
+			// find controls in DataList item template
+			var lblUserName = e.Item.FindControl ("lblUserName") as Label;
+			var lblCreatedOnDate = e.Item.FindControl ("lblCreatedOnDate") as Label;
+			var lblContent = e.Item.FindControl ("lblContent") as Label;
+			var linkEdit = e.Item.FindControl ("linkEdit") as HyperLink;
+			var iconEdit = e.Item.FindControl ("imageEdit") as Image;
+			
+			// read module settings (may be useful in a future)
+			// var settings = new ${ProjectName}Settings (this);            
+            
+            // edit link
+            if (IsEditable)
+            {
+            	linkEdit.NavigateUrl = Utils.EditUrl (this, "Edit", "${ProjectName}ID", item.${ProjectName}ID.ToString());
+				// WTF: iconEdit.NavigateUrl = Utils.FormatURL (this, image.Url, false);
+			}
+
+			// make edit link visible in edit mode
+			linkEdit.Visible = IsEditable;
+			iconEdit.Visible = IsEditable;
+            
+            // fill the controls
+            lblUserName.Text = item.CreatedByUserName;
+			lblCreatedOnDate.Text = item.CreatedOnDate.ToShortDateString();
+			lblContent.Text = Server.HtmlDecode(item.Content);
+		}
+	}
+}
+]]></File>
+				<File name="View${ProjectName}.ascx.controls.cs" DependsOn="View${ProjectName}.ascx" ShowAutogenerationNotice="False" AddStandardHeader="False" SuppressAutoOpen="True"><![CDATA[using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+using System.Linq;
+
+using DotNetNuke.UI.UserControls;
+using DotNetNuke.UI.WebControls;
+
+namespace ${ProjectName} 
+{
+	public partial class View${ProjectName}
+	{	
+		protected DataList lstContent;
+		protected Label lblDebug;
+	}
+}]]></File>
+				<!-- <File name="Settings.ascx"> -->
+				<AspNetFile name="Settings${ProjectName}.ascx" DefaultExtension=".ascx">
+					<FileText><![CDATA[<%@ Control Language="${AspNetLanguage}" AutoEventWireup="true" CodeBehind="Settings${ProjectName}.ascx.cs" Inherits="${ProjectName}.Settings${ProjectName}" %>
+<%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
+
+<div class="dnnForm dnnClear">
+	<h2 class="dnnFormSectionHead"><a href=""><asp:Label runat="server" ResourceKey="sectionBaseSettings.Text" /></a></h2>
+	<fieldset>	
+		<div class="dnnFormItem">
+			<dnn:Label ID="lblTemplate" runat="server" ControlName="txtTemplate" Suffix=":" />
+			<asp:TextBox ID="txtTemplate" runat="server" CssClass="NormalTextBox" Rows="10" Columns="30" TextMode="MultiLine" MaxLength="2000" />
+		</div>
+	</fieldset>	
+</div>
+]]></FileText>
+				</AspNetFile>
+				<File name="Settings${ProjectName}.ascx.cs" DependsOn="Settings${ProjectName}.ascx" AddStandardHeader="True"><![CDATA[using System;
+using System.Web.UI.WebControls;
+using System.Linq;
+
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Services.Exceptions;
+using DotNetNuke.UI.UserControls;
+
+namespace ${ProjectName}
+{	
+	public partial class Settings${ProjectName} : ModuleSettingsBase
+	{
+		/// <summary>
+		/// Handles the loading of the module setting for this control
+		/// </summary>
+		public override void LoadSettings ()
+		{
+			try
+			{
+				if (!IsPostBack)
+				{
+					var settings = new ${ProjectName}Settings (this);
+										
+					if (!string.IsNullOrWhiteSpace (settings.Template))
+					{
+						txtTemplate.Text = settings.Template;
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				Exceptions.ProcessModuleLoadException (this, ex);
+			}
+		}
+      
+		/// <summary>
+		/// handles updating the module settings for this control
+		/// </summary>
+		public override void UpdateSettings ()
+		{
+			try
+			{
+				var settings = new ${ProjectName}Settings (this);
+				
+				settings.Template = txtTemplate.Text;
+			}
+			catch (Exception ex)
+			{
+				Exceptions.ProcessModuleLoadException (this, ex);
+			}
+		}
+	}
+}
+]]></File>
+				<File name="Settings${ProjectName}.ascx.controls.cs" DependsOn="Settings${ProjectName}.ascx" ShowAutogenerationNotice="False" AddStandardHeader="False" SuppressAutoOpen="True"><![CDATA[using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+using DotNetNuke.UI.UserControls;
+using DotNetNuke.UI.WebControls;
+
+namespace ${ProjectName} 
+{
+	public partial class Settings${ProjectName}
+	{	
+		protected LabelControl lblTemplate;
+		protected TextBox txtTemplate;
+	}
+}]]></File>
+				<AspNetFile name="Edit${ProjectName}.ascx" DefaultExtension=".ascx">
+					<FileText><![CDATA[<%@ Control Language="${AspNetLanguage}" AutoEventWireup="false" CodeBehind="Edit${ProjectName}.ascx.cs" Inherits="${ProjectName}.Edit${ProjectName}" %>
+<%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/labelcontrol.ascx" %>
+<%@ Register TagPrefix="dnn" TagName="TextEditor" Src="~/controls/TextEditor.ascx"%>
+<%@ Register TagPrefix="dnn" TagName="Audit" Src="~/controls/ModuleAuditControl.ascx" %>
+
+<div class="dnnForm dnnClear">
+	<fieldset>	
+		<div class="dnnFormItem">
+			<dnn:Label ID="lblContent" runat="server" ControlName="lblContent" Suffix=":" />
+			<dnn:TextEditor ID="txtContent" runat="server" Height="200" Width="100%" />
+		</div>
+	</fieldset>
+	<ul class="dnnActions dnnClear">
+		<li><asp:LinkButton id="buttonUpdate" runat="server" CssClass="dnnPrimaryAction" ResourceKey="cmdUpdate" CausesValidation="true" /></li>
+		<li><asp:LinkButton id="buttonDelete" runat="server" CssClass="dnnSecondaryAction" ResourceKey="cmdDelete" /></li>
+		<li><asp:HyperLink id="linkCancel" runat="server" CssClass="dnnSecondaryAction" ResourceKey="cmdCancel" /></li>
+	</ul>
+	<dnn:Audit id="ctlAudit" runat="server" />
+</div>
+]]></FileText>
+				</AspNetFile>
+				<File name="Edit${ProjectName}.ascx.cs" DependsOn="Edit${ProjectName}.ascx" AddStandardHeader="True"><![CDATA[using System;
+using System.Web.UI.WebControls;
+using System.Linq;
+
+using DotNetNuke.Common;
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.Entities.Modules;
+using DotNetNuke.Services.Exceptions;
+using DotNetNuke.Services.Localization;
+using DotNetNuke.UI.UserControls;
+
+namespace ${ProjectName}
+{
+	public partial class Edit${ProjectName} : PortalModuleBase
+	{
+		// ALT: private int itemId = Null.NullInteger;
+		private int? itemId = null; 
+		
+		#region Handlers
+		
+		/// <summary>
+		/// Handles Init event for a control.
+		/// </summary>
+		/// <param name="e">Event args.</param>
+		protected override void OnInit (EventArgs e)
+		{
+			base.OnInit (e);
+
+			// set url for Cancel link
+			linkCancel.NavigateUrl = Globals.NavigateURL ();
+
+			// wireup event handlers
+			buttonUpdate.Click += buttonUpdate_Click;
+			buttonDelete.Click += buttonDelete_Click;
+
+			// add confirmation dialog to delete button
+			buttonDelete.Attributes.Add ("onClick", "javascript:return confirm('" + Localization.GetString ("DeleteItem") + "');");
+		}
+
+		/// <summary>
+		/// Handles Load event for a control.
+		/// </summary>
+		/// <param name="e">Event args.</param>
+		protected override void OnLoad (EventArgs e)
+		{
+			base.OnLoad (e);
+			
+			try
+			{
+				// parse querystring parameters
+				int tmpItemId;
+				if (int.TryParse(Request.QueryString ["${ProjectName}ID"], out tmpItemId))
+					itemId = tmpItemId;
+      
+				if (!IsPostBack)
+				{
+					// load the data into the control the first time we hit this page
+
+					// check we have an item to lookup
+					// ALT: if (!Null.IsNull (itemId) 
+					if (itemId.HasValue)
+					{
+						// load the item
+						var ctrl = new ${ProjectName}Controller ();
+						var item = ctrl.Get<${ProjectName}Info> (itemId.Value, this.ModuleId);
+
+						if (item != null)
+						{
+						    // TODO: Fill controls with data
+							txtContent.Text = item.Content;
+							
+							// setup audit control
+							ctlAudit.CreatedByUser = item.CreatedByUserName;
+							ctlAudit.CreatedDate = item.CreatedOnDate.ToLongDateString ();
+						} 
+						else
+							Response.Redirect (Globals.NavigateURL (), true);
+					} 
+					else
+					{
+						buttonDelete.Visible = false;
+						ctlAudit.Visible = false;
+					}
+				}
+			} 
+			catch (Exception ex)
+			{
+				Exceptions.ProcessModuleLoadException (this, ex);
+			}
+		}
+
+		/// <summary>
+		/// Handles Click event for Update button
+		/// </summary>
+		/// <param name='sender'>
+		/// Sender.
+		/// </param>
+		/// <param name='e'>
+		/// Event args.
+		/// </param>
+		protected void buttonUpdate_Click (object sender, EventArgs e)
+		{
+			try
+			{
+				var ctrl = new ${ProjectName}Controller ();
+				${ProjectName}Info item;
+
+				// determine if we are adding or updating
+				// ALT: if (Null.IsNull (itemId))
+				if (!itemId.HasValue)
+				{
+					// TODO: populate new object properties with data from controls 
+					// to add new record
+					item = new ${ProjectName}Info();
+					item.Content = txtContent.Text;
+					item.ModuleID = this.ModuleId;
+					item.CreatedByUser = this.UserId;					
+
+					ctrl.Add<${ProjectName}Info> (item);
+				}
+				else 
+				{
+					// TODO: update properties of existing object with data from controls 
+					// to update existing record
+					item = ctrl.Get<${ProjectName}Info> (itemId.Value, this.ModuleId);
+					item.Content = txtContent.Text;
+
+					ctrl.Update<${ProjectName}Info> (item);
+				}
+
+				Response.Redirect (Globals.NavigateURL (), true);
+			} 
+			catch (Exception ex)
+			{
+				Exceptions.ProcessModuleLoadException (this, ex);
+			}
+		}
+
+		/// <summary>
+		/// Handles Click event for Delete button
+		/// </summary>
+		/// <param name='sender'>
+		/// Sender.
+		/// </param>
+		/// <param name='e'>
+		/// Event args.
+		/// </param>
+		protected void buttonDelete_Click (object sender, EventArgs e)
+		{
+			try
+			{
+				// ALT: if (!Null.IsNull (itemId))
+				if (itemId.HasValue)
+				{
+					var ctrl = new ${ProjectName}Controller ();
+					ctrl.Delete<${ProjectName}Info> (itemId.Value);
+					Response.Redirect (Globals.NavigateURL (), true);
+				}
+			} 
+			catch (Exception ex)
+			{
+				Exceptions.ProcessModuleLoadException (this, ex);
+			}
+		}
+		
+		#endregion
+	}
+}
+]]></File>
+				<File name="Edit${ProjectName}.ascx.controls.cs" DependsOn="Edit${ProjectName}.ascx" ShowAutogenerationNotice="False" AddStandardHeader="False" SuppressAutoOpen="True"><![CDATA[
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
+using DotNetNuke.UI.UserControls;
+using DotNetNuke.UI.WebControls;
+
+namespace ${ProjectName} 
+{
+	public partial class Edit${ProjectName}
+	{	
+		protected LinkButton buttonUpdate;
+		protected LinkButton buttonDelete;
+		protected HyperLink linkCancel;
+		protected LabelControl lblContent;
+		protected TextEditor txtContent;
+		protected ModuleAuditControl ctlAudit;
+	}
+}]]></File>
+  				<File name="${ProjectName}.dnn"><![CDATA[<dotnetnuke type="Package" version="5.0">
+ <packages>
+   <package name="${ProjectName}" type="Module" version="01.00.00">
+     <friendlyName>${ProjectName}</friendlyName>
+     <description>This is a simple module to display some records from database table.</description>
+     <owner>
+       <name>${AuthorName}</name>
+       <organization>${AuthorCompany}</organization>
+       <url>http://www.${AuthorCompany}.com/${ProjectName}</url>
+       <email>${AuthorEmail}</email>
+     </owner>
+	 <!-- <license src="License.txt"></license> -->
+     <license>
+     	&lt;p&gt;This module is published under MIT X11 License.&lt;/p&gt;
+     </license>
+     <releaseNotes>
+         &lt;h3&gt;Version 01.00.00&lt;/h3&gt;
+         &lt;p&gt;This is the initial release.&lt;/p&gt;
+     </releaseNotes>
+	 <!-- <dependencies>
+		<dependency type="CoreVersion">07.00.00</dependency>
+	</dependencies> -->
+     <components>
+
+        <component type="Module">
+         <desktopModule>
+           <moduleName>${ProjectName}</moduleName>
+           <foldername>${ProjectName}</foldername>
+           <businessControllerClass>${ProjectName}.${ProjectName}Controller</businessControllerClass>
+           <supportedFeatures>
+             <supportedFeature type="Portable" />
+             <supportedFeature type="Searchable" />
+           </supportedFeatures>
+           <moduleDefinitions>
+             <moduleDefinition>
+               <friendlyName>${ProjectName}</friendlyName>
+               <definitionName>${ProjectName}</definitionName>
+               <defaultCacheTime>0</defaultCacheTime>
+               <moduleControls>
+                 <moduleControl>
+                   <controlKey />
+                   <controlSrc>DesktopModules/${ProjectName}/View${ProjectName}.ascx</controlSrc>
+                   <controlTitle />
+                   <controlType>View</controlType>
+                   <iconFile />
+                   <helpUrl />
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <supportsPopUps>False</supportsPopUps>
+                   <viewOrder>0</viewOrder>
+                 </moduleControl>
+                 <moduleControl>
+                   <controlKey>Edit</controlKey>
+                   <controlSrc>DesktopModules/${ProjectName}/Edit${ProjectName}.ascx</controlSrc>
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <supportsPopUps>True</supportsPopUps>
+                   <controlTitle>Edit</controlTitle>
+                   <controlType>Edit</controlType>
+                   <iconFile />
+                   <helpUrl />
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <supportsPopUps>True</supportsPopUps>
+                   <viewOrder>0</viewOrder>
+                 </moduleControl>
+                 <moduleControl>
+                   <controlKey>Settings</controlKey>
+                   <controlSrc>DesktopModules/${ProjectName}/Settings${ProjectName}.ascx</controlSrc>
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <controlTitle>Settings</controlTitle>
+                   <controlType>Edit</controlType>
+                   <iconFile />
+                   <helpUrl />
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <supportsPopUps>False</supportsPopUps>
+                   <viewOrder>0</viewOrder>
+                 </moduleControl>
+               </moduleControls>
+             </moduleDefinition>
+           </moduleDefinitions>
+         </desktopModule>
+       </component>
+
+       <component type="Script">
+         <scripts>
+           <basePath>DesktopModules\${ProjectName}</basePath>
+           <script type="Install">
+             <name>01.00.00.SqlDataProvider</name>
+             <version>01.00.00</version>
+           </script>
+           <script type="UnInstall">
+             <name>Uninstall.SqlDataProvider</name>
+             <version>01.00.00</version>
+           </script>
+         </scripts>
+       </component>
+
+       <!--
+       <component type="ResourceFile">
+         <resourceFiles>
+           <basePath>DesktopModules/${ProjectName}</basePath>
+           <resourceFile>
+             <name>Resources.zip</name>
+           </resourceFile>
+         </resourceFiles>
+       </component>
+       -->
+            
+       
+       <!-- 
+       <component type="Assembly">
+         <assemblies>
+           <basePath>bin</basePath>
+           <assembly>
+             <path>bin</path>
+             <name>TestModule.dll</name>
+           </assembly>
+         </assemblies>
+       </component>
+      -->
+      
+     <component type="File">
+	     <files>
+	    	<basePath>DesktopModules\${ProjectName}</basePath>
+	        <file>
+	          <name>View${ProjectName}.ascx</name>
+	        </file>
+	        <file>
+	          <name>Edit${ProjectName}.ascx</name>
+	        </file>
+	        <file>
+	          <name>Settings${ProjectName}.ascx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>View${ProjectName}.ascx.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>Edit${ProjectName}.ascx.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>Settings${ProjectName}.ascx.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>View${ProjectName}.ascx.ru-RU.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>Edit${ProjectName}.ascx.ru-RU.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>Settings${ProjectName}.ascx.ru-RU.resx</name>
+	        </file>
+ 			<file>
+	          <name>module.css</name>
+	        </file>
+	      </files>
+     </component> 
+
+     </components>
+   </package>
+ </packages>
+</dotnetnuke>]]></File>
+				<Directory name="doc">
+					<File name="install.txt"><![CDATA[==  Some additional steps to do:
+
+1) Update reference to DotNetNuke.dll and other referenced assemblies to a "~\bin" folder (if needed).
+   Template assumes that project is created in "~\DesktopModules" folder 
+   *without* parent solution folder, so "..\..\bin\" path is used for references.
+  
+2) Set project build output path to DNN "~\bin" folder in project options.
+   It can be "..\..\bin" for the case, described above.
+   
+3) You may want to disable automatic updates of CodeBehind partial classes in project options
+   under ASP.NET page - it's not working correctly with third-party controls anyway.
+
+4) Run 01.00.00.SqlDataProvider as script under Host -> SQL on DNN site.
+
+5) Create new module under Host > Extensions from Manifest (.dnn) file.
+]]></File>
+				</Directory>
+			</Files>
+		</Project>
+	</Combine>
+</Template>

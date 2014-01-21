@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<Template Originator="Roman M. Yagodin" Created="2012/28/11" LastModified="2014/01/21">
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>PetaPOCO class</_Name>
+		<_CategoryDNN Platform</_Category>
+		<Icon>md-class-file</Icon>
+		<LanguageName>C#</LanguageName>
+		<_Description>Creates a new DNN PetaPOCO class on C#.		
+
+NOTE: use 'Apple' for a file name to create 'AppleInfo' class.</_Description>
+	</TemplateConfiguration>
+	<!-- Template Content -->
+	<TemplateFiles>
+		<File name="${Name}Info.cs" AddStandardHeader="True"><![CDATA[using System;
+
+using DotNetNuke.Data;
+using DotNetNuke.ComponentModel.DataAnnotations;
+using DotNetNuke.Entities.Portals;
+using DotNetNuke.Entities.Users;
+
+namespace ${Namespace}
+{
+	// More attributes for class:
+	// Set caching for table: [Cacheable("${Namespace}_${Name}s", CacheItemPriority.Default, 20)] 
+	// Explicit mapping declaration: [DeclareColumns]
+	
+	// More attributes for class properties:
+	// Custom column name: [ColumnName("${Name}ID")]
+	// Explicit include column: [IncludeColumn]
+	// Note: DAL 2 have no AutoJoin analogs from PetaPOCO at this time
+	
+	[TableName("${Namespace}_${Name}s")]
+	[PrimaryKey("${Name}ID", AutoIncrement = true)]
+	[Scope("ModuleID")]
+	public class ${Name}Info
+	{
+        #region Fields
+        
+		private string createdByUserName = null;
+
+		#endregion
+		
+		/// <summary>
+		/// Empty default cstor
+		/// </summary>
+		public ${Name}Info ()
+		{
+		}
+
+        #region Properties
+
+		public int ${Name}ID { get; set; }
+
+		public int ModuleID { get; set; }
+
+		public string Content { get; set; }
+
+		public int CreatedByUser { get; set; }
+
+		[ReadOnlyColumn]
+		public DateTime CreatedOnDate { get; set; }
+        
+		[IgnoreColumn] 
+		public string CreatedByUserName
+		{
+			get
+			{
+				if (createdByUserName == null)
+				{
+					var portalId = PortalController.GetCurrentPortalSettings ().PortalId;
+					var user = UserController.GetUserById (portalId, CreatedByUser);
+					createdByUserName = user.DisplayName;
+				}
+
+				return createdByUserName; 
+			}
+		}
+
+        #endregion
+	}
+}
+]]></File>
+	</TemplateFiles>
+</Template>

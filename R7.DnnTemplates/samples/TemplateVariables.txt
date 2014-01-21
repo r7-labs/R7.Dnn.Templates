@@ -1,0 +1,15 @@
+${ProjectName}
+${ProjectRelativeDirectory}
+${LanguageExtension}
+${Namespace}
+${Name}
+${EscapedIdentifier} 
+${CodeRegion:script1}
+${AspNetLanguage}
+${AspNetMaster}
+${AspNetMasterContent}
+${AuthorEmail}
+${AuthorName}
+${AuthorCopyright}
+${AuthorTrademark}
+${AuthorCompany}
