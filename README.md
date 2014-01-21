@@ -8,6 +8,8 @@ DNN Platform templates addin for MonoDevelop / Xamarin Studio
 
 2) Restart IDE. 
 
+3) Create new project from DNN Platform templates.
+
 # Changelog
     
 ## Version 0.1.3
