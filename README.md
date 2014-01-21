@@ -23,6 +23,7 @@ DNN Platform templates addin for MonoDevelop / Xamarin Studio
 - Project renamed to R7.DnnTemplates.
 - "DotNetNuke" references in text replaced with "DNN Platform"
 - Version number changed from 0.x to more uniform 0.1.x.
+- Project published on GitHub
 
 ## Version 0.1.2
 
