@@ -44,9 +44,6 @@
     <None Include="DnnPetaPocoClass.xft.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="LICENSE.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="samples\MonoDevelopAddIn.xsd" />
     <None Include="samples\TemplateVariables.txt" />
     <None Include="samples\MonoDevelopStockIcons.txt" />
