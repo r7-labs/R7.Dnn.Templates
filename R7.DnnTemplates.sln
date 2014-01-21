@@ -5,6 +5,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R7.DnnTemplates", "R7.DnnTe
 EndProject
 Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Packages", "Packages\Packages.mdproj", "{CE16D027-2FF6-419D-A696-113E21041E10}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0EF16FF1-053D-491C-A1ED-90DF35A4AEB3}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +22,8 @@ Global
 		{18FF5960-12C1-43A3-9979-128F7B8F4FFC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE16D027-2FF6-419D-A696-113E21041E10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE16D027-2FF6-419D-A696-113E21041E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = R7.DnnTemplates\R7.DnnTemplates.csproj
