@@ -3,7 +3,7 @@
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>PetaPOCO class</_Name>
-		<_CategoryDNN Platform</_Category>
+		<_Category>DNN Platform</_Category>
 		<Icon>md-class-file</Icon>
 		<LanguageName>C#</LanguageName>
 		<_Description>Creates a new DNN PetaPOCO class on C#.		
