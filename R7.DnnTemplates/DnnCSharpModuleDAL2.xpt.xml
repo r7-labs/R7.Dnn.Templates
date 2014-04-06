@@ -1712,7 +1712,7 @@ endlocal
 
    This script automatically creates ${ProjectName}-01.00.00-Install.zip package 
    in a solution folder (just go up in file manager). This script uses 7Zip 
-   to created packages. And remember - you should build your project first!
+   to create packages. And remember - you should build your project first!
 
 5) Install module package as usual, from Host > Extensions.
 ]]></File>
