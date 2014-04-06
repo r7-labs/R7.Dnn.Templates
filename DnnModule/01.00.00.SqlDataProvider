@@ -1,0 +1,55 @@
+﻿-- NOTE: To manually execute this script you must 
+-- replace {databaseOwner} and {objectQualifier} with real values. 
+-- Defaults is "dbo." for database owner and "" for object qualifier 
+
+-- Create tables
+
+IF NOT EXISTS (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}DnnModule_DnnModules]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+	BEGIN
+		CREATE TABLE {databaseOwner}[{objectQualifier}DnnModule_DnnModules]
+		(
+			[DnnModuleID] int NOT NULL IDENTITY(1, 1),
+			[ModuleID] int NOT NULL,
+			[Content] nvarchar(max) NOT NULL,
+			[CreatedByUser] int NOT NULL,
+			[CreatedOnDate] datetime NOT NULL
+		)
+
+		ALTER TABLE {databaseOwner}[{objectQualifier}DnnModule_DnnModules] 
+			ADD CONSTRAINT [PK_{objectQualifier}DnnModule_DnnModules] PRIMARY KEY CLUSTERED  ([DnnModuleID])
+			
+		CREATE NONCLUSTERED INDEX [IX_{objectQualifier}DnnModule_DnnModules_ModuleID] 
+			ON {databaseOwner}[{objectQualifier}DnnModule_DnnModules] ([ModuleID])
+
+		ALTER TABLE {databaseOwner}[{objectQualifier}DnnModule_DnnModules] WITH NOCHECK 
+			ADD CONSTRAINT [FK_{objectQualifier}DnnModule_DnnModules_{objectQualifier}Modules] FOREIGN KEY ([ModuleID]) REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]) ON DELETE CASCADE NOT FOR REPLICATION
+			
+		ALTER TABLE {databaseOwner}[{objectQualifier}DnnModule_DnnModules] 
+			ADD CONSTRAINT [DF_{objectQualifier}DnnModule_DnnModules_CreatedOnDate] DEFAULT (getdate()) FOR [CreatedOnDate]
+	END
+GO
+
+-- Drop existing stored procedures
+
+---- Just example:
+-- IF EXISTS (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}DnnModule_GetDnnModules]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+--	DROP PROCEDURE {databaseOwner}{objectQualifier}DnnModule_GetDnnModules
+-- GO
+
+-- Create stored procedures
+
+---- Just example:
+-- CREATE PROCEDURE {databaseOwner}{objectQualifier}DnnModule_GetDnnModules
+--	@ModuleId int
+-- AS 
+-- SELECT [DnnModuleID]
+--	[ModuleID],
+--	[Content],
+--	[CreatedByUser],
+--	[CreatedOnDate],
+--	'CreatedByUserName' = {objectQualifier}Users.FirstName + ' ' + {objectQualifier}Users.LastName
+-- FROM {objectQualifier}DnnModule_DnnModules
+-- INNER JOIN {objectQualifier}Users on {objectQualifier}DnnModule_DnnModules.CreatedByUser = {objectQualifier}Users.UserId
+-- WHERE [ModuleID] = @ModuleId
+-- GO
+
