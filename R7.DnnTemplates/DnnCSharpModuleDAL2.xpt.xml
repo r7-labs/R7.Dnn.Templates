@@ -1311,6 +1311,8 @@ namespace ${ProjectName}
 				var settings = new ${ProjectName}Settings (this);
 				
 				settings.Template = txtTemplate.Text;
+
+				Utils.SynchronizeModule(this);
 			}
 			catch (Exception ex)
 			{
@@ -1486,6 +1488,8 @@ namespace ${ProjectName}
 
 					ctrl.Update<${ProjectName}Info> (item);
 				}
+
+				Utils.SynchronizeModule(this);
 
 				Response.Redirect (Globals.NavigateURL (), true);
 			} 
