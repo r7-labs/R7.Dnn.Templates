@@ -12,7 +12,7 @@ NOTE: By default, choose '~\DesktopModules' folder for project location and unch
 	</TemplateConfiguration>
 	<!-- Actions -->
 	<Actions>
-		<Open filename="doc/install.txt" />
+		<Open filename="Install.txt" />
 	</Actions>
 	<!-- Template Content -->
 	<Combine name="${ProjectName}" directory=".">
@@ -32,14 +32,13 @@ NOTE: By default, choose '~\DesktopModules' folder for project location and unch
 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 				<Reference type="Package" refto="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
 				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-				<Reference type="Assembly" refto="..\..\bin\DotNetNuke.dll" />
-				<Reference type="Assembly" refto="..\..\bin\DotNetNuke.Web.dll" />
-				<Reference type="Assembly" refto="..\..\bin\Telerik.Web.UI.dll" />
+				<Reference type="Assembly" refto="..\..\..\bin\DotNetNuke.dll" />
+				<Reference type="Assembly" refto="..\..\..\bin\DotNetNuke.Web.dll" />
+				<Reference type="Assembly" refto="..\..\..\bin\Telerik.Web.UI.dll" />
 			</References>
-			<!-- Other refrences for future use:
+			<!-- Other refrences (for future use):
 	<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 	<Reference type="Package" refto="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
-	<Reference type="Package" refto="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
 	<Reference type="Package" refto="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
 	<Reference type="Package" refto="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
 	<Reference type="Package" refto="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
@@ -47,7 +46,7 @@ NOTE: By default, choose '~\DesktopModules' folder for project location and unch
 	<Reference type="Package" refto="System.Web.DynamicData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
 	<Reference type="Package" refto="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
 	<Reference type="Package" refto="Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
--->
+	-->
 			<Files>
 				<Directory name="js" />
 				<File name="module.css"><![CDATA[/* Place module CSS here */
@@ -1558,15 +1557,9 @@ namespace ${ProjectName}
        <url>http://www.${AuthorCompany}.com/${ProjectName}</url>
        <email>${AuthorEmail}</email>
      </owner>
-	 <!-- <license src="License.txt"></license> -->
-     <license>
-     	&lt;p&gt;This module is published under MIT X11 License.&lt;/p&gt;
-     </license>
-     <releaseNotes>
-         &lt;h3&gt;Version 01.00.00&lt;/h3&gt;
-         &lt;p&gt;This is the initial release.&lt;/p&gt;
-     </releaseNotes>
-	 <!-- <dependencies>
+	 <license src="License.txt" />
+     <releaseNotes src="ReleaseNotes.txt" />
+     <!-- <dependencies>
 		<dependency type="CoreVersion">07.00.00</dependency>
 	</dependencies> -->
      <components>
@@ -1588,7 +1581,7 @@ namespace ${ProjectName}
                <moduleControls>
                  <moduleControl>
                    <controlKey />
-                   <controlSrc>DesktopModules/${ProjectName}/View${ProjectName}.ascx</controlSrc>
+                   <controlSrc>DesktopModules/${ProjectName}/${ProjectName}/View${ProjectName}.ascx</controlSrc>
                    <controlTitle />
                    <controlType>View</controlType>
                    <iconFile />
@@ -1599,7 +1592,7 @@ namespace ${ProjectName}
                  </moduleControl>
                  <moduleControl>
                    <controlKey>Edit</controlKey>
-                   <controlSrc>DesktopModules/${ProjectName}/Edit${ProjectName}.ascx</controlSrc>
+                   <controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Edit${ProjectName}.ascx</controlSrc>
                    <supportsPartialRendering>False</supportsPartialRendering>
                    <supportsPopUps>True</supportsPopUps>
                    <controlTitle>Edit</controlTitle>
@@ -1612,7 +1605,7 @@ namespace ${ProjectName}
                  </moduleControl>
                  <moduleControl>
                    <controlKey>Settings</controlKey>
-                   <controlSrc>DesktopModules/${ProjectName}/Settings${ProjectName}.ascx</controlSrc>
+                   <controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Settings${ProjectName}.ascx</controlSrc>
                    <supportsPartialRendering>False</supportsPartialRendering>
                    <controlTitle>Settings</controlTitle>
                    <controlType>Edit</controlType>
@@ -1630,7 +1623,7 @@ namespace ${ProjectName}
 
        <component type="Script">
          <scripts>
-           <basePath>DesktopModules\${ProjectName}</basePath>
+           <basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
            <script type="Install">
              <name>01.00.00.SqlDataProvider</name>
              <version>01.00.00</version>
@@ -1642,94 +1635,101 @@ namespace ${ProjectName}
          </scripts>
        </component>
 
-       <!--
        <component type="ResourceFile">
          <resourceFiles>
-           <basePath>DesktopModules/${ProjectName}</basePath>
+           <basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
            <resourceFile>
-             <name>Resources.zip</name>
+             <name>${ProjectName}.zip</name>
            </resourceFile>
          </resourceFiles>
        </component>
-       -->
-            
-       
-       <!-- 
+
        <component type="Assembly">
          <assemblies>
            <basePath>bin</basePath>
            <assembly>
              <path>bin</path>
-             <name>TestModule.dll</name>
+             <name>${ProjectName}.dll</name>
            </assembly>
          </assemblies>
        </component>
-      -->
-      
-     <component type="File">
-	     <files>
-	    	<basePath>DesktopModules\${ProjectName}</basePath>
-	        <file>
-	          <name>View${ProjectName}.ascx</name>
-	        </file>
-	        <file>
-	          <name>Edit${ProjectName}.ascx</name>
-	        </file>
-	        <file>
-	          <name>Settings${ProjectName}.ascx</name>
-	        </file>
-	        <file>
-	          <path>App_LocalResources</path>
-	          <name>View${ProjectName}.ascx.resx</name>
-	        </file>
-	        <file>
-	          <path>App_LocalResources</path>
-	          <name>Edit${ProjectName}.ascx.resx</name>
-	        </file>
-	        <file>
-	          <path>App_LocalResources</path>
-	          <name>Settings${ProjectName}.ascx.resx</name>
-	        </file>
-	        <file>
-	          <path>App_LocalResources</path>
-	          <name>View${ProjectName}.ascx.ru-RU.resx</name>
-	        </file>
-	        <file>
-	          <path>App_LocalResources</path>
-	          <name>Edit${ProjectName}.ascx.ru-RU.resx</name>
-	        </file>
-	        <file>
-	          <path>App_LocalResources</path>
-	          <name>Settings${ProjectName}.ascx.ru-RU.resx</name>
-	        </file>
- 			<file>
-	          <name>module.css</name>
-	        </file>
-	      </files>
-     </component> 
-
+    
      </components>
    </package>
  </packages>
-</dotnetnuke>]]></File>
-				<Directory name="doc">
-					<File name="install.txt"><![CDATA[==  Some additional steps to do:
-
-1) Update reference to DotNetNuke.dll and other referenced assemblies to a "~\bin" folder (if needed).
-   Template assumes that project is created in "~\DesktopModules" folder 
-   *without* parent solution folder, so "..\..\bin\" path is used for references.
-  
-2) Set project build output path to DNN "~\bin" folder in project options.
-   It can be "..\..\bin" for the case, described above.
-   
-3) You may want to disable automatic updates of CodeBehind partial classes in project options
-   under ASP.NET page - it's not working correctly with third-party controls anyway.
-
-4) Run 01.00.00.SqlDataProvider as script under Host -> SQL on DNN site.
-
-5) Create new module under Host > Extensions from Manifest (.dnn) file.
+</dotnetnuke>
 ]]></File>
-				</Directory>
+ <File name="Package"><![CDATA[@echo off
+setlocal
+pushd
+
+set Z7="C:\Program Files\7-Zip\7z.exe"
+set PACKAGE=tmp_Package
+set VERSION=01.00.00
+
+cd ..
+
+rmdir /Q /S %PACKAGE%
+mkdir %PACKAGE%\bin
+
+cd ${ProjectName}
+
+%Z7% a ..\%PACKAGE%\${ProjectName}.zip *.ascx *.css *.js App_LocalResources\*.resx js 
+
+xcopy /Y *.SqlDataProvider ..\%PACKAGE%\
+xcopy /Y *.dnn ..\%PACKAGE%\
+xcopy /Y *.txt ..\%PACKAGE%\
+
+cd ..
+xcopy /Y ..\..\bin\${ProjectName}*.dll %PACKAGE%\bin\
+
+cd %PACKAGE%
+%Z7% a ..\${ProjectName}-%VERSION%-Install.zip *
+
+cd ..
+rmdir /Q /S %PACKAGE%
+
+popd
+endlocal
+]]></File>
+<File name="Install.txt"><![CDATA[==  Some additional steps to do:
+
+1) Update reference to DotNetNuke.dll and other referenced assemblies to a DNN "bin" folder - if needed.
+
+   Template assumes that project is created in DNN "DesktopModules" folder with a parent solution folder 
+   (same name as project's), so "..\..\..\bin" path is used to reference assemblies in DNN "bin" folder.
+
+2) Set project build output path to DNN "bin" folder in the project options.
+   It can be "..\..\..\bin" for the case, described above.
+   
+3) Build solution. Then you done with this, ${ProjectName}.dll is located in a DNN "bin" folder.
+
+   You may want to disable automatic updates of CodeBehind partial classes in project options
+   under "ASP.NET" page. Automatic updates is not working correctly with third-party controls 
+   in the MonoDevelop / Xamarin Studio anyway. This is true at least for version 4.2.3.
+
+4) Go to the project directory, locate and run Package.cmd script. 
+
+   This script automatically creates ${ProjectName}-01.00.00-Install.zip package 
+   in a solution folder (just go up in file manager). 
+   Remember - you should build your project first!
+
+5) Install module package as usual, from Host > Extensions.
+]]></File>
+   <File name="License.txt"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
+]]></File>
+   <File name="ReleaseNotes.txt"><![CDATA[<!-- 
+<h3>Version 01.00.01</h3>
+<p>This is the stabilization release for 01.00.00.</p>
+<ul>
+	<li>Added new feature.</li>
+	<li>Fixed bug.</li>
+</ul>
+-->
+
+<h3>Version 01.00.00</h3>
+<p>This is the initial release.</p>
+]]></File>
 			</Files>
 		</Project>
 	</Combine>

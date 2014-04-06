@@ -52,6 +52,7 @@
     <Reference Include="DotNetNuke.WebControls">
       <HintPath>..\..\..\Dotnetnuke7\bin\DotNetNuke.WebControls.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="js\" />
@@ -73,6 +74,9 @@
     <None Include="App_LocalResources\SettingsDnnModule.ascx.ru-RU.resx" />
     <None Include="DnnModule.dnn" />
     <None Include="doc\install.txt" />
+    <None Include="License.txt" />
+    <None Include="ReleaseNotes.txt" />
+    <None Include="Package.cmd" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="lib\Utils.cs" />

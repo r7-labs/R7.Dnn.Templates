@@ -11,7 +11,7 @@ DNN Platform templates addin for MonoDevelop / Xamarin Studio
 3) Create new project from DNN Platform templates.
 
 # Changelog
-    
+
 ## Version 0.1.3
 
 - .designer files renamed to .controls as workaround of ASP.NET addin bug - 
