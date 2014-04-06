@@ -30,6 +30,7 @@ NOTE: By default, choose '~\DesktopModules' folder for project location and unch
 				<Reference type="Package" refto="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
 				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 				<Reference type="Assembly" refto="..\..\bin\DotNetNuke.dll" />
 				<Reference type="Assembly" refto="..\..\bin\DotNetNuke.Web.dll" />
