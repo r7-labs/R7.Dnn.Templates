@@ -1659,7 +1659,7 @@ namespace ${ProjectName}
  </packages>
 </dotnetnuke>
 ]]></File>
- <File name="Package"><![CDATA[@echo off
+ <File name="Package.cmd"><![CDATA[@echo off
 setlocal
 pushd
 
@@ -1711,8 +1711,8 @@ endlocal
 4) Go to the project directory, locate and run Package.cmd script. 
 
    This script automatically creates ${ProjectName}-01.00.00-Install.zip package 
-   in a solution folder (just go up in file manager). 
-   Remember - you should build your project first!
+   in a solution folder (just go up in file manager). This script uses 7Zip 
+   to created packages. And remember - you should build your project first!
 
 5) Install module package as usual, from Host > Extensions.
 ]]></File>
