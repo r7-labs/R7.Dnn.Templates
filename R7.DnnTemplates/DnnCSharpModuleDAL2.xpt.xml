@@ -1254,6 +1254,7 @@ namespace ${ProjectName}
 				<AspNetFile name="Settings${ProjectName}.ascx" DefaultExtension=".ascx">
 					<FileText><![CDATA[<%@ Control Language="${AspNetLanguage}" AutoEventWireup="true" CodeBehind="Settings${ProjectName}.ascx.cs" Inherits="${ProjectName}.Settings${ProjectName}" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
+<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web" %>
 
 <div class="dnnForm dnnClear">
 	<h2 class="dnnFormSectionHead"><a href=""><asp:Label runat="server" ResourceKey="sectionBaseSettings.Text" /></a></h2>
@@ -1342,6 +1343,7 @@ namespace ${ProjectName}
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/labelcontrol.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="TextEditor" Src="~/controls/TextEditor.ascx"%>
 <%@ Register TagPrefix="dnn" TagName="Audit" Src="~/controls/ModuleAuditControl.ascx" %>
+<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web" %>
 
 <div class="dnnForm dnnClear">
 	<fieldset>	
