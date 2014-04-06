@@ -24,14 +24,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using DotNetNuke.UI.Modules;
 
 namespace DnnModule
 {
 	/// <summary>
 	/// Provides strong typed access to settings used by module
 	/// </summary>
-	public partial class DnnModuleSettings
+	public class DnnModuleSettings : SettingsWrapper
 	{
+		public DnnModuleSettings (IModuleControl module): base (module)
+		{
+		}
+
 		#region Properties for settings
 
 		/// <summary>

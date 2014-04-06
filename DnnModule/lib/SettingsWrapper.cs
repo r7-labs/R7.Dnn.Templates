@@ -34,21 +34,18 @@ namespace DnnModule
 	/// <summary>
 	/// Provides strong typed access to settings used by module
 	/// </summary>
-	public partial class DnnModuleSettings
+	public class SettingsWrapper
 	{
 		protected ModuleController ctrl;
 		protected IModuleControl module;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="DnnModule.DnnModuleSettings"/> class.
+		/// Initializes a new instance of the <see cref="DnnModule.SettingsWrapper"/> class.
 		/// </summary>
-		/// <param name='moduleId'>
-		/// Module identifier.
+		/// <param name='module'>
+		/// Module.
 		/// </param>
-		/// <param name='tabModuleId'>
-		/// TabModule identifier.
-		/// </param>
-		public DnnModuleSettings (IModuleControl module)
+		public SettingsWrapper (IModuleControl module)
 		{
 			ctrl = new ModuleController (); 
 			this.module = module;
@@ -118,6 +115,5 @@ namespace DnnModule
 			else
 				ctrl.UpdateModuleSetting (module.ModuleContext.ModuleId, settingName, value.ToString ());
 		}
-	}
-}
-
+	} //class
+} // namespace
