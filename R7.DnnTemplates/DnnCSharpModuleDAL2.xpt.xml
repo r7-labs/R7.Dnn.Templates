@@ -8,7 +8,7 @@
 		<LanguageName>C#</LanguageName>
 		<_Description>Creates a new DNN Platform C# compiled module project with DAL 2, based on PetaPOCO micro-ORM.
 
-NOTE: By default, choose '~\DesktopModules' folder for project location and uncheck 'Create directory for solution' flag.</_Description>
+NOTE: By default, choose DNN 'DesktopModules' folder for project location and ensure that 'Create directory for solution' flag is checked.</_Description>
 	</TemplateConfiguration>
 	<!-- Actions -->
 	<Actions>
