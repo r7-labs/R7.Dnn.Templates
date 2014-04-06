@@ -10,6 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>DnnModule</RootNamespace>
     <AssemblyName>DnnModule</AssemblyName>
+    <ReleaseVersion>0.1.4</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

@@ -7,7 +7,7 @@
     url="http://www.r7space.ru" 
     description="Templates for module, skin object, sheduler job and other components of DNN Platform" 
     category="Web Development" 
-    version="0.1.3">
+    version="0.1.4">
 	<Dependencies>
 		<Addin id="Core" version="4.0" />
 		<Addin id="Ide" version="4.0" />

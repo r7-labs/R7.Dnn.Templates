@@ -12,6 +12,18 @@ DNN Platform templates addin for MonoDevelop / Xamarin Studio
 
 # Changelog
 
+## Version 0.1.4
+
+- Updated Utils.cs to include more functions
+- Controller & settings partial classes changed to use inheritance
+- Added stub for GetModifiedSearchDocuments() instead of ISeachable
+- Added missing module synchronization after Edit / Settings changes
+- Added module package script (now uses 7Zip, need use MSBuild?)
+- Use default two-folder solution/project structure instead of one-folder
+- Module manifest reviewed to remove file components
+- Install / update process was stremlined
+- Added sample DnnModule project to R7.DnnTemplates solution to develop / test faster
+
 ## Version 0.1.3
 
 - .designer files renamed to .controls as workaround of ASP.NET addin bug - 
