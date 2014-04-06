@@ -1,0 +1,9 @@
+﻿/* Place module CSS here */
+
+.DnnModule_ContentList { width:100% }				
+.DnnModule_ContentListItem { text-align: left }
+.DnnModule_UserName { font-weight:bold }
+.DnnModule_CreateOnDate { font-style:italic }
+.DnnModule_Content { clear:both }
+
+

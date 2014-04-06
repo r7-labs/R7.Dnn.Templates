@@ -1,0 +1,165 @@
+﻿<dotnetnuke type="Package" version="5.0">
+ <packages>
+   <package name="DnnModule" type="Module" version="01.00.00">
+     <friendlyName>DnnModule</friendlyName>
+     <description>This is a simple module to display some records from database table.</description>
+     <owner>
+       <name>Roman M. Yagodin</name>
+       <organization>R7 Solutions</organization>
+       <url>http://www.R7 Solutions.com/DnnModule</url>
+       <email>roman.yagodin@gmail.com</email>
+     </owner>
+	 <!-- <license src="License.txt"></license> -->
+     <license>
+     	&lt;p&gt;This module is published under MIT X11 License.&lt;/p&gt;
+     </license>
+     <releaseNotes>
+         &lt;h3&gt;Version 01.00.00&lt;/h3&gt;
+         &lt;p&gt;This is the initial release.&lt;/p&gt;
+     </releaseNotes>
+	 <!-- <dependencies>
+		<dependency type="CoreVersion">07.00.00</dependency>
+	</dependencies> -->
+     <components>
+
+        <component type="Module">
+         <desktopModule>
+           <moduleName>DnnModule</moduleName>
+           <foldername>DnnModule</foldername>
+           <businessControllerClass>DnnModule.DnnModuleController</businessControllerClass>
+           <supportedFeatures>
+             <supportedFeature type="Portable" />
+             <supportedFeature type="Searchable" />
+           </supportedFeatures>
+           <moduleDefinitions>
+             <moduleDefinition>
+               <friendlyName>DnnModule</friendlyName>
+               <definitionName>DnnModule</definitionName>
+               <defaultCacheTime>0</defaultCacheTime>
+               <moduleControls>
+                 <moduleControl>
+                   <controlKey />
+                   <controlSrc>DesktopModules/DnnModule/ViewDnnModule.ascx</controlSrc>
+                   <controlTitle />
+                   <controlType>View</controlType>
+                   <iconFile />
+                   <helpUrl />
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <supportsPopUps>False</supportsPopUps>
+                   <viewOrder>0</viewOrder>
+                 </moduleControl>
+                 <moduleControl>
+                   <controlKey>Edit</controlKey>
+                   <controlSrc>DesktopModules/DnnModule/EditDnnModule.ascx</controlSrc>
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <supportsPopUps>True</supportsPopUps>
+                   <controlTitle>Edit</controlTitle>
+                   <controlType>Edit</controlType>
+                   <iconFile />
+                   <helpUrl />
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <supportsPopUps>True</supportsPopUps>
+                   <viewOrder>0</viewOrder>
+                 </moduleControl>
+                 <moduleControl>
+                   <controlKey>Settings</controlKey>
+                   <controlSrc>DesktopModules/DnnModule/SettingsDnnModule.ascx</controlSrc>
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <controlTitle>Settings</controlTitle>
+                   <controlType>Edit</controlType>
+                   <iconFile />
+                   <helpUrl />
+                   <supportsPartialRendering>False</supportsPartialRendering>
+                   <supportsPopUps>False</supportsPopUps>
+                   <viewOrder>0</viewOrder>
+                 </moduleControl>
+               </moduleControls>
+             </moduleDefinition>
+           </moduleDefinitions>
+         </desktopModule>
+       </component>
+
+       <component type="Script">
+         <scripts>
+           <basePath>DesktopModules\DnnModule</basePath>
+           <script type="Install">
+             <name>01.00.00.SqlDataProvider</name>
+             <version>01.00.00</version>
+           </script>
+           <script type="UnInstall">
+             <name>Uninstall.SqlDataProvider</name>
+             <version>01.00.00</version>
+           </script>
+         </scripts>
+       </component>
+
+       <!--
+       <component type="ResourceFile">
+         <resourceFiles>
+           <basePath>DesktopModules/DnnModule</basePath>
+           <resourceFile>
+             <name>Resources.zip</name>
+           </resourceFile>
+         </resourceFiles>
+       </component>
+       -->
+            
+       
+       <!-- 
+       <component type="Assembly">
+         <assemblies>
+           <basePath>bin</basePath>
+           <assembly>
+             <path>bin</path>
+             <name>TestModule.dll</name>
+           </assembly>
+         </assemblies>
+       </component>
+      -->
+      
+     <component type="File">
+	     <files>
+	    	<basePath>DesktopModules\DnnModule</basePath>
+	        <file>
+	          <name>ViewDnnModule.ascx</name>
+	        </file>
+	        <file>
+	          <name>EditDnnModule.ascx</name>
+	        </file>
+	        <file>
+	          <name>SettingsDnnModule.ascx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>ViewDnnModule.ascx.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>EditDnnModule.ascx.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>SettingsDnnModule.ascx.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>ViewDnnModule.ascx.ru-RU.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>EditDnnModule.ascx.ru-RU.resx</name>
+	        </file>
+	        <file>
+	          <path>App_LocalResources</path>
+	          <name>SettingsDnnModule.ascx.ru-RU.resx</name>
+	        </file>
+ 			<file>
+	          <name>module.css</name>
+	        </file>
+	      </files>
+     </component> 
+
+     </components>
+   </package>
+ </packages>
+</dotnetnuke>
