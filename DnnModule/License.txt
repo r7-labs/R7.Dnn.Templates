@@ -1,1 +1,0 @@
-﻿<p>This module is published under the terms of MIT/X11 License.</p>
