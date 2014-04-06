@@ -99,6 +99,7 @@
     <Compile Include="EditDnnModule.ascx.controls.cs">
       <DependentUpon>EditDnnModule.ascx</DependentUpon>
     </Compile>
+    <Compile Include="lib\ControllerBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
