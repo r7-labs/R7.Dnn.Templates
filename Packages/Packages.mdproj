@@ -8,7 +8,7 @@
     <Packages>
       <Packages>
         <Package name="Install package">
-          <Builder targetFile="..\R7.DnnTemplates-Install-0.1.4.zip" platform="Windows" configuration="Release" ctype="BinariesZipPackageBuilder">
+          <Builder targetFile="..\R7.DnnTemplates.zip" platform="Windows" configuration="Release" ctype="BinariesZipPackageBuilder">
             <ChildEntries>
               <SolutionItemReference path="..\R7.DnnTemplates\R7.DnnTemplates.csproj" />
             </ChildEntries>
@@ -19,10 +19,12 @@
           </Builder>
         </Package>
         <Package name="Source package">
-          <Builder targetFile="..\R7.DnnTemplates-Sources-0.1.4.zip" format="MonoDevelop.Projects.FileFormat" ctype="SourcesZipPackageBuilder">
+          <Builder targetFile="..\R7.DnnTemplates-0.1.4-Sources.zip" format="MonoDevelop.Projects.FileFormat" ctype="SourcesZipPackageBuilder">
             <ChildEntries>
               <SolutionItemReference path="..\R7.DnnTemplates\R7.DnnTemplates.csproj" />
               <SolutionItemReference path="Packages.mdproj" />
+              <SolutionItemReference path="..\DnnModule\DnnModule.csproj" />
+              <SolutionItemReference path="..\R7.DnnTemplates.sln" id="{0EF16FF1-053D-491C-A1ED-90DF35A4AEB3}" />
             </ChildEntries>
             <RootEntry path="..\R7.DnnTemplates.sln" id=":root:" />
           </Builder>
