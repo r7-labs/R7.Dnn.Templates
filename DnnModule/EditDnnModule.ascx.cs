@@ -136,19 +136,25 @@ namespace DnnModule
 					// TODO: populate new object properties with data from controls 
 					// to add new record
 					item = new DnnModuleInfo ();
-					item.Content = txtContent.Text;
-					item.ModuleID = this.ModuleId;
-					item.CreatedByUser = this.UserId;					
-
-					ctrl.Add<DnnModuleInfo> (item);
 				}
 				else
 				{
 					// TODO: update properties of existing object with data from controls 
 					// to update existing record
 					item = ctrl.Get<DnnModuleInfo> (itemId.Value, this.ModuleId);
-					item.Content = txtContent.Text;
+				}
 
+				// fill the object
+				item.Content = txtContent.Text;
+				item.ModuleID = this.ModuleId;
+
+				if (!itemId.HasValue)
+				{
+					item.CreatedByUser = this.UserId;					
+					ctrl.Add<DnnModuleInfo> (item);
+				}
+				else
+				{
 					ctrl.Update<DnnModuleInfo> (item);
 				}
 

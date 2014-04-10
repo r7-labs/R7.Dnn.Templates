@@ -1474,31 +1474,37 @@ namespace ${ProjectName}
 				{
 					// TODO: populate new object properties with data from controls 
 					// to add new record
-					item = new ${ProjectName}Info();
-					item.Content = txtContent.Text;
-					item.ModuleID = this.ModuleId;
-					item.CreatedByUser = this.UserId;					
-
-					ctrl.Add<${ProjectName}Info> (item);
+					item = new ${ProjectName}Info ();
 				}
-				else 
+				else
 				{
 					// TODO: update properties of existing object with data from controls 
 					// to update existing record
 					item = ctrl.Get<${ProjectName}Info> (itemId.Value, this.ModuleId);
-					item.Content = txtContent.Text;
+				}
 
+				// fill the object
+				item.Content = txtContent.Text;
+				item.ModuleID = this.ModuleId;
+
+				if (!itemId.HasValue)
+				{
+					item.CreatedByUser = this.UserId;					
+					ctrl.Add<${ProjectName}Info> (item);
+				}
+				else
+				{
 					ctrl.Update<${ProjectName}Info> (item);
 				}
 
-				Utils.SynchronizeModule(this);
+				Utils.SynchronizeModule (this);
 
 				Response.Redirect (Globals.NavigateURL (), true);
-			} 
+			}
 			catch (Exception ex)
 			{
 				Exceptions.ProcessModuleLoadException (this, ex);
-			}
+			}	
 		}
 
 		/// <summary>
