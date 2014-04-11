@@ -1094,8 +1094,6 @@ namespace ${ProjectName}
 	</ItemTemplate>
 	<ItemStyle CssClass="${ProjectName}_ContentListItem" />
 </asp:DataList>
-<!-- Label for debug info -->
-<asp:Label ID="lblDebug" runat="server" />
 ]]></FileText>
 				</AspNetFile>
 				<File name="View${ProjectName}.ascx.cs" DependsOn="View${ProjectName}.ascx" AddStandardHeader="True"><![CDATA[using System;
@@ -1248,7 +1246,6 @@ namespace ${ProjectName}
 	public partial class View${ProjectName}
 	{	
 		protected DataList lstContent;
-		protected Label lblDebug;
 	}
 }]]></File>
 				<!-- <File name="Settings.ascx"> -->
