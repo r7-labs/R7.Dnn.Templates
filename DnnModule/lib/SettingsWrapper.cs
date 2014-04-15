@@ -37,18 +37,33 @@ namespace DnnModule
 	public class SettingsWrapper
 	{
 		protected ModuleController ctrl;
-		protected IModuleControl module;
+		protected int ModuleId;
+		protected int TabModuleId;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="DnnModule.SettingsWrapper"/> class.
 		/// </summary>
 		/// <param name='module'>
-		/// Module.
+		/// Module control.
 		/// </param>
 		public SettingsWrapper (IModuleControl module)
 		{
 			ctrl = new ModuleController (); 
-			this.module = module;
+			ModuleId = module.ModuleContext.ModuleId;
+			TabModuleId = module.ModuleContext.TabModuleId;
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="DnnModule.SettingsWrapper"/> class.
+		/// </summary>
+		/// <param name='module'>
+		/// Module info.
+		/// </param>
+		public SettingsWrapper (ModuleInfo module)
+		{
+			ctrl = new ModuleController ();
+			ModuleId = module.ModuleID;
+			TabModuleId = module.TabModuleID;
 		}
 
 		/// <summary>
@@ -72,24 +87,19 @@ namespace DnnModule
 		protected T ReadSetting<T> (string settingName, T defaultValue, bool tabSpecific)
 		{
 			var settings = (tabSpecific) ? 
-            	ctrl.GetTabModuleSettings (module.ModuleContext.TabModuleId) :
-            	ctrl.GetModuleSettings (module.ModuleContext.ModuleId);
-           
+				ctrl.GetTabModuleSettings (TabModuleId) :
+				ctrl.GetModuleSettings (ModuleId);
+
 			T ret = default(T);
 
-			if (settings.ContainsKey (settingName))
-			{
+			if (settings.ContainsKey (settingName)) {
 				var tc = TypeDescriptor.GetConverter (typeof(T));
-				try
-				{
+				try {
 					ret = (T)tc.ConvertFrom (settings [settingName]);
-				}
-				catch
-				{
+				} catch {
 					ret = defaultValue;
 				}
-			}
-			else
+			} else
 				ret = defaultValue;
 
 			return ret;
@@ -111,12 +121,12 @@ namespace DnnModule
 		protected void WriteSetting<T> (string settingName, T value, bool tabSpecific)
 		{
 			if (tabSpecific)
-				ctrl.UpdateTabModuleSetting (module.ModuleContext.TabModuleId, settingName, value.ToString ());
+				ctrl.UpdateTabModuleSetting (TabModuleId, settingName, value.ToString ());
 			else
-				ctrl.UpdateModuleSetting (module.ModuleContext.ModuleId, settingName, value.ToString ());
+				ctrl.UpdateModuleSetting (ModuleId, settingName, value.ToString ());
 		}
-	}
-	//class
+	} 
+	// class
 }
  // namespace
 

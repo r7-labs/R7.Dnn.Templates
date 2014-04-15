@@ -24,6 +24,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 using System;
+using DotNetNuke.Entities.Modules;
 using DotNetNuke.UI.Modules;
 
 namespace DnnModule
@@ -34,6 +35,10 @@ namespace DnnModule
 	public class DnnModuleSettings : SettingsWrapper
 	{
 		public DnnModuleSettings (IModuleControl module) : base (module)
+		{
+		}
+
+		public DnnModuleSettings (ModuleInfo module) : base (module)
 		{
 		}
 
