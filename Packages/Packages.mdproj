@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ItemType>PackagingProject</ItemType>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{CE16D027-2FF6-419D-A696-113E21041E10}</ProjectGuid>
     <Packages>
@@ -19,7 +19,7 @@
           </Builder>
         </Package>
         <Package name="Source package">
-          <Builder targetFile="..\R7.DnnTemplates-0.1.4-Sources.zip" format="MonoDevelop.Projects.FileFormat" ctype="SourcesZipPackageBuilder">
+          <Builder targetFile="..\R7.DnnTemplates-0.2.0-Sources.zip" format="MonoDevelop.Projects.FileFormat" ctype="SourcesZipPackageBuilder">
             <ChildEntries>
               <SolutionItemReference path="..\R7.DnnTemplates\R7.DnnTemplates.csproj" />
               <SolutionItemReference path="Packages.mdproj" />
@@ -31,6 +31,6 @@
         </Package>
       </Packages>
     </Packages>
-    <ReleaseVersion>0.1.4</ReleaseVersion>
+    <ReleaseVersion>0.2.0</ReleaseVersion>
   </PropertyGroup>
 </Project>

@@ -34,6 +34,6 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = R7.DnnTemplates\R7.DnnTemplates.csproj
-		version = 0.1.4
+		version = 0.2.0
 	EndGlobalSection
 EndGlobal
