@@ -31,7 +31,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle ("DnnModule")]
 [assembly: AssemblyDescription ("")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("R7 Solutions")]
+[assembly: AssemblyCompany ("R7.Solutions")]
 [assembly: AssemblyProduct ("")]
 [assembly: AssemblyCopyright ("")]
 [assembly: AssemblyTrademark ("")]
