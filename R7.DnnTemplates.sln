@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE.md = LICENSE.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Packages", "Packages\Packages.csproj", "{547A4374-1522-4E0F-B090-2287D80070DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,9 @@ Global
 		{18FF5960-12C1-43A3-9979-128F7B8F4FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18FF5960-12C1-43A3-9979-128F7B8F4FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18FF5960-12C1-43A3-9979-128F7B8F4FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{547A4374-1522-4E0F-B090-2287D80070DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{547A4374-1522-4E0F-B090-2287D80070DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{547A4374-1522-4E0F-B090-2287D80070DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
