@@ -51,13 +51,16 @@ XPath="/dotnetnuke/packages/package[1]/@version" XmlFileName="..\${SolutionName}
 <CreateItem Include="..\${SolutionName}\${SolutionName}.dnn;..\${SolutionName}\License.txt;..\${SolutionName}\ReleaseNotes.txt">
 <Output TaskParameter="Include" ItemName="PackageManifestFiles" />
 </CreateItem>
+<!-- Declare binaries -->
+<CreateItem Include="$(MSBuildDnnBinPath)\${SolutionName}*.dll">
+<Output TaskParameter="Include" ItemName="BinaryFiles" />
+</CreateItem>
 <!-- Declare files -->
 <CreateItem Include="..\${SolutionName}\**\*.sqldataprovider">
 <Output TaskParameter="Include" ItemName="SqlDataProviderFiles" />
 </CreateItem>
 <!-- Copy binaries -->
-<Copy SourceFiles="$(MSBuildDnnBinPath)\${SolutionName}.dll"
-DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package\bin" />
+<Copy SourceFiles="@(BinaryFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package\bin" />
 <!-- Copy manifest and SqlDataProvider files -->
 <Copy SourceFiles="@(SqlDataProviderFiles)"
 DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package\%(RecursiveDir)" />
