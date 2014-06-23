@@ -20,13 +20,19 @@
 		<Import file="DnnCSharpModuleDAL2.xpt.xml" />
 		<Import file="DnnCSharpSkinObject.xpt.xml" />
 		<Import file="DnnPetaPocoClass.xft.xml" />
+		<Import file="DnnInstallPackage.xft.xml" />
+		<Import file="DnnSourcePackage.xft.xml" />
+		<Import file="DnnPackages.xpt.xml" />
 		<!--- <Import file="/icons/dnn-module-32.png" /> -->
 	</Runtime>
+	<Extension path="/MonoDevelop/Ide/FileTemplates">
+      <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
+	  <FileTemplate id="DnnInstallPackage" file="DnnInstallPackage.xft.xml" />
+	  <FileTemplate id="DnnSourcePackage" file="DnnSourcePackage.xft.xml" />
+ 	</Extension>
 	<Extension path="/MonoDevelop/Ide/ProjectTemplates">
 		<ProjectTemplate id="DnnCSharpModuleDAL2" file="DnnCSharpModuleDAL2.xpt.xml" />
 		<ProjectTemplate id="DnnCSharpSkinObject" file="DnnCSharpSkinObject.xpt.xml" />
+		<ProjectTemplate id="DnnPackages" file="DnnPackages.xpt.xml" />
 	</Extension>
-	<Extension path="/MonoDevelop/Ide/FileTemplates">
-      <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
- 	</Extension>
 </Addin>

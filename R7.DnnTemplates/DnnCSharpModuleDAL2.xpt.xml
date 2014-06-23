@@ -12,7 +12,7 @@ NOTE: By default, choose DNN 'DesktopModules' folder for project location and en
 	</TemplateConfiguration>
 	<!-- Actions -->
 	<Actions>
-		<Open filename="Install.txt" />
+		<Open filename="Readme.txt" />
 	</Actions>
 	<!-- Template Content -->
 	<Combine name="${ProjectName}" directory=".">
@@ -1664,9 +1664,9 @@ namespace ${ProjectName}
 
        <component type="ResourceFile">
          <resourceFiles>
-           <basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
+           <basePath>DesktopModules\${ProjectName}</basePath>
            <resourceFile>
-             <name>${ProjectName}.zip</name>
+             <name>Resources.zip</name>
            </resourceFile>
          </resourceFiles>
        </component>
@@ -1719,29 +1719,41 @@ rmdir /Q /S %PACKAGE%
 popd
 endlocal
 ]]></File>
-<File name="Install.txt"><![CDATA[==  Some additional steps to do:
+<File name="Readme.txt"><![CDATA[# Template usage
 
-1) Update reference to DotNetNuke.dll and other referenced assemblies to a DNN "bin" folder - if needed.
+Due to template engine limitations we need to do some will require some changes 
+to be made manually in a project file.
 
-   Template assumes that project is created in DNN "DesktopModules" folder with a parent solution folder 
+1. Update reference to DotNetNuke.dll and other referenced assemblies to a DNN "bin" folder - if needed.
+
+2. Template assumes that project is created in DNN "DesktopModules" folder with a parent solution folder 
    (same name as project's), so "..\..\..\bin" path is used to reference assemblies in DNN "bin" folder.
 
-2) Set project build output path to DNN "bin" folder in the project options.
+3. Set project build output path to DNN "bin" folder in the project options.
    It can be "..\..\..\bin" for the case, described above.
    
-3) Build solution. Then you done with this, ${ProjectName}.dll is located in a DNN "bin" folder.
-
-   You may want to disable automatic updates of CodeBehind partial classes in project options
+4. Build solution to check it out. Then you done with this, ${ProjectName}.dll is located in a DNN "bin" folder.
+  
+5. You may want to disable automatic updates of CodeBehind partial classes in project options
    under "ASP.NET" page. Automatic updates is not working correctly with third-party controls 
    in the MonoDevelop / Xamarin Studio anyway. This is true at least for version 4.2.3.
 
-4) Go to the project directory, locate and run Package.cmd script. 
+6. Add to your solution new project of type "DNN packaging project" and follow instructions 
+   in it's Readme.txt to create install package.
 
-   This script automatically creates ${ProjectName}-01.00.00-Install.zip package 
-   in a solution folder (just go up in file manager). This script uses 7Zip 
-   to create packages. And remember - you should build your project first!
+# Solution stucture for development
 
-5) Install module package as usual, from Host > Extensions.
+DNN
+|- bin
+|- ${SolutionName}.dll
+	|- ${SolutionName}_Next.dll
+|- DesktopModules
+	|- ${SolutionName} (solution)
+		|- ${SolutionName} (primary extension project)
+			|- ${SolutionName}.dnn (manifest)
+        |- ${SolutionName}_Next (secondary extension project) 
+		|- Packages (packaging project)
+			|- *.targets
 ]]></File>
    <File name="License.txt"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
