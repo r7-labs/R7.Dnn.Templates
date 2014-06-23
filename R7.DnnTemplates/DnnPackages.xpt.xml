@@ -29,9 +29,11 @@ This template uses MSBuild to create install and source packages,
 but due to template engine limitations it will require some changes 
 to be made manually in a project file.
 
-1. Open ${ProjectName}.csproj in text editor or add it to project files.
+1. Install MSBuild.Community.Tasks extension from https://github.com/loresoft/msbuildtasks/releases
 
-2. Just after last '<Import Project="" />' directive insert this code:
+2. Open ${ProjectName}.csproj in text editor or add it to project files.
+
+3. Just after last '<Import Project="" />' directive insert this code:
 
 <!-- Begin snippet -->
 <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
@@ -46,37 +48,34 @@ to be made manually in a project file.
 <Target Name="AfterBuild" DependsOnTargets="MakeInstallPackage;MakeSourcePackage" />
 <!-- End snippet -->
 
-3. Now switch to 'Release' configuration and execute 'Build All' command.
+4. Now switch to 'Release' configuration and execute 'Build All' command.
 
-4. After that in a '${ProjectName}\output' folder you should find two .zip archives - 
-those are install and source packages. 
+5. After that in a '${ProjectName}\output' folder you should find two .zip archives - 
+one for install and one for source packages. 
 
-5. Now you can install extension from '${SolutionName}-01.00.00-Install.zip' package  
+6. Now you can install extension from '${SolutionName}-01.00.00-Install.zip' package  
 through DNN > Host > Extensions, as usual.
 
 # Extending solution
 
 Current scripts automatically add any new DNN project inside solution into source package
-and Resources.zip in the install package. So if you add new DNN extension to your solution
-using R7.DnnTemplates, you probably only need this:
+and Resources.zip in the install package. The general idea is that all projects in the solution 
+is very dependant and must go to a single DNN install package.
 
-1. Add new <package> section to ${SolutionName}.dnn manifest. If you create new extension 
+So if you add new DNN extension to your solution using R7.DnnTemplates, you probably only need this:
+
+1. Move ${ProjectName} Project/EndProject entry in ${SolutionName}.sln file to the bottom, to ensure
+that ${ProjectName} project will build last. 
+
+2. Add new <package> section to ${SolutionName}.dnn manifest. If you create new extension 
 with R7.DnnTemplates, it shoud be pretty simple. Just copy entire <package> section from
 newly created manifest and remove Scripts components. 
 
-2. Merge .SqlDataProvider files of newly created extension with ones in the ${SolutionName} extension, if needed.
-
-3. In the Install.targets file, add new Copy directive(s) for newly created extension binaries - 
-   you should only change .dll name:
-
-<Copy SourceFiles="$(MSBuildDnnBinPath)\MyNewExtension.dll" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package\bin" />
-
-The general idea is that all projects in the solution is very dependant and must go 
-to a single DNN install package.
+3. Merge .SqlDataProvider files of newly created extension with ones in the ${SolutionName} extension (if needed).
 
 # General tips
 
-* After .csproj and .target file changes you probably need to reload solution.
+* After external .sln, .csproj and .target file changes you probably need to reload solution. 
 
 ]]></File>
 	<FileTemplateReference TemplateID="DnnInstallPackage" name="Install.targets" />

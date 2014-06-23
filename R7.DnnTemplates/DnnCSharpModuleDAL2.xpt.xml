@@ -1720,6 +1720,7 @@ popd
 endlocal
 ]]></File>
 <File name="Readme.txt"><![CDATA[# Template usage
+
 Due to template engine limitations we need to do some will require some changes 
 to be made manually in a project file.
 
@@ -1740,16 +1741,19 @@ to be made manually in a project file.
 6. Add to your solution new project of type "DNN packaging project" and follow instructions 
    in it's Readme.txt to create install package.
 
-# Solution stucture
+# Solution stucture for development
 
 DNN
-|-DesktopModules
-	|-MyModule (solution)
-		|-MyModule (project)
-			|-MyModule.dnn (manifest)
-		|-Packages (packaging project)
-			|-*.targets
-
+|- bin
+|- ${SolutionName}.dll
+	|- ${SolutionName}_Next.dll
+|- DesktopModules
+	|- ${SolutionName} (solution)
+		|- ${SolutionName} (primary extension project)
+			|- ${SolutionName}.dnn (manifest)
+        |- ${SolutionName}_Next (secondary extension project) 
+		|- Packages (packaging project)
+			|- *.targets
 ]]></File>
    <File name="License.txt"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
