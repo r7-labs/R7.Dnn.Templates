@@ -8,18 +8,11 @@ and will be more in the future releases.
 # Install
 
 1. Download [latest addin release](https://github.com/roman-yagodin/R7.DnnTemplates/releases).
-
 2. Open MonoDevelop / Xamarin Studio and go to "Tools &gt; Add-in manager".
-
-4. Press "Install from file..." button, select downloaded .mpack file and press "Open".
-
-3. Now you shoud see "DNN Platfrom Templates" in "Web Development" section. 
-Select it and press "Enable".
-
-4. Go to "File &gt; New &gt; Solution", then "C# &gt; DNN Platform" 
-and create new project using "C# compiled module with DAL 2".
-
-5. Follow instructions in the "Readme.txt" to setup build environment.
+3. Press "Install from file..." button, select downloaded .mpack file and press "Open".
+4. Now you shoud see "DNN Platfrom Templates" in "Web Development" section. Select it and press "Enable".
+5. Go to "File &gt; New &gt; Solution", then "C# &gt; DNN Platform" and create new project using "C# compiled module with DAL 2".
+6. Follow instructions in the "Readme.txt" to setup build environment.
 
 ## Note for Visual Studio users
 
