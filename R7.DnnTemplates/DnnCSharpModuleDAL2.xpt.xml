@@ -141,97 +141,97 @@ GO
 				<Directory name="App_LocalResources">
 					<File name="View${ProjectName}.ascx.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <data name="AddContent.Action" xml:space="preserve">
+  <data xml:space="preserve" name="AddContent.Action">
     <value>Add Content</value>
   </data>
-  <data name="ModuleHelp.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ModuleHelp.Text">
     <value>&lt;P&gt;A ${ProjectName} module&lt;/P&gt;</value>
   </data>
-  <data name="DefaultContent.Text" xml:space="preserve">
+  <data xml:space="preserve" name="DefaultContent.Text">
     <value>Here is some sample content</value>
   </data>
-  <data name="NothingToDisplay.Text" xml:space="preserve">
+  <data xml:space="preserve" name="NothingToDisplay.Text">
   	<value>Nothing to display, add some items.</value>
   </data>
 </root>]]></File>
 					<File name="View${ProjectName}.ascx.ru-RU.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <data name="AddContent.Action" xml:space="preserve">
+  <data xml:space="preserve" name="AddContent.Action">
     <value>Добавить содержимое</value>
   </data>
-  <data name="ModuleHelp.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ModuleHelp.Text">
     <value>&lt;P&gt; Модуль ${ProjectName}&lt;/P&gt;</value>
   </data>
-  <data name="DefaultContent.Text" xml:space="preserve">
+  <data xml:space="preserve" name="DefaultContent.Text">
     <value>Что-то вместо содержимого</value>
   </data>
-  <data name="NothingToDisplay.Text" xml:space="preserve">
+  <data xml:space="preserve" name="NothingToDisplay.Text">
   	<value>Нечего отображать, добавьте элементы.</value>
   </data>
 </root>]]></File>
 					<File name="Edit${ProjectName}.ascx.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <data name="lblContent.Text" xml:space="preserve">
+  <data xml:space="preserve" name="lblContent.Text">
     <value>Content</value>
   </data>
-  <data name="lblContent.Help" xml:space="preserve">
+  <data xml:space="preserve" name="lblContent.Help">
     <value>Enter the Content</value>
   </data>
-  <data name="valContent.ErrorMessage" xml:space="preserve">
+  <data xml:space="preserve" name="valContent.ErrorMessage">
     <value>&lt;br&gt;Content is required</value>
   </data>
-  <data name="ModuleHelp.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ModuleHelp.Text">
     <value>&lt;P&gt;A ${ProjectName} module&lt;/P&gt;</value>
   </data>
-  <data name="ControlTitle_edit.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ControlTitle_edit.Text">
     <value>Edit ${ProjectName}</value>
   </data>
 </root>]]></File>
 					<File name="Edit${ProjectName}.ascx.ru-RU.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <data name="lblContent.Text" xml:space="preserve">
+  <data xml:space="preserve" name="lblContent.Text">
     <value>Содержимое</value>
   </data>
-  <data name="lblContent.Help" xml:space="preserve">
+  <data xml:space="preserve" name="lblContent.Help">
     <value>Введите содержимое</value>
   </data>
-  <data name="valContent.ErrorMessage" xml:space="preserve">
+  <data xml:space="preserve" name="valContent.ErrorMessage">
     <value>&lt;br&gt;Содержимое обязательно!</value>
   </data>
-  <data name="ModuleHelp.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ModuleHelp.Text">
     <value>&lt;P&gt;Модуль ${ProjectName}&lt;/P&gt;</value>
   </data>
-  <data name="ControlTitle_edit.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ControlTitle_edit.Text">
     <value>Редактировать ${ProjectName}</value>
   </data>
 </root>]]></File>
 					<File name="Settings${ProjectName}.ascx.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <data name="lblTemplate.Text" xml:space="preserve">
+  <data xml:space="preserve" name="lblTemplate.Text">
     <value>Template</value>
   </data>
-  <data name="lblTemplate.Help" xml:space="preserve">
+  <data xml:space="preserve" name="lblTemplate.Help">
     <value>Allows you to provide a custom template for displaying the items. Use parameters for dynamic substitution ( ie. [CONTENT] [CREATEDONDATE] [CREATEDBYUSER] [CREATEDBYUSERNAME] )</value>
   </data>
-  <data name="ControlTitle_settings.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ControlTitle_settings.Text">
     <value>${ProjectName} Settings</value>
   </data>
-  <data name="ModuleHelp.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ModuleHelp.Text">
     <value>About ${ProjectName} Settings</value>
   </data>
 </root>]]></File>
 					<File name="Settings${ProjectName}.ascx.ru-RU.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <data name="lblTemplate.Text" xml:space="preserve">
+  <data xml:space="preserve" name="lblTemplate.Text">
     <value>Шаблон</value>
   </data>
-  <data name="lblTemplate.Help" xml:space="preserve">
+  <data xml:space="preserve" name="lblTemplate.Help">
     <value>Позволяет задать пользовательский шаблон для отображения элементов. Используйте параметры для замены: [CONTENT] [CREATEDONDATE] [CREATEDBYUSER] [CREATEDBYUSERNAME]</value>
   </data>
-  <data name="ControlTitle_settings.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ControlTitle_settings.Text">
     <value>Настройки ${ProjectName}</value>
   </data>
-  <data name="ModuleHelp.Text" xml:space="preserve">
+  <data xml:space="preserve" name="ModuleHelp.Text">
     <value>О настройках ${ProjectName}</value>
   </data>
 </root>]]></File>

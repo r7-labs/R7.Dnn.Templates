@@ -102,19 +102,19 @@ GO
 				<Directory name="App_LocalResources">
 					<File name="${ProjectName}.ascx.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <data name="Template.Text" xml:space="preserve">
+  <data xml:space="preserve" name="Template.Text">
     <value>&lt;div class="[CSSCLASS]"&gt;&lt;h3&gt;[CREATEDBYUSER]: [CREATEDONDATE]&lt;/h3&gt;&lt;p&gt;[CONTENT]&lt;/p&gt;&lt;/div&gt;</value>
   </data>
-  <data name="SystemUser.Text" xml:space="preserve">
+  <data xml:space="preserve" name="SystemUser.Text">
     <value>System</value>
   </data>
 </root>]]></File>
   <File name="${ProjectName}.ascx.ru-RU.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <data name="Template.Text" xml:space="preserve">
+  <data xml:space="preserve" name="Template.Text">
     <value>&lt;div class="[CSSCLASS]"&gt;&lt;h3&gt;[CREATEDBYUSER]: [CREATEDONDATE]&lt;/h3&gt;&lt;p&gt;[CONTENT]&lt;/p&gt;&lt;/div&gt;</value>
   </data>
-  <data name="SystemUser.Text" xml:space="preserve">
+  <data xml:space="preserve" name="SystemUser.Text">
     <value>Система</value>
   </data>
 </root>]]></File>
