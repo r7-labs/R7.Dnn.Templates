@@ -32,12 +32,12 @@ Try them all and [drop me a line](https://github.com/roman-yagodin/R7.DnnTemplat
 
 # TODO
 
-- Add SchedulerJob project template
-- Add ViewState / Session properties for View.ascx.cs
-- Add file templates for View, Edit, Settings controls
-- Use template file for PetaPOCO class in a project template
-- Learn to use ${Namespace} and other template variables
-- Add joined table and sample code to access it
-- Add sensible settings for module
-- <del>Use MSBuild to automate extension package creation</del>
-- Review use ${AuthorCompany} as namespace prefix
+- [ ] Add SchedulerJob project template
+- [ ] Add ViewState / Session properties for View.ascx.cs
+- [ ] Add file templates for View, Edit, Settings controls
+- [ ] Use template file for PetaPOCO class in a project template
+- [ ] Learn to use ${Namespace} and other template variables
+- [ ] Add joined table and sample code to access it
+- [ ] Add sensible settings for module
+- [x] Use MSBuild to automate extension package creation
+- [ ] Review use ${AuthorCompany} as namespace prefix
