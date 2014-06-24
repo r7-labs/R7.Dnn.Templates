@@ -1686,39 +1686,6 @@ namespace ${ProjectName}
  </packages>
 </dotnetnuke>
 ]]></File>
- <File name="Package.cmd"><![CDATA[@echo off
-setlocal
-pushd
-
-set Z7="C:\Program Files\7-Zip\7z.exe"
-set PACKAGE=tmp_Package
-set VERSION=01.00.00
-
-cd ..
-
-rmdir /Q /S %PACKAGE%
-mkdir %PACKAGE%\bin
-
-cd ${ProjectName}
-
-%Z7% a ..\%PACKAGE%\${ProjectName}.zip *.ascx *.css *.js App_LocalResources\*.resx js 
-
-xcopy /Y *.SqlDataProvider ..\%PACKAGE%\
-xcopy /Y *.dnn ..\%PACKAGE%\
-xcopy /Y *.txt ..\%PACKAGE%\
-
-cd ..
-xcopy /Y ..\..\bin\${ProjectName}*.dll %PACKAGE%\bin\
-
-cd %PACKAGE%
-%Z7% a ..\${ProjectName}-%VERSION%-Install.zip *
-
-cd ..
-rmdir /Q /S %PACKAGE%
-
-popd
-endlocal
-]]></File>
 <File name="Readme.txt"><![CDATA[# Template usage
 
 Due to template engine limitations we need to do some will require some changes 
