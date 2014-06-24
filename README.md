@@ -39,5 +39,5 @@ Try them all and [drop me a line](https://github.com/roman-yagodin/R7.DnnTemplat
 - Learn to use ${Namespace} and other template variables
 - Add joined table and sample code to access it
 - Add sensible settings for module
-- --- Use MSBuild to automate extension package creation ---
+- <del>Use MSBuild to automate extension package creation</del>
 - Review use ${AuthorCompany} as namespace prefix
