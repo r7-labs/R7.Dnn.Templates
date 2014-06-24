@@ -2,7 +2,7 @@
 
 ## Version 0.3.0
 
-- Added extension packaging project and file templates based on MSBuild (need (MSBuild.Comminity.Tasks)[https://github.com/loresoft/msbuildtasks/releases] installed).
+- Added extension packaging project and file templates based on MSBuild, need [MSBuild.Comminity.Tasks](https://github.com/loresoft/msbuildtasks/releases) installed.
 - Use MSBuild and mdtool to create addin (.mpack) file then building release. 
 - DnnModule sample project removed as it should go to a separate solution
 - Updated installation instructions in all templates

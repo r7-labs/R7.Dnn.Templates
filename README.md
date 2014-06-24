@@ -7,7 +7,7 @@ and will be more in the future releases.
 
 # Install
 
-1. Download (latest addin release)[https://github.com/roman-yagodin/R7.DnnTemplates/releases].
+1. Download [latest addin release](https://github.com/roman-yagodin/R7.DnnTemplates/releases).
 
 2. Open MonoDevelop / Xamarin Studio and go to "Tools &gt; Add-in manager".
 
@@ -26,9 +26,9 @@ and create new project using "C# compiled module with DAL 2".
 Note that Xamarin Studio / MonoDevelop uses same solution and project format as MS Visual Studio or SharpDevelop. 
 So you could easily create your project with Xamarin Studio and then continue to work on it with using VS or SD.
 
-There are some native VS templates for DNN modules like (Christoc's DotNetNuke Module Development Template)[http://christoctemplate.codeplex.com/],
-(BiteTheBullet)[http://www.bitethebullet.co.uk/VS2010DNNTemplate.aspx] (slightly outdated) and more. 
-Try them all and (drop me a line)[https://github.com/roman-yagodin/R7.DnnTemplates/issues] about which features you want to see in R7.DnnTemplates.
+There are some native VS templates for DNN modules like [Christoc's DotNetNuke Module Development Template](http://christoctemplate.codeplex.com/),
+[BiteTheBullet](http://www.bitethebullet.co.uk/VS2010DNNTemplate.aspx) (slightly outdated) and more. 
+Try them all and [drop me a line](https://github.com/roman-yagodin/R7.DnnTemplates/issues) about which features you want to see in R7.DnnTemplates.
 
 # TODO
 
