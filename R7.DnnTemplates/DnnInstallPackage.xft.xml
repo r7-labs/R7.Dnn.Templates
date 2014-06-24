@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0"?>
-<Template Originator="Roman M. Yagodin" Created="2014/06/18" LastModified="2014/06/18">
+<Template Originator="Roman M. Yagodin" Created="2014/06/18" LastModified="2014/06/23">
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>Install package script for DNN extension</_Name>
 		<_Category>DNN Platform</_Category>
 		<Icon>md-xml-file-icon</Icon>
 		<LanguageName>*</LanguageName>
-		<_Description>Creates a new MSBuild install package script for DNN extension. See Packages.txt for more info.</_Description>
+		<_Description>Creates a new MSBuild install package script for DNN extension. See Readme.txt for more info.</_Description>
 	</TemplateConfiguration>
 	<!-- Template Content -->
 	<TemplateFiles>

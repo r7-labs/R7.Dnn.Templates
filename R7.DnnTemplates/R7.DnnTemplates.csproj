@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>R7.DnnTemplates</RootNamespace>
     <AssemblyName>R7.DnnTemplates</AssemblyName>
-    <ReleaseVersion>0.2.0</ReleaseVersion>
+    <ReleaseVersion>0.3.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -49,7 +49,6 @@
     <None Include="samples\TemplateVariables.txt" />
     <None Include="samples\MonoDevelopStockIcons.txt" />
     <None Include="samples\ProjectTemplate.xpt" />
-    <None Include="TODO.md" />
     <None Include="DnnCSharpSkinObject.xpt.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

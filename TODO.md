@@ -1,5 +1,4 @@
-TODO
-==== 
+# TODO
 
 - Add ViewState / Session properties for View.ascx.cs
 - Add file templates for View, Edit, Settings controls
@@ -7,9 +6,5 @@ TODO
 - Learn to use ${Namespace} and other template variables
 - Add joined table and sample code to access it
 - Add sensible settings for module
-- Use MSBuild to automate module package creation
-
-REVIEW
-=====
-
-- Use ${AuthorCompany} as namespace prefix
+- --- Use MSBuild to automate extension package creation ---
+- Review use ${AuthorCompany} as namespace prefix

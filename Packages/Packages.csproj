@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Packages</RootNamespace>
     <AssemblyName>Packages</AssemblyName>
-    <ReleaseVersion>0.2.0</ReleaseVersion>
+    <ReleaseVersion>0.3.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +34,6 @@
     <None Include="Packages.csproj" />
     <None Include="Addin.targets" />
   </ItemGroup>
-<Import Project="Addin.targets" />
-<Target Name="AfterBuild" DependsOnTargets="MakeAddinPackage" />
+  <Import Project="Addin.targets" />
+  <Target Name="AfterBuild" DependsOnTargets="MakeAddinPackage" />
 </Project>
