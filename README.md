@@ -1,67 +1,43 @@
-DNN Platform templates addin for MonoDevelop / Xamarin Studio
-=============================================================
+# About
 
-1) Copy 'R7.DnnTemplates' folder 
-   from this package to 'Addins' folder in MonoDevelop install, 
-   usually 'C:\Program Files (x86)\Xamarin Studio\AddIns' or
-   'C:\Program Files (x86)\MonoDevelop\AddIns' on Windows.
+DNN Platform templates addin for MonoDevelop / Xamarin Studio contains project and file templates
+which could be used to speedup extension development process for popular ASP.NET CMS/CMF DNN Plaform (formely DotNetNuke). 
+In it's current state, there are templates for module and skinobject extensions, install and source packages - 
+and will be more in the future releases.
 
-2) Restart IDE. 
+# Install
 
-3) Create new project from DNN Platform templates.
+1. Download (latest addin release)[https://github.com/roman-yagodin/R7.DnnTemplates/releases].
 
-# Changelog
+2. Open MonoDevelop / Xamarin Studio and go to "Tools &gt; Add-in manager".
 
-## Version 0.1.4
+4. Press "Install from file..." button, select downloaded .mpack file and press "Open".
 
-- Updated Utils.cs to include more functions
-- Controller & settings partial classes changed to use inheritance
-- Added stub for GetModifiedSearchDocuments() instead of ISeachable
-- Added missing module synchronization after Edit / Settings changes
-- Added module package script (now uses 7Zip, need use MSBuild?)
-- Use default two-folder solution/project structure instead of one-folder
-- Module manifest reviewed to remove file components
-- Install / update process was stremlined
-- Added sample DnnModule project to R7.DnnTemplates solution to develop / test faster
+3. Now you shoud see "DNN Platfrom Templates" in "Web Development" section. 
+Select it and press "Enable".
 
-## Version 0.1.3
+4. Go to "File &gt; New &gt; Solution", then "C# &gt; DNN Platform" 
+and create new project using "C# compiled module with DAL 2".
 
-- .designer files renamed to .controls as workaround of ASP.NET addin bug - 
-  codebehind classes still updated, even if you choose to not update then 
-  automatically in project settings.  
-- View control uses simple control / table field binding instead of template.
-- Module manifest format upgraded to 5.0 form.
-- Edit control now supports popups by default.
-- Project renamed to R7.DnnTemplates.
-- "DotNetNuke" references in text replaced with "DNN Platform"
-- Version number changed from 0.x to more uniform 0.1.x.
-- Project published on GitHub
+5. Follow instructions in the "Readme.txt" to setup build environment.
 
-## Version 0.1.2
+## Note for Visual Studio users
 
-- Added references to DotNetNuke.Web.dll and Telerik.Web.UI.dll
-- Controller-class refactorings: removed GetList<T> variations,
-  added methods to execute custom SQL queries and SP's.
-- View control now have explicitly declared labels.
-- Added Utils static class with variety of useful methods.
-- Forms now using DNN 6/7 styling.
-- Support DNN 6/7 popups for Edit.ascx. 
-- Edit link bindings moved to View.ascx.cs. 
+Note that Xamarin Studio / MonoDevelop uses same solution and project format as MS Visual Studio or SharpDevelop. 
+So you could easily create your project with Xamarin Studio and then continue to work on it with using VS or SD.
 
-## Version 0.1.1
+There are some native VS templates for DNN modules like (Christoc's DotNetNuke Module Development Template)[http://christoctemplate.codeplex.com/],
+(BiteTheBullet)[http://www.bitethebullet.co.uk/VS2010DNNTemplate.aspx] (slightly outdated) and more. 
+Try them all and (drop me a line)[https://github.com/roman-yagodin/R7.DnnTemplates/issues] about which features you want to see in R7.DnnTemplates.
 
-- Fixed ASP.NET code editor error then completition list is about to show, 
-  which was caused by target platform specification in a project template.
-- Module now have correct project type: "AspNetApp".
-- Added *.designer.cs" partial classes, and control definitions moved there. 
-  Added "using" to common namespaces, like DotNetNuke.UI.UserControls, etc.
-- Most CRUD methods in a controller class are promoted to generics, 
-  so don't need to create them for each new POCO class.
-- Fixed T-SQL type names in square brackets in SqlDataProvider script.
-- Settings.ascx are now Settings${ProjectName}.ascx, which may be usefull
-  in a case of two or more modules stored in a single folder.
-- Added prototype code for cross-table references (joins), yet in comments.
-	
-## Version 0.1.0
- 
-- Initial release	
+# TODO
+
+- Add SchedulerJob project template
+- Add ViewState / Session properties for View.ascx.cs
+- Add file templates for View, Edit, Settings controls
+- Use template file for PetaPOCO class in a project template
+- Learn to use ${Namespace} and other template variables
+- Add joined table and sample code to access it
+- Add sensible settings for module
+- --- Use MSBuild to automate extension package creation ---
+- Review use ${AuthorCompany} as namespace prefix
