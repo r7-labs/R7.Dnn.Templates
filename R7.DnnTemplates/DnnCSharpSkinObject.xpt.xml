@@ -12,7 +12,7 @@ NOTE: By default, choose DNN 'DesktopModules' folder for project location and en
 	</TemplateConfiguration>
 	<!-- Actions -->
 	<Actions>
-		<Open filename="Install.txt" />
+		<Open filename="Readme.txt" />
 	</Actions>
 	<!-- Template Content -->
 	<Combine name="${ProjectName}" directory=".">
