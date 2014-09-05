@@ -4,17 +4,14 @@
     name="DNN Platform Templates" 
     author="Roman M. Yagodin" 
     copyright="GNU GPL v3" 
-    url="http://www.r7space.ru" 
+    url="https://github.com/roman-yagodin/R7.DnnTemplates" 
     description="Templates for module, skin object, sheduler job and other components of DNN Platform" 
     category="Web Development" 
-    version="0.3.0">
+    version="0.3.1">
 	<Dependencies>
-		<Addin id="Core" version="5.0" />
-		<Addin id="Ide" version="5.0" />
-		<Addin id="AspNet" version="5.0" />
-		<Addin id="SourceEditor2" version="5.0" />
-		<Addin id="Refactoring" version="5.0" />
-		<!-- <Addin id="Autotools" version="4.0" /> -->
+		<Addin id="Core" version="5.2" />
+		<Addin id="Ide" version="5.2" />
+		<Addin id="AspNet" version="5.2" />
 	</Dependencies>
 	<Runtime>
 		<Import file="DnnCSharpModuleDAL2.xpt.xml" />
@@ -23,7 +20,7 @@
 		<Import file="DnnInstallPackage.xft.xml" />
 		<Import file="DnnSourcePackage.xft.xml" />
 		<Import file="DnnPackages.xpt.xml" />
-		<!--- <Import file="/icons/dnn-module-32.png" /> -->
+        <!--- <Import file="/icons/dnn-module-32.png" /> -->
 	</Runtime>
 	<Extension path="/MonoDevelop/Ide/FileTemplates">
       <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
@@ -34,5 +31,5 @@
 		<ProjectTemplate id="DnnCSharpModuleDAL2" file="DnnCSharpModuleDAL2.xpt.xml" />
 		<ProjectTemplate id="DnnCSharpSkinObject" file="DnnCSharpSkinObject.xpt.xml" />
 		<ProjectTemplate id="DnnPackages" file="DnnPackages.xpt.xml" />
-	</Extension>
+    </Extension>
 </Addin>
