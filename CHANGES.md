@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 0.3.1
+
+- Addin now compatible with Xamarin Studio 5.3 (and possible 5.2) releases.
+
 ## Version 0.3.0
 
 - Added extension packaging project and file templates based on MSBuild, need [MSBuild.Comminity.Tasks](https://github.com/loresoft/msbuildtasks/releases) installed.
