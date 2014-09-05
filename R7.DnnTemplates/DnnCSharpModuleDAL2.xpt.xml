@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
-<Template originator="Roman M. Yagodin" created="2012/08/10" lastModified="2014/06/23">
+<Template originator="Roman M. Yagodin" created="2012/08/10" lastModified="2014/09/05">
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>C# compiled module with DAL 2</_Name>
 		<_Category>C#/DNN Platform</_Category>
 		<Icon>md-project-web</Icon>
 		<LanguageName>C#</LanguageName>
+        <ProjectType>AspNetApp</ProjectType>
 		<_Description>Creates a new DNN Platform C# compiled module project with DAL 2, based on PetaPOCO micro-ORM.
 
 NOTE: By default, choose DNN 'DesktopModules' folder for project location and ensure that 'Create directory for solution' flag is checked.</_Description>
@@ -1095,9 +1096,7 @@ namespace ${ProjectName}
 ]]></File>
 
 				</Directory>
-				<AspNetFile name="View${ProjectName}.ascx" DefaultExtension=".ascx">
-					<!-- <File name="View${ProjectName}.ascx"> -->
-					<FileText><![CDATA[<%@ Control Language="${AspNetLanguage}" AutoEventWireup="true" CodeBehind="View${ProjectName}.ascx.cs" Inherits="${ProjectName}.View${ProjectName}" %>
+				<File name="View${ProjectName}.ascx"><![CDATA[<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="View${ProjectName}.ascx.cs" Inherits="${ProjectName}.View${ProjectName}" %>
 <asp:DataList ID="lstContent" DataKeyField="${ProjectName}ID" runat="server" CssClass="${ProjectName}_ContentList" OnItemDataBound="lstContent_ItemDataBound">
 	<ItemTemplate>
 		<asp:HyperLink ID="linkEdit" runat="server">
@@ -1109,8 +1108,7 @@ namespace ${ProjectName}
 	</ItemTemplate>
 	<ItemStyle CssClass="${ProjectName}_ContentListItem" />
 </asp:DataList>
-]]></FileText>
-				</AspNetFile>
+]]></File>
 				<File name="View${ProjectName}.ascx.cs" DependsOn="View${ProjectName}.ascx" AddStandardHeader="True"><![CDATA[using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1263,9 +1261,7 @@ namespace ${ProjectName}
 		protected DataList lstContent;
 	}
 }]]></File>
-				<!-- <File name="Settings.ascx"> -->
-				<AspNetFile name="Settings${ProjectName}.ascx" DefaultExtension=".ascx">
-					<FileText><![CDATA[<%@ Control Language="${AspNetLanguage}" AutoEventWireup="true" CodeBehind="Settings${ProjectName}.ascx.cs" Inherits="${ProjectName}.Settings${ProjectName}" %>
+				<File name="Settings${ProjectName}.ascx"><![CDATA[<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Settings${ProjectName}.ascx.cs" Inherits="${ProjectName}.Settings${ProjectName}" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
 <%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web" %>
 
@@ -1278,8 +1274,7 @@ namespace ${ProjectName}
 		</div>
 	</fieldset>	
 </div>
-]]></FileText>
-				</AspNetFile>
+]]></File>
 				<File name="Settings${ProjectName}.ascx.cs" DependsOn="Settings${ProjectName}.ascx" AddStandardHeader="True"><![CDATA[using System;
 using System.Web.UI.WebControls;
 using System.Linq;
@@ -1352,8 +1347,7 @@ namespace ${ProjectName}
 		protected TextBox txtTemplate;
 	}
 }]]></File>
-				<AspNetFile name="Edit${ProjectName}.ascx" DefaultExtension=".ascx">
-					<FileText><![CDATA[<%@ Control Language="${AspNetLanguage}" AutoEventWireup="false" CodeBehind="Edit${ProjectName}.ascx.cs" Inherits="${ProjectName}.Edit${ProjectName}" %>
+                <File name="Edit${ProjectName}.ascx"><![CDATA[<%@ Control Language="C#" AutoEventWireup="false" CodeBehind="Edit${ProjectName}.ascx.cs" Inherits="${ProjectName}.Edit${ProjectName}" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/labelcontrol.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="TextEditor" Src="~/controls/TextEditor.ascx"%>
 <%@ Register TagPrefix="dnn" TagName="Audit" Src="~/controls/ModuleAuditControl.ascx" %>
@@ -1373,8 +1367,7 @@ namespace ${ProjectName}
 	</ul>
 	<dnn:Audit id="ctlAudit" runat="server" />
 </div>
-]]></FileText>
-				</AspNetFile>
+]]></File>
 				<File name="Edit${ProjectName}.ascx.cs" DependsOn="Edit${ProjectName}.ascx" AddStandardHeader="True"><![CDATA[using System;
 using System.Web.UI.WebControls;
 using System.Linq;

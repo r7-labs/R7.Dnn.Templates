@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
-<Template originator="Roman M. Yagodin" created="2014/05/15" lastModified="2014/05/15">
+<Template originator="Roman M. Yagodin" created="2014/05/15" lastModified="2014/09/05">
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>C# compiled skin object</_Name>
 		<_Category>C#/DNN Platform</_Category>
 		<Icon>md-project-web</Icon>
 		<LanguageName>C#</LanguageName>
+        <ProjectType>AspNetApp</ProjectType>
 		<_Description>Creates a new DNN Platform C# compiled skin object project.
 
 NOTE: By default, choose DNN 'DesktopModules' folder for project location and ensure that 'Create directory for solution' flag is checked.</_Description>
@@ -711,14 +712,11 @@ namespace ${ProjectName}
 ]]></File>
 
 				</Directory>
-				<AspNetFile name="${ProjectName}.ascx" DefaultExtension=".ascx">
-					<!-- <File name="View${ProjectName}.ascx"> -->
-					<FileText><![CDATA[<%@ Control Language="C#" AutoEventWireup="true" Inherits="${ProjectName}" %>
+				<File name="${ProjectName}.ascx"><![CDATA[<%@ Control Language="C#" AutoEventWireup="true" Inherits="${ProjectName}" %>
 <%@ OutputCache Duration="1200" VaryByParam="TabId" %>
 
 <asp:Literal ID="litContent" runat="server"></asp:Literal>
-]]></FileText>
-				</AspNetFile>
+]]></File>
 				<File name="${ProjectName}.ascx.cs" DependsOn="${ProjectName}.ascx" AddStandardHeader="True"><![CDATA[// TODO: Convert to DAL2
 
 using System;
