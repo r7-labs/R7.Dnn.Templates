@@ -50,7 +50,7 @@ NOTE: By default, choose DNN 'DesktopModules' folder for project location and en
 	-->
 			<Files>
 				<Directory name="js" />
-				<File name="module.css"><![CDATA[/* Place module CSS here */
+				<File name="module.css"><![CDATA[/* Place CSS for view control here */
 
 .${ProjectName}_ContentList { width:100% }				
 .${ProjectName}_ContentListItem { text-align: left }
@@ -58,6 +58,8 @@ NOTE: By default, choose DNN 'DesktopModules' folder for project location and en
 .${ProjectName}_CreateOnDate { font-style:italic }
 .${ProjectName}_Content { clear:both }
 
+]]></File>
+                <File name="admin.css"><![CDATA[/* Place CSS for edit / settings controls here */
 ]]></File>
 				<File name="01.00.00.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
 -- replace {databaseOwner} and {objectQualifier} with real values. 
@@ -1264,7 +1266,9 @@ namespace ${ProjectName}
 				<File name="Settings${ProjectName}.ascx"><![CDATA[<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Settings${ProjectName}.ascx.cs" Inherits="${ProjectName}.Settings${ProjectName}" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
 <%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web" %>
+<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.Client.ClientResourceManagement" Assembly="DotNetNuke.Web.Client" %>
 
+<dnn:DnnCssInclude runat="server" FilePath="~/DesktopModules/${ProjectName}/${ProjectName}/admin.css" Priority="200" />
 <div class="dnnForm dnnClear">
 	<h2 class="dnnFormSectionHead"><a href=""><asp:Label runat="server" ResourceKey="sectionBaseSettings.Text" /></a></h2>
 	<fieldset>	
@@ -1352,7 +1356,9 @@ namespace ${ProjectName}
 <%@ Register TagPrefix="dnn" TagName="TextEditor" Src="~/controls/TextEditor.ascx"%>
 <%@ Register TagPrefix="dnn" TagName="Audit" Src="~/controls/ModuleAuditControl.ascx" %>
 <%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web" %>
+<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.Client.ClientResourceManagement" Assembly="DotNetNuke.Web.Client" %>
 
+<dnn:DnnCssInclude runat="server" FilePath="~/DesktopModules/${ProjectName}/${ProjectName}/admin.css" Priority="200" />
 <div class="dnnForm dnnClear">
 	<fieldset>	
 		<div class="dnnFormItem">

@@ -1,5 +1,9 @@
 # Changelog
 
+## Next version
+
+- Use admin.css for edit and settings controls.
+
 ## Version 0.3.1
 
 - Addin now compatible with Xamarin Studio 5.3 (and possible 5.2) releases.
