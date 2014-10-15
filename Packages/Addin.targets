@@ -1,12 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
 	<Target Name="MakeAddinPackage" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-		<Exec Command="&quot;$(MSBuildProgramFiles32)\Xamarin Studio\bin\mdtool.exe&quot; setup pack ..\R7.DnnTemplates\bin\Release\DnnTemplates.addin.xml" 
-		 /> 
-<!--
- 		<ItemGroup>
+		<Exec Command="&quot;$(MSBuildProgramFiles32)\Xamarin Studio\bin\mdtool.exe&quot; setup pack ..\R7.DnnTemplates\bin\Release\DnnTemplates.addin.xml" />
+    	<ItemGroup>
         	<MPackFiles Include="*.mpack"/>
     	</ItemGroup>
-		<<Copy SourceFiles="@(MPackFiles)" DestinationFolder="bin/Release" /> -->
+        <Move SourceFiles="@(MPackFiles)" DestinationFolder="output" />
 	</Target>
-</Project>
+</Project>   
