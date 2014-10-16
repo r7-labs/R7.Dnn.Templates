@@ -1,8 +1,10 @@
 # Changelog
 
-## Next version
+## Version 0.3.2
 
+- Total remake of packaging scripts.
 - Use admin.css for edit and settings controls.
+- Readme.txt files updated and renamed to `SETUP.md`.
 
 ## Version 0.3.1
 

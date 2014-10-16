@@ -7,7 +7,7 @@
     url="https://github.com/roman-yagodin/R7.DnnTemplates" 
     description="Templates for module, skin object, sheduler job and other components of DNN Platform" 
     category="Web Development" 
-    version="0.3.1">
+    version="0.3.2">
 	<Dependencies>
 		<Addin id="Core" version="5.2" />
 		<Addin id="Ide" version="5.2" />
