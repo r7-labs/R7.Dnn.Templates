@@ -13,7 +13,7 @@ NOTE: By default, choose DNN 'DesktopModules' folder for project location and en
 	</TemplateConfiguration>
 	<!-- Actions -->
 	<Actions>
-		<Open filename="Readme.txt" />
+		<Open filename="SETUP.md" />
 	</Actions>
 	<!-- Template Content -->
 	<Combine name="${ProjectName}" directory=".">
@@ -883,41 +883,48 @@ namespace ${ProjectName}
  </packages>
 </dotnetnuke>
 ]]></File>
-<File name="Readme.txt"><![CDATA[# Template usage
+<File name="SETUP.md"><![CDATA[# Template usage
 
 Due to template engine limitations we need to do some will require some changes 
 to be made manually in a project file.
 
-1. Update reference to DotNetNuke.dll and other referenced assemblies to a DNN "bin" folder - if needed.
+1. Update reference to `DotNetNuke.dll` and other referenced assemblies to a DNN "bin" folder - if needed.
 
 2. Template assumes that project is created in DNN "DesktopModules" folder with a parent solution folder 
-   (same name as project's), so "..\..\..\bin" path is used to reference assemblies in DNN "bin" folder.
+   (same name as project's), so `..\..\..\bin` path is used to reference assemblies in DNN `bin` folder.
 
-3. Set project build output path to DNN "bin" folder in the project options.
-   It can be "..\..\..\bin" for the case, described above.
+3. Set project build output path to DNN `bin` folder in the project options.
+   It can be `..\..\..\bin` for the case, described above.
    
-4. Build solution to check it out. Then you done with this, ${ProjectName}.dll is located in a DNN "bin" folder.
+4. Build solution to check it out. Then you done with this, `${ProjectName}.dll` is located in a DNN `bin` folder.
   
 5. You may want to disable automatic updates of CodeBehind partial classes in project options
    under "ASP.NET" page. Automatic updates is not working correctly with third-party controls 
    in the MonoDevelop / Xamarin Studio anyway. This is true at least for version 4.2.3.
 
 6. Add to your solution new project of type "DNN packaging project" and follow instructions 
-   in it's Readme.txt to create install package.
+   in it's `SETUP.md` to setup packaging.
 
 # Solution stucture for development
 
+```
 DNN
 |- bin
-|- ${SolutionName}.dll
-	|- ${SolutionName}_Next.dll
+    |- ${SolutionName}.dll
+    |- ${SolutionName}_Next.dll
 |- DesktopModules
-	|- ${SolutionName} (solution)
-		|- ${SolutionName} (primary extension project)
-			|- ${SolutionName}.dnn (manifest)
+    |- ${SolutionName} (solution)
+        |- ${SolutionName} (primary extension project)
+            |- SqlDataProvider (folder for DB scripts)
+                |- 01.00.00.SqlDataProvider
+                |- UnInstall.SqlDataProvider
+            |- ${SolutionName}.dnn (manifest)
+            |- License.txt
+            |- ReleaseNotes.txt
         |- ${SolutionName}_Next (secondary extension project) 
-		|- Packages (packaging project)
-			|- *.targets
+        |- Packages (packaging project)
+            |- *.targets
+```
 ]]></File>
    <File name="License.txt"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
