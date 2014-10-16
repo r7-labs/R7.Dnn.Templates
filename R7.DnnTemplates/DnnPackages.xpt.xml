@@ -68,7 +68,7 @@ If you add new DNN extension to your solution using *R7.DnnTemplates*, you proba
 1. Name your project like *${SolutionName}_MyNewExtension*. If not, just add another `<InstallBinaryFiles>` entry
 to the `Install.targets` for new extension binary file (.dll) too.
 
-2. Move ${ProjectName} Project/EndProject entry in ${SolutionName}.sln file to the bottom, to ensure
+2. Move ${ProjectName} Project/EndProject entry in the `${SolutionName}.sln` file to the bottom, to ensure
 that ${ProjectName} project will build last. 
 
 3. Merge new project's `.SqlDataProvider` files, `.dnn` manifest file (and all files, referenced by manifest -
