@@ -49,6 +49,7 @@ NOTE: By default, choose DNN 'DesktopModules' folder for project location and en
 	<Reference type="Package" refto="Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 	-->
 			<Files>
+                <Directory name="SqlDataProvider">
 				<File name="01.00.00.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
 -- replace {databaseOwner} and {objectQualifier} with real values. 
 -- Defaults is "dbo." for database owner and "" for object qualifier 
@@ -100,6 +101,7 @@ GO
 DROP TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
 GO
 ]]></File>
+    </Directory>
 				<Directory name="App_LocalResources">
 					<File name="${ProjectName}.ascx.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
@@ -847,11 +849,11 @@ namespace ${ProjectName}
          <scripts>
            <basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
            <script type="Install">
-             <name>01.00.00.SqlDataProvider</name>
+             <name>SqlDataProvider\01.00.00.SqlDataProvider</name>
              <version>01.00.00</version>
            </script>
            <script type="UnInstall">
-             <name>Uninstall.SqlDataProvider</name>
+             <name>SqlDataProvider\Uninstall.SqlDataProvider</name>
              <version>01.00.00</version>
            </script>
          </scripts>
