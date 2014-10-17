@@ -32,7 +32,7 @@
 
         <!-- Declare SqlDataProvider files -->
         <ItemGroup>
-            <InstallSqlDataProviderFiles Include="..\${SolutionName}\*.sqldataprovider" />
+            <InstallSqlDataProviderFiles Include="..\${SolutionName}\SqlDataProvider\*.sqldataprovider" />
         </ItemGroup>
 
          <!-- Declare resource files -->
@@ -77,7 +77,7 @@
         <Copy SourceFiles="@(InstallManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package" />
         
         <!-- Copy SqlDataProvider files -->
-        <Copy SourceFiles="@(SqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package\SqlDataProvider" />
+        <Copy SourceFiles="@(InstallSqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package\SqlDataProvider" />
         
         <!-- Copy filtered Resource files to tmp_Resources dir -->
         <Copy SourceFiles="@(InstallResourceFilteredFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Resources\%(RecursiveDir)" />
