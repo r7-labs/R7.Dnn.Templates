@@ -861,7 +861,7 @@ namespace ${ProjectName}
 
        <component type="ResourceFile">
          <resourceFiles>
-           <basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
+           <basePath>DesktopModules\${ProjectName}</basePath>
            <resourceFile>
              <name>Resources.zip</name>
            </resourceFile>
