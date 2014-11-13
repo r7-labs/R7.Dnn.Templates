@@ -714,7 +714,7 @@ namespace ${ProjectName}
 ]]></File>
 
 				</Directory>
-				<File name="${ProjectName}.ascx"><![CDATA[<%@ Control Language="C#" AutoEventWireup="true" Inherits="${ProjectName}" %>
+				<File name="${ProjectName}.ascx"><![CDATA[<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="${ProjectName}.ascx.cs" Inherits="${ProjectName}.${ProjectName}" %>
 <%@ OutputCache Duration="1200" VaryByParam="TabId" %>
 
 <asp:Literal ID="litContent" runat="server"></asp:Literal>
@@ -863,7 +863,7 @@ namespace ${ProjectName}
          <resourceFiles>
            <basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
            <resourceFile>
-             <name>${ProjectName}.zip</name>
+             <name>Resources.zip</name>
            </resourceFile>
          </resourceFiles>
        </component>
