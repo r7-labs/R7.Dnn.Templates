@@ -1731,16 +1731,16 @@ DNN
 ]]></File>
    <File name="License.txt"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
-   <File name="ReleaseNotes.txt"><![CDATA[<!-- 
-<h3>Version 01.00.01</h3>
-<p>This is the stabilization release for 01.00.00.</p>
+   <File name="ReleaseNotes.txt"><![CDATA[<!--
+<h3>Version 1.0.1</h3>
+<p>General version notes.</p>
 <ul>
-	<li>Added new feature.</li>
-	<li>Fixed bug.</li>
+    <li>Added new feature.</li>
+    <li>Fixed bug.</li>
 </ul>
 -->
 
-<h3>Version 01.00.00</h3>
+<h3>Version 1.0.0</h3>
 <p>This is the initial release.</p>
 ]]></File>
 			</Files>
