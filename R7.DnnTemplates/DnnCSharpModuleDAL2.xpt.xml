@@ -1215,16 +1215,15 @@ namespace ${ProjectName}
 		/// <param name="e"></param>
 		protected void lstContent_ItemDataBound (object sender, System.Web.UI.WebControls.DataListItemEventArgs e)
 		{
-			// use e.Item.DataItem as object of ${ProjectName}Info class,
-			// as we really know it is:
-			var item = e.Item.DataItem as ${ProjectName}Info;
+			// e.Item.DataItem is object of ${ProjectName}Info class
+			var item = (${ProjectName}Info) e.Item.DataItem;
 			
 			// find controls in DataList item template
-			var lblUserName = e.Item.FindControl ("lblUserName") as Label;
-			var lblCreatedOnDate = e.Item.FindControl ("lblCreatedOnDate") as Label;
-			var lblContent = e.Item.FindControl ("lblContent") as Label;
-			var linkEdit = e.Item.FindControl ("linkEdit") as HyperLink;
-			var iconEdit = e.Item.FindControl ("imageEdit") as Image;
+			var lblUserName = (Label) e.Item.FindControl ("lblUserName");
+			var lblCreatedOnDate = (Label) e.Item.FindControl ("lblCreatedOnDate");
+			var lblContent = (Label) e.Item.FindControl ("lblContent");
+			var linkEdit = (HyperLink) e.Item.FindControl ("linkEdit");
+			var iconEdit = (Image) e.Item.FindControl ("imageEdit");
 			
 			// read module settings (may be useful in a future)
 			// var settings = new ${ProjectName}Settings (this);            
