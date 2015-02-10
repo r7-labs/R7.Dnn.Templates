@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<Template Originator="Roman M. Yagodin" Created="2014/06/18" LastModified="2014/10/16">
+<Template Originator="Roman M. Yagodin" Created="2014/06/18" LastModified="2015/02/10">
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>Source DNN package script</_Name>
@@ -11,7 +11,7 @@
 	<!-- Template Content -->
 	<TemplateFiles>
 <File name="${Name}.targets" AddStandardHeader="False"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="MakeSourcePackage">
     <Target Name="MakeSourcePackage" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <!-- Read package version from the manifest -->
         <XmlRead Prefix="n" Namespace="http://schemas.microsoft.com/developer/msbuild/2003" XPath="/dotnetnuke/packages/package[1]/@version" XmlFileName="..\${SolutionName}\${SolutionName}.dnn">
