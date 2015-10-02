@@ -12,6 +12,7 @@
 		<Addin id="Core" version="5.2" />
 		<Addin id="Ide" version="5.2" />
 		<Addin id="AspNet" version="5.2" />
+        <Addin id="SourceEditor2" version="5.2" />
 	</Dependencies>
 	<Runtime>
 		<Import file="DnnCSharpModuleDAL2.xpt.xml" />
@@ -20,7 +21,7 @@
 		<Import file="DnnInstallPackage.xft.xml" />
 		<Import file="DnnSourcePackage.xft.xml" />
 		<Import file="DnnPackaging.xpt.xml" />
-        <!--- <Import file="/icons/dnn-module-32.png" /> -->
+        <!-- <Import file="/icons/dnn-module-32.png" /> -->
 	</Runtime>
 	<Extension path="/MonoDevelop/Ide/FileTemplates">
       <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
@@ -31,5 +32,12 @@
 		<ProjectTemplate id="DnnCSharpModuleDAL2" file="DnnCSharpModuleDAL2.xpt.xml" />
 		<ProjectTemplate id="DnnCSharpSkinObject" file="DnnCSharpSkinObject.xpt.xml" />
 		<ProjectTemplate id="DnnPackaging" file="DnnPackaging.xpt.xml" />
+    </Extension>
+    <Extension path="/MonoDevelop/Core/MimeTypes">
+      <MimeType id="text/x-dnn-manifest" _description="DNN Platform Manifest File" icon="md-xml-file-icon" baseType="application/xml">
+        <File pattern="*.dnn" />
+        <File pattern="*.dnn5" />
+        <File pattern="*.dnn6" />
+      </MimeType>
     </Extension>
 </Addin>
