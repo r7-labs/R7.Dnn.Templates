@@ -23,6 +23,10 @@ There are some native VS templates for DNN modules like [Christoc's DotNetNuke M
 [BiteTheBullet](http://www.bitethebullet.co.uk/VS2010DNNTemplate.aspx) (slightly outdated) and more. 
 Try them all and [drop me a line](https://github.com/roman-yagodin/R7.DnnTemplates/issues) about which features you want to see in R7.DnnTemplates.
 
+## Syntax highlighting
+
+Addin enables syntax highlighting of DNN manifest files (`*.dnn`, `*.dnn5` and `*.dnn6`) and SQL dataprovider scripts (`*.sqldataprovider`, `*.SqlDataProvider`).
+
 # TODO
 
 - [ ] Add SchedulerJob project template

@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 0.3.3
+
+- Enable syntax highlighting for DNN manifest files.
+- Add syntax mode for SqlDataProvider files.
+
 ## Version 0.3.2
 
 - Total remake of packaging scripts.
