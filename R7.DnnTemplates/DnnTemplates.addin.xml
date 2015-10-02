@@ -21,6 +21,7 @@
 		<Import file="DnnInstallPackage.xft.xml" />
 		<Import file="DnnSourcePackage.xft.xml" />
 		<Import file="DnnPackaging.xpt.xml" />
+        <Import file="DnnSqlDataProviderSyntaxMode.xml" />
         <!-- <Import file="/icons/dnn-module-32.png" /> -->
 	</Runtime>
 	<Extension path="/MonoDevelop/Ide/FileTemplates">
@@ -39,5 +40,12 @@
         <File pattern="*.dnn5" />
         <File pattern="*.dnn6" />
       </MimeType>
+      <MimeType id="text/x-dnn-sqldataprovider" _description="DNN Platform SQL Data Provider File" isText="true">
+        <File pattern="*.SqlDataProvider" />
+        <File pattern="*.sqldataprovider" />
+      </MimeType>
+    </Extension>
+    <Extension path="/MonoDevelop/SourceEditor2/SyntaxModes">
+        <Templates file="DnnSqlDataProviderSyntaxMode.xml" />
     </Extension>
 </Addin>
