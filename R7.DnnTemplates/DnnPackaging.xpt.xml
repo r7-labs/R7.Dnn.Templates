@@ -45,8 +45,7 @@ to be made manually in a project file.
 	<MSBuildDnnBinPath Condition="'$(MSBuildDnnBinPath)' == ''">..\..\..\bin</MSBuildDnnBinPath>
 </PropertyGroup>
 <Import Project="Install.targets" />
-<Import Project="Source.targets" />
-<Target Name="AfterBuild" DependsOnTargets="MakeInstallPackage;MakeSourcePackage" />
+<Target Name="AfterBuild" DependsOnTargets="MakeInstallPackage" />
 <!-- End snippet -->
 ```
     
@@ -80,8 +79,7 @@ generally, it's `license.htm` and `releaseNotes.htm`) into the similar files fro
 
 ]]></File>
 	<FileTemplateReference TemplateID="DnnInstallPackage" name="Install.targets" />
-	<FileTemplateReference TemplateID="DnnSourcePackage" name="Source.targets" />
-			</Files>
+        </Files>
 		</Project>
 	</Combine>
 </Template>
