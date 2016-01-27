@@ -2,7 +2,7 @@
 
 DNN Platform templates addin for MonoDevelop / Xamarin Studio contains project and file templates
 which could be used to speedup extension development process for popular ASP.NET CMS/CMF DNN Plaform (formely DotNetNuke). 
-In it's current state, there are templates for module and skinobject extensions, install and source packages - 
+In it's current state, there are templates for module and skinobject extensions, install packages - 
 and will be more in the future releases.
 
 # Install

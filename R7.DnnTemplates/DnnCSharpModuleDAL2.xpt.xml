@@ -1724,8 +1724,9 @@ DNN
 			|- ${SolutionName}.dnn (manifest)
             |- license.htm
             |- releaseNotes.htm
-        |- ${SolutionName}_Next (secondary extension project) 
-		|- Packages (packaging project)
+        |- ${SolutionName}_Next (secondary extension project)
+            |- ...
+		|- Packaging (packaging project)
 			|- *.targets
 ```
 ]]></File>
