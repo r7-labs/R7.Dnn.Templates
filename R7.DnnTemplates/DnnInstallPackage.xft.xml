@@ -26,13 +26,14 @@
         <!-- Declare manifest files -->
         <ItemGroup>
             <InstallManifestFiles Include="..\${SolutionName}\*.dnn" />
+            <InstallManifestFiles Include="..\${SolutionName}\*.dnn6" />
             <InstallManifestFiles Include="..\${SolutionName}\license.htm" />
             <InstallManifestFiles Include="..\${SolutionName}\releaseNotes.htm" />
         </ItemGroup>
 
         <!-- Declare SqlDataProvider files -->
         <ItemGroup>
-            <InstallSqlDataProviderFiles Include="..\${SolutionName}\SqlDataProvider\*.sqldataprovider" />
+            <InstallSqlDataProviderFiles Include="..\${SolutionName}\SqlDataProvider\*.SqlDataProvider" />
         </ItemGroup>
 
          <!-- Declare resource files -->
