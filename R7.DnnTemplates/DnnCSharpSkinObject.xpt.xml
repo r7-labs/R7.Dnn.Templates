@@ -33,9 +33,6 @@ NOTE: By default, choose DNN 'DesktopModules' folder for project location and en
 				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 				<Reference type="Package" refto="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
 				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-				<Reference type="Assembly" refto="..\..\..\bin\DotNetNuke.dll" />
-				<Reference type="Assembly" refto="..\..\..\bin\DotNetNuke.Web.dll" />
-				<Reference type="Assembly" refto="..\..\..\bin\Telerik.Web.UI.dll" />
 			</References>
 			<!-- Other refrences (for future use):
 	<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -122,492 +119,7 @@ GO
   </data>
 </root>]]></File>
 				</Directory>
-				<Directory name="lib">
-				    <File name="ControllerBase.cs" AddStandardHeader="True"><![CDATA[using System;
-using System.Data;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.Linq;
-using DotNetNuke.Collections;
-using DotNetNuke.Data;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Services.Search;
-
-namespace ${ProjectName}
-{
-	public abstract class ControllerBase
-	{
-		#region Common methods
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="${ProjectName}.ControllerBase"/> class.
-		/// </summary>
-		protected ControllerBase ()
-		{ 
-
-		}
-
-		/// <summary>
-		/// Adds a new T object into the database
-		/// </summary>
-		/// <param name='info'></param>
-		public void Add<T> (T info) where T: class
-		{
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				repo.Insert (info);
-			}
-		}
-
-		/// <summary>
-		/// Get single object from the database
-		/// </summary>
-		/// <returns>
-		/// The object
-		/// </returns>
-		/// <param name='itemId'>
-		/// Item identifier.
-		/// </param>
-		public T Get<T> (int itemId) where T: class
-		{
-			T info;
-
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				info = repo.GetById (itemId);
-			}
-
-			return info;
-		}
-
-		/// <summary>
-		/// Get single object from the database
-		/// </summary>
-		/// <returns>
-		/// The object
-		/// </returns>
-		/// <param name='itemId'>
-		/// Item identifier.
-		/// </param>
-		/// <param name='scopeId'>
-		/// Scope identifier (like moduleId)
-		/// </param>
-		public T Get<T> (int itemId, int scopeId) where T: class
-		{
-			T info;
-
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				info = repo.GetById (itemId, scopeId);
-			}
-
-			return info;
-		}
-
-		/// <summary>
-		/// Updates an object already stored in the database
-		/// </summary>
-		/// <param name='info'>
-		/// Info.
-		/// </param>
-		public void Update<T> (T info) where T: class
-		{
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				repo.Update (info);
-			}
-		}
-
-		/// <summary>
-		/// Gets all objects for items matching scopeId
-		/// </summary>
-		/// <param name='scopeId'>
-		/// Scope identifier (like moduleId)
-		/// </param>
-		/// <returns></returns>
-		public IEnumerable<T> GetObjects<T> (int scopeId) where T: class
-		{
-			IEnumerable<T> infos = null;
-
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				infos = repo.Get (scopeId);
-
-				// Without [Scope("ModuleID")] it should be like:
-				// infos = repo.Find ("WHERE ModuleID = @0", moduleId);
-			}
-
-			return infos;
-		}
-
-		/// <summary>
-		/// Gets all objects of type T from database
-		/// </summary>
-		/// <returns></returns>
-		public IEnumerable<T> GetObjects<T> () where T: class
-		{
-			IEnumerable<T> infos = null;
-
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				infos = repo.Get ();
-			}
-
-			return infos;
-		}
-
-		/// <summary>
-		/// Gets the all objects of type T from result of a dynamic sql query
-		/// </summary>
-		/// <returns>Enumerable with objects of type T</returns>
-		/// <param name="sqlCondition">SQL command condition.</param>
-		/// <param name="args">SQL command arguments.</param>
-		/// <typeparam name="T">Type of objects.</typeparam>
-		public IEnumerable<T> GetObjects<T> (string sqlConditon, params object[] args) where T: class
-		{
-			IEnumerable<T> infos = null;
-
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				infos = repo.Find (sqlConditon, args);
-			}
-
-			return infos;
-		}
-
-		/// <summary>
-		/// Gets the all objects of type T from result of a dynamic sql query
-		/// </summary>
-		/// <returns>Enumerable with objects of type T</returns>
-		/// <param name="cmdType">Type of an SQL command.</param>
-		/// <param name="sql">SQL command.</param>
-		/// <param name="args">SQL command arguments.</param>
-		/// <typeparam name="T">Type of objects.</typeparam>
-		public IEnumerable<T> GetObjects<T> (System.Data.CommandType cmdType, string sql, params object[] args) where T: class
-		{
-			IEnumerable<T> infos = null;
-
-			using (var ctx = DataContext.Instance ()) {
-				infos = ctx.ExecuteQuery<T>	(cmdType, sql, args);
-			}
-
-			return infos;
-		}
-
-		/// <summary>
-		/// Gets one page of objects of type T
-		/// </summary>
-		/// <param name="scopeId">Scope identifier (like moduleId)</param>
-		/// <param name="index">a page index</param>
-		/// <param name="size">a page size</param>
-		/// <returns>A paged list of T objects</returns>
-		public IPagedList<T> GetPage<T> (int scopeId, int index, int size) where T: class
-		{
-			IPagedList<T> infos;
-
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				infos = repo.GetPage (scopeId, index, size);
-			}
-
-			return infos;
-		}
-
-		/// <summary>
-		/// Gets one page of objects of type T
-		/// </summary>
-		/// <param name="index">a page index</param>
-		/// <param name="size">a page size</param>
-		/// <returns>A paged list of T objects</returns>
-		public IPagedList<T> GetPage<T> (int index, int size) where T: class
-		{
-			IPagedList<T> infos;
-
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				infos = repo.GetPage (index, size);
-			}
-
-			return infos;
-		}
-
-		/// <summary>
-		/// Delete a given item from the database by instance
-		/// </summary>
-		/// <param name='info'></param>
-		public void Delete<T> (T info) where T: class
-		{
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				repo.Delete (info);
-
-			}
-		}
-
-		/// <summary>
-		/// Delete a given item from the database by ID
-		/// </summary>
-		/// <param name='itemId'></param>
-		public void Delete<T> (int itemId) where T: class
-		{
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				repo.Delete (repo.GetById (itemId));
-			}
-		}
-
-		/// <summary>
-		/// Delete some item from the database using SQL condition
-		/// </summary>
-		/// <param name='sqlConditon'>SQL condition</param>
-		/// <param name='args'>Optional arguments</param>
-		public void Delete<T> (string sqlConditon, params object[] args) where T: class
-		{
-			using (var ctx = DataContext.Instance ()) {
-				var repo = ctx.GetRepository<T> ();
-				repo.Delete(sqlConditon, args);
-			}
-		}
-
-		#endregion
-	}
-}
-]]></File>
-<File name="Utils.cs" AddStandardHeader="True"><![CDATA[using System;
-using System.Web;
-using System.IO;
-using System.Text;
-using System.Collections.Generic;
-using System.Web.UI.WebControls;
-using DotNetNuke.UI.Modules;
-using DotNetNuke.Common;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.Entities.Portals;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Entities.Users;
-using DotNetNuke.Services.Localization;
-
-namespace ${ProjectName}
-{
-	/// <summary>
-	/// Message severities
-	/// </summary>
-	public enum MessageSeverity
-	{
-		Info,
-		Warning,
-		Error
-	}
-
-	public class Utils
-	{
-		public static string GetUserDisplayName (int userId)
-		{
-			var portalId = PortalController.GetCurrentPortalSettings ().PortalId;
-			var user = UserController.GetUserById (portalId, userId);
-
-			// TODO: "System" user name needs localization
-			return (user != null) ? user.DisplayName : "System";
-		}
-
-		/// <summary>
-		/// Determines if the specified file is an images.
-		/// </summary>
-		/// <returns></returns>
-		/// <param name="fileName">File name.</param>
-		public static bool IsImage (string fileName)
-		{
-			if (!string.IsNullOrWhiteSpace (fileName))
-				return Globals.glbImageFileTypes.Contains (
-					Path.GetExtension (fileName).Substring (1).ToLowerInvariant ());
-			else
-				return false;
-		}
-
-		/// <summary>
-		/// Formats the URL by DNN rules.
-		/// </summary>
-		/// <returns>Formatted URL.</returns>
-		/// <param name="module">A module reference.</param>
-		/// <param name="link">A link value. May be TabID, FileID=something or in other valid forms.</param>
-		/// <param name="trackClicks">If set to <c>true</c> then track clicks.</param>
-		public static string FormatURL (IModuleControl module, string link, bool trackClicks)
-		{
-			return DotNetNuke.Common.Globals.LinkClick 
-				(link, module.ModuleContext.TabId, module.ModuleContext.ModuleId, trackClicks);
-		}
-
-		/// <summary>
-		/// Formats the Edit control URL by DNN rules (popups supported).
-		/// </summary>
-		/// <returns>Formatted Edit control URL.</returns>
-		/// <param name="module">A module reference.</param>
-		/// <param name="controlKey">Edit control key.</param>
-		/// <param name="args">Additional parameters.</param>
-		public static string EditUrl (IModuleControl module, string controlKey, params string[] args)
-		{
-			var argList = new List<string> (args); 
-			argList.Add ("mid");
-			argList.Add (module.ModuleContext.ModuleId.ToString ());
-
-			return module.ModuleContext.NavigateUrl (module.ModuleContext.TabId, controlKey, false, argList.ToArray ());
-		}
-
-		/// <summary>
-		/// Finds the item index by it's value in ListControl-type list.
-		/// </summary>
-		/// <returns>Item index.</returns>
-		/// <param name="list">List control.</param>
-		/// <param name="value">A value.</param>
-		/// <param name="defaultIndex">Default index (in case item not found).</param>
-		public static int FindIndexByValue (ListControl list, object value, int defaultIndex = 0)
-		{ 
-			if (value != null)
-			{
-				var index = 0;
-				var strvalue = value.ToString ();
-				foreach (ListItem item in list.Items) {
-					if (item.Value == strvalue)
-						return index;
-					index++;
-				}
-			}
-
-			return defaultIndex; 
-		}
-
-		/// <summary>
-		/// Sets the selected index of ListControl-type list.
-		/// </summary>
-		/// <param name="list">List control.</param>
-		/// <param name="value">A value.</param>
-		/// <param name="defaultIndex">Default index (in case item not found).</param>
-		public static void SelectByValue (ListControl list, object value, int defaultIndex = 0)
-		{
-			list.SelectedIndex = FindIndexByValue (list, value, defaultIndex);
-		}
-
-		/// <summary>
-		/// Display a message at the top of the specified module.
-		/// </summary>
-		/// <param name="module">Module reference.</param>
-		/// <param name="severity">Message severity level.</param>
-		/// <param name="message">Message text.</param>
-		public static void Message (IModuleControl module, MessageSeverity severity, string message, bool localize = false)
-		{
-			var label = new Label ();
-			label.CssClass = "dnnFormMessage dnnForm" + severity;
-			label.Text = localize? Localization.GetString(message, module.LocalResourceFile) : message;
-
-			module.Control.Controls.AddAt (0, label);
-		}
-
-
-		public static bool IsNull<T> (Nullable<T> n) where T: struct
-		{
-			// NOTE: n.HasValue is equvalent to n != null
-			if (n.HasValue && !Null.IsNull (n.Value)) 
-				return false;
-
-			return true;
-		}
-
-		public static Nullable<T> ToNullable<T>(T n) where T: struct
-		{
-			return Null.IsNull (n)? null : (Nullable<T>) n;
-		}	
-
-		/// <summary>
-		/// Parses specified string value to a nullable int, 
-		/// also with convertion of Null.NullInteger to null 
-		/// </summary>
-		/// <returns>The nullable int.</returns>
-		/// <param name="value">String value to parse.</param>
-		public static int? ParseToNullableInt(string value)
-		{
-			// TODO: Make another variant of ParseToNullableInt() without using DNN Null object
-
-			int n;
-
-			if (int.TryParse (value, out n))
-				return Null.IsNull (n)? null : (int?) n;
-			else
-				return null;
-		}	
-
-		/*
-		public static Nullable<T> ParseToNullable<T>(string value) where T: struct
-		{
-			T n;
-
-			if (Convert.ChangeType(value, typeof(T))
-				return Null.IsNull (n)? null : (Nullable<T>) n;
-			else
-				return null;
-		}*/
-
-		/// <summary>
-		/// Formats the list of arguments, excluding empty
-		/// </summary>
-		/// <returns>Formatted list.</returns>
-		/// <param name="separator">Separator.</param>
-		/// <param name="args">Arguments.</param>
-		public static string FormatList (string separator, params object [] args)
-		{
-			var sb = new StringBuilder (args.Length);
-
-			var i = 0;
-			foreach (var a in args)
-			{
-				if (!string.IsNullOrWhiteSpace (a.ToString()))
-				{
-					if (i++ > 0)
-						sb.Append (separator);
-
-					sb.Append (a);
-				}
-			}
-
-			return sb.ToString ();
-		}
-
-		public static string FirstCharToUpper(string s)
-		{
-			if (!string.IsNullOrWhiteSpace (s))
-			if (s.Length == 1)
-				return s.ToUpper();
-			else
-				return s.ToUpper()[0].ToString () + s.Substring (1);
-			else
-				return s;
-		}
-
-		public static string FirstCharToUpperInvariant(string s)
-		{
-			if (!string.IsNullOrWhiteSpace (s))
-			if (s.Length == 1)
-				return s.ToUpperInvariant();
-			else
-				return s.ToUpperInvariant()[0].ToString () + s.Substring (1);
-			else
-				return s;
-		}
-
-		public static void SynchronizeModule(IModuleControl module)
-		{
-			ModuleController.SynchronizeModule(module.ModuleContext.ModuleId);
-
-			// NOTE: update module cache (temporary fix before 7.2.0)?
-			// more info: https://github.com/dnnsoftware/Dnn.Platform/pull/21
-			var moduleController = new ModuleController();
-			moduleController.ClearCache (module.ModuleContext.TabId);
-
-		}
-	} // class
-} // namespace
-]]></File>		
+                <Directory name="Properties">
 <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
 				</Directory>
 				<Directory name="components">
@@ -622,6 +134,7 @@ using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Search;
 using DotNetNuke.Services.Search.Entities;
+using DotNetNuke.R7;
 
 namespace ${ProjectName}
 {
@@ -634,6 +147,15 @@ namespace ${ProjectName}
 		{ 
 
 		}
+
+        #region ModuleSearchBase implementaion
+
+        public override IList<SearchDocument> GetModifiedSearchDocuments (ModuleInfo modInfo, DateTime beginDate)
+        {
+            throw new NotImplementedException ();
+        }
+
+        #endregion
 	}
 }
 ]]></File>
@@ -695,7 +217,7 @@ namespace ${ProjectName}
 			{
 				if (createdByUserName == null)
 				{
-					var portalId = PortalController.GetCurrentPortalSettings ().PortalId;
+					var portalId = PortalController.Instance.GetCurrentPortalSettings ().PortalId;
 					var user = UserController.GetUserById (portalId, CreatedByUser);
 					createdByUserName = user.DisplayName;
 				}
@@ -729,6 +251,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DotNetNuke.UI.Skins;
 using DotNetNuke.Services.Localization;
+using DotNetNuke.R7;
 
 namespace ${ProjectName}
 {
@@ -888,7 +411,7 @@ namespace ${ProjectName}
 Due to template engine limitations we need to do some will require some changes 
 to be made manually in a project file.
 
-1. Update reference to `DotNetNuke.dll` and other referenced assemblies to a DNN "bin" folder - if needed.
+1. Install `DotNetNuke.R7` NuGet package to add required libraries and references.
 
 2. Template assumes that project is created in DNN "DesktopModules" folder with a parent solution folder 
    (same name as project's), so `..\..\..\bin` path is used to reference assemblies in DNN `bin` folder.
