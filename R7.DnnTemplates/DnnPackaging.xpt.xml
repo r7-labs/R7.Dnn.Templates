@@ -29,15 +29,13 @@ This template uses MSBuild to create install packages,
 but due to template engine limitations it will require some changes 
 to be made manually in a project file.
 
-1. Install *MSBuild.Community.Tasks* extension from https://github.com/loresoft/msbuildtasks/releases
+1. Open `${ProjectName}.csproj` in text editor or add it to project files.
 
-2. Open `${ProjectName}.csproj` in text editor or add it to project files.
-
-3. Just after last `<Import Project="..." />` directive insert this code:
+2. Just after last `<Import Project="..." />` directive insert this code:
 
 ```
 <!-- Begin snippet -->
-<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+<Import Project="..\packages\MSBuildTasks.1.4.0.128\tools\MSBuild.Community.Tasks.Targets" />
 <PropertyGroup>
 	<PackageExtension>zip</PackageExtension>
 	<PackageName>${SolutionName}</PackageName>
@@ -49,11 +47,11 @@ to be made manually in a project file.
 <!-- End snippet -->
 ```
     
-4. Now switch to "Release" configuration and execute "Build All" command.
+3. Now switch to "Release" configuration and execute "Build All" command.
 
-5. After this in a `${ProjectName}\output` folder you should find a `.zip` archive for install package.
+4. After this in a `${ProjectName}\output` folder you should find a `.zip` archive for install package.
 
-6. Now you can install extension from `${SolutionName}-01.00.00-Install.zip` package  
+5. Now you can install extension from `${SolutionName}-01.00.00-Install.zip` package  
 through *DNN > Host > Extensions*, as usual.
 
 # Extending solution
@@ -78,7 +76,12 @@ generally, it's `license.htm` and `releaseNotes.htm`) into the similar files fro
 
 ]]></File>
 	<FileTemplateReference TemplateID="DnnInstallPackage" name="Install.targets" />
-        </Files>
+                <File name="packages.config"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<packages>
+    <package id="MSBuildTasks" version="1.4.0.128" targetFramework="net40" />
+</packages>]]>
+                </File>
+            </Files>
 		</Project>
 	</Combine>
 </Template>
