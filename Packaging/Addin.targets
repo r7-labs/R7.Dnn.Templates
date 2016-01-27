@@ -6,7 +6,7 @@
     	<ItemGroup>
         	<MPackFiles Include="*.mpack"/>
     	</ItemGroup>
-        <Copy SourceFiles="@(MPackFiles)" DestinationFolder="output" />
+        <Copy SourceFiles="@(MPackFiles)" DestinationFolder="$(OutputPath)" />
         <Delete Files="@(MPackFiles)" />
 	</Target>
 </Project>
