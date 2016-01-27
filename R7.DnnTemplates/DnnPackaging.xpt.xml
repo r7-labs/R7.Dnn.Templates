@@ -72,7 +72,7 @@ to the `Install.targets` for new extension binary file (.dll) too.
 that ${ProjectName} project will build last. 
 
 3. Merge new project's `.SqlDataProvider` files, `.dnn` manifest file (and all files, referenced by manifest -
-generally, it's `License.txt` and `ReleaseNotes.txt`) into the similar files from first extension.
+generally, it's `license.htm` and `releaseNotes.htm`) into the similar files from first extension.
 
 # General tips
 

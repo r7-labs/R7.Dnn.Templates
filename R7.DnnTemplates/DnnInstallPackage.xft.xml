@@ -26,8 +26,8 @@
         <!-- Declare manifest files -->
         <ItemGroup>
             <InstallManifestFiles Include="..\${SolutionName}\*.dnn" />
-            <InstallManifestFiles Include="..\${SolutionName}\License.txt" />
-            <InstallManifestFiles Include="..\${SolutionName}\ReleaseNotes.txt" />
+            <InstallManifestFiles Include="..\${SolutionName}\license.htm" />
+            <InstallManifestFiles Include="..\${SolutionName}\releaseNotes.htm" />
         </ItemGroup>
 
         <!-- Declare SqlDataProvider files -->
@@ -44,7 +44,7 @@
             <InstallResourceFiles Include="..\**\*.resx" />
             <InstallResourceFiles Include="..\**\*.css" />
             <InstallResourceFiles Include="..\**\*.html" />
-            <InstallResourceFiles Include="..\**\*.htm" />
+            <InstallResourceFiles Include="..\**\*.htm" Exclude="..\{SolutionName}\license.htm;..\{SolutionName}\releaseNotes.htm" />
             <InstallResourceFiles Include="..\**\*.xml" />
             <InstallResourceFiles Include="..\**\*.xsl" />
             <InstallResourceFiles Include="..\**\*.xslt" />

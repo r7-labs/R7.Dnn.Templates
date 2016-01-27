@@ -831,8 +831,8 @@ namespace ${ProjectName}
        <url>http://www.${AuthorCompany}.com/${ProjectName}</url>
        <email>${AuthorEmail}</email>
      </owner>
-	 <license src="License.txt" />
-     <releaseNotes src="ReleaseNotes.txt" />
+	 <license src="license.htm" />
+     <releaseNotes src="releaseNotes.htm" />
      <!-- <dependencies>
 		<dependency type="CoreVersion">07.00.00</dependency>
 	</dependencies> -->
@@ -919,16 +919,16 @@ DNN
                 |- 01.00.00.SqlDataProvider
                 |- UnInstall.SqlDataProvider
             |- ${SolutionName}.dnn (manifest)
-            |- License.txt
-            |- ReleaseNotes.txt
+            |- license.htm
+            |- releaseNotes.htm
         |- ${SolutionName}_Next (secondary extension project) 
         |- Packages (packaging project)
             |- *.targets
 ```
 ]]></File>
-   <File name="License.txt"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
+   <File name="license.htm"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
-   <File name="ReleaseNotes.txt"><![CDATA[<!-- 
+   <File name="releaseNotes.htm"><![CDATA[<!-- 
 <h3>Version 1.0.1</h3>
 <p>General version notes.</p>
 <ul>
