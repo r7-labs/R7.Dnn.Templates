@@ -36,4 +36,7 @@
   </ItemGroup>
   <Import Project="Addin.targets" />
   <Target Name="AfterBuild" DependsOnTargets="MakeAddinPackage" />
+  <ItemGroup>
+    <Compile Include="Dummy.cs" />
+  </ItemGroup>
 </Project>

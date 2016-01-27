@@ -68,4 +68,7 @@
   <ItemGroup>
     <Folder Include="samples\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dummy.cs" />
+  </ItemGroup>
 </Project>
