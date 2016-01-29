@@ -40,7 +40,9 @@ to be made manually in a project file.
 	<PackageExtension>zip</PackageExtension>
 	<PackageName>${SolutionName}</PackageName>
 	<PackageOutputPath>output</PackageOutputPath>
-	<MSBuildDnnBinPath Condition="'$(MSBuildDnnBinPath)' == ''">..\..\..\bin</MSBuildDnnBinPath>
+    <DnnLocalDeployPath Condition="'$(OS)' == 'Unix'">/home/user/mnt/dnn</DnnLocalDeployPath>
+    <DnnLocalDeployPath Condition="'$(OS)' != 'Unix'">C:\Dotnetnuke</DnnLocalDeployPath>
+    <MainProjectOutputPath>..\R7.University\bin\$(Configuration)</MainProjectOutputPath>
 </PropertyGroup>
 <Import Project="Install.targets" />
 <Target Name="AfterBuild" DependsOnTargets="MakeInstallPackage" />
@@ -76,6 +78,7 @@ generally, it's `license.htm` and `releaseNotes.htm`) into the similar files fro
 
 ]]></File>
 	<FileTemplateReference TemplateID="DnnInstallPackage" name="Install.targets" />
+    <FileTemplateReference TemplateID="DnnLocalDeploy" name="LocalDeploy.targets" />
                 <File name="packages.config"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <packages>
     <package id="MSBuildTasks" version="1.4.0.128" targetFramework="net40" />

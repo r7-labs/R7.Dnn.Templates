@@ -13,6 +13,7 @@
         <Import file="DnnCSharpSkinObject.xpt.xml" />
         <Import file="DnnPetaPocoClass.xft.xml" />
         <Import file="DnnInstallPackage.xft.xml" />
+        <Import file="DnnLocalDeploy.xft.xml" />
         <Import file="DnnPackaging.xpt.xml" />
         <Import file="DnnSqlDataProviderSyntaxMode.xml" />
         <!-- <Import file="/icons/dnn-module-32.png" /> -->
@@ -20,6 +21,7 @@
     <Extension path="/MonoDevelop/Ide/FileTemplates">
         <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
         <FileTemplate id="DnnInstallPackage" file="DnnInstallPackage.xft.xml" />
+        <FileTemplate id="DnnLocalDeploy" file="DnnLocalDeploy.xft.xml" />
     </Extension>
     <Extension path="/MonoDevelop/Ide/ProjectTemplates">
         <ProjectTemplate id="DnnCSharpModuleDAL2" file="DnnCSharpModuleDAL2.xpt.xml" />

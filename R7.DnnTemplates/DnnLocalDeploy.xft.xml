@@ -1,0 +1,61 @@
+﻿<?xml version="1.0"?>
+<Template Originator="Roman M. Yagodin" Created="2016/01/29" LastModified="2016/01/29">
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>DNN local deploy script</_Name>
+		<_Category>DNN Platform</_Category>
+		<Icon>md-xml-file-icon</Icon>
+		<LanguageName>*</LanguageName>
+		<_Description>Creates a new MSBuild script to deploy DNN extension locally.</_Description>
+	</TemplateConfiguration>
+	<!-- Template Content -->
+	<TemplateFiles>
+		<File name="${Name}.targets" AddStandardHeader="False"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Build">
+    <Target Name="DoLocalDeploy" Condition=" '$(Configuration)' == 'Debug' ">
+        <!-- Declare binaries -->
+        <ItemGroup>
+            <LocalDeployBinaryFiles Include="$(MainProjectOutputPath)\${SolutionName}*.dll" />
+            <LocalDeployBinaryFiles Include="$(MainProjectOutputPath)\${SolutionName}*.pdb" />
+        </ItemGroup>
+        <!-- Declare resource files -->
+        <ItemGroup>
+            <LocalDeployResourceFiles Include="..\**\*.ascx" />
+            <LocalDeployResourceFiles Include="..\**\*.aspx" />
+            <LocalDeployResourceFiles Include="..\**\*.asmx" />
+            <LocalDeployResourceFiles Include="..\**\*.ashx" />
+            <LocalDeployResourceFiles Include="..\**\*.resx" />
+            <LocalDeployResourceFiles Include="..\**\*.css" />
+            <LocalDeployResourceFiles Include="..\**\*.html" />
+            <LocalDeployResourceFiles Include="..\**\*.htm" Exclude="..\${SolutionName}\license.htm;..\${SolutionName}\releaseNotes.htm" />
+            <LocalDeployResourceFiles Include="..\**\*.xml" />
+            <LocalDeployResourceFiles Include="..\**\*.xsl" />
+            <LocalDeployResourceFiles Include="..\**\*.xslt" />
+            <LocalDeployResourceFiles Include="..\**\*.resx" />
+            <LocalDeployResourceFiles Include="..\**\*.js" />
+            <LocalDeployResourceFiles Include="..\**\*.jpg" />
+            <LocalDeployResourceFiles Include="..\**\*.png" />
+            <LocalDeployResourceFiles Include="..\**\*.gif" />
+        </ItemGroup>
+        <!-- Declare excluded files -->
+        <ItemGroup>
+            <LocalDeployExcludeFiles Include="..\packages\**\*" />
+            <LocalDeployExcludeFiles Include="..\${ProjectName}\**\*" />
+            <LocalDeployExcludeFiles Include="..\.git\**\*" />
+            <LocalDeployExcludeFiles Include="..\.svn\**\*" />
+            <LocalDeployExcludeFiles Include="..\*\bin\**\*" />
+            <LocalDeployExcludeFiles Include="..\*\obj\**\*" />
+            <LocalDeployExcludeFiles Include="..\*\_ReSharper*\**\*" />
+        </ItemGroup>
+        <!-- Apply excluded files filters -->
+        <ItemGroup>
+            <LocalDeployResourceFilteredFiles Include="@(LocalDeployResourceFiles)" Exclude="@(LocalDeployExcludeFiles)" />
+        </ItemGroup>
+        <!-- Copy binaries -->
+        <Copy SourceFiles="@(LocalDeployBinaryFiles)" DestinationFolder="$(DnnLocalDeployPath)\bin" SkipUnchangedFiles="true" />
+        <!-- Copy filtered Resource files -->
+        <Copy SourceFiles="@(LocalDeployResourceFilteredFiles)" DestinationFolder="$(DnnLocalDeployPath)\DesktopModules\R7.University\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    </Target>
+</Project>]]></File>
+	</TemplateFiles>
+</Template>
