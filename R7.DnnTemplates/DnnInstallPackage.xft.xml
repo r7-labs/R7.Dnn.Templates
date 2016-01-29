@@ -14,10 +14,14 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="MakeInstallPackage">
     <Target Name="MakeInstallPackage" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
         <!-- Read package version from the manifest -->
-        <XmlRead Prefix="n" Namespace="http://schemas.microsoft.com/developer/msbuild/2003" XPath="/dotnetnuke/packages/package[1]/@version" XmlFileName="..\${SolutionName}\${SolutionName}.dnn">
+        <XmlRead Condition=" '$(OS)' != 'Unix' " Prefix="n" Namespace="http://schemas.microsoft.com/developer/msbuild/2003" XPath="/dotnetnuke/packages/package[1]/@version" XmlFileName="..\${SolutionName}\${SolutionName}.dnn">
             <Output TaskParameter="Value" PropertyName="Version" />
         </XmlRead>
-        
+        <Exec Condition=" '$(OS)' == 'Unix' " Command="xmllint --xpath 'string(/dotnetnuke/packages/package[1]/@version)' ..\${SolutionName}\${SolutionName}.dnn &gt; __version" />
+        <ReadLinesFromFile Condition=" '$(OS)' == 'Unix' " File="__version">
+            <Output TaskParameter="Lines" PropertyName="Version" />
+        </ReadLinesFromFile>
+        <Delete Condition=" '$(OS)' == 'Unix' " Files="__version" />
         <!-- Declare binaries -->
         <ItemGroup> 
             <InstallBinaryFiles Include="$(MainProjectOutputPath)\${SolutionName}*.dll" />
@@ -90,7 +94,8 @@
         </ItemGroup>
 
         <!-- Create Resources.zip -->
-        <Zip Files="@(InstallResourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Resources" ZipFileName="Resources.$(PackageExtension)" />
+        <Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallResourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Resources" ZipFileName="Resources.$(PackageExtension)" />
+        <Exec Condition=" '$(OS)' == 'Unix' " Command="zip -r -6 -UN=UTF8 &quot;$(MSBuildProjectDirectory)\Resources.$(PackageExtension)&quot; ." WorkingDirectory="$(MSBuildProjectDirectory)/tmp/Resources" />
 
         <!-- Move Resources.zip to tmp\Package dir -->
         <Copy SourceFiles="$(MSBuildProjectDirectory)\Resources.$(PackageExtension)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package/" />
@@ -102,8 +107,9 @@
         </ItemGroup>
 
         <!-- Create the install package -->
-        <Zip Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(Version)-Install.$(PackageExtension)" />
-        
+        <Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(Version)-Install.$(PackageExtension)" />
+        <Exec Condition=" '$(OS)' == 'Unix' " Command="zip -r -6 -UN=UTF8 &quot;$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)&quot; ." WorkingDirectory="$(MSBuildProjectDirectory)/tmp/Package" />
+
         <!-- Copy the install package to the output directory -->
         <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)" DestinationFolder="$(PackageOutputPath)/" />
         <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)" />
