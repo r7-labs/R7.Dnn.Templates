@@ -53,8 +53,17 @@ to be made manually in a project file.
 
 4. After this in a `${ProjectName}\output` folder you should find a `.zip` archive for install package.
 
-5. Now you can install extension from `${SolutionName}-00.01.00-Install.zip` package  
+5. Install required *DotNetNuke.R7* library package.
+
+6. Install your extension from `${SolutionName}-00.01.00-Install.zip` package  
 through *DNN > Host > Extensions*, as usual.
+
+# Developing
+
+1. Switch to "Debug" configuration and execute "Build All" command. This will invoke local deploy script, 
+which will copy new binaries and required source files (such as `.ascx`, '.js', etc.) to DNN install location.
+
+2. Update your site in a browser to trigger recompilation.
 
 # Extending solution
 
