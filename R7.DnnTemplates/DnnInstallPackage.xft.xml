@@ -93,7 +93,8 @@
         <Zip Files="@(InstallResourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Resources" ZipFileName="Resources.$(PackageExtension)" />
 
         <!-- Move Resources.zip to tmp\Package dir -->
-        <Move SourceFiles="$(MSBuildProjectDirectory)\Resources.$(PackageExtension)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package/" />
+        <Copy SourceFiles="$(MSBuildProjectDirectory)\Resources.$(PackageExtension)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package/" />
+        <Delete Files="$(MSBuildProjectDirectory)\Resources.$(PackageExtension)" />
 
         <!-- Declare install package files -->
         <ItemGroup>
@@ -104,8 +105,9 @@
         <Zip Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(Version)-Install.$(PackageExtension)" />
         
         <!-- Copy the install package to the output directory -->
-        <Move SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)" DestinationFolder="$(PackageOutputPath)/" />
-        
+        <Copy SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)" DestinationFolder="$(PackageOutputPath)/" />
+        <Delete Files="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)" />
+
         <!-- Cleanup -->
         <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp\Resources" />
         <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp\Package" />
