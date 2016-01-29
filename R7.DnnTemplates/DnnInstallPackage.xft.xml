@@ -20,7 +20,7 @@
         
         <!-- Declare binaries -->
         <ItemGroup> 
-            <InstallBinaryFiles Include="$(MSBuildDnnBinPath)\${SolutionName}*.dll" />
+            <InstallBinaryFiles Include="$(MainProjectOutputPath)\${SolutionName}*.dll" />
         </ItemGroup>
 
         <!-- Declare manifest files -->
@@ -45,7 +45,7 @@
             <InstallResourceFiles Include="..\**\*.resx" />
             <InstallResourceFiles Include="..\**\*.css" />
             <InstallResourceFiles Include="..\**\*.html" />
-            <InstallResourceFiles Include="..\**\*.htm" Exclude="..\{SolutionName}\license.htm;..\{SolutionName}\releaseNotes.htm" />
+            <InstallResourceFiles Include="..\**\*.htm" Exclude="..\${SolutionName}\license.htm;..\${SolutionName}\releaseNotes.htm" />
             <InstallResourceFiles Include="..\**\*.xml" />
             <InstallResourceFiles Include="..\**\*.xsl" />
             <InstallResourceFiles Include="..\**\*.xslt" />
@@ -72,43 +72,43 @@
         </ItemGroup>
        
         <!-- Copy binaries -->
-        <Copy SourceFiles="@(InstallBinaryFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package\bin" />
+        <Copy SourceFiles="@(InstallBinaryFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package\bin" />
         
         <!-- Copy manifest files -->
-        <Copy SourceFiles="@(InstallManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package" />
+        <Copy SourceFiles="@(InstallManifestFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package" />
         
         <!-- Copy SqlDataProvider files -->
-        <Copy SourceFiles="@(InstallSqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package\SqlDataProvider" />
+        <Copy SourceFiles="@(InstallSqlDataProviderFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package\SqlDataProvider" />
         
-        <!-- Copy filtered Resource files to tmp_Resources dir -->
-        <Copy SourceFiles="@(InstallResourceFilteredFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Resources\%(RecursiveDir)" />
+        <!-- Copy filtered Resource files to tmp\Resources dir -->
+        <Copy SourceFiles="@(InstallResourceFilteredFiles)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Resources\%(RecursiveDir)" />
        
         <!-- Declare files to zip -->
         <ItemGroup>
-            <InstallResourceZipFiles Include="$(MSBuildProjectDirectory)\tmp_Resources\**\*.*" />
+            <InstallResourceZipFiles Include="$(MSBuildProjectDirectory)\tmp\Resources\**\*.*" />
         </ItemGroup>
 
         <!-- Create Resources.zip -->
-        <Zip Files="@(InstallResourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp_Resources" ZipFileName="Resources.$(PackageExtension)" />
+        <Zip Files="@(InstallResourceZipFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Resources" ZipFileName="Resources.$(PackageExtension)" />
 
-        <!-- Move Resources.zip to tmp_Package dir -->
-        <Move SourceFiles="$(MSBuildProjectDirectory)\Resources.$(PackageExtension)" DestinationFolder="$(MSBuildProjectDirectory)\tmp_Package/" />
+        <!-- Move Resources.zip to tmp\Package dir -->
+        <Move SourceFiles="$(MSBuildProjectDirectory)\Resources.$(PackageExtension)" DestinationFolder="$(MSBuildProjectDirectory)\tmp\Package/" />
 
         <!-- Declare install package files -->
         <ItemGroup>
-            <InstallPackageFiles Include="$(MSBuildProjectDirectory)\tmp_Package\**\*.*" />
+            <InstallPackageFiles Include="$(MSBuildProjectDirectory)\tmp\Package\**\*.*" />
         </ItemGroup>
 
         <!-- Create the install package -->
-        <Zip Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp_Package" ZipFileName="$(PackageName)-$(Version)-Install.$(PackageExtension)" />
+        <Zip Files="@(InstallPackageFiles)" WorkingDirectory="$(MSBuildProjectDirectory)\tmp\Package" ZipFileName="$(PackageName)-$(Version)-Install.$(PackageExtension)" />
         
         <!-- Copy the install package to the output directory -->
         <Move SourceFiles="$(MSBuildProjectDirectory)\$(PackageName)-$(Version)-Install.$(PackageExtension)" DestinationFolder="$(PackageOutputPath)/" />
         
         <!-- Cleanup -->
-        <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp_Resources" />
-        <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp_Package" />
-
+        <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp\Resources" />
+        <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp\Package" />
+        <RemoveDir Directories="$(MSBuildProjectDirectory)\tmp" />
     </Target>
 </Project>
 ]]></File>
