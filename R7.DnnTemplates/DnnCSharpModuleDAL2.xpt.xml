@@ -59,7 +59,7 @@ NOTE: By default, choose DNN 'DesktopModules' folder for project location and en
                 <File name="admin.css"><![CDATA[/* Place CSS for edit / settings controls here */
 ]]></File>
                 <Directory name="SqlDataProvider">
-                <File name="01.00.00.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
+                <File name="00.01.00.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
 -- replace {databaseOwner} and {objectQualifier} with real values. 
 -- Defaults is "dbo." for database owner and "" for object qualifier 
 
@@ -979,7 +979,7 @@ namespace ${ProjectName}
 }]]></File>
   				<File name="${ProjectName}.dnn"><![CDATA[<dotnetnuke type="Package" version="5.0">
  <packages>
-   <package name="${ProjectName}" type="Module" version="01.00.00">
+   <package name="${ProjectName}" type="Module" version="00.01.00">
      <friendlyName>${ProjectName}</friendlyName>
      <description>This is a simple module to display some records from database table.</description>
      <owner>
@@ -1056,12 +1056,12 @@ namespace ${ProjectName}
          <scripts>
            <basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
            <script type="Install">
-             <name>SqlDataProvider\01.00.00.SqlDataProvider</name>
-             <version>01.00.00</version>
+             <name>SqlDataProvider\00.01.00.SqlDataProvider</name>
+             <version>00.01.00</version>
            </script>
            <script type="UnInstall">
              <name>SqlDataProvider\Uninstall.SqlDataProvider</name>
-             <version>01.00.00</version>
+             <version>00.01.00</version>
            </script>
          </scripts>
        </component>
@@ -1123,7 +1123,7 @@ DNN
 	|- ${SolutionName} (solution)
 		|- ${SolutionName} (primary extension project)
             |- SqlDataProvider (folder for DB scripts)
-                |- 01.00.00.SqlDataProvider
+                |- 00.01.00.SqlDataProvider
                 |- UnInstall.SqlDataProvider
 			|- ${SolutionName}.dnn (manifest)
             |- license.htm
@@ -1137,7 +1137,7 @@ DNN
    <File name="license.htm"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
    <File name="releaseNotes.htm"><![CDATA[<!--
-<h3>Version 1.0.1</h3>
+<h3>Version 0.2.0</h3>
 <p>General version notes.</p>
 <ul>
     <li>Added new feature.</li>
@@ -1145,7 +1145,7 @@ DNN
 </ul>
 -->
 
-<h3>Version 1.0.0</h3>
+<h3>Version 0.1.0</h3>
 <p>This is the initial release.</p>
 ]]></File>
 			</Files>

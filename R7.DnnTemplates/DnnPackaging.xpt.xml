@@ -53,7 +53,7 @@ to be made manually in a project file.
 
 4. After this in a `${ProjectName}\output` folder you should find a `.zip` archive for install package.
 
-5. Now you can install extension from `${SolutionName}-01.00.00-Install.zip` package  
+5. Now you can install extension from `${SolutionName}-00.01.00-Install.zip` package  
 through *DNN > Host > Extensions*, as usual.
 
 # Extending solution
