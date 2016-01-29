@@ -58,12 +58,13 @@
 
         <!-- Declare excluded files -->
         <ItemGroup>
-            <InstallExcludeFiles Include="..\${ProjectName}\**" />
-            <InstallExcludeFiles Include="..\**\bin\**" />
-            <InstallExcludeFiles Include="..\**\obj\**" />
-            <InstallExcludeFiles Include="..\**\.git\**" />
-            <InstallExcludeFiles Include="..\**\.svn\**" />
-            <InstallExcludeFiles Include="..\**\_ReSharper*\**" />
+            <InstallExcludeFiles Include="..\packages\**\*" />
+            <InstallExcludeFiles Include="..\${ProjectName}\**\*" />
+            <InstallExcludeFiles Include="..\.git\**\*" />
+            <InstallExcludeFiles Include="..\.svn\**\*" />
+            <InstallExcludeFiles Include="..\*\bin\**\*" />
+            <InstallExcludeFiles Include="..\*\obj\**\*" />
+            <InstallExcludeFiles Include="..\*\_ReSharper*\**\*" />
         </ItemGroup>
 
         <!-- Apply excluded files filters -->
