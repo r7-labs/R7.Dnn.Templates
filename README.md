@@ -2,17 +2,18 @@
 
 DNN Platform templates addin for MonoDevelop / Xamarin Studio contains project and file templates
 which could be used to speedup extension development process for popular ASP.NET CMS/CMF DNN Plaform (formely DotNetNuke). 
-In it's current state, there are templates for module and skinobject extensions, install packaging scripts - 
-and will be more in the future releases.
+In it's current state, there are templates for module and skinobject extensions, install packaging and local deploy 
+MSBuild scripts - and there will be more in the future releases!
 
-Addin also enables syntax highlightning of DNN manifest files (`.dnn`, `.dnn5` and `.dnn6`), NuGet specifications (`.nuspec`)
+Addin also enables syntax highlighting for DNN manifest files (`.dnn`, `.dnn5` and `.dnn6`), NuGet specifications (`.nuspec`)
 and SQL dataprovider scripts (`.sqldataprovider`, `.SqlDataProvider`).
 
-# Install from MonoDevelop addin repository (Beta channel)
+# Install from MonoDevelop addin repository
 
 1. Open MonoDevelop / Xamarin Studio and go to "Tools &gt; Add-in manager".
-2. Switch to "Gallery" tab, open "Web Development", select "DNN Platform Templates". 
-3. Press "Install" button. If disabled, select addin and press "Enable".
+2. Switch to "Gallery" tab, open "Web Development", select "DNN Platform Templates" (make sure that beta channel is enabled).
+3. Make sure that beta channel is enabled.
+4. Press "Install" button. If disabled, select addin and press "Enable".
 
 ![Install using addin manager](https://raw.githubusercontent.com/roman-yagodin/R7.DnnTemplates/master/images/install-addin-manager.png)
 
@@ -26,7 +27,7 @@ and SQL dataprovider scripts (`.sqldataprovider`, `.SqlDataProvider`).
 # Create new solution
 
 1. Go to "File &gt; New &gt; Solution", then "C# &gt; DNN Platform" and create new project using "C# compiled module with DAL 2".
-2. Follow instructions in the "SETUP.md" to setup developing environment.
+2. Follow instructions in the `SETUP.md` to setup development environment.
 
 ![New solution screen](https://raw.githubusercontent.com/roman-yagodin/R7.DnnTemplates/master/images/new-solution.png)
 
@@ -44,7 +45,7 @@ There are some native VS templates for DNN modules:
 Try them and [drop me a line](https://github.com/roman-yagodin/R7.DnnTemplates/issues) about which features you'd 
 want to see in R7.DnnTemplates!
 
-# TODO (incomplete, should be moved to issues?)
+# TODO
 
 - [ ] Add SchedulerJob project template
 - [ ] Add ViewState / Session properties for View.ascx.cs
