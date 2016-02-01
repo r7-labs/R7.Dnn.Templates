@@ -54,7 +54,7 @@
         <!-- Copy binaries -->
         <Copy SourceFiles="@(LocalDeployBinaryFiles)" DestinationFolder="$(DnnLocalDeployPath)\bin" SkipUnchangedFiles="true" />
         <!-- Copy filtered Resource files -->
-        <Copy SourceFiles="@(LocalDeployResourceFilteredFiles)" DestinationFolder="$(DnnLocalDeployPath)\DesktopModules\R7.University\%(RecursiveDir)" SkipUnchangedFiles="true" />
+        <Copy SourceFiles="@(LocalDeployResourceFilteredFiles)" DestinationFolder="$(DnnLocalDeployPath)\DesktopModules\${SolutionName}\%(RecursiveDir)" SkipUnchangedFiles="true" />
     </Target>
 </Project>]]></File>
 	</TemplateFiles>

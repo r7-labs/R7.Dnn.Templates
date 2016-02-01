@@ -1,0 +1,11 @@
+﻿{{0.4.0, 2016-02-01}}
+* First release on addins.monodevelop.com
+* Enable syntax highlighting for .nuspec files
+* Add icons for project templates and addin
+* Module and skinobject templates use DotNetNuke.R7 library (via NuGet)
+* Packaging project use MSBuild.Community.Tasks (via NuGet)
+* Linux/Mono support for install package build script template (require xmllint and zip utilities)
+* Linux/Mono support for addin project
+* Add local deploy build script template
+* Remove source package build script template
+* Various fixes and improvements
