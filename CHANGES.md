@@ -1,4 +1,6 @@
-# Changelog
+# Changelog (obsolete)
+
+See releaseNotes.txt for latest changes.
 
 ## Version 0.3.3
 

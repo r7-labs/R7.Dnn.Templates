@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>R7.DnnTemplates</RootNamespace>
     <AssemblyName>R7.DnnTemplates</AssemblyName>
-    <ReleaseVersion>0.3.3</ReleaseVersion>
+    <ReleaseVersion>0.4.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -67,6 +67,7 @@
     <None Include="icons\dnn-templates.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="releaseNotes.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="samples\" />
