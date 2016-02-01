@@ -71,4 +71,9 @@
   <ItemGroup>
     <Compile Include="Dummy.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="icons\project-dnn-overlay-32.png">
+      <LogicalName>project-dnn-overlay-32.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

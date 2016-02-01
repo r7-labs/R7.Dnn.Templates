@@ -9,6 +9,7 @@
         <Addin id="SourceEditor2" version="5.2" />
     </Dependencies>
     <Runtime>
+        <Import assembly="R7.DnnTemplates.dll" />
         <Import file="DnnCSharpModuleDAL2.xpt.xml" />
         <Import file="DnnCSharpSkinObject.xpt.xml" />
         <Import file="DnnPetaPocoClass.xft.xml" />
@@ -16,7 +17,6 @@
         <Import file="DnnLocalDeploy.xft.xml" />
         <Import file="DnnPackaging.xpt.xml" />
         <Import file="DnnSqlDataProviderSyntaxMode.xml" />
-        <!-- <Import file="/icons/dnn-module-32.png" /> -->
     </Runtime>
     <Extension path="/MonoDevelop/Ide/FileTemplates">
         <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />

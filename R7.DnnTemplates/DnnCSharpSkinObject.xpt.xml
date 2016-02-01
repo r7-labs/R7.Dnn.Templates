@@ -4,7 +4,7 @@
 	<TemplateConfiguration>
 		<_Name>C# compiled skin object</_Name>
 		<_Category>C#/DNN Platform</_Category>
-		<Icon>md-project-web</Icon>
+		<Icon>md-project-web|res:project-dnn-overlay-32.png</Icon>
 		<LanguageName>C#</LanguageName>
         <ProjectType>AspNetApp</ProjectType>
 		<_Description>Creates a new DNN Platform C# compiled skin object project.
