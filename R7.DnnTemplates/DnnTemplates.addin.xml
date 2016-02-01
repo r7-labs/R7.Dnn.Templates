@@ -1,7 +1,16 @@
-<Addin id="R7.DnnTemplates" namespace="MonoDevelop" name="DNN Platform Templates" 
-    author="Roman M. Yagodin" copyright="GNU GPL v3" url="https://github.com/roman-yagodin/R7.DnnTemplates" 
-    description="Templates for module, skin object and packaging projects for DNN Platform. Also provides syntax highlighting for DNN manifest files and SqlDataProvider scripts." 
-    category="Web Development" version="0.3.3">
+<Addin id="R7.DnnTemplates" version="0.3.3" namespace="MonoDevelop">
+    <Header>
+        <Name>DNN Platform Templates &amp; Support</Name>
+        <Name locale="ru-RU">Шаблоны и поддержка для DNN Platform</Name>
+        <Category>Web Development</Category>
+        <Description>Templates for module, skin object and packaging projects for DNN Platform. Also provides syntax highlighting for DNN manifest files and SqlDataProvider scripts.</Description>
+        <Author>Roman M. Yagodin</Author>
+        <Copyright>GNU GPL v3 or any later version.</Copyright>
+        <Url>https://github.com/roman-yagodin/R7.DnnTemplates</Url>
+        <Icon32>icons/dnn-templates.png</Icon32>
+        <UpdateRank>Minor</UpdateRank>
+        <!--<ReleaseNotesFile>releaseNotes.txt</ReleaseNotesFile>-->
+    </Header>
     <Dependencies>
         <Addin id="Core" version="5.2" />
         <Addin id="Ide" version="5.2" />
