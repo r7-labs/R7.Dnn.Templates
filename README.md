@@ -12,8 +12,7 @@ and SQL dataprovider scripts (`.sqldataprovider`, `.SqlDataProvider`).
 
 1. Open MonoDevelop / Xamarin Studio and go to "Tools &gt; Add-in manager".
 2. Switch to "Gallery" tab, open "Web Development", select "DNN Platform Templates" (make sure that beta channel is enabled).
-3. Make sure that beta channel is enabled.
-4. Press "Install" button. If disabled, select addin and press "Enable".
+3. Press "Install" button. If disabled, select addin and press "Enable".
 
 ![Install using addin manager](https://raw.githubusercontent.com/roman-yagodin/R7.DnnTemplates/master/images/install-addin-manager.png)
 
