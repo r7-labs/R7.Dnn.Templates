@@ -32,8 +32,8 @@ This template uses MSBuild to create install packages,
 but due to template engine limitations it will require some changes 
 to be made manually in a project file.
 
-1. Open `${ProjectName}.csproj` in text editor or add it to project files. Just after last `<Import Project="..." />` 
-directive insert this code:
+1. Open `${ProjectName}.csproj` in text editor or open it from IDE (*Display Options > Show All Files*). 
+Just after last `<Import Project="..." />` directive insert this code:
 
 ```
 <!-- Begin snippet -->
@@ -44,7 +44,7 @@ directive insert this code:
 	<PackageOutputPath>output</PackageOutputPath>
     <DnnLocalDeployPath Condition="'$(OS)' != 'Unix'">C:\Dotnetnuke</DnnLocalDeployPath>
     <DnnLocalDeployPath Condition="'$(OS)' == 'Unix'">/home/user/mnt/dnn</DnnLocalDeployPath>
-    <MainProjectOutputPath>..\${SolutionName}\bin\$(Configuration)</MainProjectOutputPath>
+    <MainProjectOutputPath>..\${SolutionName}\bin</MainProjectOutputPath>
 </PropertyGroup>
 <Import Project="Install.targets" />
 <Import Project="LocalDeploy.targets" />
@@ -53,11 +53,14 @@ directive insert this code:
 ```
 2. Make sure `DnnLocalDeployPath` property for your OS contains valid DNN install path.
 
-3. Switch to "Release" configuration and execute "Build All" command. 
-After this in a `${ProjectName}\output` folder you should find a `.zip` archive for install package.
+3. Make sure that `MainProjectOutputPath` property targets valid `${SolutionName}` main project output path -
+it would be `bin\$(Configuration)`, not just `bin`!
 
-4. Switch to "Debug" configuration and execute "Build All" command. This will invoke local deploy script, 
-which will copy new binaries and required source files (such as `.ascx`, '.js', etc.) to DNN install location.
+4. Switch to "Release" configuration and execute "Build All" command. 
+After this in a `${ProjectName}\output` folder you should find a `.zip` archive with install package.
+
+5. Switch to "Debug" configuration and execute "Build All" command. This will invoke local deploy script, 
+which will copy new binaries and required resource files (such as `.ascx`, '.js', etc.) to DNN install location.
 
 # Initial setup of DNN installation
 
@@ -82,10 +85,13 @@ If you add new DNN extension to your solution using *R7.DnnTemplates*, you proba
 
 1. Name your project file with *${SolutionName}_* prefix like *${SolutionName}_MyNewExtension*. 
 
-2. Ensure that ${ProjectName} project will build last by moving ${ProjectName} Project/EndProject entry 
+2. Set new project output path the same as `${SolutionName}` main project output path. 
+Generally it will be `..\${SolutionName}\bin` or `..\${SolutionName}\bin\$(Configuration)`.
+
+3. Ensure that ${ProjectName} project will build last by moving ${ProjectName} Project/EndProject entry 
 in the `${SolutionName}.sln` file to the bottom.
 
-3. Merge new project's `.SqlDataProvider` files, `.dnn` manifest file (plus all files, referenced in the manifest -
+4. Merge new project's `.SqlDataProvider` files, `.dnn` manifest file (plus all files, referenced in the manifest -
 generally, it's `license.htm` and `releaseNotes.htm`) into the similar files from `${SolutionName}` main extension project.
 
 # General tips
