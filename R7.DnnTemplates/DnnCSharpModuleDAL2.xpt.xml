@@ -34,6 +34,9 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 				<Reference type="Package" refto="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
 				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 			</References>
+            <Packages>
+                <Package id="DotNetNuke.R7" version="0.3.1" />
+            </Packages>
 			<!-- Other refrences (for future use):
 	<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 	<Reference type="Package" refto="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
@@ -1094,24 +1097,14 @@ namespace ${ProjectName}
 <File name="SETUP.md"><![CDATA[# Template usage
 
 Due to template engine limitations we need to do some will require some changes 
-to be made manually in a project file.
-
-1. Install `DotNetNuke.R7` NuGet package to add required libraries and references.
-
-2. Template assumes that project is created in DNN "DesktopModules" folder with a parent solution folder 
-   (same name as project's), so `..\..\..\bin` path is used to reference assemblies in DNN `bin` folder.
-
-3. Set project build output path to DNN `bin` folder in the project options.
-   It can be `..\..\..\bin` for the case, described above.
-   
-4. Build solution to check it out. Then you done with this, `${ProjectName}.dll` is located in a DNN `bin` folder.
-  
-5. You may want to disable automatic updates of CodeBehind partial classes in project options
+to be made manually.
+     
+1. You may want to disable automatic updates of CodeBehind partial classes in project options
    under "ASP.NET" page. Automatic updates is not working correctly with third-party controls 
    in the MonoDevelop / Xamarin Studio anyway. This is true at least for version 4.2.3.
 
-6. Add to your solution new project of type "DNN packaging project" and follow instructions 
-   in it's `SETUP.md` to setup packaging.
+2. Add to your solution new project of type "DNN packaging project" and follow instructions 
+   in it's `SETUP.md` to setup packaging and local deploy.
 
 # Solution stucture for development
 

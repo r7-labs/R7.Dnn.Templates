@@ -22,6 +22,9 @@
 			<References>
 				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 			</References>
+            <Packages>
+                <Package id="MSBuildTasks" version="1.4.0.128" />
+            </Packages>
 			<Files>
 <File name="SETUP.md"><![CDATA[# Initial setup of packaging project
 
@@ -29,9 +32,8 @@ This template uses MSBuild to create install packages,
 but due to template engine limitations it will require some changes 
 to be made manually in a project file.
 
-1. Open `${ProjectName}.csproj` in text editor or add it to project files.
-
-2. Just after last `<Import Project="..." />` directive insert this code:
+1. Open `${ProjectName}.csproj` in text editor or add it to project files. Just after last `<Import Project="..." />` 
+directive insert this code:
 
 ```
 <!-- Begin snippet -->
@@ -40,59 +42,59 @@ to be made manually in a project file.
 	<PackageExtension>zip</PackageExtension>
 	<PackageName>${SolutionName}</PackageName>
 	<PackageOutputPath>output</PackageOutputPath>
-    <DnnLocalDeployPath Condition="'$(OS)' == 'Unix'">/home/user/mnt/dnn</DnnLocalDeployPath>
     <DnnLocalDeployPath Condition="'$(OS)' != 'Unix'">C:\Dotnetnuke</DnnLocalDeployPath>
-    <MainProjectOutputPath>..\R7.University\bin\$(Configuration)</MainProjectOutputPath>
+    <DnnLocalDeployPath Condition="'$(OS)' == 'Unix'">/home/user/mnt/dnn</DnnLocalDeployPath>
+    <MainProjectOutputPath>..\${SolutionName}\bin\$(Configuration)</MainProjectOutputPath>
 </PropertyGroup>
 <Import Project="Install.targets" />
-<Target Name="AfterBuild" DependsOnTargets="MakeInstallPackage" />
+<Import Project="LocalDeploy.targets" />
+<Target Name="AfterBuild" DependsOnTargets="MakeInstallPackage;DoLocalDeploy" />
 <!-- End snippet -->
 ```
-    
-3. Now switch to "Release" configuration and execute "Build All" command.
+2. Make sure `DnnLocalDeployPath` property for your OS contains valid DNN install path.
 
-4. After this in a `${ProjectName}\output` folder you should find a `.zip` archive for install package.
+3. Switch to "Release" configuration and execute "Build All" command. 
+After this in a `${ProjectName}\output` folder you should find a `.zip` archive for install package.
 
-5. Install required *DotNetNuke.R7* library package.
-
-6. Install your extension from `${SolutionName}-00.01.00-Install.zip` package  
-through *DNN > Host > Extensions*, as usual.
-
-# Developing
-
-1. Switch to "Debug" configuration and execute "Build All" command. This will invoke local deploy script, 
+4. Switch to "Debug" configuration and execute "Build All" command. This will invoke local deploy script, 
 which will copy new binaries and required source files (such as `.ascx`, '.js', etc.) to DNN install location.
 
-2. Update your site in a browser to trigger recompilation.
+# Initial setup of DNN installation
+
+1. Go to your website's *DNN > Host > Extensions* and install required *DotNetNuke.R7* library package 
+from [here](https://github.com/roman-yagodin/DotNetNuke.R7/releases).
+
+2. Then install your newly created extension from `${SolutionName}-00.01.00-Install.zip` package in the same way.
+
+# Further development
+
+* Use "Debug" configuration to do local deploy after making code changes, then update your site in a browser 
+to trigger recompilation.
+
+* Use "Release" configuration to build install package.
 
 # Extending solution
 
-Current scripts automatically able to add all DNN projects inside solution into a single source or install package. 
-The general idea behind that is that all projects in the solution is very dependant.
+Current scripts automatically able to add all DNN projects inside solution into a single install package 
+and provide local deploy of required files. The general idea behind that is that all projects in the solution is very dependant.
 
 If you add new DNN extension to your solution using *R7.DnnTemplates*, you probably only need to:
 
-1. Name your project like *${SolutionName}_MyNewExtension*. If not, just add another `<InstallBinaryFiles>` entry
-to the `Install.targets` for new extension binary file (.dll) too.
+1. Name your project file with *${SolutionName}_* prefix like *${SolutionName}_MyNewExtension*. 
 
-2. Move ${ProjectName} Project/EndProject entry in the `${SolutionName}.sln` file to the bottom, to ensure
-that ${ProjectName} project will build last. 
+2. Ensure that ${ProjectName} project will build last by moving ${ProjectName} Project/EndProject entry 
+in the `${SolutionName}.sln` file to the bottom.
 
-3. Merge new project's `.SqlDataProvider` files, `.dnn` manifest file (and all files, referenced by manifest -
-generally, it's `license.htm` and `releaseNotes.htm`) into the similar files from first extension.
+3. Merge new project's `.SqlDataProvider` files, `.dnn` manifest file (plus all files, referenced in the manifest -
+generally, it's `license.htm` and `releaseNotes.htm`) into the similar files from `${SolutionName}` main extension project.
 
 # General tips
 
-* After external `.sln`, `.csproj` and `.targets` file changes you probably need to reload solution. 
+* If `.sln`, `.csproj` or `.targets` file changed manually, you probably need to reload the solution.
 
 ]]></File>
 	<FileTemplateReference TemplateID="DnnInstallPackage" name="Install.targets" />
     <FileTemplateReference TemplateID="DnnLocalDeploy" name="LocalDeploy.targets" />
-                <File name="packages.config"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
-<packages>
-    <package id="MSBuildTasks" version="1.4.0.128" targetFramework="net40" />
-</packages>]]>
-                </File>
             </Files>
 		</Project>
 	</Combine>
