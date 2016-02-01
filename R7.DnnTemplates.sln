@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		LICENSE.md = LICENSE.md
 		CHANGES.md = CHANGES.md
+		addin-project.xml = addin-project.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Packaging", "Packaging\Packaging.csproj", "{547A4374-1522-4E0F-B090-2287D80070DB}"

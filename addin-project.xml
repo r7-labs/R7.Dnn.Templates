@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<AddinProject appVersion="5.2">
+    <Project platforms="Win32 Linux Mac">
+        <AddinFile>R7.DnnTemplates/bin/Release/DnnTemplates.addin.xml</AddinFile>
+        <BuildFile>R7.DnnTemplates.sln</BuildFile>
+        <BuildConfiguration>Release</BuildConfiguration>
+    </Project>
+</AddinProject>
