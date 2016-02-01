@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<Template Originator="Roman M. Yagodin" Created="2014/06/18" LastModified="2015/02/10">
+<Template originator="Roman M. Yagodin" created="2014/06/18">
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>Install DNN package script</_Name>

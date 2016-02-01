@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<Template Originator="Roman M. Yagodin" Created="2016/01/29" LastModified="2016/01/29">
+<Template originator="Roman M. Yagodin" created="2016/01/29">
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>DNN local deploy script</_Name>
