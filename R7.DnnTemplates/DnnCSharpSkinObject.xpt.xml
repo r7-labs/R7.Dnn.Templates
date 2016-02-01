@@ -9,7 +9,7 @@
         <ProjectType>AspNetApp</ProjectType>
 		<_Description>Creates a new DNN Platform C# compiled skin object project.
 
-NOTE: By default, choose DNN 'DesktopModules' folder for project location and ensure that 'Create directory for solution' flag is checked.</_Description>
+NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description>
 	</TemplateConfiguration>
 	<!-- Actions -->
 	<Actions>

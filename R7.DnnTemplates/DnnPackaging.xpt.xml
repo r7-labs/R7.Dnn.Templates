@@ -6,7 +6,7 @@
 		<_Category>C#/DNN Platform</_Category>
 		<Icon>md-project|res:project-package-overlay-32.png|res:project-dnn-overlay-32.png</Icon>
 		<LanguageName>C#</LanguageName>
-		<_Description>Creates a new DNN extension packaging project using MSBuild. Add this to the solution containing one or more DNN extensions (modules).</_Description>
+		<_Description>Creates a new DNN extension packaging project using MSBuild. Add it to the solution containing one or more DNN extensions (modules) projects.</_Description>
 	</TemplateConfiguration>
 	<!-- Actions -->
 	<Actions>

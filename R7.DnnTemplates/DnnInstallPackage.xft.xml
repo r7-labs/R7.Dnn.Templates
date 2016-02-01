@@ -2,7 +2,7 @@
 <Template originator="Roman M. Yagodin" created="2014/06/18">
 	<!-- Template Header -->
 	<TemplateConfiguration>
-		<_Name>Install DNN package script</_Name>
+		<_Name>DNN install package script</_Name>
 		<_Category>DNN Platform</_Category>
 		<Icon>md-xml-file-icon</Icon>
 		<LanguageName>*</LanguageName>
