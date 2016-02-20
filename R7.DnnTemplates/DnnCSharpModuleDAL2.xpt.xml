@@ -68,35 +68,29 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 
 -- Create tables
 
-IF NOT EXISTS (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+IF NOT EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]') and type in (N'U'))
 	BEGIN
 		CREATE TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
 		(
-			[${ProjectName}ID] int NOT NULL IDENTITY(1, 1),
+			[${ProjectName}ID] int NOT NULL IDENTITY (1, 1),
 			[ModuleID] int NOT NULL,
 			[Content] nvarchar(max) NOT NULL,
 			[CreatedByUser] int NOT NULL,
-			[CreatedOnDate] datetime NOT NULL
+			[CreatedOnDate] datetime NOT NULL DEFAULT (GETDATE ())
+            CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED (${ProjectName}ID)
+            CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Modules] FOREIGN KEY (ModuleID)
+                REFERENCES {databaseOwner}[{objectQualifier}Modules] (ModuleID) ON DELETE CASCADE
 		)
-
-		ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
-			ADD CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED  ([${ProjectName}ID])
-			
+       		
 		CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${ProjectName}_${ProjectName}s_ModuleID] 
 			ON {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] ([ModuleID])
-
-		ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] WITH NOCHECK 
-			ADD CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Modules] FOREIGN KEY ([ModuleID]) REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]) ON DELETE CASCADE NOT FOR REPLICATION
-			
-		ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
-			ADD CONSTRAINT [DF_{objectQualifier}${ProjectName}_${ProjectName}s_CreatedOnDate] DEFAULT (getdate()) FOR [CreatedOnDate]
 	END
 GO
 
 -- Drop existing stored procedures
 
 ---- Just example:
--- IF EXISTS (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}${ProjectName}_Get${ProjectName}s]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+-- IF EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${ProjectName}_Get${ProjectName}s]') and type in (N'P'))
 --	DROP PROCEDURE {databaseOwner}{objectQualifier}${ProjectName}_Get${ProjectName}s
 -- GO
 
@@ -125,10 +119,6 @@ GO
 
 ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
 	DROP CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Modules]
-GO
-
-ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
-	DROP CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s]
 GO
 
 DROP INDEX {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s].[IX_{objectQualifier}${ProjectName}_${ProjectName}s_ModuleID]

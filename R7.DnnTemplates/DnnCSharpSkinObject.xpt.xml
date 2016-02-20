@@ -56,30 +56,48 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 
 -- Create tables
 
-IF NOT EXISTS (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]') and OBJECTPROPERTY(id, N'IsTable') = 1)
-	BEGIN
-		CREATE TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
-		(
-			[${ProjectName}ID] int NOT NULL IDENTITY(1, 1),
-			[TabID] int NOT NULL,
-			[Content] nvarchar(max) NOT NULL,
-			[CreatedByUser] int NOT NULL,
-			[CreatedOnDate] datetime NOT NULL
-		)
-
-		ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
-			ADD CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED  ([${ProjectName}ID])
-			
-		CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${ProjectName}_${ProjectName}s_TabID] 
-			ON {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] ([TabID])
-
-		ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] WITH NOCHECK 
-			ADD CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Tabs] FOREIGN KEY ([ModuleID]) REFERENCES {databaseOwner}[{objectQualifier}Tabs] ([TabID]) ON DELETE CASCADE NOT FOR REPLICATION
-			
-		ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
-			ADD CONSTRAINT [DF_{objectQualifier}${ProjectName}_${ProjectName}s_CreatedOnDate] DEFAULT (getdate()) FOR [CreatedOnDate]
-	END
+IF NOT EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]') and type in (N'U'))
+    BEGIN
+        CREATE TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
+        (
+            [${ProjectName}ID] int NOT NULL IDENTITY (1, 1),
+            [TabID] int NOT NULL,
+            [Content] nvarchar(max) NOT NULL,
+            [CreatedByUser] int NOT NULL,
+            [CreatedOnDate] datetime NOT NULL DEFAULT (GETDATE ())
+            CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED (${ProjectName}ID)
+            CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Tabs] FOREIGN KEY (TabID)
+                REFERENCES {databaseOwner}[{objectQualifier}Tabs] (TabID) ON DELETE CASCADE
+        )
+            
+        CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${ProjectName}_${ProjectName}s_TabID] 
+            ON {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] ([TabID])
+    END
 GO
+
+-- Drop existing stored procedures
+
+---- Just example:
+-- IF EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${ProjectName}_Get${ProjectName}s]') and type in (N'P'))
+--  DROP PROCEDURE {databaseOwner}{objectQualifier}${ProjectName}_Get${ProjectName}s
+-- GO
+
+-- Create stored procedures
+
+---- Just example:
+-- CREATE PROCEDURE {databaseOwner}{objectQualifier}${ProjectName}_Get${ProjectName}s
+--  @ModuleId int
+-- AS 
+-- SELECT [${ProjectName}ID]
+--  [ModuleID],
+--  [Content],
+--  [CreatedByUser],
+--  [CreatedOnDate],
+--  'CreatedByUserName' = {objectQualifier}Users.FirstName + ' ' + {objectQualifier}Users.LastName
+-- FROM {objectQualifier}${ProjectName}_${ProjectName}s
+-- INNER JOIN {objectQualifier}Users on {objectQualifier}${ProjectName}_${ProjectName}s.CreatedByUser = {objectQualifier}Users.UserId
+-- WHERE [ModuleID] = @ModuleId
+-- GO
 ]]></File>
 				<File name="Uninstall.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
 -- replace {databaseOwner} and {objectQualifier} with real values. 
@@ -89,10 +107,6 @@ GO
 
 ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
 	DROP CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Tabs]
-GO
-
-ALTER TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] 
-	DROP CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s]
 GO
 
 DROP INDEX {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s].[IX_{objectQualifier}${ProjectName}_${ProjectName}s_TabID]
