@@ -1055,7 +1055,6 @@ namespace ${ProjectName}
            </script>
            <script type="UnInstall">
              <name>SqlDataProvider\Uninstall.SqlDataProvider</name>
-             <version>00.01.00</version>
            </script>
          </scripts>
        </component>
