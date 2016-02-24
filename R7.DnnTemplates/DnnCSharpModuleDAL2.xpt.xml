@@ -745,7 +745,6 @@ namespace ${ProjectName}
 {
 	public partial class Settings${ProjectName}
 	{	
-		protected LabelControl lblTemplate;
 		protected TextBox txtTemplate;
 	}
 }]]></File>
@@ -965,7 +964,6 @@ namespace ${ProjectName}
 		protected LinkButton buttonUpdate;
 		protected LinkButton buttonDelete;
 		protected HyperLink linkCancel;
-		protected LabelControl lblContent;
 		protected TextEditor txtContent;
 		protected ModuleAuditControl ctlAudit;
 	}
