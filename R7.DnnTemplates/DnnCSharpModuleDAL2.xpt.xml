@@ -167,7 +167,7 @@ GO
 					<File name="Edit${ProjectName}.ascx.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
   <data xml:space="preserve" name="lblContent.Text">
-    <value>Content</value>
+    <value>Content:</value>
   </data>
   <data xml:space="preserve" name="lblContent.Help">
     <value>Enter the Content</value>
@@ -185,7 +185,7 @@ GO
 					<File name="Edit${ProjectName}.ascx.ru-RU.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
   <data xml:space="preserve" name="lblContent.Text">
-    <value>Содержимое</value>
+    <value>Содержимое:</value>
   </data>
   <data xml:space="preserve" name="lblContent.Help">
     <value>Введите содержимое</value>
@@ -671,7 +671,7 @@ namespace ${ProjectName}
 	<h2 class="dnnFormSectionHead"><a href=""><asp:Label runat="server" ResourceKey="sectionBaseSettings.Text" /></a></h2>
 	<fieldset>	
 		<div class="dnnFormItem">
-			<dnn:Label ID="lblTemplate" runat="server" ControlName="txtTemplate" Suffix=":" />
+			<dnn:Label ID="lblTemplate" runat="server" ControlName="txtTemplate" />
 			<asp:TextBox ID="txtTemplate" runat="server" CssClass="NormalTextBox" Rows="10" Columns="30" TextMode="MultiLine" MaxLength="2000" />
 		</div>
 	</fieldset>	
@@ -759,7 +759,7 @@ namespace ${ProjectName}
 <div class="dnnForm dnnClear">
 	<fieldset>	
 		<div class="dnnFormItem">
-			<dnn:Label ID="lblContent" runat="server" ControlName="lblContent" Suffix=":" />
+			<dnn:Label ID="lblContent" runat="server" ControlName="txtContent" />
 			<dnn:TextEditor ID="txtContent" runat="server" Height="200" Width="100%" />
 		</div>
 	</fieldset>
