@@ -501,7 +501,7 @@ namespace ${ProjectName}
 <asp:DataList ID="lstContent" DataKeyField="${ProjectName}ID" runat="server" CssClass="${ProjectName}_ContentList" OnItemDataBound="lstContent_ItemDataBound">
 	<ItemTemplate>
 		<asp:HyperLink ID="linkEdit" runat="server">
-			<asp:Image ID="imageEdit" runat="server" ImageUrl="~/images/edit.gif" AlternateText="Edit" ResourceKey="Edit" />
+			<asp:Image ID="imageEdit" runat="server" IconKey="Edit" ResourceKey="Edit" />
 		</asp:HyperLink>
 		<asp:Label ID="lblUserName" runat="server" CssClass="${ProjectName}_UserName" />
 		<asp:Label ID="lblCreatedOnDate" runat="server" CssClass="${ProjectName}_CreatedOnDate" /> 
