@@ -297,16 +297,14 @@ namespace ${ProjectName}
 
 		#region ModuleSearchBase implementaion
 
-		public override IList<SearchDocument> GetModifiedSearchDocuments(ModuleInfo modInfo, DateTime beginDate)
+		public override IList<SearchDocument> GetModifiedSearchDocuments (ModuleInfo modInfo, DateTime beginDate)
 		{
-			var searchDocs = new List<SearchDocument>();
+			var searchDocs = new List<SearchDocument> ();
 
-			// TODO: Realize GetModifiedSearchDocuments()
-
-			/* var sd = new SearchDocument();
-			searchDocs.Add(searchDoc);
-			*/
-
+			// TODO: Implement GetModifiedSearchDocuments () here
+            // var sd = new SearchDocument ();
+			// searchDocs.Add (searchDoc);
+			         
 			return searchDocs;
 		}
 
