@@ -215,6 +215,9 @@ GO
   <data xml:space="preserve" name="ModuleHelp.Text">
     <value>About ${ProjectName} Settings</value>
   </data>
+  <data xml:space="preserve" name="sectionBasicSettings.Text">
+    <value>Basic Settings</value>
+  </data>
 </root>]]></File>
 					<File name="Settings${ProjectName}.ascx.ru-RU.resx"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
@@ -229,6 +232,9 @@ GO
   </data>
   <data xml:space="preserve" name="ModuleHelp.Text">
     <value>О настройках ${ProjectName}</value>
+  </data>
+  <data xml:space="preserve" name="sectionBasicSettings.Text">
+    <value>Основные настройки</value>
   </data>
 </root>]]></File>
 				</Directory>
@@ -664,7 +670,7 @@ namespace ${ProjectName}
 
 <dnn:DnnCssInclude runat="server" FilePath="~/DesktopModules/${ProjectName}/${ProjectName}/admin.css" Priority="200" />
 <div class="dnnForm dnnClear">
-	<h2 class="dnnFormSectionHead"><a href=""><asp:Label runat="server" ResourceKey="sectionBaseSettings.Text" /></a></h2>
+	<h2 class="dnnFormSectionHead"><a href=""><asp:Label runat="server" ResourceKey="sectionBasicSettings.Text" /></a></h2>
 	<fieldset>	
 		<div class="dnnFormItem">
 			<dnn:Label ID="lblTemplate" runat="server" ControlName="txtTemplate" />

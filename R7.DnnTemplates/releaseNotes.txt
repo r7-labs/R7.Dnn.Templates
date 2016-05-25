@@ -3,6 +3,7 @@
 * Fix AssemblyInfo created inside Properties/Properties folder.
 * Move controller and settings classes to Components namespace/folder.
 * Move POCO-class to Data namespace/folder.
+* Add missing localization for section header in the settings module.
 
 {{0.4.0, 2016-02-01}}
 * First release on addins.monodevelop.com
