@@ -283,16 +283,8 @@ using R7.DotNetNuke.Extensions.Data;
 
 namespace ${ProjectName}
 {
-	public partial class ${ProjectName}Controller : ModuleSearchBase, IPortable
+	public class ${ProjectName}Controller : ModuleSearchBase, IPortable
 	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="${ProjectName}.${ProjectName}Controller"/> class.
-		/// </summary>
-		public ${ProjectName}Controller () : base ()
-		{ 
-
-		}
-
 		#region ModuleSearchBase implementaion
 
 		public override IList<SearchDocument> GetModifiedSearchDocuments (ModuleInfo modInfo, DateTime beginDate)
