@@ -396,28 +396,6 @@ to be made manually.
 
 2. Add to your solution new project of type "DNN packaging project" and follow instructions 
    in it's `SETUP.md` to setup packaging and local deploy.
-
-# Solution stucture for development
-
-```
-DNN
-|- bin
-    |- ${SolutionName}.dll
-    |- ${SolutionName}_Next.dll
-|- DesktopModules
-    |- ${SolutionName} (solution)
-        |- ${SolutionName} (primary extension project)
-            |- SqlDataProvider (folder for DB scripts)
-                |- 00.01.00.SqlDataProvider
-                |- UnInstall.SqlDataProvider
-            |- ${SolutionName}.dnn (manifest)
-            |- license.htm
-            |- releaseNotes.htm
-        |- ${SolutionName}_Next (secondary extension project)
-            |- ...
-        |- Packaging (packaging project)
-            |- *.targets
-```
 ]]></File>
    <File name="license.htm"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
