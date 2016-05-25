@@ -35,7 +35,7 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 			</References>
             <Packages>
-                <Package id="DotNetNuke.R7" version="0.3.1" />
+                <Package id="R7.DotNetNuke.Extensions" version="0.8.0" />
             </Packages>
 			<!-- Other refrences (for future use):
 	<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -238,14 +238,14 @@ GO
 					<File name="${ProjectName}Settings.cs" AddStandardHeader="True"><![CDATA[using System;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.UI.Modules;
-using DotNetNuke.R7;
+using R7.DotNetNuke.Extensions.Modules;
 
 namespace ${ProjectName}
 {
 	/// <summary>
 	/// Provides strong typed access to settings used by module
 	/// </summary>
-	public class ${ProjectName}Settings : SettingsWrapper
+	public class ${ProjectName}Settings: SettingsWrapper
 	{
 		public ${ProjectName}Settings (IModuleControl module): base (module)
 		{
@@ -281,11 +281,11 @@ using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Search;
 using DotNetNuke.Services.Search.Entities;
-using DotNetNuke.R7;
+using R7.DotNetNuke.Extensions.Data;
 
 namespace ${ProjectName}
 {
-	public partial class ${ProjectName}Controller : ControllerBase, IPortable
+	public partial class ${ProjectName}Controller : ModuleSearchBase, IPortable
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="${ProjectName}.${ProjectName}Controller"/> class.
@@ -320,7 +320,8 @@ namespace ${ProjectName}
 		public string ExportModule (int moduleId)
 		{
 			var sb = new StringBuilder ();
-			var infos = GetObjects<${ProjectName}Info> (moduleId);
+            var dataProvider = new Dal2DataProvider ();
+			var infos = dataProvider.GetObjects<${ProjectName}Info> (moduleId);
 
 			if (infos != null)
 			{
@@ -349,7 +350,8 @@ namespace ${ProjectName}
 		public void ImportModule (int ModuleID, string Content, string Version, int UserID)
 		{
 			var infos = DotNetNuke.Common.Globals.GetContent (Content, "${ProjectName}s");
-		
+		    var dataProvider = new Dal2DataProvider ();
+
 			foreach (XmlNode info in infos.SelectNodes("${ProjectName}"))
 			{
 				var item = new ${ProjectName}Info ();
@@ -357,7 +359,7 @@ namespace ${ProjectName}
 				item.Content = info.SelectSingleNode ("content").InnerText;
 				item.CreatedByUser = UserID;
 
-				Add<${ProjectName}Info> (item);
+				dataProvider.Add<${ProjectName}Info> (item);
 			}
 		}
 
@@ -453,8 +455,8 @@ namespace ${ProjectName}
      			if (_other == null)
      			{
      				// load joined object to reference it
-     				var ctrl = new ${ProjectName}Controller();
-     				_another = ctrl.Get<AnotherInfo>(AnotherID);
+     				var dataProvider = new Dal2DataProvider ();
+     				_another = dataProvider.Get<AnotherInfo>(AnotherID);
      			}
      			return _another;	
      		}
@@ -478,8 +480,8 @@ namespace ${ProjectName}
         // to access members of joined AnotherInfo objects 
         
        	// Get ${ProjectName}Info object by it's primary key (ID):
-       	// var ctrl = new ${ProjectName}Controller();
-     	// var item = ctrl.Get<${ProjectName}Info>(itemId);
+       	// var dataProvider = new Dal2DataProvider();
+     	// var item = dataProvider.Get<${ProjectName}Info>(itemId);
      	
      	// Now simply get data from another table:
      	// Console.WriteLine(item.Another.SomeProperty);
@@ -522,7 +524,9 @@ using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.Entities.Icons;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
-using DotNetNuke.R7;
+using R7.DotNetNuke.Extensions;
+using R7.DotNetNuke.Extensions.Data;
+using R7.DotNetNuke.Extensions.ModuleExtensions;
 
 namespace ${ProjectName}
 {
@@ -551,8 +555,8 @@ namespace ${ProjectName}
 			{
 				if (!IsPostBack)
 				{
-					var ctrl = new ${ProjectName}Controller ();
-					var items = ctrl.GetObjects<${ProjectName}Info> (this.ModuleId);
+					var dataProvider = new Dal2DataProvider ();
+					var items = dataProvider.GetObjects<${ProjectName}Info> (this.ModuleId);
 
 					// check if we have some content to display, 
 					// otherwise display a message for module editors.
@@ -780,6 +784,7 @@ using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.UserControls;
+using R7.DotNetNuke.Extensions.Data;
 
 namespace ${ProjectName}
 {
@@ -833,8 +838,8 @@ namespace ${ProjectName}
 					if (itemId.HasValue)
 					{
 						// load the item
-						var ctrl = new ${ProjectName}Controller ();
-						var item = ctrl.Get<${ProjectName}Info> (itemId.Value, this.ModuleId);
+						var dataProvider = new Dal2DataProvider ();
+						var item = dataProvider.Get<${ProjectName}Info> (itemId.Value, this.ModuleId);
 
 						if (item != null)
 						{
@@ -874,7 +879,7 @@ namespace ${ProjectName}
 		{
 			try
 			{
-				var ctrl = new ${ProjectName}Controller ();
+				var dataProvider = new Dal2DataProvider ();
 				${ProjectName}Info item;
 
 				// determine if we are adding or updating
@@ -889,7 +894,7 @@ namespace ${ProjectName}
 				{
 					// TODO: update properties of existing object with data from controls 
 					// to update existing record
-					item = ctrl.Get<${ProjectName}Info> (itemId.Value, this.ModuleId);
+					item = dataProvider.Get<${ProjectName}Info> (itemId.Value, this.ModuleId);
 				}
 
 				// fill the object
@@ -899,11 +904,11 @@ namespace ${ProjectName}
 				if (!itemId.HasValue)
 				{
 					item.CreatedByUser = this.UserId;					
-					ctrl.Add<${ProjectName}Info> (item);
+					dataProvider.Add<${ProjectName}Info> (item);
 				}
 				else
 				{
-					ctrl.Update<${ProjectName}Info> (item);
+					dataProvider.Update<${ProjectName}Info> (item);
 				}
 
                 ModuleController.SynchronizeModule (ModuleId);
@@ -932,8 +937,8 @@ namespace ${ProjectName}
 				// ALT: if (!Null.IsNull (itemId))
 				if (itemId.HasValue)
 				{
-					var ctrl = new ${ProjectName}Controller ();
-					ctrl.Delete<${ProjectName}Info> (itemId.Value);
+					var dataProvider = new Dal2DataProvider ();
+					dataProvider.Delete<${ProjectName}Info> (itemId.Value);
 					Response.Redirect (Globals.NavigateURL (), true);
 				}
 			} 
@@ -982,7 +987,7 @@ namespace ${ProjectName}
      <releaseNotes src="releaseNotes.htm" />
      <dependencies>
         <!-- <dependency type="CoreVersion">07.00.00</dependency> -->
-        <dependency type="managedPackage" version="0.3.1">DotNetNuke.R7</dependency>
+        <dependency type="managedPackage" version="0.8.0">R7.DotNetNuke.Extensions</dependency>
      </dependencies>
      <components>
 

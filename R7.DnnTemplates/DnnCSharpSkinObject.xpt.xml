@@ -35,7 +35,7 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 			</References>
             <Packages>
-                <Package id="DotNetNuke.R7" version="0.3.1" />
+                <Package id="R7.DotNetNuke.Extensions" version="0.8.0" />
             </Packages>
 			<!-- Other refrences (for future use):
 	<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -140,42 +140,6 @@ GO
 <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
 				</Directory>
 				<Directory name="components">
-					<File name="${ProjectName}Controller.cs" AddStandardHeader="True"><![CDATA[using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Xml;
-using System.Linq;
-using DotNetNuke.Collections;
-using DotNetNuke.Data;
-using DotNetNuke.Common.Utilities;
-using DotNetNuke.Entities.Modules;
-using DotNetNuke.Services.Search;
-using DotNetNuke.Services.Search.Entities;
-using DotNetNuke.R7;
-
-namespace ${ProjectName}
-{
-	public partial class ${ProjectName}Controller : ControllerBase
-	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="${ProjectName}.${ProjectName}Controller"/> class.
-		/// </summary>
-		public ${ProjectName}Controller () : base ()
-		{ 
-
-		}
-
-        #region ModuleSearchBase implementaion
-
-        public override IList<SearchDocument> GetModifiedSearchDocuments (ModuleInfo modInfo, DateTime beginDate)
-        {
-            throw new NotImplementedException ();
-        }
-
-        #endregion
-	}
-}
-]]></File>
 <!--<FileTemplateReference TemplateID="DotNetNuke PetaPOCO class" name="${ProjectName}Info.cs" />-->
 <File name="${ProjectName}Info.cs" AddStandardHeader="True"><![CDATA[using System;
 using System.Linq;
@@ -268,7 +232,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using DotNetNuke.UI.Skins;
 using DotNetNuke.Services.Localization;
-using DotNetNuke.R7;
+using R7.DotNetNuke.Extensions;
 
 namespace ${ProjectName}
 {
@@ -321,8 +285,8 @@ namespace ${ProjectName}
 
 			if (!IsPostBack)
 			{
-				var ctrl = new ${ProjectName}Controller ();
-				var item = ctrl.Get<${ProjectName}Info>(PortalSettings.ActiveTab.TabID);
+				var dataProvider = new Dal2DataProvider ();
+				var item = dataProvider.Get<${ProjectName}Info>(PortalSettings.ActiveTab.TabID);
 
 				if (item != null)
 				{
@@ -375,7 +339,7 @@ namespace ${ProjectName}
      <releaseNotes src="releaseNotes.htm" />
      <dependencies>
         <!-- <dependency type="CoreVersion">07.00.00</dependency> -->
-        <dependency type="managedPackage" version="0.3.1">DotNetNuke.R7</dependency>
+        <dependency type="managedPackage" version="0.8.0">R7.DotNetNuke.Extensions</dependency>
      </dependencies>
      <components>
         <component type="SkinObject">

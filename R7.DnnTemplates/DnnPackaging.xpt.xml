@@ -64,8 +64,8 @@ which will copy new binaries and required resource files (such as `.ascx`, '.js'
 
 # Initial setup of DNN installation
 
-1. Go to your website's *DNN > Host > Extensions* and install required *DotNetNuke.R7* library package 
-from [here](https://github.com/roman-yagodin/DotNetNuke.R7/releases).
+1. Go to your website's *DNN > Host > Extensions* and install required *R7.DotNetNuke.Extensions* library package 
+from [here](https://github.com/roman-yagodin/R7.DotNetNuke.Extensions/releases).
 
 2. Then install your newly created extension from `${SolutionName}-00.01.00-Install.zip` package in the same way.
 
