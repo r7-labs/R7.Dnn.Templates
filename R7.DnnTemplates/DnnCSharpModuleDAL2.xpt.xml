@@ -49,7 +49,8 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 	<Reference type="Package" refto="Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 	-->
 			<Files>
-				<Directory name="js" />
+                <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
+                <Directory name="js" />
 				<File name="module.css"><![CDATA[/* Place CSS for view control here */
 
 .${ProjectName}_ContentList { width:100% }				
@@ -230,9 +231,6 @@ GO
     <value>О настройках ${ProjectName}</value>
   </data>
 </root>]]></File>
-				</Directory>
-				<Directory name="Properties">
-<FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
 				</Directory>
 				<Directory name="components">
 					<File name="${ProjectName}Settings.cs" AddStandardHeader="True"><![CDATA[using System;

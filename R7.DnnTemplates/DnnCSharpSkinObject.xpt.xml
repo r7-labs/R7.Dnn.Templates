@@ -49,6 +49,7 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 	<Reference type="Package" refto="Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
 	-->
 			<Files>
+                <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
                 <Directory name="SqlDataProvider">
 				<File name="00.01.00.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
 -- replace {databaseOwner} and {objectQualifier} with real values. 
@@ -135,9 +136,6 @@ GO
     <value>Система</value>
   </data>
 </root>]]></File>
-				</Directory>
-                <Directory name="Properties">
-<FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
 				</Directory>
 				<Directory name="components">
 <!--<FileTemplateReference TemplateID="DotNetNuke PetaPOCO class" name="${ProjectName}Info.cs" />-->

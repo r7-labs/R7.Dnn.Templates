@@ -1,5 +1,6 @@
 ﻿{{0.5.0}}
-* Module and skinobject templates use R7.DotNetNuke.Extensions library (via NuGet)
+* Module and skinobject templates use R7.DotNetNuke.Extensions library (via NuGet).
+* Fix AssemblyInfo created inside Properties/Properties folder.
 
 {{0.4.0, 2016-02-01}}
 * First release on addins.monodevelop.com
