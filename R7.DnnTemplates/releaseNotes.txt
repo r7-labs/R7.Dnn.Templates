@@ -1,8 +1,8 @@
-﻿{{0.5.0}}
+﻿{{0.5.0, 2016-05-25}}
 * Module and skinobject templates use R7.DotNetNuke.Extensions library (via NuGet).
 * Fix AssemblyInfo created inside Properties/Properties folder.
-* Move controller and settings classes to Components namespace/folder.
-* Move POCO-class to Data namespace/folder.
+* Namespace refactoring: Move controller and settings classes to Components namespace/folder.
+* Namespace refactoring: Move POCO-class to Data namespace/folder.
 * Add missing localization for section header in the settings module.
 
 {{0.4.0, 2016-02-01}}
