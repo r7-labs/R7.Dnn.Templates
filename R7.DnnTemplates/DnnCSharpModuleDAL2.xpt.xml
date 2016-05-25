@@ -232,13 +232,13 @@ GO
   </data>
 </root>]]></File>
 				</Directory>
-				<Directory name="components">
+				<Directory name="Components">
 					<File name="${ProjectName}Settings.cs" AddStandardHeader="True"><![CDATA[using System;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.UI.Modules;
 using R7.DotNetNuke.Extensions.Modules;
 
-namespace ${ProjectName}
+namespace ${ProjectName}.Components
 {
 	/// <summary>
 	/// Provides strong typed access to settings used by module
@@ -280,8 +280,9 @@ using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Search;
 using DotNetNuke.Services.Search.Entities;
 using R7.DotNetNuke.Extensions.Data;
+using ${ProjectName}.Data;
 
-namespace ${ProjectName}
+namespace ${ProjectName}.Components
 {
 	public class ${ProjectName}Controller : ModuleSearchBase, IPortable
 	{
@@ -357,16 +358,17 @@ namespace ${ProjectName}
 	}
 }
 ]]></File>
+</Directory>
+<Directory name="Data">
 <!--<FileTemplateReference TemplateID="DotNetNuke PetaPOCO class" name="${ProjectName}Info.cs" />-->
 <File name="${ProjectName}Info.cs" AddStandardHeader="True"><![CDATA[using System;
 using System.Linq;
-
 using DotNetNuke.Data;
 using DotNetNuke.ComponentModel.DataAnnotations;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Users;
 
-namespace ${ProjectName}
+namespace ${ProjectName}.Data
 {
 	// More attributes for class:
 	// Set caching for table: [Cacheable("${ProjectName}_${Name}s", CacheItemPriority.Default, 20)] 
@@ -517,6 +519,7 @@ using DotNetNuke.Services.Localization;
 using R7.DotNetNuke.Extensions;
 using R7.DotNetNuke.Extensions.Data;
 using R7.DotNetNuke.Extensions.ModuleExtensions;
+using ${ProjectName}.Data;
 
 namespace ${ProjectName}
 {
@@ -673,10 +676,10 @@ namespace ${ProjectName}
 				<File name="Settings${ProjectName}.ascx.cs" DependsOn="Settings${ProjectName}.ascx" AddStandardHeader="True"><![CDATA[using System;
 using System.Web.UI.WebControls;
 using System.Linq;
-
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.UI.UserControls;
+using ${ProjectName}.Components;
 
 namespace ${ProjectName}
 {	
@@ -734,7 +737,7 @@ using DotNetNuke.UI.UserControls;
 using DotNetNuke.UI.WebControls;
 using DotNetNuke.Web.UI.WebControls;
 
-namespace ${ProjectName} 
+namespace ${ProjectName}
 {
 	public partial class Settings${ProjectName}
 	{	
@@ -775,6 +778,7 @@ using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.UserControls;
 using R7.DotNetNuke.Extensions.Data;
+using ${ProjectName}.Data;
 
 namespace ${ProjectName}
 {
@@ -985,7 +989,7 @@ namespace ${ProjectName}
          <desktopModule>
            <moduleName>${ProjectName}</moduleName>
            <foldername>${ProjectName}</foldername>
-           <businessControllerClass>${ProjectName}.${ProjectName}Controller</businessControllerClass>
+           <businessControllerClass>${ProjectName}.Components.${ProjectName}Controller</businessControllerClass>
            <supportedFeatures>
              <supportedFeature type="Portable" />
              <supportedFeature type="Searchable" />
