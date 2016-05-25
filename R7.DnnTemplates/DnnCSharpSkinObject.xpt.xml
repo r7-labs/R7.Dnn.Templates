@@ -227,12 +227,12 @@ namespace ${ProjectName}
 using System;
 using System.IO;
 using System.Web;
-
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DotNetNuke.UI.Skins;
 using DotNetNuke.Services.Localization;
 using R7.DotNetNuke.Extensions;
+using R7.DotNetNuke.Extensions.Data;
 
 namespace ${ProjectName}
 {
