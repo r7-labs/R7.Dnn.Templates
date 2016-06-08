@@ -54,12 +54,15 @@ Just after last `<Import Project="..." />` directive insert this code:
 2. Make sure `DnnLocalDeployPath` property for your OS contains valid DNN install path.
 
 3. Make sure that `MainProjectOutputPath` property targets valid `${SolutionName}` main project output path -
-it would be `bin\$(Configuration)`, not just `bin`!
+it could be `bin\$(Configuration)`, not just `bin`!
 
-4. Switch to "Release" configuration and execute "Build All" command. 
+4. Add reference to the main project. This will ensure that packaging project won't start in case of build errors
+in the main project and also that packaging project will build last.
+
+5. Switch to "Release" configuration and execute "Build All" command. 
 After this in a `${ProjectName}\output` folder you should find a `.zip` archive with install package.
 
-5. Switch to "Debug" configuration and execute "Build All" command. This will invoke local deploy script, 
+6. Switch to "Debug" configuration and execute "Build All" command. This will invoke local deploy script, 
 which will copy new binaries and required resource files (such as `.ascx`, '.js', etc.) to DNN install location.
 
 # Initial setup of DNN installation
