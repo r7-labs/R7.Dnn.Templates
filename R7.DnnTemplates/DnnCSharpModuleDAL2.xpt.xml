@@ -1020,8 +1020,6 @@ namespace ${ProjectName}
                  <moduleControl>
                    <controlKey>Edit</controlKey>
                    <controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Edit${ProjectName}.ascx</controlSrc>
-                   <supportsPartialRendering>False</supportsPartialRendering>
-                   <supportsPopUps>True</supportsPopUps>
                    <controlTitle>Edit</controlTitle>
                    <controlType>Edit</controlType>
                    <iconFile />
@@ -1033,7 +1031,6 @@ namespace ${ProjectName}
                  <moduleControl>
                    <controlKey>Settings</controlKey>
                    <controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Settings${ProjectName}.ascx</controlSrc>
-                   <supportsPartialRendering>False</supportsPartialRendering>
                    <controlTitle>Settings</controlTitle>
                    <controlType>Edit</controlType>
                    <iconFile />
