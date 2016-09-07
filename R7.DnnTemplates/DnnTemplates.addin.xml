@@ -1,4 +1,4 @@
-<Addin id="R7.DnnTemplates" version="0.5.0" namespace="MonoDevelop">
+<Addin id="R7.DnnTemplates" version="0.6.0" namespace="MonoDevelop">
     <Header>
         <Name>DNN Platform Templates &amp; Support</Name>
         <Category>Web Development</Category>
@@ -10,10 +10,10 @@
         <ReleaseNotesFile>releaseNotes.txt</ReleaseNotesFile>
     </Header>
     <Dependencies>
-        <Addin id="Core" version="5.2" />
-        <Addin id="Ide" version="5.2" />
-        <Addin id="AspNet" version="5.2" />
-        <Addin id="SourceEditor2" version="5.2" />
+        <Addin id="Core" version="6.0" />
+        <Addin id="Ide" version="6.0" />
+        <Addin id="AspNet" version="6.0" />
+        <Addin id="SourceEditor2" version="6.0" />
     </Dependencies>
     <Runtime>
         <Import assembly="R7.DnnTemplates.dll" />
