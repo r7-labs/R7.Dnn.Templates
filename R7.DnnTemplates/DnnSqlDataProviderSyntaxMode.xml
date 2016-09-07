@@ -26,12 +26,12 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE. -->
 <SyntaxMode name="Sql" mimeTypes="text/x-dnn-sqldataprovider" ignorecase="true">
-	<EolSpan color="Comment(Line)" rule="Comment" tagColor="comment.tag">-</EolSpan>
+	<EolSpan color="Comment(Line)" rule="Comment" tagColor="comment.tag">--</EolSpan>
 	<Span color="Comment(Block)" rule="Comment" tagColor="comment.tag.block">
 		<Begin>/*</Begin>
 		<End>*/</End>
 	</Span>
-	<Span color="String" rule="String" stopateol="true" escape="\&quot;">
+	<Span color="String" rule="String" stopateol="true" escape="\'">
 		<Begin>"</Begin>
 		<End>"</End>
 	</Span>
@@ -41,73 +41,101 @@
 	</Span>
 	<Keywords color="Keyword(Access)">
 	</Keywords>
-	<Keywords ignorecase="true" color="Keyword(Operator)">
+	<Keywords color="Punctuation">
 		<Word>+</Word>
 		<Word>-</Word>
 		<Word>=</Word>
-		<Word>AND</Word>
-		<Word>ON</Word>
-		<Word>OR</Word>
-		<Word>IN</Word>
-		<Word>NOT</Word>
-		<Word>(</Word>
-		<Word>)</Word>
 		<Word>&lt;</Word>
 		<Word>&gt;</Word>
 		<Word>&lt;=</Word>
 		<Word>=&gt;</Word>
-		<Word>As</Word>
-		<Word>LIKE</Word>
-		<Word>*</Word>
+        <Word>*</Word>
 		<Word>@</Word>
 	</Keywords>
-	<Keywords ignorecase="true" color="Keyword(Selection)">
+	<Keywords color="Punctuation(Brackets)">
+        <Word>(</Word>
+        <Word>)</Word>
+        <Word>[</Word>
+        <Word>]</Word>
+    </Keywords>
+	<Keywords ignorecase="true" color="Keyword(Operator)">
+        <Word>AND</Word>
+		<Word>INTO</Word>
+		<Word>WITH</Word>
+        <Word>OR</Word>
+        <Word>IN</Word>
+        <Word>NOT</Word>
+        <Word>AS</Word>
+        <Word>LIKE</Word>
+		<Word>EXISTS</Word>
+		<Word>ON</Word>
+		<Word>BY</Word>
+    </Keywords>
+	<Keywords color="Keyword(Selection)">
+        <Word>IF</Word>
+        <Word>ELSE</Word>
+    </Keywords>
+	<Keywords ignorecase="true" color="Keyword(Context)">
 		<Word>SELECT</Word>
-		<Word>FROM</Word>
+		<Word>DISTINCT</Word>
+        <Word>FROM</Word>
 		<Word>WHERE</Word>
-		<Word>INNER JOIN</Word>
-		<Word>LEFT JOIN</Word>
-		<Word>RIGHT JOIN</Word>
-		<Word>LEFT OUTER JOIN</Word>
-		<Word>RIGHT OUTER JOIN</Word>
-		<Word>FULL JOIN</Word>
-		<Word>FULL OUTER JOIN</Word>
+		<Word>INNER</Word>
+		<Word>LEFT</Word>
+		<Word>RIGHT</Word>
+		<Word>OUTER</Word>
+		<Word>JOIN</Word>
 		<Word>UNION</Word>
-		<Word>ORDER BY</Word>
-		<Word>GROUP BY</Word>
+		<Word>ALL</Word>
+		<Word>ORDER</Word>
+		<Word>GROUP</Word>
 		<Word>HAVING</Word>
 		<Word>DELETE</Word>
 		<Word>UPDATE</Word>
-		<Word>INSERT INTO</Word>
+		<Word>INSERT</Word>
 		<Word>VALUES</Word>
-		<Word>TRANSACTION</Word>
 		<Word>COMMIT</Word>
-		<Word>ROLLBACK</Word>
-		<Word>EXISTS</Word>
+        <Word>ROLLBACK</Word>
+		<Word>TRANSACTION</Word>
+		<Word>ADD</Word>
+        <Word>REMOVE</Word>
+		<Word>CONSTRAINT</Word>
 	</Keywords>
+	<Keywords ignorecase="true" color="Keyword(Declaration)">
+        <Word>CREATE</Word>
+        <Word>ALTER</Word>
+        <Word>DROP</Word>
+        <Word>DATABASE</Word>
+        <Word>TABLE</Word>
+        <Word>VIEW</Word>
+        <Word>INDEX</Word>
+        <Word>PROCEDURE</Word>
+        <Word>FUNCTION</Word>
+        <Word>TRIGGER</Word>
+    </Keywords>
 	<Keywords ignorecase="true" color="Keyword(Iteration)">
+		<Word>FOR</Word>
 	</Keywords>
 	<Keywords ignorecase="true" color="Keyword(Jump)">
 		<Word>BREAK</Word>
 		<Word>RETURN</Word>
 		<Word>RETURNS</Word>
+		<Word>BEGIN</Word>
+		<Word>END</Word>
 		<Word>GO</Word>
-	</Keywords>
-	<Keywords color="Keyword(Context)">
 	</Keywords>
 	<Keywords color="Keyword(Exception)">
 	</Keywords>
-	<Keywords ignorecase="true" color="Keyword(Constants)">
+	<Keywords color="Keyword(Constants)">
 		<Word>TRUE</Word>
 		<Word>FALSE</Word>
 		<Word>NULL</Word>
 	</Keywords>
-	<Keywords ignorecase="true" color="Keyword(Modifiers)">
+	<Keywords color="Keyword(Modifiers)">
 		<Word>UNSIGNED</Word>
-		<Word>NOT NULL</Word>
 		<Word>DEFAULT</Word>
 	</Keywords>
-	<Keywords ignorecase="true" color="Keyword(Type)">
+	<Keywords color="Keyword(Type)">
 		<Word>SmallInt</Word>
 		<Word>Integer</Word>
 		<Word>BigInt</Word>
@@ -175,27 +203,9 @@
 		<Word>Year</Word>
 		<Word>Boolean</Word>
 	</Keywords>
-	<Keywords ignorecase="true" color="Keyword(Declaration)">
-		<Word>CREATE DATABASE</Word>
-		<Word>CREATE TABLE</Word>
-		<Word>CREATE VIEW</Word>
-		<Word>CREATE FUNCTION</Word>
-		<Word>CREATE PROCEDURE</Word>
-		<Word>ALTER DATABASE</Word>
-		<Word>ALTER TABLE</Word>
-		<Word>ALTER VIEW</Word>
-		<Word>ALTER FUNCTION</Word>
-		<Word>ALTER PROCEDURE</Word>
-		<Word>DROP TABLE</Word>
-		<Word>DROP VIEW</Word>
-		<Word>DROP PROCEDURE</Word>
-		<Word>DROP FUNCTION</Word>
-		<Word>TRIGGER</Word>
-		<Word>BEGIN</Word>
-		<Word>END</Word>
-	</Keywords>
 	<Keywords ignorecase="true" color="Keyword(Parameter)">
 		<Word>DECLARE</Word>
+		<Word>SET</Word>
 		<Word>IN</Word>
 		<Word>OUT</Word>
 	</Keywords>
@@ -207,6 +217,7 @@
 			<Word>FIXME</Word>
 			<Word>HACK</Word>
 			<Word>UNDONE</Word>
+			<Word>REVIEW</Word>
 		</Keywords>
 	</Rule>
 	<Rule name="String">
