@@ -4,7 +4,7 @@
 	<TemplateConfiguration>
 		<_Name>C# compiled module with DAL 2</_Name>
 		<_Category>C#/DNN Platform</_Category>
-		<Icon>md-project-web|res:project-dnn-overlay-32.png</Icon>
+		<Icon>md-aspnet-empty-project|res:project-dnn-overlay-32.png</Icon>
 		<LanguageName>C#</LanguageName>
         <ProjectType>AspNetApp</ProjectType>
 		<_Description>Creates a new DNN Platform C# compiled module project with DAL 2, based on PetaPOCO micro-ORM.
