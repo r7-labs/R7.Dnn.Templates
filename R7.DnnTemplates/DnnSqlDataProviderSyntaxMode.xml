@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- DnnSqlDataProviderSyntaxMode.xml
 
  Authors:
@@ -5,7 +6,7 @@
     Roman M. Yagodin <roman.yagodin@gmail.com>
 
  Copyright (c) 2009 Luciano N. Callero
- Copyright (c) 2015 Roman M. Yagodin
+ Copyright (c) 2015-2016 Roman M. Yagodin
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,41 +25,28 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE. -->
-
-<SyntaxMode name = "Sql" mimeTypes="text/x-dnn-sqldataprovider" ignorecase="true">
-
-	<EolSpan color = "Comment(Line)" rule="Comment" tagColor="comment.tag">-</EolSpan>
-
-	<Span color = "Comment(Block)" rule="Comment" tagColor="comment.tag.block">
+<SyntaxMode name="Sql" mimeTypes="text/x-dnn-sqldataprovider" ignorecase="true">
+	<EolSpan color="Comment(Line)" rule="Comment" tagColor="comment.tag">-</EolSpan>
+	<Span color="Comment(Block)" rule="Comment" tagColor="comment.tag.block">
 		<Begin>/*</Begin>
-
 		<End>*/</End>
-
 	</Span>
-
-	<Span color = "String" rule="String" stopateol = "true" escape='\"'>
+	<Span color="String" rule="String" stopateol="true" escape="\&quot;">
 		<Begin>"</Begin>
 		<End>"</End>
 	</Span>
-
-	<Span color = "String" rule="String" stopateol = "true" escape='\"'>
+	<Span color="String" rule="String" stopateol="true" escape="\&quot;">
 		<Begin>'</Begin>
 		<End>'</End>
 	</Span>
-
-	<Keywords color = "Keyword(Access)">
+	<Keywords color="Keyword(Access)">
 	</Keywords>
-
-	<Keywords ignorecase="true" color = "Keyword(Operator)">
+	<Keywords ignorecase="true" color="Keyword(Operator)">
 		<Word>+</Word>
-
 		<Word>-</Word>
-
 		<Word>=</Word>
-
 		<Word>AND</Word>
 		<Word>ON</Word>
-
 		<Word>OR</Word>
 		<Word>IN</Word>
 		<Word>NOT</Word>
@@ -72,18 +60,12 @@
 		<Word>LIKE</Word>
 		<Word>*</Word>
 		<Word>@</Word>
-
 	</Keywords>
-
-	<Keywords ignorecase="true" color = "Keyword(Selection)">
+	<Keywords ignorecase="true" color="Keyword(Selection)">
 		<Word>SELECT</Word>
-
 		<Word>FROM</Word>
-
 		<Word>WHERE</Word>
-
 		<Word>INNER JOIN</Word>
-
 		<Word>LEFT JOIN</Word>
 		<Word>RIGHT JOIN</Word>
 		<Word>LEFT OUTER JOIN</Word>
@@ -103,39 +85,29 @@
 		<Word>ROLLBACK</Word>
 		<Word>EXISTS</Word>
 	</Keywords>
-
-	<Keywords ignorecase="true" color = "Keyword(Iteration)">
+	<Keywords ignorecase="true" color="Keyword(Iteration)">
 	</Keywords>
-
-	<Keywords ignorecase="true" color = "Keyword(Jump)">
+	<Keywords ignorecase="true" color="Keyword(Jump)">
 		<Word>BREAK</Word>
 		<Word>RETURN</Word>
 		<Word>RETURNS</Word>
 		<Word>GO</Word>
 	</Keywords>
-
-	<Keywords color = "Keyword(Context)">
+	<Keywords color="Keyword(Context)">
 	</Keywords>
-
-	<Keywords color = "Keyword(Exception)">
+	<Keywords color="Keyword(Exception)">
 	</Keywords>
-
-	<Keywords ignorecase="true" color = "Keyword(Constants)">
-
+	<Keywords ignorecase="true" color="Keyword(Constants)">
 		<Word>TRUE</Word>
-
 		<Word>FALSE</Word>
 		<Word>NULL</Word>
 	</Keywords>
-
-	<Keywords ignorecase="true" color = "Keyword(Modifiers)">
+	<Keywords ignorecase="true" color="Keyword(Modifiers)">
 		<Word>UNSIGNED</Word>
 		<Word>NOT NULL</Word>
 		<Word>DEFAULT</Word>
 	</Keywords>
-
-
-	<Keywords ignorecase="true" color = "Keyword(Type)">
+	<Keywords ignorecase="true" color="Keyword(Type)">
 		<Word>SmallInt</Word>
 		<Word>Integer</Word>
 		<Word>BigInt</Word>
@@ -203,9 +175,7 @@
 		<Word>Year</Word>
 		<Word>Boolean</Word>
 	</Keywords>
-
-	<Keywords ignorecase="true" color = "Keyword(Declaration)">
-
+	<Keywords ignorecase="true" color="Keyword(Declaration)">
 		<Word>CREATE DATABASE</Word>
 		<Word>CREATE TABLE</Word>
 		<Word>CREATE VIEW</Word>
@@ -224,35 +194,21 @@
 		<Word>BEGIN</Word>
 		<Word>END</Word>
 	</Keywords>
-
-	<Keywords ignorecase="true" color = "Keyword(Parameter)">
-
+	<Keywords ignorecase="true" color="Keyword(Parameter)">
 		<Word>DECLARE</Word>
-
 		<Word>IN</Word>
-
 		<Word>OUT</Word>
 	</Keywords>
-
-
-	<Rule name = "text.preprocessor">
-
+	<Rule name="text.preprocessor">
 	</Rule>
-
-	<Rule name = "Comment">
+	<Rule name="Comment">
 		<Keywords color="Comment Tag" ignorecase="True">
 			<Word>TODO</Word>
-
 			<Word>FIXME</Word>
-
 			<Word>HACK</Word>
-
 			<Word>UNDONE</Word>
-
 		</Keywords>
-
 	</Rule>
-
-	<Rule name = "String">
+	<Rule name="String">
 	</Rule>
 </SyntaxMode>
