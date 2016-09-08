@@ -118,7 +118,6 @@
         <Word>INDEX</Word>
         <Word>PROCEDURE</Word>
         <Word>FUNCTION</Word>
-        <Word>TRIGGER</Word>
     </Keywords>
 	<Keywords color="Keyword(Iteration)">
 		<Word>WHILE</Word>
@@ -150,16 +149,13 @@
 		<Word>Integer</Word>
 		<Word>BigInt</Word>
 		<Word>Decimal</Word>
-		<Word>Numeric</Word>
-		<Word>Real</Word>
+        <Word>Real</Word>
 		<Word>Double Precision</Word>
 		<Word>Serial</Word>
 		<Word>BigSerial</Word>
 		<Word>Money</Word>
 		<Word>Character</Word>
-		<Word>Text</Word>
-		<Word>Bytea</Word>
-		<Word>TimeStamp</Word>
+        <Word>Bytea</Word>
 		<Word>Interval</Word>
 		<Word>Date</Word>
 		<Word>Time</Word>
@@ -185,8 +181,7 @@
 		<Word>Opaque</Word>
 		<Word>Int</Word>
 		<Word>TinyInt</Word>
-		<Word>Bit</Word>
-		<Word>Numeric</Word>
+        <Word>Numeric</Word>
 		<Word>SmallMoney</Word>
 		<Word>Float</Word>
 		<Word>DateTime</Word>
@@ -209,15 +204,13 @@
 		<Word>MediumInt</Word>
 		<Word>TimeStamp</Word>
 		<Word>Enum</Word>
-		<Word>Set</Word>
-		<Word>Year</Word>
+        <Word>Year</Word>
 		<Word>Boolean</Word>
 	</Keywords>
 	<Keywords color="Keyword(Parameter)">
 		<Word>DECLARE</Word>
 		<Word>SET</Word>
-		<Word>IN</Word>
-		<Word>OUT</Word>
+        <Word>OUT</Word>
 	</Keywords>
 	<Rule name="Comment">
 		<Keywords color="Comment Tag">
