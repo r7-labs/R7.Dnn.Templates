@@ -1,4 +1,7 @@
-﻿{{0.6.1, 2016-09-07}}
+﻿{{0.7.0, 2016-09-08}}
+* Improved *.SqlDataProvider files highlighting
+
+{{0.6.1, 2016-09-07}}
 * Fix project icons in MonoDevelop / Xamarin Studio 6.
 
 {{0.6.0, 2016-09-07}}
