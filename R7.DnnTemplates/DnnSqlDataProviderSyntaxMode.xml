@@ -47,8 +47,6 @@
 		<Begin>'</Begin>
 		<End>'</End>
 	</Span>
-	<Keywords color="Keyword(Access)">
-	</Keywords>
 	<Keywords color="Punctuation">
 		<Word>+</Word>
 		<Word>-</Word>
@@ -135,6 +133,8 @@
 		<Word>GO</Word>
 	</Keywords>
 	<Keywords color="Keyword(Exception)">
+		<Word>TRY</Word>
+        <Word>CATCH</Word>
 	</Keywords>
 	<Keywords color="Keyword(Constants)">
 		<Word>TRUE</Word>
@@ -219,8 +219,6 @@
 		<Word>IN</Word>
 		<Word>OUT</Word>
 	</Keywords>
-	<Rule name="text.preprocessor">
-	</Rule>
 	<Rule name="Comment">
 		<Keywords color="Comment Tag" ignorecase="True">
 			<Word>TODO</Word>
