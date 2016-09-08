@@ -8,6 +8,17 @@ MSBuild scripts - and there will be more in the future releases!
 Addin also enables syntax highlighting for DNN manifest files (`.dnn`, `.dnn5` and `.dnn6`), NuGet specifications (`.nuspec`)
 and SQL dataprovider scripts (`.sqldataprovider`, `.SqlDataProvider`).
 
+# License
+
+[![GPLv3](http://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl.txt)
+
+The *R7.DnnTemplates* is free software: you can redistribute it and/or modify it under the terms of 
+the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, 
+or (at your option) any later version.
+
+*Important:* Since project's main purpose is to generate template code for other projects, 
+all produced code goes under the terms of WTFPL.
+
 # Install from MonoDevelop addin repository
 
 1. Open MonoDevelop / Xamarin Studio and go to "Tools &gt; Add-in manager".
@@ -33,7 +44,7 @@ and SQL dataprovider scripts (`.sqldataprovider`, `.SqlDataProvider`).
 # Note for Visual Studio users
 
 Note that MonoDevelop / Xamarin Studio use same solution and project format as MS Visual Studio (and SharpDevelop). 
-So you could easily create your project with MonoDevelop / Xamarin Studio and then continue to work on it with using VS.
+So you could easily create your project with MonoDevelop / Xamarin Studio and then continue to work on it with VS.
 
 There are some native VS templates for DNN modules:
 
@@ -47,11 +58,9 @@ want to see in R7.DnnTemplates!
 # TODO
 
 - [ ] Add SchedulerJob project template
-- [ ] Add ViewState / Session properties for View.ascx.cs
 - [ ] Add file templates for View, Edit, Settings controls
-- [ ] Learn to use ${Namespace} and other template variables
-- [ ] Add joined table and sample code to access it
-- [ ] Add sensible settings for module
+- [ ] Learn how to use ${Namespace} and other template variables
 - [ ] Review use ${AuthorCompany} as namespace prefix
+- [ ] Add sensible settings for module
 - [x] Use template file for PetaPOCO class in a project template
 - [x] Use MSBuild to automate extension package creation

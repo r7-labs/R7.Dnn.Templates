@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Packaging</RootNamespace>
     <AssemblyName>Packaging</AssemblyName>
-    <ReleaseVersion>0.6.1</ReleaseVersion>
+    <ReleaseVersion>0.7.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
