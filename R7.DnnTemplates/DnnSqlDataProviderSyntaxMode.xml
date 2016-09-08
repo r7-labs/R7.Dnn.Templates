@@ -31,6 +31,7 @@
     <Property name="BlockCommentEnd">*/</Property>
     <Property name="StringQuote">"</Property>
     <Property name="StringQuote">'</Property>
+	<Match color="Number">CSharpNumber</Match>
     <Match color="String Format Items">\{databaseOwner\}</Match>
     <Match color="String Format Items">\{objectQualifier\}</Match>
 	<EolSpan color="Comment(Line)" rule="Comment" tagColor="Comment(Line)">--</EolSpan>
