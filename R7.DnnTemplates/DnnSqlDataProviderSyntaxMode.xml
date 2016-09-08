@@ -108,6 +108,7 @@
 		<Word>ADD</Word>
         <Word>REMOVE</Word>
 		<Word>CONSTRAINT</Word>
+		<Word>PRINT</Word>
 	</Keywords>
 	<Keywords ignorecase="true" color="Keyword(Declaration)">
         <Word>CREATE</Word>
@@ -122,10 +123,11 @@
         <Word>TRIGGER</Word>
     </Keywords>
 	<Keywords ignorecase="true" color="Keyword(Iteration)">
-		<Word>FOR</Word>
+		<Word>WHILE</Word>
 	</Keywords>
 	<Keywords ignorecase="true" color="Keyword(Jump)">
 		<Word>BREAK</Word>
+		<Word>CONTINUE</Word>
 		<Word>RETURN</Word>
 		<Word>RETURNS</Word>
 		<Word>BEGIN</Word>
