@@ -103,9 +103,6 @@
 		<Word>COMMIT</Word>
         <Word>ROLLBACK</Word>
 		<Word>TRANSACTION</Word>
-		<Word>ADD</Word>
-        <Word>REMOVE</Word>
-		<Word>CONSTRAINT</Word>
 		<Word>PRINT</Word>
 	</Keywords>
 	<Keywords color="Keyword(Declaration)">
@@ -118,6 +115,16 @@
         <Word>INDEX</Word>
         <Word>PROCEDURE</Word>
         <Word>FUNCTION</Word>
+		<Word>COLUMN</Word>
+		<Word>FOREIGN</Word>
+		<Word>PRIMARY</Word>
+		<Word>KEY</Word>
+		<Word>REFERENCES</Word>
+		<Word>CLUSTERED</Word>
+		<Word>NONCLUSTERED</Word>
+		<Word>ADD</Word>
+        <Word>REMOVE</Word>
+        <Word>CONSTRAINT</Word>
     </Keywords>
 	<Keywords color="Keyword(Iteration)">
 		<Word>WHILE</Word>
