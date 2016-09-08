@@ -32,8 +32,8 @@
     <Property name="StringQuote">"</Property>
     <Property name="StringQuote">'</Property>
 	<Match color="Number">CSharpNumber</Match>
-    <Match color="String Format Items">\{databaseOwner\}</Match>
-    <Match color="String Format Items">\{objectQualifier\}</Match>
+    <Match color="String Format Items">(?-i)\{databaseOwner\}</Match>
+    <Match color="String Format Items">(?-i)\{objectQualifier\}</Match>
 	<EolSpan color="Comment(Line)" rule="Comment" tagColor="Comment(Line)">--</EolSpan>
 	<Span color="Comment(Block)" rule="Comment" tagColor="Comment(Line)">
 		<Begin>/*</Begin>
@@ -229,7 +229,7 @@
 		</Keywords>
 	</Rule>
 	<Rule name="String">
-		<Match color="String Format Items">\{databaseOwner\}</Match>
-        <Match color="String Format Items">\{objectQualifier\}</Match>
+		<Match color="String Format Items">(?-i)\{databaseOwner\}</Match>
+        <Match color="String Format Items">(?-i)\{objectQualifier\}</Match>
 	</Rule>
 </SyntaxMode>
