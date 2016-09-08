@@ -73,9 +73,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="samples\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dummy.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="icons\project-dnn-overlay-32.png">
