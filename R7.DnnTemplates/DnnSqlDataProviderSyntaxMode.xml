@@ -64,7 +64,7 @@
         <Word>[</Word>
         <Word>]</Word>
     </Keywords>
-	<Keywords ignorecase="true" color="Keyword(Operator)">
+	<Keywords color="Keyword(Operator)">
         <Word>AND</Word>
 		<Word>INTO</Word>
 		<Word>WITH</Word>
@@ -81,7 +81,7 @@
         <Word>IF</Word>
         <Word>ELSE</Word>
     </Keywords>
-	<Keywords ignorecase="true" color="Keyword(Context)">
+	<Keywords color="Keyword(Context)">
 		<Word>SELECT</Word>
 		<Word>DISTINCT</Word>
         <Word>FROM</Word>
@@ -108,7 +108,7 @@
 		<Word>CONSTRAINT</Word>
 		<Word>PRINT</Word>
 	</Keywords>
-	<Keywords ignorecase="true" color="Keyword(Declaration)">
+	<Keywords color="Keyword(Declaration)">
         <Word>CREATE</Word>
         <Word>ALTER</Word>
         <Word>DROP</Word>
@@ -120,10 +120,10 @@
         <Word>FUNCTION</Word>
         <Word>TRIGGER</Word>
     </Keywords>
-	<Keywords ignorecase="true" color="Keyword(Iteration)">
+	<Keywords color="Keyword(Iteration)">
 		<Word>WHILE</Word>
 	</Keywords>
-	<Keywords ignorecase="true" color="Keyword(Jump)">
+	<Keywords color="Keyword(Jump)">
 		<Word>BREAK</Word>
 		<Word>CONTINUE</Word>
 		<Word>RETURN</Word>
@@ -213,14 +213,14 @@
 		<Word>Year</Word>
 		<Word>Boolean</Word>
 	</Keywords>
-	<Keywords ignorecase="true" color="Keyword(Parameter)">
+	<Keywords color="Keyword(Parameter)">
 		<Word>DECLARE</Word>
 		<Word>SET</Word>
 		<Word>IN</Word>
 		<Word>OUT</Word>
 	</Keywords>
 	<Rule name="Comment">
-		<Keywords color="Comment Tag" ignorecase="True">
+		<Keywords color="Comment Tag">
 			<Word>TODO</Word>
 			<Word>FIXME</Word>
 			<Word>HACK</Word>
