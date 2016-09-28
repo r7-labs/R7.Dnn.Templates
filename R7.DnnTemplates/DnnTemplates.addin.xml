@@ -1,6 +1,6 @@
 <Addin id="R7.DnnTemplates" version="0.7.0" namespace="MonoDevelop">
     <Header>
-        <Name>DNN Platform Templates &amp; Support</Name>
+        <Name>DNN Platform Templates and Support</Name>
         <Category>Web Development</Category>
         <Description>Templates for module, skin object and packaging projects for DNN Platform. Also provides syntax highlighting for DNN manifest files and SqlDataProvider scripts.</Description>
         <Author>Roman M. Yagodin</Author>
