@@ -35,7 +35,7 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 			</References>
             <Packages>
-                <Package id="R7.DotNetNuke.Extensions" version="0.8.0" />
+                <Package id="R7.DotNetNuke.Extensions" version="0.10.0" />
             </Packages>
 			<!-- Other refrences (for future use):
 	<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -336,8 +336,8 @@ namespace ${ProjectName}
 	 <license src="license.htm" />
      <releaseNotes src="releaseNotes.htm" />
      <dependencies>
-        <!-- <dependency type="CoreVersion">07.00.00</dependency> -->
-        <dependency type="managedPackage" version="0.8.0">R7.DotNetNuke.Extensions</dependency>
+        <!-- <dependency type="CoreVersion">08.00.00</dependency> -->
+        <dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
      </dependencies>
      <components>
         <component type="SkinObject">
