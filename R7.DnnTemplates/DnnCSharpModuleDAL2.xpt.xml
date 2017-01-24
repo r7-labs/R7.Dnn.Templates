@@ -37,17 +37,6 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
             <Packages>
                 <Package id="R7.DotNetNuke.Extensions" version="0.10.0" />
             </Packages>
-			<!-- Other refrences (for future use):
-	<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-	<Reference type="Package" refto="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
-	<Reference type="Package" refto="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
-	<Reference type="Package" refto="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
-	<Reference type="Package" refto="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-	<Reference type="Package" refto="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-	<Reference type="Package" refto="System.Web.DynamicData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-	<Reference type="Package" refto="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
-	<Reference type="Package" refto="Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	-->
 			<Files>
                 <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
                 <Directory name="js" />
@@ -70,47 +59,23 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 -- Create tables
 
 IF NOT EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]') and type in (N'U'))
-	BEGIN
-		CREATE TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
-		(
-			[${ProjectName}ID] int NOT NULL IDENTITY (1, 1),
-			[ModuleID] int NOT NULL,
-			[Content] nvarchar(max) NOT NULL,
-			[CreatedByUser] int NOT NULL,
-			[CreatedOnDate] datetime NOT NULL DEFAULT (GETDATE ())
-            CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED (${ProjectName}ID)
-            CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Modules] FOREIGN KEY (ModuleID)
-                REFERENCES {databaseOwner}[{objectQualifier}Modules] (ModuleID) ON DELETE CASCADE
-		)
-       		
-		CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${ProjectName}_${ProjectName}s_ModuleID] 
-			ON {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] ([ModuleID])
-	END
+BEGIN
+	CREATE TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
+	(
+		[${ProjectName}ID] int NOT NULL IDENTITY (1, 1),
+		[ModuleID] int NOT NULL,
+		[Content] nvarchar(max) NOT NULL,
+		[CreatedByUser] int NOT NULL,
+		[CreatedOnDate] datetime NOT NULL DEFAULT (GETDATE ())
+        CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED (${ProjectName}ID)
+        CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Modules] FOREIGN KEY (ModuleID)
+            REFERENCES {databaseOwner}[{objectQualifier}Modules] (ModuleID) ON DELETE CASCADE
+	)
+   		
+	CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${ProjectName}_${ProjectName}s_ModuleID] 
+		ON {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] ([ModuleID])
+END
 GO
-
--- Drop existing stored procedures
-
----- Just example:
--- IF EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${ProjectName}_Get${ProjectName}s]') and type in (N'P'))
---	DROP PROCEDURE {databaseOwner}{objectQualifier}${ProjectName}_Get${ProjectName}s
--- GO
-
--- Create stored procedures
-
----- Just example:
--- CREATE PROCEDURE {databaseOwner}{objectQualifier}${ProjectName}_Get${ProjectName}s
---	@ModuleId int
--- AS 
--- SELECT [${ProjectName}ID]
---	[ModuleID],
---	[Content],
---	[CreatedByUser],
---	[CreatedOnDate],
---	'CreatedByUserName' = {objectQualifier}Users.FirstName + ' ' + {objectQualifier}Users.LastName
--- FROM {objectQualifier}${ProjectName}_${ProjectName}s
--- INNER JOIN {objectQualifier}Users on {objectQualifier}${ProjectName}_${ProjectName}s.CreatedByUser = {objectQualifier}Users.UserId
--- WHERE [ModuleID] = @ModuleId
--- GO
 ]]></File>
 				<File name="Uninstall.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
 -- replace {databaseOwner} and {objectQualifier} with real values. 
@@ -127,11 +92,6 @@ GO
 
 DROP TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
 GO
-
--- Drop stored procedures
-
--- DROP PROCEDURE {databaseOwner}[{objectQualifier}${ProjectName}_Get${ProjectName}s]
--- GO
 ]]></File>
     </Directory>
 				<Directory name="App_LocalResources">
@@ -379,13 +339,6 @@ namespace ${ProjectName}.Data
 
 		#endregion
 		
-		/// <summary>
-		/// Empty default cstor
-		/// </summary>
-		public ${ProjectName}Info ()
-		{
-		}
-
         #region Properties
 
 		public int ${ProjectName}ID { get; set; }
@@ -416,63 +369,6 @@ namespace ${ProjectName}.Data
 		}
 
         #endregion
-        
-        /* // Joins example
-     	
-     	// foreign key
-     	public int AnotherID { get; set; }
-     	
-     	// private object reference
-     	private AnotherInfo _another;
-     	
-     	// public object reference
-     	public AnotherInfo Another 
-     	{
-     	   	// this getter method hide underlying access to database, 
-     	   	// and perform simple caching by storing reference
-     	   	// to retrived AnotherInfo object in a private field "_another"
-     		get 
-     		{
-     			if (_other == null)
-     			{
-     				// load joined object to reference it
-     				var dataProvider = new Dal2DataProvider ();
-     				_another = dataProvider.Get<AnotherInfo>(AnotherID);
-     			}
-     			return _another;	
-     		}
-     		set 
-     		{
-     			_another = value;
-     		}
-     	}      
-     	
-     	/// <summary>
-     	/// Nullifies all private fields with references to joined objects,
-     	/// so next access to corresponding object properties 
-     	/// results in reloading them from the database  
-     	/// </summary>
-     	public void ResetJoins ()
-     	{
-     		_another = null;
-     	}
-        
-        // Now we have ability to use ${ProjectName}Info objects
-        // to access members of joined AnotherInfo objects 
-        
-       	// Get ${ProjectName}Info object by it's primary key (ID):
-       	// var dataProvider = new Dal2DataProvider();
-     	// var item = dataProvider.Get<${ProjectName}Info>(itemId);
-     	
-     	// Now simply get data from another table:
-     	// Console.WriteLine(item.Another.SomeProperty);
-     	
-        // True is, that it is not very effective way to retrieve multiple objects, 
-        // but it is 1) simple and 2) object-oriented, so then PetaPOCO AutoJoin 
-        // attribute will be included in DAL 2, existing business logic code 
-        // can be upgraded with almost no efforts.
-       
-        */
      }
 }
 ]]></File>
@@ -509,15 +405,6 @@ namespace ${ProjectName}
 	public partial class View${ProjectName} : PortalModuleBase<${ProjectName}Settings>, IActionable
 	{
     	#region Handlers 
-    	
-    	/// <summary>
-		/// Handles Init event for a control
-		/// </summary>
-		/// <param name="e">Event args.</param>
-    	protected override void OnInit(EventArgs e)
-		{
-			base.OnInit (e);
-		}
     	    	
     	/// <summary>
 		/// Handles Load event for a control
@@ -1066,16 +953,7 @@ to be made manually.
 ]]></File>
    <File name="license.htm"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
-   <File name="releaseNotes.htm"><![CDATA[<!--
-<h3>Version 0.2.0</h3>
-<p>General version notes.</p>
-<ul>
-    <li>Added new feature.</li>
-    <li>Fixed bug.</li>
-</ul>
--->
-
-<h3>Version 0.1.0</h3>
+   <File name="releaseNotes.htm"><![CDATA[<h3>Version 0.1.0</h3>
 <p>This is the initial release.</p>
 ]]></File>
 			</Files>
