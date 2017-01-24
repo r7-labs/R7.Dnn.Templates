@@ -279,81 +279,8 @@ namespace ${ProjectName}
 		protected Literal litContent;
 	}
 }]]></File>
-  				<File name="${ProjectName}.dnn"><![CDATA[<dotnetnuke type="Package" version="5.0">
- <packages>
-   <package name="${ProjectName}" type="SkinObject" version="00.01.00">
-     <friendlyName>${ProjectName}</friendlyName>
-     <description>This is a simple skin object to display a record from database table.</description>
-     <owner>
-       <name>${AuthorName}</name>
-       <organization>${AuthorCompany}</organization>
-       <url>http://www.${AuthorCompany}.com/${ProjectName}</url>
-       <email>${AuthorEmail}</email>
-     </owner>
-	 <license src="license.htm" />
-     <releaseNotes src="releaseNotes.htm" />
-     <dependencies>
-        <!-- <dependency type="CoreVersion">08.00.00</dependency> -->
-        <dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
-     </dependencies>
-     <components>
-        <component type="SkinObject">
-  			<moduleControl>
-			    <controlKey>${ProjectName}</controlKey>
-    			<controlSrc>/DesktopModules/${ProjectName}/${ProjectName}/${ProjectName}.ascx</controlSrc>
-    			<supportsPartialRendering>false</supportsPartialRendering>
-  			</moduleControl>
-		</component>
-
-       <component type="Script">
-         <scripts>
-           <basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
-           <script type="Install">
-             <name>SqlDataProvider\00.01.00.SqlDataProvider</name>
-             <version>00.01.00</version>
-           </script>
-           <script type="UnInstall">
-             <name>SqlDataProvider\Uninstall.SqlDataProvider</name>
-           </script>
-         </scripts>
-       </component>
-
-       <component type="ResourceFile">
-         <resourceFiles>
-           <basePath>DesktopModules\${ProjectName}</basePath>
-           <resourceFile>
-             <name>Resources.zip</name>
-           </resourceFile>
-         </resourceFiles>
-       </component>
-
-       <component type="Assembly">
-         <assemblies>
-           <basePath>bin</basePath>
-           <assembly>
-             <path>bin</path>
-             <name>${ProjectName}.dll</name>
-           </assembly>
-         </assemblies>
-       </component>
-    
-     </components>
-   </package>
- </packages>
-</dotnetnuke>
-]]></File>
-<File name="SETUP.md"><![CDATA[# Template usage
-
-Due to template engine limitations we need to do some will require some changes 
-to be made manually.
-
-1. You may want to disable automatic updates of CodeBehind partial classes in project options
-   under "ASP.NET" page. Automatic updates is not working correctly with third-party controls 
-   in the MonoDevelop / Xamarin Studio anyway. This is true at least for version 4.2.3.
-
-2. Add to your solution new project of type "DNN packaging project" and follow instructions 
-   in it's `SETUP.md` to setup packaging and local deploy.
-]]></File>
+				<File name="${ProjectName}.dnn" src="Files/CSharpSkinObject" />
+				<File name="SETUP.md" src="Files/SETUP.md" /> 
    <File name="license.htm"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
    <File name="releaseNotes.htm"><![CDATA[<h3>Version 0.1.0</h3>

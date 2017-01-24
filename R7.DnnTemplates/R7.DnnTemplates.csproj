@@ -70,10 +70,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="releaseNotes.txt" />
+    <None Include="Files\SETUP.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\CSharpModuleDal2.dnn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Files\CSharpSkinObject.dnn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="samples\" />
     <Folder Include="Properties\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dummy.cs" />

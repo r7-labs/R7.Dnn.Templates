@@ -24,6 +24,9 @@
         <Import file="DnnLocalDeploy.xft.xml" />
         <Import file="DnnPackaging.xpt.xml" />
         <Import file="DnnSqlDataProviderSyntaxMode.xml" />
+		<Import file="Files/CSharpModuleDal2.dnn" />
+		<Import file="Files/CSharpSkinObject.dnn" />
+		<Import file="Files/SETUP.md" />
     </Runtime>
     <Extension path="/MonoDevelop/Ide/FileTemplates">
         <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
