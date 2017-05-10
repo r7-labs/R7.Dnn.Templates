@@ -35,19 +35,8 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
 			</References>
             <Packages>
-                <Package id="R7.DotNetNuke.Extensions" version="0.8.0" />
+                <Package id="R7.DotNetNuke.Extensions" version="0.10.0" />
             </Packages>
-			<!-- Other refrences (for future use):
-	<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-	<Reference type="Package" refto="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
-	<Reference type="Package" refto="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
-	<Reference type="Package" refto="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
-	<Reference type="Package" refto="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-	<Reference type="Package" refto="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-	<Reference type="Package" refto="System.Web.DynamicData, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-	<Reference type="Package" refto="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" SpecificVersion="false" />
-	<Reference type="Package" refto="Microsoft.CSharp, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-	-->
 			<Files>
                 <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
                 <Directory name="SqlDataProvider">
@@ -58,47 +47,23 @@ NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description
 -- Create tables
 
 IF NOT EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]') and type in (N'U'))
-    BEGIN
-        CREATE TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
-        (
-            [${ProjectName}ID] int NOT NULL IDENTITY (1, 1),
-            [TabID] int NOT NULL,
-            [Content] nvarchar(max) NOT NULL,
-            [CreatedByUser] int NOT NULL,
-            [CreatedOnDate] datetime NOT NULL DEFAULT (GETDATE ())
-            CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED (${ProjectName}ID)
-            CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Tabs] FOREIGN KEY (TabID)
-                REFERENCES {databaseOwner}[{objectQualifier}Tabs] (TabID) ON DELETE CASCADE
-        )
-            
-        CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${ProjectName}_${ProjectName}s_TabID] 
-            ON {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] ([TabID])
-    END
+BEGIN
+    CREATE TABLE {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s]
+    (
+        [${ProjectName}ID] int NOT NULL IDENTITY (1, 1),
+        [TabID] int NOT NULL,
+        [Content] nvarchar(max) NOT NULL,
+        [CreatedByUser] int NOT NULL,
+        [CreatedOnDate] datetime NOT NULL DEFAULT (GETDATE ())
+        CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED (${ProjectName}ID)
+        CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Tabs] FOREIGN KEY (TabID)
+            REFERENCES {databaseOwner}[{objectQualifier}Tabs] (TabID) ON DELETE CASCADE
+    )
+        
+    CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${ProjectName}_${ProjectName}s_TabID] 
+        ON {databaseOwner}[{objectQualifier}${ProjectName}_${ProjectName}s] ([TabID])
+END
 GO
-
--- Drop existing stored procedures
-
----- Just example:
--- IF EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${ProjectName}_Get${ProjectName}s]') and type in (N'P'))
---  DROP PROCEDURE {databaseOwner}{objectQualifier}${ProjectName}_Get${ProjectName}s
--- GO
-
--- Create stored procedures
-
----- Just example:
--- CREATE PROCEDURE {databaseOwner}{objectQualifier}${ProjectName}_Get${ProjectName}s
---  @ModuleId int
--- AS 
--- SELECT [${ProjectName}ID]
---  [ModuleID],
---  [Content],
---  [CreatedByUser],
---  [CreatedOnDate],
---  'CreatedByUserName' = {objectQualifier}Users.FirstName + ' ' + {objectQualifier}Users.LastName
--- FROM {objectQualifier}${ProjectName}_${ProjectName}s
--- INNER JOIN {objectQualifier}Users on {objectQualifier}${ProjectName}_${ProjectName}s.CreatedByUser = {objectQualifier}Users.UserId
--- WHERE [ModuleID] = @ModuleId
--- GO
 ]]></File>
 				<File name="Uninstall.SqlDataProvider"><![CDATA[-- NOTE: To manually execute this script you must 
 -- replace {databaseOwner} and {objectQualifier} with real values. 
@@ -138,7 +103,6 @@ GO
 </root>]]></File>
 				</Directory>
 				<Directory name="Data">
-<!--<FileTemplateReference TemplateID="DotNetNuke PetaPOCO class" name="${ProjectName}Info.cs" />-->
 <File name="${ProjectName}Info.cs" AddStandardHeader="True"><![CDATA[using System;
 using System.Linq;
 using DotNetNuke.Data;
@@ -168,13 +132,6 @@ namespace ${ProjectName}.Data
 
 		#endregion
 		
-		/// <summary>
-		/// Empty default cstor
-		/// </summary>
-		public ${ProjectName}Info ()
-		{
-		}
-
         #region Properties
 
 		public int ${ProjectName}ID { get; set; }
@@ -322,93 +279,11 @@ namespace ${ProjectName}
 		protected Literal litContent;
 	}
 }]]></File>
-  				<File name="${ProjectName}.dnn"><![CDATA[<dotnetnuke type="Package" version="5.0">
- <packages>
-   <package name="${ProjectName}" type="SkinObject" version="00.01.00">
-     <friendlyName>${ProjectName}</friendlyName>
-     <description>This is a simple skin object to display a record from database table.</description>
-     <owner>
-       <name>${AuthorName}</name>
-       <organization>${AuthorCompany}</organization>
-       <url>http://www.${AuthorCompany}.com/${ProjectName}</url>
-       <email>${AuthorEmail}</email>
-     </owner>
-	 <license src="license.htm" />
-     <releaseNotes src="releaseNotes.htm" />
-     <dependencies>
-        <!-- <dependency type="CoreVersion">07.00.00</dependency> -->
-        <dependency type="managedPackage" version="0.8.0">R7.DotNetNuke.Extensions</dependency>
-     </dependencies>
-     <components>
-        <component type="SkinObject">
-  			<moduleControl>
-			    <controlKey>${ProjectName}</controlKey>
-    			<controlSrc>/DesktopModules/${ProjectName}/${ProjectName}/${ProjectName}.ascx</controlSrc>
-    			<supportsPartialRendering>false</supportsPartialRendering>
-  			</moduleControl>
-		</component>
-
-       <component type="Script">
-         <scripts>
-           <basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
-           <script type="Install">
-             <name>SqlDataProvider\00.01.00.SqlDataProvider</name>
-             <version>00.01.00</version>
-           </script>
-           <script type="UnInstall">
-             <name>SqlDataProvider\Uninstall.SqlDataProvider</name>
-           </script>
-         </scripts>
-       </component>
-
-       <component type="ResourceFile">
-         <resourceFiles>
-           <basePath>DesktopModules\${ProjectName}</basePath>
-           <resourceFile>
-             <name>Resources.zip</name>
-           </resourceFile>
-         </resourceFiles>
-       </component>
-
-       <component type="Assembly">
-         <assemblies>
-           <basePath>bin</basePath>
-           <assembly>
-             <path>bin</path>
-             <name>${ProjectName}.dll</name>
-           </assembly>
-         </assemblies>
-       </component>
-    
-     </components>
-   </package>
- </packages>
-</dotnetnuke>
-]]></File>
-<File name="SETUP.md"><![CDATA[# Template usage
-
-Due to template engine limitations we need to do some will require some changes 
-to be made manually.
-
-1. You may want to disable automatic updates of CodeBehind partial classes in project options
-   under "ASP.NET" page. Automatic updates is not working correctly with third-party controls 
-   in the MonoDevelop / Xamarin Studio anyway. This is true at least for version 4.2.3.
-
-2. Add to your solution new project of type "DNN packaging project" and follow instructions 
-   in it's `SETUP.md` to setup packaging and local deploy.
-]]></File>
+				<File name="${ProjectName}.dnn" src="Files/CSharpSkinObject" />
+				<File name="SETUP.md" src="Files/SETUP.md" /> 
    <File name="license.htm"><![CDATA[<p>This module is published under the terms of MIT/X11 License.</p>
 ]]></File>
-   <File name="releaseNotes.htm"><![CDATA[<!-- 
-<h3>Version 0.2.0</h3>
-<p>General version notes.</p>
-<ul>
-	<li>Added new feature.</li>
-	<li>Fixed bug.</li>
-</ul>
--->
-
-<h3>Version 0.1.0</h3>
+   <File name="releaseNotes.htm"><![CDATA[<h3>Version 0.1.0</h3>
 <p>This is the initial release.</p>
 ]]></File>
 			</Files>

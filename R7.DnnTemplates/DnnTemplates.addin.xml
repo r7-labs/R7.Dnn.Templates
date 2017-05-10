@@ -1,6 +1,6 @@
-<Addin id="R7.DnnTemplates" version="0.7.0" namespace="MonoDevelop">
+<Addin id="R7.DnnTemplates" version="0.8.0" namespace="MonoDevelop">
     <Header>
-        <Name>DNN Platform Templates &amp; Support</Name>
+        <Name>DNN Platform Templates and Support</Name>
         <Category>Web Development</Category>
         <Description>Templates for module, skin object and packaging projects for DNN Platform. Also provides syntax highlighting for DNN manifest files and SqlDataProvider scripts.</Description>
         <Author>Roman M. Yagodin</Author>
@@ -24,6 +24,9 @@
         <Import file="DnnLocalDeploy.xft.xml" />
         <Import file="DnnPackaging.xpt.xml" />
         <Import file="DnnSqlDataProviderSyntaxMode.xml" />
+		<Import file="Files/CSharpModuleDal2.dnn" />
+		<Import file="Files/CSharpSkinObject.dnn" />
+		<Import file="Files/SETUP.md" />
     </Runtime>
     <Extension path="/MonoDevelop/Ide/FileTemplates">
         <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
@@ -47,6 +50,9 @@
         <MimeType id="text/x-dnn-sqldataprovider" _description="DNN Platform SQL Data Provider File" isText="true">
             <File pattern="*.SqlDataProvider" />
             <File pattern="*.sqldataprovider" />
+        </MimeType>
+		<MimeType id="text/jsx" _description="ReactJS files" icon="md-html-file-icon" baseType="text/javascript">
+            <File pattern="*.jsx" />
         </MimeType>
     </Extension>
     <Extension path="/MonoDevelop/SourceEditor2/SyntaxModes">

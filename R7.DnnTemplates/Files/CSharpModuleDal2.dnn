@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<dotnetnuke type="Package" version="5.0">
+	<packages>
+		<package name="${ProjectName}" type="Module" version="00.01.00">
+			<friendlyName>${ProjectName}</friendlyName>
+			<description>This is a simple module to display some records from database table.</description>
+			<owner>
+				<name>${AuthorName}</name>
+				<organization>${AuthorCompany}</organization>
+				<url>http://www.${AuthorCompany}.com/${ProjectName}</url>
+				<email>${AuthorEmail}</email>
+			</owner>
+			<license src="license.htm" />
+			<releaseNotes src="releaseNotes.htm" />
+			<dependencies>
+				<!-- <dependency type="CoreVersion">08.00.00</dependency> -->
+				<dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
+			</dependencies>
+			<components>
+				<component type="Module">
+					<desktopModule>
+						<moduleName>${ProjectName}</moduleName>
+						<foldername>${ProjectName}</foldername>
+						<businessControllerClass>${ProjectName}.Components.${ProjectName}Controller</businessControllerClass>
+						<supportedFeatures>
+							<supportedFeature type="Portable" />
+							<supportedFeature type="Searchable" />
+						</supportedFeatures>
+						<moduleDefinitions>
+							<moduleDefinition>
+								<friendlyName>${ProjectName}</friendlyName>
+								<definitionName>${ProjectName}</definitionName>
+								<defaultCacheTime>0</defaultCacheTime>
+								<moduleControls>
+									<moduleControl>
+										<controlKey />
+										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/View${ProjectName}.ascx</controlSrc>
+										<controlTitle />
+										<controlType>View</controlType>
+										<iconFile />
+										<helpUrl />
+										<supportsPartialRendering>False</supportsPartialRendering>
+										<supportsPopUps>False</supportsPopUps>
+										<viewOrder>0</viewOrder>
+									</moduleControl>
+									<moduleControl>
+										<controlKey>Edit</controlKey>
+										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Edit${ProjectName}.ascx</controlSrc>
+										<controlTitle>Edit</controlTitle>
+										<controlType>Edit</controlType>
+										<iconFile />
+										<helpUrl />
+										<supportsPartialRendering>False</supportsPartialRendering>
+										<supportsPopUps>True</supportsPopUps>
+										<viewOrder>0</viewOrder>
+									</moduleControl>
+									<moduleControl>
+										<controlKey>Settings</controlKey>
+										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Settings${ProjectName}.ascx</controlSrc>
+										<controlTitle>Settings</controlTitle>
+										<controlType>Edit</controlType>
+										<iconFile />
+										<helpUrl />
+										<supportsPartialRendering>False</supportsPartialRendering>
+										<supportsPopUps>False</supportsPopUps>
+										<viewOrder>0</viewOrder>
+									</moduleControl>
+								</moduleControls>
+							</moduleDefinition>
+						</moduleDefinitions>
+					</desktopModule>
+				</component>
+				<component type="Script">
+					<scripts>
+						<basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
+						<script type="Install">
+							<name>SqlDataProvider\00.01.00.SqlDataProvider</name>
+							<version>00.01.00</version>
+						</script>
+						<script type="UnInstall">
+							<name>SqlDataProvider\Uninstall.SqlDataProvider</name>
+						</script>
+					</scripts>
+				</component>
+				<component type="ResourceFile">
+					<resourceFiles>
+						<basePath>DesktopModules\${ProjectName}</basePath>
+						<resourceFile>
+							<name>Resources.zip</name>
+						</resourceFile>
+					</resourceFiles>
+				</component>
+				<component type="Assembly">
+					<assemblies>
+						<basePath>bin</basePath>
+						<assembly>
+							<path>bin</path>
+							<name>${ProjectName}.dll</name>
+						</assembly>
+					</assemblies>
+				</component>
+			</components>
+		</package>
+	</packages>
+</dotnetnuke>
