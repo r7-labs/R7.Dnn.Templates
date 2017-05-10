@@ -51,6 +51,9 @@
             <File pattern="*.SqlDataProvider" />
             <File pattern="*.sqldataprovider" />
         </MimeType>
+		<MimeType id="text/jsx" _description="ReactJS files" icon="md-html-file-icon" baseType="text/javascript">
+            <File pattern="*.jsx" />
+        </MimeType>
     </Extension>
     <Extension path="/MonoDevelop/SourceEditor2/SyntaxModes">
         <Templates file="DnnSqlDataProviderSyntaxMode.xml" />
