@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>R7.DnnTemplates</RootNamespace>
     <AssemblyName>R7.DnnTemplates</AssemblyName>
-    <ReleaseVersion>0.8.0</ReleaseVersion>
+    <ReleaseVersion>0.7.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -70,20 +70,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="releaseNotes.txt" />
-    <None Include="Files\SETUP.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Files\CSharpModuleDal2.dnn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Files\CSharpSkinObject.dnn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="icons\dnn-templates.xcf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="samples\" />
     <Folder Include="Properties\" />
-    <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dummy.cs" />
