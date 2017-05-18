@@ -6,7 +6,7 @@
         <Author>Roman M. Yagodin</Author>
         <Url>https://github.com/roman-yagodin/R7.DnnTemplates</Url>
         <Icon32>icons/dnn-templates.png</Icon32>
-        <UpdateRank>Minor</UpdateRank>
+        <UpdateRank>Normal</UpdateRank>
         <ReleaseNotesFile>releaseNotes.txt</ReleaseNotesFile>
     </Header>
     <Dependencies>
