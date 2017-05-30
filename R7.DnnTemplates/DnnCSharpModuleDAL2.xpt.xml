@@ -9,7 +9,7 @@
         <ProjectType>AspNetApp</ProjectType>
 		<_Description>Creates a WebForms-based module project for DNN Platform which use DAL2 for data access.
 
-NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description>
+NOTE: Ensure that 'Create a project directory within the solution directory' flag is checked.</_Description>
 	</TemplateConfiguration>
 	<!-- Actions -->
 	<Actions>

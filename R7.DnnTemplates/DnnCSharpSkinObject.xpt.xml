@@ -9,7 +9,7 @@
         <ProjectType>AspNetApp</ProjectType>
 		<_Description>Creates a WebForms-based skinobject project for DNN Platform.
 
-NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description>
+NOTE: Ensure that 'Create a project directory within the solution directory' flag is checked.</_Description>
 	</TemplateConfiguration>
 	<!-- Actions -->
 	<Actions>
