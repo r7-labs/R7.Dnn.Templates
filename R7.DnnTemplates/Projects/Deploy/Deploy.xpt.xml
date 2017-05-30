@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0"?>
 <Template originator="Roman M. Yagodin" created="2014/06/18">
 	<TemplateConfiguration>
-		<_Name>Deployment project</_Name>
+		<_Name>Deployment Project</_Name>
 		<_Category>other/dnn/deployment</_Category>
 		<Icon>md-package-project|res:project-dnn-overlay-32.png</Icon>
 		<LanguageName>C#</LanguageName>

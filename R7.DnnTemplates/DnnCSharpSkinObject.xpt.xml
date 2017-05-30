@@ -2,7 +2,7 @@
 <Template originator="Roman M. Yagodin" created="2014/05/15">
 	<!-- Template Header -->
 	<TemplateConfiguration>
-		<_Name>C# compiled skin object</_Name>
+		<_Name>WebForms SkinObject Project</_Name>
 		<_Category>other/dnn/general</_Category>
 		<Icon>md-aspnet-empty-project|res:project-dnn-overlay-32.png</Icon>
 		<LanguageName>C#</LanguageName>

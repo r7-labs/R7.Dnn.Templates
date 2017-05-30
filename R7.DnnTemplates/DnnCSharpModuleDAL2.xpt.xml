@@ -2,7 +2,7 @@
 <Template originator="Roman M. Yagodin" created="2012/08/10">
 	<!-- Template Header -->
 	<TemplateConfiguration>
-		<_Name>C# compiled module with DAL 2</_Name>
+		<_Name>WebForms Module Project</_Name>
 		<_Category>other/dnn/general</_Category>
 		<Icon>md-aspnet-empty-project|res:project-dnn-overlay-32.png</Icon>
 		<LanguageName>C#</LanguageName>
