@@ -31,9 +31,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="DnnTemplates.addin.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="DnnCSharpModuleDAL2.xpt.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -105,6 +102,10 @@
   <ItemGroup>
     <EmbeddedResource Include="icons\project-dnn-overlay-32.png">
       <LogicalName>project-dnn-overlay-32.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DnnTemplates.addin.xml">
+      <LogicalName>DnnTemplates.addin.xml</LogicalName>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -34,7 +34,13 @@
 		<Import file="Files/CSharpSkinObject.dnn" />
 		<Import file="Files/SETUP.md" />
     </Runtime>
-    <Extension path="/MonoDevelop/Ide/FileTemplates">
+	<Extension path="/MonoDevelop/Ide/ProjectTemplateCategories/other">
+        <Category id="dnn" name="DNN Platform" insertafter="aspnet">
+		    <Category id="general" name="General" />
+			<Category id="deployment" name="Deployment" />
+		</Category>
+    </Extension>
+	<Extension path="/MonoDevelop/Ide/FileTemplates">
         <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
     </Extension>
     <Extension path="/MonoDevelop/Ide/ProjectTemplates">

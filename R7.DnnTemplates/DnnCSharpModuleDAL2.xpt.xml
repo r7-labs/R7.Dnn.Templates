@@ -3,11 +3,11 @@
 	<!-- Template Header -->
 	<TemplateConfiguration>
 		<_Name>C# compiled module with DAL 2</_Name>
-		<_Category>C#/DNN Platform</_Category>
+		<_Category>other/dnn/general</_Category>
 		<Icon>md-aspnet-empty-project|res:project-dnn-overlay-32.png</Icon>
 		<LanguageName>C#</LanguageName>
         <ProjectType>AspNetApp</ProjectType>
-		<_Description>Creates a new DNN Platform C# compiled module project with DAL 2, based on PetaPOCO micro-ORM.
+		<_Description>Creates a WebForms-based module project for DNN Platform which use DAL2 for data access.
 
 NOTE: Ensure that 'Create directory for solution' flag is checked.</_Description>
 	</TemplateConfiguration>

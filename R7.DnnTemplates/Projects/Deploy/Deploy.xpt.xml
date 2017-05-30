@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0"?>
 <Template originator="Roman M. Yagodin" created="2014/06/18">
 	<TemplateConfiguration>
-		<_Name>Deployment project for DNN extensions</_Name>
-		<_Category>C#/DNN Platform</_Category>
+		<_Name>Deployment project</_Name>
+		<_Category>other/dnn/deployment</_Category>
 		<Icon>md-package-project|res:project-dnn-overlay-32.png</Icon>
 		<LanguageName>C#</LanguageName>
-		<_Description>Creates a new deployment project for DNN extensions using MSBuild. Add it to the solution containing one or more DNN extensions (modules) projects.</_Description>
+		<_Description>Creates a project to easily deploy DNN Platform extensions. Project provide MSBuild scripts to make install packages, deploy files to local or shared folder, run tests, etc. It is designed to be used alongside one or more DNN extension projects in a single solution.</_Description>
 	</TemplateConfiguration>
 	<Actions>
 		<Open filename="SETUP.md" />
