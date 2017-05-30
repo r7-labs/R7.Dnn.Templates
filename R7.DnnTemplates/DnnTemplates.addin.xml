@@ -20,9 +20,15 @@
         <Import file="DnnCSharpModuleDAL2.xpt.xml" />
         <Import file="DnnCSharpSkinObject.xpt.xml" />
         <Import file="DnnPetaPocoClass.xft.xml" />
-        <Import file="DnnInstallPackage.xft.xml" />
-        <Import file="DnnLocalDeploy.xft.xml" />
-        <Import file="DnnPackaging.xpt.xml" />
+		<Import file="Projects/Deploy/__Defaults.targets" />
+		<Import file="Projects/Deploy/__Settings.targets" />
+        <Import file="Projects/Deploy/InstallPackage.targets" />
+        <Import file="Projects/Deploy/LocalDeploy.targets" />
+		<Import file="Projects/Deploy/Preprocess.targets" />
+		<Import file="Projects/Deploy/Tests.targets" />
+		<Import file="Projects/Deploy/SETUP.md" />
+		<Import file="Projects/Deploy/tasks.json" />
+        <Import file="Projects/Deploy/Deploy.xpt.xml" />
         <Import file="DnnSqlDataProviderSyntaxMode.xml" />
 		<Import file="Files/CSharpModuleDal2.dnn" />
 		<Import file="Files/CSharpSkinObject.dnn" />
@@ -30,13 +36,11 @@
     </Runtime>
     <Extension path="/MonoDevelop/Ide/FileTemplates">
         <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
-        <FileTemplate id="DnnInstallPackage" file="DnnInstallPackage.xft.xml" />
-        <FileTemplate id="DnnLocalDeploy" file="DnnLocalDeploy.xft.xml" />
     </Extension>
     <Extension path="/MonoDevelop/Ide/ProjectTemplates">
         <ProjectTemplate id="DnnCSharpModuleDAL2" file="DnnCSharpModuleDAL2.xpt.xml" />
         <ProjectTemplate id="DnnCSharpSkinObject" file="DnnCSharpSkinObject.xpt.xml" />
-        <ProjectTemplate id="DnnPackaging" file="DnnPackaging.xpt.xml" />
+        <ProjectTemplate id="DnnDeploy" file="Projects/Deploy/Deploy.xpt.xml" />
     </Extension>
     <Extension path="/MonoDevelop/Core/MimeTypes">
         <MimeType id="text/x-dnn-manifest" _description="DNN Platform Manifest File" icon="md-xml-file-icon" baseType="application/xml">

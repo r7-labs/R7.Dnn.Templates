@@ -1,0 +1,29 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+
+    <!-- Import MSBuild.Community.Tasks -->
+    <Import Project="../packages/MSBuildTasks.1.5.0.235/tools/MSBuild.Community.Tasks.Targets" />
+    
+    <!-- Main properties -->
+    <PropertyGroup>
+		<MainProjectName>${SolutionName}</MainProjectName>
+        <PackageName>${SolutionName}</PackageName>
+        <PackageOutputPath>$(MSBuildProjectDirectory)/bin/Deploy</PackageOutputPath>
+        <TmpDir>$(MSBuildProjectDirectory)/bin/tmp</TmpDir>
+        <DnnLocalDeployPath Condition=" '$(OS)' == 'Unix' ">$(HOME)/mnt/dnn8</DnnLocalDeployPath>
+        <DnnLocalDeployPath Condition=" '$(OS)' != 'Unix' ">C:\Dotnetnuke804</DnnLocalDeployPath>
+        <BuildSettingsImported>true</BuildSettingsImported>
+    </PropertyGroup>
+
+    <!-- Derieved properties -->
+    <PropertyGroup>
+        <MainProjectPath>../$(MainProjectName)</MainProjectPath>
+        <MainProjectOutputPath>$(MainProjectPath)/bin/$(Configuration)</MainProjectOutputPath>
+        <DnnBinPath>$(DnnLocalDeployPath)/bin</DnnBinPath>
+        <DnnSkinsPath>$(DnnLocalDeployPath)/Portals/_default/Skins</DnnSkinsPath>
+        <DnnContainersPath>$(DnnLocalDeployPath)/Portals/_default/Containers</DnnContainersPath>
+        <DnnMenusPath>$(DnnSkinsPath)</DnnMenusPath>
+		<!-- Use $(DnnLocalDeployPath)/DesktopModules/MVC for MVC modules -->
+        <DnnModulesPath>$(DnnLocalDeployPath)/DesktopModules</DnnModulesPath> 
+        <DnnJsLibrariesPath>$(DnnLocalDeployPath)/Resources/Libraries</DnnJsLibrariesPath>
+    </PropertyGroup>
+</Project>
