@@ -21,12 +21,18 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="Packaging.csproj" />
+    <None Include="Deploy.csproj" />
     <None Include="Addin.targets" />
   </ItemGroup>
   <Import Project="Addin.targets" />
   <Target Name="AfterBuild" DependsOnTargets="MakeAddinPackage" />
   <ItemGroup>
     <Compile Include="Dummy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\R7.DnnTemplates\R7.DnnTemplates.csproj">
+      <Project>{18FF5960-12C1-43A3-9979-128F7B8F4FFC}</Project>
+      <Name>R7.DnnTemplates</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
