@@ -17,13 +17,13 @@
     <!-- Derieved properties -->
     <PropertyGroup>
         <MainProjectPath>../$(MainProjectName)</MainProjectPath>
-        <MainProjectOutputPath>$(MainProjectPath)/bin/$(Configuration)</MainProjectOutputPath>
+        <MainProjectOutputPath>$(MainProjectPath)/bin</MainProjectOutputPath>
         <DnnBinPath>$(DnnLocalDeployPath)/bin</DnnBinPath>
         <DnnSkinsPath>$(DnnLocalDeployPath)/Portals/_default/Skins</DnnSkinsPath>
         <DnnContainersPath>$(DnnLocalDeployPath)/Portals/_default/Containers</DnnContainersPath>
         <DnnMenusPath>$(DnnSkinsPath)</DnnMenusPath>
 		<!-- Use $(DnnLocalDeployPath)/DesktopModules/MVC for MVC modules -->
-        <DnnModulesPath>$(DnnLocalDeployPath)/DesktopModules</DnnModulesPath> 
+        <DnnModulesPath>$(DnnLocalDeployPath)/DesktopModules/$(MainProjectName)</DnnModulesPath> 
         <DnnJsLibrariesPath>$(DnnLocalDeployPath)/Resources/Libraries</DnnJsLibrariesPath>
     </PropertyGroup>
 </Project>
