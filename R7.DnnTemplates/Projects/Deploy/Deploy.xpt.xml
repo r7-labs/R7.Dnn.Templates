@@ -32,7 +32,7 @@
 				<File name="SETUP.md" src="SETUP.md" />
                 <File name="Dummy.cs"><![CDATA[namespace ${ProjectName} {}]]></File>
 				<File name="../.vscode/tasks.json" src="tasks.json" />
-				<File name="Deploy.csproj" />
+				<File name="${ProjectName}.csproj" />
 			</Files>
 		</Project>
 	</Combine>
