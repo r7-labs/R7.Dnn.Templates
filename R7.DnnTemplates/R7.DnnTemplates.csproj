@@ -37,10 +37,6 @@
     <None Include="DnnPetaPocoClass.xft.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="samples\MonoDevelopAddIn.xsd" />
-    <None Include="samples\TemplateVariables.txt" />
-    <None Include="samples\MonoDevelopStockIcons.txt" />
-    <None Include="samples\ProjectTemplate.xpt" />
     <None Include="DnnCSharpSkinObject.xpt.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -88,9 +84,9 @@
     <None Include="Projects\Deploy\tasks.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="QUICKSHEET.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="samples\" />
     <Folder Include="Properties\" />
     <Folder Include="Projects\" />
     <Folder Include="Projects\Deploy\" />
