@@ -56,7 +56,7 @@ namespace ${Namespace}
 
 		public string Content { get; set; }
 
-		public int CreatedByUser { get; set; }
+		public int CreatedByUserId { get; set; }
 
 		[ReadOnlyColumn]
 		public DateTime CreatedOnDate { get; set; }
@@ -69,7 +69,7 @@ namespace ${Namespace}
 				if (createdByUserName == null)
 				{
 					var portalId = PortalController.GetCurrentPortalSettings ().PortalId;
-					var user = UserController.GetUserById (portalId, CreatedByUser);
+					var user = UserController.GetUserById (portalId, CreatedByUserId);
 					createdByUserName = user.DisplayName;
 				}
 

@@ -53,7 +53,7 @@ BEGIN
         [${ProjectName}ID] int NOT NULL IDENTITY (1, 1),
         [TabID] int NOT NULL,
         [Content] nvarchar(max) NOT NULL,
-        [CreatedByUser] int NOT NULL,
+        [CreatedByUserID] int NOT NULL,
         [CreatedOnDate] datetime NOT NULL DEFAULT (GETDATE ())
         CONSTRAINT [PK_{objectQualifier}${ProjectName}_${ProjectName}s] PRIMARY KEY CLUSTERED (${ProjectName}ID)
         CONSTRAINT [FK_{objectQualifier}${ProjectName}_${ProjectName}s_{objectQualifier}Tabs] FOREIGN KEY (TabID)
@@ -140,7 +140,7 @@ namespace ${ProjectName}.Data
 
 		public string Content { get; set; }
 
-		public int CreatedByUser { get; set; }
+		public int CreatedByUserId { get; set; }
 
 		[ReadOnlyColumn]
 		public DateTime CreatedOnDate { get; set; }
@@ -153,7 +153,7 @@ namespace ${ProjectName}.Data
 				if (createdByUserName == null)
 				{
 					var portalId = PortalController.Instance.GetCurrentPortalSettings ().PortalId;
-					var user = UserController.GetUserById (portalId, CreatedByUser);
+					var user = UserController.GetUserById (portalId, CreatedByUserId);
 					createdByUserName = user.DisplayName;
 				}
 
