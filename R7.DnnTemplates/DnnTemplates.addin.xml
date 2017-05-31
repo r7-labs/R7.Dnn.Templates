@@ -65,8 +65,9 @@
         <Import file="Projects/Deploy/Tests.targets" />
         <Import file="Projects/Deploy/SETUP.md" />
         <Import file="Projects/Deploy/tasks.json" />
-		
-		<Import file="DnnSqlDataProviderSyntaxMode.xml" />
+
+		<!-- Syntax modes -->
+		<Import file="SyntaxModes/DnnSqlDataProviderSyntaxMode.xml" />
     </Runtime>
 	<Extension path="/MonoDevelop/Ide/ProjectTemplateCategories/other">
         <Category id="dnn" name="DNN Platform" insertafter="aspnet">
@@ -100,6 +101,6 @@
         </MimeType>
     </Extension>
     <Extension path="/MonoDevelop/SourceEditor2/SyntaxModes">
-        <Templates file="DnnSqlDataProviderSyntaxMode.xml" />
+        <Templates file="SyntaxModes/DnnSqlDataProviderSyntaxMode.xml" />
     </Extension>
 </Addin>

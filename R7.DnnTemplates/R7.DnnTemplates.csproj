@@ -31,9 +31,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="DnnSqlDataProviderSyntaxMode.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="icons\dnn-templates.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -164,6 +161,9 @@
     <None Include="Projects\WebFormsSkinObject\SETUP_SKINOBJECT.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SyntaxModes\DnnSqlDataProviderSyntaxMode.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -176,6 +176,7 @@
     <Folder Include="Projects\WebFormsModule\Models\" />
     <Folder Include="Projects\WebFormsSkinObject\" />
     <Folder Include="Projects\WebFormsSkinObject\App_LocalResources\" />
+    <Folder Include="SyntaxModes\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
