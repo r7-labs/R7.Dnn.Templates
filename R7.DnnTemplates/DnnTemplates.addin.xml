@@ -64,6 +64,9 @@
 		<MimeType id="text/jsx" _description="ReactJS files" icon="md-html-file-icon" baseType="text/javascript">
             <File pattern="*.jsx" />
         </MimeType>
+		<MimeType id="text/x-scss" _description="SCSS stylesheets" icon="md-file-css" baseType="text/css">
+            <File pattern="*.scss" />
+        </MimeType>
     </Extension>
     <Extension path="/MonoDevelop/SourceEditor2/SyntaxModes">
         <Templates file="DnnSqlDataProviderSyntaxMode.xml" />
