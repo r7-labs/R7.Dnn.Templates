@@ -7,13 +7,13 @@
 			<owner>
 				<name>${AuthorName}</name>
 				<organization>${AuthorCompany}</organization>
-				<url>http://www.${AuthorCompany}.com/${ProjectName}</url>
+				<url />
 				<email>${AuthorEmail}</email>
 			</owner>
 			<license src="license.htm" />
 			<releaseNotes src="releaseNotes.htm" />
 			<dependencies>
-				<!-- <dependency type="CoreVersion">08.00.00</dependency> -->
+				<dependency type="coreVersion">08.00.00</dependency>
 				<dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
 			</dependencies>
 			<components>
@@ -34,29 +34,29 @@
 								<moduleControls>
 									<moduleControl>
 										<controlKey />
-										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/View${ProjectName}.ascx</controlSrc>
+										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/View.ascx</controlSrc>
 										<controlTitle />
 										<controlType>View</controlType>
 										<iconFile />
 										<helpUrl />
-										<supportsPartialRendering>False</supportsPartialRendering>
+										<supportsPartialRendering>True</supportsPartialRendering>
 										<supportsPopUps>False</supportsPopUps>
 										<viewOrder>0</viewOrder>
 									</moduleControl>
 									<moduleControl>
 										<controlKey>Edit</controlKey>
-										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Edit${ProjectName}.ascx</controlSrc>
+										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Edit.ascx</controlSrc>
 										<controlTitle>Edit</controlTitle>
 										<controlType>Edit</controlType>
 										<iconFile />
 										<helpUrl />
-										<supportsPartialRendering>False</supportsPartialRendering>
+										<supportsPartialRendering>True</supportsPartialRendering>
 										<supportsPopUps>True</supportsPopUps>
 										<viewOrder>0</viewOrder>
 									</moduleControl>
 									<moduleControl>
 										<controlKey>Settings</controlKey>
-										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Settings${ProjectName}.ascx</controlSrc>
+										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Settings.ascx</controlSrc>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
 										<iconFile />

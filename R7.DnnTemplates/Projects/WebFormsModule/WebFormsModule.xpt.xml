@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<Template originator="Roman M. Yagodin" created="2012/08/10">
+	<TemplateConfiguration>
+		<_Name>WebForms Module Project</_Name>
+		<_Category>other/dnn/general</_Category>
+		<Icon>md-aspnet-empty-project|res:project-dnn-overlay-32.png</Icon>
+		<LanguageName>C#</LanguageName>
+        <ProjectType>AspNetApp</ProjectType>
+		<_Description>Creates a WebForms-based module project for DNN Platform which use DAL2 for data access.
+
+NOTE: Ensure that 'Create a project directory within the solution directory' flag is checked.</_Description>
+	</TemplateConfiguration>
+	<Actions>
+		<Open filename="SETUP.md" />
+	</Actions>
+	<Combine name="${ProjectName}" directory=".">
+		<Options>
+			<StartupProject>"${ProjectName}</StartupProject>
+		</Options>
+		<Project name="${ProjectName}" directory="." type="AspNetApp">
+			<References>
+				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+			</References>
+            <Packages>
+                <Package id="R7.DotNetNuke.Extensions" version="0.10.0" />
+            </Packages>
+			<Files>
+                <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
+                <File name="module.css" src="module.css" />
+                <File name="admin.css" src="admin.css" />
+				<Directory name="js" />
+                <Directory name="SqlDataProvider">
+                    <File name="00.01.00.SqlDataProvider" src="SqlDataProvider/00.01.00.SqlDataProvider" />
+				    <File name="Uninstall.SqlDataProvider" src="SqlDataProvider/Uninstall.SqlDataProvider" />
+                </Directory>
+				<Directory name="App_LocalResources">
+				    <File name="View.ascx.resx" src="App_LocalResources/View.ascx.resx" />
+					<File name="View.ascx.ru-RU.resx" src="App_LocalResources/View.ascx.ru-RU.resx" />
+					<File name="Edit.ascx.resx" src="App_LocalResources/Edit.ascx.resx" />
+                    <File name="Edit.ascx.ru-RU.resx" src="App_LocalResources/Edit.ascx.ru-RU.resx" />
+					<File name="Settings.ascx.resx" src="App_LocalResources/Settings.ascx.resx" />
+                    <File name="Settings.ascx.ru-RU.resx" src="App_LocalResources/Settings.ascx.ru-RU.resx" />
+				</Directory>
+				<Directory name="Components">
+					<File name="${ProjectName}Controller.cs" src="Components/Controller.cs" AddStandardHeader="True" />
+                </Directory>
+                <Directory name="Models">
+			        <File name="${ProjectName}Info.cs" src="Models/Info.cs" AddStandardHeader="True" />
+					<File name="${ProjectName}Settings.cs" src="Models/Settings.cs" AddStandardHeader="True" />
+				</Directory>
+				<File name="View.ascx" src="View.ascx" />
+				<File name="View.ascx.cs" src="View.ascx.cs" DependsOn="View.ascx" AddStandardHeader="True" />
+			    <File name="Edit.ascx" src="Edit.ascx" />
+				<File name="Edit.ascx.cs" src="Edit.ascx.cs" DependsOn="Edit.ascx" AddStandardHeader="True" />
+				<File name="Settings.ascx" src="Settings.ascx" />
+                <File name="Settings.ascx.cs" src="Settings.ascx.cs" DependsOn="Settings.ascx" AddStandardHeader="True" />
+				<File name="${ProjectName}.dnn" src="WebFormsModule.dnn" />
+				<File name="license.htm" src="../../Files/license.htm" />
+				<File name="releaseNotes.htm" src="../../Files/releaseNotes.htm" />
+				<File name="SETUP.md" src="../../Files/SETUP.md" />
+			</Files>
+		</Project>
+	</Combine>
+</Template>
