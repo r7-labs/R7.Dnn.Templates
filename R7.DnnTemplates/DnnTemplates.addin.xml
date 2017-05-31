@@ -19,7 +19,6 @@
         <Import assembly="R7.DnnTemplates.dll" />
 
 		<!-- Shared files -->
-        <Import file="Files/CSharpSkinObject.dnn" />
         <Import file="Files/SETUP.md" />
         <Import file="Files/license.htm" />
         <Import file="Files/releaseNotes.htm" />
@@ -47,6 +46,15 @@
 		<Import file="Projects/WebFormsModule/SqlDataProvider/00.01.00.SqlDataProvider" />
 		<Import file="Projects/WebFormsModule/SqlDataProvider/Uninstall.SqlDataProvider" />
 
+		<!-- WebForms skinobject project -->
+        <Import file="Projects/WebFormsSkinObject/WebFormsSkinObject.xpt.xml" />
+        <Import file="Projects/WebFormsSkinObject/WebFormsSkinObject.dnn" />
+		<Import file="Projects/WebFormsSkinObject/App_LocalResources/SkinObject.ascx.resx" />
+		<Import file="Projects/WebFormsSkinObject/App_LocalResources/SkinObject.ascx.ru-RU.resx" />
+        <Import file="Projects/WebFormsSkinObject/SkinObject.ascx" />
+        <Import file="Projects/WebFormsSkinObject/SkinObject.ascx.cs" />
+		<Import file="Projects/WebFormsSkinObject/SETUP_SKINOBJECT.md" />
+
 		<!-- Deployment project -->
         <Import file="Projects/Deploy/Deploy.xpt.xml" />
         <Import file="Projects/Deploy/__Defaults.targets" />
@@ -57,8 +65,7 @@
         <Import file="Projects/Deploy/Tests.targets" />
         <Import file="Projects/Deploy/SETUP.md" />
         <Import file="Projects/Deploy/tasks.json" />
-		
-		<Import file="DnnCSharpSkinObject.xpt.xml" />
+		      
         <Import file="DnnPetaPocoClass.xft.xml" />
 		<Import file="DnnSqlDataProviderSyntaxMode.xml" />
     </Runtime>
@@ -73,7 +80,7 @@
     </Extension>
     <Extension path="/MonoDevelop/Ide/ProjectTemplates">
         <ProjectTemplate id="WebFormsModule" file="Projects/WebFormsModule/WebFormsModule.xpt.xml" />
-        <ProjectTemplate id="DnnCSharpSkinObject" file="DnnCSharpSkinObject.xpt.xml" />
+        <ProjectTemplate id="WebFormsSkinObject" file="Projects/WebFormsSkinObject/WebFormsSkinObject.xpt.xml" />
         <ProjectTemplate id="DnnDeploy" file="Projects/Deploy/Deploy.xpt.xml" />
     </Extension>
     <Extension path="/MonoDevelop/Core/MimeTypes">

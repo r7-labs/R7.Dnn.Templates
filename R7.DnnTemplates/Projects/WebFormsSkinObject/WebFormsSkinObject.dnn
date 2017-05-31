@@ -3,7 +3,7 @@
 	<packages>
 		<package name="${ProjectName}" type="SkinObject" version="00.01.00">
 			<friendlyName>${ProjectName}</friendlyName>
-			<description>This is a simple skin object to display a record from database table.</description>
+			<description>This is a simple DNN WebForms skinobject which displays current page info.</description>
 			<owner>
 				<name>${AuthorName}</name>
 				<organization>${AuthorCompany}</organization>
@@ -14,7 +14,6 @@
 			<releaseNotes src="releaseNotes.htm" />
 			<dependencies>
 				<dependency type="coreVersion">08.00.00</dependency>
-				<dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
 			</dependencies>
 			<components>
 				<component type="SkinObject">
@@ -24,19 +23,7 @@
 						<supportsPartialRendering>false</supportsPartialRendering>
 					</moduleControl>
 				</component>
-				<component type="Script">
-					<scripts>
-						<basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
-						<script type="Install">
-							<name>SqlDataProvider\00.01.00.SqlDataProvider</name>
-							<version>00.01.00</version>
-						</script>
-						<script type="UnInstall">
-							<name>SqlDataProvider\Uninstall.SqlDataProvider</name>
-						</script>
-					</scripts>
-				</component>
-				<component type="ResourceFile">
+                <component type="ResourceFile">
 					<resourceFiles>
 						<basePath>DesktopModules\${ProjectName}</basePath>
 						<resourceFile>

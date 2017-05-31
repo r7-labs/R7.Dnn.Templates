@@ -34,9 +34,6 @@
     <None Include="DnnPetaPocoClass.xft.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="DnnCSharpSkinObject.xpt.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="DnnSqlDataProviderSyntaxMode.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -45,9 +42,6 @@
     </None>
     <None Include="releaseNotes.txt" />
     <None Include="icons\dnn-templates.xcf" />
-    <None Include="Files\CSharpSkinObject.dnn">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Files\SETUP.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -151,6 +145,28 @@
     <None Include="Projects\WebFormsModule\WebFormsModule.dnn">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Projects\WebFormsSkinObject\WebFormsSkinObject.dnn">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Projects\WebFormsSkinObject\WebFormsSkinObject.xpt.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Projects\WebFormsSkinObject\App_LocalResources\SkinObject.ascx.resx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Projects\WebFormsSkinObject\App_LocalResources\SkinObject.ascx.ru-RU.resx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Projects\WebFormsSkinObject\SkinObject.ascx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Projects\WebFormsSkinObject\SkinObject.ascx.cs">
+      <DependentUpon>SkinObject.ascx</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Projects\WebFormsSkinObject\SETUP_SKINOBJECT.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -161,6 +177,8 @@
     <Folder Include="Projects\WebFormsModule\App_LocalResources\" />
     <Folder Include="Projects\WebFormsModule\Components\" />
     <Folder Include="Projects\WebFormsModule\Models\" />
+    <Folder Include="Projects\WebFormsSkinObject\" />
+    <Folder Include="Projects\WebFormsSkinObject\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
