@@ -1,4 +1,14 @@
-﻿{{0.8.0, 2017-05-10}}
+﻿{{0.9.0, 2017-05-31}}
+* Deployment project template overhaul.
+* Big update for WebForms module project template.
+* Prefix database objects with ${AuthorCompany}.
+* Update for WebForms skinobject project template.
+* Ship full GNU GPLv3 license text alongside extension projects by default.
+* Enable very basic highlighting for SCSS files using CSS syntax mode.
+* Register category for DNN Platform project templates under "Other".
+* Drop PetaPOCO class file template.
+
+{{0.8.0, 2017-05-10}}
 * Use JavaScript highlighter for JSX files.
 * Update R7.DotNetNuke.Extensions dependency to 0.10.0.
 * Get version from DNN manifest in a cross-platform way using XmlPeek.
