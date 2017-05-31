@@ -92,7 +92,6 @@
     <Folder Include="Projects\Deploy\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dummy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
