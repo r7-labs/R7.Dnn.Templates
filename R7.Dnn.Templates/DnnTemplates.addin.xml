@@ -4,7 +4,7 @@
         <Category>Web Development</Category>
         <Description>Templates for module, skin object and packaging projects for DNN Platform. Also provides syntax highlighting for DNN manifest files and SqlDataProvider scripts.</Description>
         <Author>Roman M. Yagodin</Author>
-        <Url>https://github.com/roman-yagodin/R7.DnnTemplates</Url>
+        <Url>https://github.com/roman-yagodin/R7.Dnn.Templates</Url>
         <Icon32>icons/dnn-templates.png</Icon32>
         <UpdateRank>Normal</UpdateRank>
         <ReleaseNotesFile>releaseNotes.txt</ReleaseNotesFile>
@@ -16,7 +16,7 @@
         <Addin id="SourceEditor2" version="6.0" />
     </Dependencies>
     <Runtime>
-        <Import assembly="R7.DnnTemplates.dll" />
+        <Import assembly="R7.Dnn.Templates.dll" />
 
 		<!-- Shared files -->
         <Import file="Files/SETUP.md" />

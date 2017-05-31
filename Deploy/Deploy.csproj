@@ -30,9 +30,9 @@
     <Compile Include="Dummy.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\R7.DnnTemplates\R7.DnnTemplates.csproj">
+    <ProjectReference Include="..\R7.Dnn.Templates\R7.Dnn.Templates.csproj">
       <Project>{18FF5960-12C1-43A3-9979-128F7B8F4FFC}</Project>
-      <Name>R7.DnnTemplates</Name>
+      <Name>R7.Dnn.Templates</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

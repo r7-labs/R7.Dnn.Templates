@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{18FF5960-12C1-43A3-9979-128F7B8F4FFC}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>R7.DnnTemplates</RootNamespace>
-    <AssemblyName>R7.DnnTemplates</AssemblyName>
+    <RootNamespace>R7.Dnn.Templates</RootNamespace>
+    <AssemblyName>R7.Dnn.Templates</AssemblyName>
     <ReleaseVersion>0.9.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R7.DnnTemplates", "R7.DnnTemplates\R7.DnnTemplates.csproj", "{18FF5960-12C1-43A3-9979-128F7B8F4FFC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "R7.Dnn.Templates", "R7.Dnn.Templates\R7.Dnn.Templates.csproj", "{18FF5960-12C1-43A3-9979-128F7B8F4FFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deploy", "Deploy\Deploy.csproj", "{547A4374-1522-4E0F-B090-2287D80070DB}"
 EndProject

@@ -3,11 +3,11 @@ using System.Runtime.CompilerServices;
 
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
-[assembly: AssemblyTitle ("R7.DnnTemplates")]
+[assembly: AssemblyTitle ("R7.Dnn.Templates")]
 [assembly: AssemblyDescription ("")]
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("R7.Labs")]
-[assembly: AssemblyProduct ("R7.DnnTemplates")]
+[assembly: AssemblyProduct ("R7.Dnn.Templates")]
 [assembly: AssemblyCopyright ("Roman M. Yagodin")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]

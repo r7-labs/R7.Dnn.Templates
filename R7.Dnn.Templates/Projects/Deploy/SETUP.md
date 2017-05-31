@@ -93,7 +93,7 @@ to trigger recompilation.
 Current scripts automatically able to add all DNN projects inside solution into a single install package 
 and provide local deploy of required files. The general idea behind that is that all projects in the solution is very dependant.
 
-If you add new DNN extension to your solution using *R7.DnnTemplates*, you probably only need to:
+If you add new DNN extension to your solution using *R7.Dnn.Templates*, you probably only need to:
 
 1. Name your project file with *${SolutionName}_* prefix like *${SolutionName}_MyNewExtension*. 
 
