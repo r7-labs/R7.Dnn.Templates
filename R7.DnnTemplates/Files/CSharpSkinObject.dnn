@@ -7,13 +7,13 @@
 			<owner>
 				<name>${AuthorName}</name>
 				<organization>${AuthorCompany}</organization>
-				<url>http://www.${AuthorCompany}.com/${ProjectName}</url>
+				<url />
 				<email>${AuthorEmail}</email>
 			</owner>
 			<license src="license.htm" />
 			<releaseNotes src="releaseNotes.htm" />
 			<dependencies>
-				<!-- <dependency type="CoreVersion">08.00.00</dependency> -->
+				<dependency type="coreVersion">08.00.00</dependency>
 				<dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
 			</dependencies>
 			<components>
