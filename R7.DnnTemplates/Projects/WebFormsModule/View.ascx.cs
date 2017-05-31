@@ -12,7 +12,7 @@ using ${ProjectName}.Models;
 
 namespace ${Namespace}
 {
-    public partial class View : PortalModuleBase<${ProjectName}Settings>, IActionable
+    public class View : PortalModuleBase<${ProjectName}Settings>, IActionable
     {
         #region Controls
 

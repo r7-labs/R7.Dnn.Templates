@@ -7,7 +7,7 @@ using ${ProjectName}.Models;
 
 namespace ${Namespace}
 {	
-	public partial class Settings : ModuleSettingsBase<${ProjectName}Settings>
+	public class Settings : ModuleSettingsBase<${ProjectName}Settings>
 	{
         #region Controls
 

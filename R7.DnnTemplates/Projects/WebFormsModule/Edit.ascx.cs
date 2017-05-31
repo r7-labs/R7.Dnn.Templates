@@ -10,7 +10,7 @@ using ${ProjectName}.Models;
 
 namespace ${Namespace}
 {
-    public partial class Edit : PortalModuleBase
+    public class Edit : PortalModuleBase
     {
         #region Controls
 
