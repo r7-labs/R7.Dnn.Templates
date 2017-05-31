@@ -3,7 +3,7 @@
 	<packages>
 		<package name="${ProjectName}" type="Module" version="00.01.00">
 			<friendlyName>${ProjectName}</friendlyName>
-			<description>This is a simple module to display some records from database table.</description>
+			<description>This is a simple DNN WebForms module which shows list of records from database table.</description>
 			<owner>
 				<name>${AuthorName}</name>
 				<organization>${AuthorCompany}</organization>
