@@ -65,8 +65,7 @@
         <Import file="Projects/Deploy/Tests.targets" />
         <Import file="Projects/Deploy/SETUP.md" />
         <Import file="Projects/Deploy/tasks.json" />
-		      
-        <Import file="DnnPetaPocoClass.xft.xml" />
+		
 		<Import file="DnnSqlDataProviderSyntaxMode.xml" />
     </Runtime>
 	<Extension path="/MonoDevelop/Ide/ProjectTemplateCategories/other">
@@ -75,10 +74,7 @@
 			<Category id="deployment" name="Deployment" />
 		</Category>
     </Extension>
-	<Extension path="/MonoDevelop/Ide/FileTemplates">
-        <FileTemplate id="DnnPetaPocoClass" file="DnnPetaPocoClass.xft.xml" />
-    </Extension>
-    <Extension path="/MonoDevelop/Ide/ProjectTemplates">
+	<Extension path="/MonoDevelop/Ide/ProjectTemplates">
         <ProjectTemplate id="WebFormsModule" file="Projects/WebFormsModule/WebFormsModule.xpt.xml" />
         <ProjectTemplate id="WebFormsSkinObject" file="Projects/WebFormsSkinObject/WebFormsSkinObject.xpt.xml" />
         <ProjectTemplate id="DnnDeploy" file="Projects/Deploy/Deploy.xpt.xml" />
