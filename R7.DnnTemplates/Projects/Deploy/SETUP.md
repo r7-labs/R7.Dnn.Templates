@@ -19,7 +19,18 @@ Replace <Import Project="../packages/.../MSBuild.Community.Tasks.Targets" /> tag
 <!-- End snippet -->
 ```
 
-To enable build commands from ${ProjectName} project context menu, insert following code inside the `<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">` tag:
+2. Make sure `DnnLocalDeployPath` property in `__Settings.targets` for your OS contains valid DNN install path
+and `MainProjectName` property contains valid main project name.
+
+3. Make sure that `MainProjectOutputPath` property `__Settings.targets` contains valid `${SolutionName}`
+main project output path - in some cases it could be `bin/$(Configuration)`, not just `bin`!
+
+4. Add reference to the main project. This will ensure that deploy project won't start in case of build errors
+in the main project and also that deploy project will build last.
+
+5. Optionally, to enable build commands from ${ProjectName} project context menu, insert following code
+inside the `<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">` tag
+in the `${ProjectName}.csproj`:
 
 ```
 <!-- Begin snippet -->
@@ -53,16 +64,7 @@ To enable build commands from ${ProjectName} project context menu, insert follow
 	</CustomCommands>
 </CustomCommands>
 <!-- End snippet -->
-
 ```
-2. Make sure `DnnLocalDeployPath` property for your OS contains valid DNN install path
-and `MainProjectName` property contains valid main project name.
-
-3. Make sure that `MainProjectOutputPath` property targets valid `${SolutionName}` main project output path -
-it could be `bin/$(Configuration)`, not just `bin`!
-
-4. Add reference to the main project. This will ensure that deploy project won't start in case of build errors
-in the main project and also that deploy project will build last.
 
 # Testing deployment project setup
 
