@@ -19,7 +19,6 @@
         <Import assembly="R7.Dnn.Templates.dll" />
 
 		<!-- Shared files -->
-        <Import file="Files/SETUP.md" />
         <Import file="Files/license.htm" />
         <Import file="Files/releaseNotes.htm" />
               
@@ -45,6 +44,7 @@
 		<Import file="Projects/WebFormsModule/Models/Settings.cs" />
 		<Import file="Projects/WebFormsModule/SqlDataProvider/00.01.00.SqlDataProvider" />
 		<Import file="Projects/WebFormsModule/SqlDataProvider/Uninstall.SqlDataProvider" />
+		<Import file="Projects/WebFormsModule/SETUP.md" />
 
 		<!-- WebForms skinobject project -->
         <Import file="Projects/WebFormsSkinObject/WebFormsSkinObject.xpt.xml" />
@@ -53,7 +53,7 @@
 		<Import file="Projects/WebFormsSkinObject/App_LocalResources/SkinObject.ascx.ru-RU.resx" />
         <Import file="Projects/WebFormsSkinObject/SkinObject.ascx" />
         <Import file="Projects/WebFormsSkinObject/SkinObject.ascx.cs" />
-		<Import file="Projects/WebFormsSkinObject/SETUP_SKINOBJECT.md" />
+		<Import file="Projects/WebFormsSkinObject/SETUP.md" />
 
 		<!-- Deployment project -->
         <Import file="Projects/Deploy/Deploy.xpt.xml" />

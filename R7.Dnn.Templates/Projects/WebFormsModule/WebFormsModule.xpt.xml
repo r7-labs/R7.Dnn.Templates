@@ -64,7 +64,7 @@ NOTE: Ensure that 'Create a project directory within the solution directory' fla
 				<File name="${ProjectName}.dnn" src="WebFormsModule.dnn" />
 				<File name="license.htm" src="../../Files/license.htm" />
 				<File name="releaseNotes.htm" src="../../Files/releaseNotes.htm" />
-				<File name="SETUP.md" src="../../Files/SETUP.md" />
+				<File name="SETUP.md" src="SETUP.md" />
 			</Files>
 		</Project>
 	</Combine>

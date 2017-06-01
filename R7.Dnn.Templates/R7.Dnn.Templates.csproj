@@ -36,9 +36,6 @@
     </None>
     <None Include="releaseNotes.txt" />
     <None Include="icons\dnn-templates.xcf" />
-    <None Include="Files\SETUP.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Projects\Deploy\Deploy.xpt.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -158,10 +155,13 @@
       <DependentUpon>SkinObject.ascx</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Projects\WebFormsSkinObject\SETUP_SKINOBJECT.md">
+    <None Include="Projects\WebFormsSkinObject\SETUP.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SyntaxModes\DnnSqlDataProviderSyntaxMode.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Projects\WebFormsModule\SETUP.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

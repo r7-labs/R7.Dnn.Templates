@@ -43,9 +43,8 @@ NOTE: Ensure that 'Create a project directory within the solution directory' fla
     			<File name="${ProjectName}.ascx" src="SkinObject.ascx" />
 				<File name="${ProjectName}.ascx.cs" src="SkinObject.ascx.cs" DependsOn="${ProjectName}.ascx" AddStandardHeader="True" />
 				<File name="${ProjectName}.dnn" src="WebFormsSkinObject.dnn" />
-				<File name="SETUP.md" src="../../Files/SETUP.md" />
-				<File name="SETUP_SKINOBJECT.md" src="SETUP_SKINOBJECT.md" />
-				<File name="license.htm" src="../../Files/license.htm" />
+				<File name="SETUP.md" src="SETUP.md" />
+                <File name="license.htm" src="../../Files/license.htm" />
 				<File name="releaseNotes.htm" src="../../Files/releaseNotes.htm" />
 			</Files>
 		</Project>

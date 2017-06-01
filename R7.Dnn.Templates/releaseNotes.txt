@@ -7,6 +7,7 @@
 * Enable very basic highlighting for SCSS files using CSS syntax mode.
 * Register category for DNN Platform project templates under "Other".
 * Drop PetaPOCO class file template.
+* Move setup instructions to the wiki.
 
 {{0.8.0, 2017-05-10}}
 * Use JavaScript highlighter for JSX files.
