@@ -21,38 +21,43 @@
 
         <!-- Declare resource files -->
         <ItemGroup>
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.ascx" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.aspx" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.asmx" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.ashx" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.resx" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.css" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.cshtml" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.html" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.htm" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.xml" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.xsl" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.xslt" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.json" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.yml" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.js" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.jpg" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.png" />
-            <LocalDeployResourceFiles Include="$(ResourceIncludePath)/**/*.gif" />
+            <LocalDeployResourceFiles Include="../**/*.ascx" />
+            <LocalDeployResourceFiles Include="../**/*.aspx" />
+            <LocalDeployResourceFiles Include="../**/*.asmx" />
+            <LocalDeployResourceFiles Include="../**/*.ashx" />
+            <LocalDeployResourceFiles Include="../**/*.resx" />
+            <LocalDeployResourceFiles Include="../**/*.css" />
+            <LocalDeployResourceFiles Include="../**/*.cshtml" />
+            <LocalDeployResourceFiles Include="../**/*.html" />
+            <LocalDeployResourceFiles Include="../**/*.htm" />
+            <LocalDeployResourceFiles Include="../**/*.xml" />
+            <LocalDeployResourceFiles Include="../**/*.xsl" />
+            <LocalDeployResourceFiles Include="../**/*.xslt" />
+            <LocalDeployResourceFiles Include="../**/*.json" />
+            <LocalDeployResourceFiles Include="../**/*.yml" />
+            <LocalDeployResourceFiles Include="../**/*.js" />
+            <LocalDeployResourceFiles Include="../**/*.jpg" />
+            <LocalDeployResourceFiles Include="../**/*.png" />
+            <LocalDeployResourceFiles Include="../**/*.gif" />
         </ItemGroup>
 
         <!-- Declare excluded files -->
         <ItemGroup>
-            <LocalDeployExcludeFiles Include="$(ResourceIncludePath)/bin/**/*" />
-            <LocalDeployExcludeFiles Include="$(ResourceIncludePath)/obj/**/*" />
-			<LocalDeployExcludeFiles Include="$(MainProjectPath)/*.dnn*" />
-            <LocalDeployExcludeFiles Include="$(MainProjectPath)/license.htm" />
-            <LocalDeployExcludeFiles Include="$(MainProjectPath)/releaseNotes.htm" />
+            <LocalDeployResourceExcludeFiles Include="../*/bin/**/*" />
+            <LocalDeployResourceExcludeFiles Include="../*/obj/**/*" />
+            <LocalDeployResourceExcludeFiles Include="../.git/**/*" />
+            <LocalDeployResourceExcludeFiles Include="../.vscode/**/*" />
+            <LocalDeployResourceExcludeFiles Include="../packages/**/*" />
+            <LocalDeployResourceExcludeFiles Include="../${ProjectName}/**/*" />
+            <LocalDeployResourceExcludeFiles Include="../.*" />
+            <LocalDeployResourceExcludeFiles Include="$(MainProjectPath)/license.htm" />
+            <LocalDeployResourceExcludeFiles Include="$(MainProjectPath)/releaseNotes.htm" />
+			<LocalDeployResourceExcludeFiles Include="$(CustomExcludeFiles)" Condition=" '$(CustomExcludeFiles)' !== '' " />
 		</ItemGroup>
 
         <!-- Apply excluded files filters -->
         <ItemGroup>
-            <LocalDeployResourceFilteredFiles Include="@(LocalDeployResourceFiles)" Exclude="@(LocalDeployExcludeFiles)" />
+            <LocalDeployResourceFilteredFiles Include="@(LocalDeployResourceFiles)" Exclude="@(LocalDeployResourceExcludeFiles)" />
         </ItemGroup>
 
         <!-- Copy files -->

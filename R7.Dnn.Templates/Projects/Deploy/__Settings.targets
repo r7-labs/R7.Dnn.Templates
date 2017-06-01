@@ -11,6 +11,7 @@
         <TmpDir>$(MSBuildProjectDirectory)/bin/tmp</TmpDir>
         <DnnLocalDeployPath Condition=" '$(OS)' == 'Unix' ">$(HOME)/mnt/dnn8</DnnLocalDeployPath>
         <DnnLocalDeployPath Condition=" '$(OS)' != 'Unix' ">C:\Dotnetnuke804</DnnLocalDeployPath>
+		<CustomExcludeFiles></CustomExcludeFiles>
         <BuildSettingsImported>true</BuildSettingsImported>
     </PropertyGroup>
 
@@ -18,8 +19,7 @@
     <PropertyGroup>
         <MainProjectPath>../$(MainProjectName)</MainProjectPath>
         <MainProjectOutputPath>$(MainProjectPath)/bin</MainProjectOutputPath>
-		<ResourceIncludePath>../$(MainProjectName)*</ResourceIncludePath>
-        <DnnBinPath>$(DnnLocalDeployPath)/bin</DnnBinPath>
+		<DnnBinPath>$(DnnLocalDeployPath)/bin</DnnBinPath>
         <DnnSkinsPath>$(DnnLocalDeployPath)/Portals/_default/Skins</DnnSkinsPath>
         <DnnContainersPath>$(DnnLocalDeployPath)/Portals/_default/Containers</DnnContainersPath>
         <DnnMenusPath>$(DnnSkinsPath)</DnnMenusPath>
