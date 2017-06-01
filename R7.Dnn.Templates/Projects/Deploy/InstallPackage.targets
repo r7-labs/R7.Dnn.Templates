@@ -3,68 +3,66 @@
     <Import Project="__Settings.targets" Condition=" '$(BuildSettingsImported)' == '' " />
     <Import Project="Preprocess.targets" Condition=" '$(PreprocessImported)' == '' "/>
     <Import Project="Tests.targets" Condition=" '$(TestsImported)' == '' "/>
-    
     <PropertyGroup>
         <!-- Enable install package creation by default (standalone) -->
         <EnableInstallPackage Condition=" '$(EnableInstallPackage)' == '' ">true</EnableInstallPackage>
     </PropertyGroup>
+	
     <Target Name="InstallPackage" Condition=" '$(EnableInstallPackage)' == 'true' " DependsOnTargets="Preprocess;Tests">
-
-        <!-- Remove tmp directory (if previous build failed) -->
         <RemoveDir Directories="$(TmpDir)" />
-        <!-- Read package version from the manifest -->
+
+		<!-- Read package version from the manifest -->
         <XmlPeek Query="/dotnetnuke/packages/package[1]/@version" XmlInputPath="$(MainProjectPath)/$(MainProjectName).dnn">
             <Output TaskParameter="Result" PropertyName="Version" />
         </XmlPeek>
         <PropertyGroup>
             <PackageFileName>$(PackageName)-$(Version)-Install.$(Configuration).zip</PackageFileName>
         </PropertyGroup>
-        <!-- Declare binaries -->
+
+		<!-- Declare binaries -->
         <ItemGroup>
             <InstallBinaryFiles Include="$(MainProjectOutputPath)/$(MainProjectName)*.dll" />
             <InstallBinaryFiles Include="$(MainProjectOutputPath)/$(MainProjectName)*.pdb" Condition="'$(Configuration)' == 'Debug'" />
         </ItemGroup>
-        <!-- Declare manifest files -->
+
+		<!-- Declare manifest files -->
         <ItemGroup>
-            <InstallManifestFiles Include="$(MainProjectPath)/*.dnn" />
-            <InstallManifestFiles Include="$(MainProjectPath)/*.dnn6" />
+            <InstallManifestFiles Include="$(MainProjectPath)/*.dnn*" />
             <InstallManifestFiles Include="$(MainProjectPath)/license.htm" />
             <InstallManifestFiles Include="$(MainProjectPath)/releaseNotes.htm" />
         </ItemGroup>
-        <!-- Declare SqlDataProvider files -->
+
+		<!-- Declare SqlDataProvider files -->
         <ItemGroup>
             <InstallSqlDataProviderFiles Include="$(MainProjectPath)/SqlDataProvider/*.SqlDataProvider" />
         </ItemGroup>
+		
         <!-- Declare resource files -->
         <ItemGroup>
-            <InstallResourceFiles Include="../**/*.ascx" />
-            <InstallResourceFiles Include="../**/*.aspx" />
-            <InstallResourceFiles Include="../**/*.asmx" />
-            <InstallResourceFiles Include="../**/*.ashx" />
-            <InstallResourceFiles Include="../**/*.cshtml" />
-            <InstallResourceFiles Include="../**/*.resx" />
-            <InstallResourceFiles Include="../**/*.css" />
-            <InstallResourceFiles Include="../**/*.html" />
-            <InstallResourceFiles Include="../**/*.htm" />
-            <InstallResourceFiles Include="../**/*.xml" />
-            <InstallResourceFiles Include="../**/*.xsl" />
-            <InstallResourceFiles Include="../**/*.xslt" />
-            <InstallResourceFiles Include="../**/*.yml" />
-            <InstallResourceFiles Include="../**/*.resx" />
-            <InstallResourceFiles Include="../**/*.js" />
-            <InstallResourceFiles Include="../**/*.jpg" />
-            <InstallResourceFiles Include="../**/*.png" />
-            <InstallResourceFiles Include="../**/*.gif" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.ascx" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.aspx" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.asmx" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.ashx" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.cshtml" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.resx" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.css" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.html" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.htm" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.xml" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.xsl" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.xslt" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.json" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.yml" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.js" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.jpg" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.png" />
+            <InstallResourceFiles Include="$(ResourceIncludePath)/**/*.gif" />
         </ItemGroup>
+		
         <!-- Declare excluded files -->
         <ItemGroup>
-            <InstallExcludeFiles Include="../packages/**/*" />
-            <InstallExcludeFiles Include="../node_modules/**/*" />
-            <InstallExcludeFiles Include="../${ProjectName}/**/*" />
-            <InstallExcludeFiles Include="../.git/**/*" />
-            <InstallExcludeFiles Include="../*/bin/**/*" />
-            <InstallExcludeFiles Include="../*/obj/**/*" />
-			<InstallExcludeFiles Include="../.*.yml" />
+            <InstallExcludeFiles Include="$(ResourceIncludePath)/bin/**/*" />
+            <InstallExcludeFiles Include="$(ResourceIncludePath)/obj/**/*" />
 			<InstallExcludeFiles Include="$(MainProjectPath)/license.htm" />
 			<InstallExcludeFiles Include="$(MainProjectPath)/releaseNotes.htm" />
         </ItemGroup>
@@ -95,10 +93,9 @@
         </ItemGroup>
         <Zip Condition=" '$(OS)' != 'Unix' " Files="@(InstallPackageFiles)" WorkingDirectory="$(TmpDir)\Package" ZipFileName="$(TmpDir)\Package\$(PackageFileName)" />
         <Exec Condition=" '$(OS)' == 'Unix' " Command="zip -r -6 -UN=UTF8 &quot;$(PackageFileName)&quot; ." WorkingDirectory="$(TmpDir)/Package" />
-	    <Copy SourceFiles="$(TmpDir)/Package/$(PackageFileName)" DestinationFolder="$(PackageOutputPath)/" />
+        <Copy SourceFiles="$(TmpDir)/Package/$(PackageFileName)" DestinationFolder="$(PackageOutputPath)/" />
         <Delete Files="$(TmpDir)/Package/$(PackageFileName)" />
-		
-		<!-- Cleanup -->
+
         <RemoveDir Directories="$(TmpDir)" />
     </Target>
 </Project>

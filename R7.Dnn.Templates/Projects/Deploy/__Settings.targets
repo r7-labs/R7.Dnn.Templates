@@ -18,6 +18,7 @@
     <PropertyGroup>
         <MainProjectPath>../$(MainProjectName)</MainProjectPath>
         <MainProjectOutputPath>$(MainProjectPath)/bin</MainProjectOutputPath>
+		<ResourceIncludePath>../$(MainProjectName)*</ResourceIncludePath>
         <DnnBinPath>$(DnnLocalDeployPath)/bin</DnnBinPath>
         <DnnSkinsPath>$(DnnLocalDeployPath)/Portals/_default/Skins</DnnSkinsPath>
         <DnnContainersPath>$(DnnLocalDeployPath)/Portals/_default/Containers</DnnContainersPath>
