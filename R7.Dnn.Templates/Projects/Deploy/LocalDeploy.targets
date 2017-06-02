@@ -52,7 +52,7 @@
             <LocalDeployResourceExcludeFiles Include="../.*" />
             <LocalDeployResourceExcludeFiles Include="$(MainProjectPath)/license.htm" />
             <LocalDeployResourceExcludeFiles Include="$(MainProjectPath)/releaseNotes.htm" />
-			<LocalDeployResourceExcludeFiles Include="$(CustomExcludeFiles)" Condition=" '$(CustomExcludeFiles)' !== '' " />
+			<LocalDeployResourceExcludeFiles Include="$(CustomExcludeFiles)" Condition=" '$(CustomExcludeFiles)' != '' " />
 		</ItemGroup>
 
         <!-- Apply excluded files filters -->

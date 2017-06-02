@@ -70,7 +70,7 @@
             <InstallResourceExcludeFiles Include="../.*" />
             <InstallResourceExcludeFiles Include="$(MainProjectPath)/license.htm" />
             <InstallResourceExcludeFiles Include="$(MainProjectPath)/releaseNotes.htm" />
-			<InstallResourceExcludeFiles Include="$(CustomExcludeFiles)" Condition=" '$(CustomExcludeFiles)' !== '' " />
+			<InstallResourceExcludeFiles Include="$(CustomExcludeFiles)" Condition=" '$(CustomExcludeFiles)' != '' " />
         </ItemGroup>
         
         <!-- Apply excluded files filters -->
