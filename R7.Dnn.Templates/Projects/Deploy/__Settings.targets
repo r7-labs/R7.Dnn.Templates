@@ -22,7 +22,6 @@
         <DnnSkinsPath>$(DnnLocalDeployPath)/Portals/_default/Skins</DnnSkinsPath>
         <DnnContainersPath>$(DnnLocalDeployPath)/Portals/_default/Containers</DnnContainersPath>
         <DnnMenusPath>$(DnnSkinsPath)</DnnMenusPath>
-		<!-- Use $(DnnLocalDeployPath)/DesktopModules/MVC for MVC modules -->
         <DnnModulesPath>$(DnnLocalDeployPath)/DesktopModules$(DnnModulesPathPrefix)</DnnModulesPath> 
         <DnnJsLibrariesPath>$(DnnLocalDeployPath)/Resources/Libraries</DnnJsLibrariesPath>
     </PropertyGroup>
