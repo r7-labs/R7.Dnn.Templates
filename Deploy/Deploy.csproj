@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{547A4374-1522-4E0F-B090-2287D80070DB}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Packaging</RootNamespace>
-    <AssemblyName>Packaging</AssemblyName>
+    <RootNamespace>Deploy</RootNamespace>
+    <AssemblyName>Deploy</AssemblyName>
     <ReleaseVersion>0.9.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">

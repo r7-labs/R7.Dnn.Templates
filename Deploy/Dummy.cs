@@ -1,5 +1,1 @@
-﻿using System;
-
-namespace Packaging
-{
-}
+﻿namespace Deploy { }
