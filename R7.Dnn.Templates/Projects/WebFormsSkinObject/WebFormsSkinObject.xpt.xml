@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<Template originator="Roman M. Yagodin" created="2014/05/15">
+	<!-- Template Header -->
+	<TemplateConfiguration>
+		<_Name>WebForms SkinObject Project</_Name>
+		<_Category>other/dnn/general</_Category>
+		<Icon>md-aspnet-empty-project|res:project-dnn-overlay-32.png</Icon>
+		<LanguageName>C#</LanguageName>
+        <ProjectType>AspNetApp</ProjectType>
+		<_Description>Creates a WebForms-based skinobject project for DNN Platform.
+
+NOTE: Ensure that 'Create a project directory within the solution directory' flag is checked.</_Description>
+	</TemplateConfiguration>
+	<Actions>
+		<Open filename="SETUP.md" />
+		<Open filename="SETUP_SKINOBJECT.md" />
+	</Actions>
+	<Combine name="${ProjectName}" directory=".">
+		<Options>
+			<StartupProject>"${ProjectName}</StartupProject>
+		</Options>
+		<Project name="${ProjectName}" directory="." type="AspNetApp">
+			<References>
+				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+				<Reference type="Package" refto="System.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Web.Services, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				<Reference type="Package" refto="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+				<Reference type="Package" refto="System.Xml.Linq, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+			</References>
+			<Packages>
+                <Package id="DotNetNuke.Core" version="8.0.4.226" />
+				<Package id="DotNetNuke.Web" version="8.0.4.226" />
+			</Packages>
+            <Files>
+                <FileTemplateReference TemplateID="CSharpAssemblyInfo" name="AssemblyInfo.cs" />
+                <Directory name="App_LocalResources">
+					<File name="${ProjectName}.ascx.resx" src="App_LocalResources/SkinObject.ascx.resx" />
+					<File name="${ProjectName}.ascx.ru-RU.resx" src="App_LocalResources/SkinObject.ascx.ru-RU.resx" />
+				</Directory>
+    			<File name="${ProjectName}.ascx" src="SkinObject.ascx" />
+				<File name="${ProjectName}.ascx.cs" src="SkinObject.ascx.cs" DependsOn="${ProjectName}.ascx" AddStandardHeader="True" />
+				<File name="${ProjectName}.dnn" src="WebFormsSkinObject.dnn" />
+				<File name="SETUP.md" src="SETUP.md" />
+                <File name="license.htm" src="../../Files/license.htm" />
+				<File name="releaseNotes.htm" src="../../Files/releaseNotes.htm" />
+			</Files>
+		</Project>
+	</Combine>
+</Template>

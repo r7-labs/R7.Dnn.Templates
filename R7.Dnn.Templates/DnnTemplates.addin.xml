@@ -1,0 +1,106 @@
+<Addin id="R7.DnnTemplates" version="0.9.0" namespace="MonoDevelop">
+    <Header>
+        <Name>DNN Platform Templates and Support</Name>
+        <Category>Web Development</Category>
+        <Description>Templates for module, skin object and deployment projects for DNN Platform. Also provides syntax highlighting for DNN manifest files and SqlDataProvider scripts.</Description>
+        <Author>Roman M. Yagodin</Author>
+        <Url>https://github.com/roman-yagodin/R7.Dnn.Templates</Url>
+        <Icon32>icons/dnn-templates.png</Icon32>
+        <UpdateRank>Normal</UpdateRank>
+        <ReleaseNotesFile>releaseNotes.txt</ReleaseNotesFile>
+    </Header>
+    <Dependencies>
+        <Addin id="Core" version="6.0" />
+        <Addin id="Ide" version="6.0" />
+        <Addin id="AspNet" version="6.0" />
+        <Addin id="SourceEditor2" version="6.0" />
+    </Dependencies>
+    <Runtime>
+        <Import assembly="R7.Dnn.Templates.dll" />
+
+		<!-- Shared files -->
+        <Import file="Files/license.htm" />
+        <Import file="Files/releaseNotes.htm" />
+              
+        <!-- WebForms module project -->
+		<Import file="Projects/WebFormsModule/WebFormsModule.xpt.xml" />
+		<Import file="Projects/WebFormsModule/WebFormsModule.dnn" />
+        <Import file="Projects/WebFormsModule/admin.css" />
+        <Import file="Projects/WebFormsModule/module.css" />
+		<Import file="Projects/WebFormsModule/View.ascx" />
+        <Import file="Projects/WebFormsModule/View.ascx.cs" />
+		<Import file="Projects/WebFormsModule/Edit.ascx" />
+		<Import file="Projects/WebFormsModule/Edit.ascx.cs" />
+		<Import file="Projects/WebFormsModule/Settings.ascx" />
+		<Import file="Projects/WebFormsModule/Settings.ascx.cs" />
+		<Import file="Projects/WebFormsModule/App_LocalResources/View.ascx.resx" />
+        <Import file="Projects/WebFormsModule/App_LocalResources/View.ascx.ru-RU.resx" />
+		<Import file="Projects/WebFormsModule/App_LocalResources/Edit.ascx.resx" />
+		<Import file="Projects/WebFormsModule/App_LocalResources/Edit.ascx.ru-RU.resx" />
+		<Import file="Projects/WebFormsModule/App_LocalResources/Settings.ascx.resx" />
+        <Import file="Projects/WebFormsModule/App_LocalResources/Settings.ascx.ru-RU.resx" />
+		<Import file="Projects/WebFormsModule/Components/Controller.cs" />
+		<Import file="Projects/WebFormsModule/Models/Info.cs" />
+		<Import file="Projects/WebFormsModule/Models/Settings.cs" />
+		<Import file="Projects/WebFormsModule/SqlDataProvider/00.01.00.SqlDataProvider" />
+		<Import file="Projects/WebFormsModule/SqlDataProvider/Uninstall.SqlDataProvider" />
+		<Import file="Projects/WebFormsModule/SETUP.md" />
+
+		<!-- WebForms skinobject project -->
+        <Import file="Projects/WebFormsSkinObject/WebFormsSkinObject.xpt.xml" />
+        <Import file="Projects/WebFormsSkinObject/WebFormsSkinObject.dnn" />
+		<Import file="Projects/WebFormsSkinObject/App_LocalResources/SkinObject.ascx.resx" />
+		<Import file="Projects/WebFormsSkinObject/App_LocalResources/SkinObject.ascx.ru-RU.resx" />
+        <Import file="Projects/WebFormsSkinObject/SkinObject.ascx" />
+        <Import file="Projects/WebFormsSkinObject/SkinObject.ascx.cs" />
+		<Import file="Projects/WebFormsSkinObject/SETUP.md" />
+
+		<!-- Deployment project -->
+        <Import file="Projects/Deploy/Deploy.xpt.xml" />
+        <Import file="Projects/Deploy/__Defaults.targets" />
+        <Import file="Projects/Deploy/__Settings.targets" />
+        <Import file="Projects/Deploy/InstallPackage.targets" />
+        <Import file="Projects/Deploy/LocalDeploy.targets" />
+        <Import file="Projects/Deploy/Preprocess.targets" />
+        <Import file="Projects/Deploy/Tests.targets" />
+        <Import file="Projects/Deploy/SETUP.md" />
+        <Import file="Projects/Deploy/tasks.json" />
+
+		<!-- Syntax modes -->
+		<Import file="SyntaxModes/DnnSqlDataProviderSyntaxMode.xml" />
+    </Runtime>
+	<Extension path="/MonoDevelop/Ide/ProjectTemplateCategories/other">
+        <Category id="dnn" name="DNN Platform" insertafter="aspnet">
+		    <Category id="general" name="General" />
+			<Category id="deployment" name="Deployment" />
+		</Category>
+    </Extension>
+	<Extension path="/MonoDevelop/Ide/ProjectTemplates">
+        <ProjectTemplate id="WebFormsModule" file="Projects/WebFormsModule/WebFormsModule.xpt.xml" />
+        <ProjectTemplate id="WebFormsSkinObject" file="Projects/WebFormsSkinObject/WebFormsSkinObject.xpt.xml" />
+        <ProjectTemplate id="DnnDeploy" file="Projects/Deploy/Deploy.xpt.xml" />
+    </Extension>
+    <Extension path="/MonoDevelop/Core/MimeTypes">
+        <MimeType id="text/x-dnn-manifest" _description="DNN Platform Manifest File" icon="md-xml-file-icon" baseType="application/xml">
+            <File pattern="*.dnn" />
+            <File pattern="*.dnn5" />
+            <File pattern="*.dnn6" />
+        </MimeType>
+        <MimeType id="text/x-nuget-package-specification" _description="NuGet Package Specification" icon="md-xml-file-icon" baseType="application/xml">
+            <File pattern="*.nuspec" />
+        </MimeType>
+        <MimeType id="text/x-dnn-sqldataprovider" _description="DNN Platform SQL Data Provider File" isText="true">
+            <File pattern="*.SqlDataProvider" />
+            <File pattern="*.sqldataprovider" />
+        </MimeType>
+		<MimeType id="text/jsx" _description="ReactJS files" icon="md-html-file-icon" baseType="text/javascript">
+            <File pattern="*.jsx" />
+        </MimeType>
+		<MimeType id="text/x-scss" _description="SCSS stylesheets" icon="md-file-css" baseType="text/css">
+            <File pattern="*.scss" />
+        </MimeType>
+    </Extension>
+    <Extension path="/MonoDevelop/SourceEditor2/SyntaxModes">
+        <Templates file="SyntaxModes/DnnSqlDataProviderSyntaxMode.xml" />
+    </Extension>
+</Addin>

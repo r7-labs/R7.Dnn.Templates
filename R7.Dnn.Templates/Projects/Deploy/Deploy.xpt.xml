@@ -1,0 +1,39 @@
+﻿<?xml version="1.0"?>
+<Template originator="Roman M. Yagodin" created="2014/06/18">
+	<TemplateConfiguration>
+		<_Name>Deployment Project</_Name>
+		<_Category>other/dnn/deployment</_Category>
+		<Icon>md-package-project|res:project-dnn-overlay-32.png</Icon>
+		<LanguageName>C#</LanguageName>
+		<_Description>Creates a project to easily deploy DNN Platform extensions. Project provide MSBuild scripts to make install packages, deploy files to local or shared folder, run tests, etc. It is designed to be used alongside one or more DNN extension projects in a single solution.</_Description>
+	</TemplateConfiguration>
+	<Actions>
+		<Open filename="SETUP.md" />
+	</Actions>
+    <Combine name="${ProjectName}" directory=".">
+		<Options>
+			<StartupProject>"${ProjectName}</StartupProject>
+		</Options>
+		<Project name="${ProjectName}" directory=".">
+			<Options Target="Library" />
+			<References>
+				<Reference type="Package" refto="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+			</References>
+            <Packages>
+                <Package id="MSBuildTasks" version="1.5.0.235" />
+			</Packages>
+			<Files>
+				<File name="__Defaults.targets" src="__Defaults.targets" />
+				<File name="__Settings.targets" src="__Settings.targets" />
+            	<File name="InstallPackage.targets" src="InstallPackage.targets" />
+                <File name="LocalDeploy.targets" src="LocalDeploy.targets" />
+				<File name="Preprocess.targets" src="Preprocess.targets" />
+				<File name="Tests.targets" src="Tests.targets" />
+				<File name="SETUP.md" src="SETUP.md" />
+                <File name="Dummy.cs"><![CDATA[namespace ${ProjectName} {}]]></File>
+				<File name="../.vscode/tasks.json" src="tasks.json" />
+				<File name="${ProjectName}.csproj" />
+			</Files>
+		</Project>
+	</Combine>
+</Template>

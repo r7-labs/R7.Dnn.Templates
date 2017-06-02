@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<dotnetnuke type="Package" version="5.0">
+	<packages>
+		<package name="${ProjectName}" type="SkinObject" version="00.01.00">
+			<friendlyName>${ProjectName}</friendlyName>
+			<description>This is a simple DNN WebForms skinobject which displays current page info.</description>
+			<owner>
+				<name>${AuthorName}</name>
+				<organization>${AuthorCompany}</organization>
+				<url />
+				<email>${AuthorEmail}</email>
+			</owner>
+			<license src="license.htm" />
+			<releaseNotes src="releaseNotes.htm" />
+			<dependencies>
+				<dependency type="coreVersion">08.00.00</dependency>
+			</dependencies>
+			<components>
+				<component type="SkinObject">
+					<moduleControl>
+						<controlKey>${ProjectName}</controlKey>
+						<controlSrc>/DesktopModules/${ProjectName}/${ProjectName}/${ProjectName}.ascx</controlSrc>
+						<supportsPartialRendering>false</supportsPartialRendering>
+					</moduleControl>
+				</component>
+                <component type="ResourceFile">
+					<resourceFiles>
+						<basePath>DesktopModules\${ProjectName}</basePath>
+						<resourceFile>
+							<name>Resources.zip</name>
+						</resourceFile>
+					</resourceFiles>
+				</component>
+				<component type="Assembly">
+					<assemblies>
+						<basePath>bin</basePath>
+						<assembly>
+							<path>bin</path>
+							<name>${ProjectName}.dll</name>
+						</assembly>
+					</assemblies>
+				</component>
+			</components>
+		</package>
+	</packages>
+</dotnetnuke>

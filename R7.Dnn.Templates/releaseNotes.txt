@@ -1,0 +1,46 @@
+﻿{{0.9.0, 2017-05-31}}
+* Deployment project template overhaul.
+* Big update for WebForms module project template.
+* Prefix database objects with ${AuthorCompany}.
+* Update for WebForms skinobject project template.
+* Ship full GNU GPLv3 license text alongside extension projects by default.
+* Enable very basic highlighting for SCSS files using CSS syntax mode.
+* Register category for DNN Platform project templates under "Other".
+* Drop PetaPOCO class file template.
+* Move setup instructions to the wiki.
+
+{{0.8.0, 2017-05-10}}
+* Use JavaScript highlighter for JSX files.
+* Update R7.DotNetNuke.Extensions dependency to 0.10.0.
+* Get version from DNN manifest in a cross-platform way using XmlPeek.
+* Cleanup comments, code samples, etc.
+* New addin icon based on MD default one.
+* Fix #9: "label3" message shows up on install/uninstall.
+
+{{0.7.0, 2016-09-08}}
+* Greatly improved *.SqlDataProvider files highlighting.
+
+{{0.6.1, 2016-09-07}}
+* Fix project icons in MonoDevelop / Xamarin Studio 6.
+
+{{0.6.0, 2016-09-07}}
+* Update dependencies to install on MonoDevelop / Xamarin Studio 6.
+
+{{0.5.0, 2016-05-25}}
+* Module and skinobject templates use R7.DotNetNuke.Extensions library (via NuGet).
+* Fix AssemblyInfo created inside Properties/Properties folder.
+* Namespace refactoring: Move controller and settings classes to Components namespace/folder.
+* Namespace refactoring: Move POCO-class to Data namespace/folder.
+* Add missing localization for section header in the settings module.
+
+{{0.4.0, 2016-02-01}}
+* First release on addins.monodevelop.com
+* Enable syntax highlighting for .nuspec files
+* Add icons for project templates and addin
+* Module and skinobject templates use DotNetNuke.R7 library (via NuGet)
+* Packaging project use MSBuild.Community.Tasks (via NuGet)
+* Linux/Mono support for install package build script template (require xmllint and zip utilities)
+* Linux/Mono support for addin project
+* Add local deploy build script template
+* Remove source package build script template
+* Various fixes and improvements
