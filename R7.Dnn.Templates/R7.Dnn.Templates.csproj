@@ -63,7 +63,7 @@
     <None Include="Projects\Deploy\tasks.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="QUICKSHEET.md" />
+    <None Include="ADDINS.md" />
     <None Include="Projects\WebFormsModule\WebFormsModule.xpt.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
