@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <AddinProject appVersion="6.0">
     <Project platforms="Win32 Linux Mac">
-        <AddinFile>R7.Dnn.Templates/bin/Release/Dnn.Templates.addin.xml</AddinFile>
+        <AddinFile>R7.Dnn.Templates/bin/Release/DnnTemplates.addin.xml</AddinFile>
         <BuildFile>R7.Dnn.Templates.sln</BuildFile>
         <BuildConfiguration>Release-Cydin</BuildConfiguration>
     </Project>
