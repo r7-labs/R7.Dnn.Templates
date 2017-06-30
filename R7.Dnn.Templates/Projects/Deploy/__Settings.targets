@@ -9,7 +9,7 @@
         <PackageName>${SolutionName}</PackageName>
         <DnnLocalDeployPath Condition=" '$(OS)' == 'Unix' ">$(HOME)/mnt/dnn8</DnnLocalDeployPath>
         <DnnLocalDeployPath Condition=" '$(OS)' != 'Unix' ">C:\Dotnetnuke804</DnnLocalDeployPath>
-        <!-- Set to /MVC for MVC modules --> 
+        <!-- Use /MVC/${SolutionName} for MVC modules --> 
 		<DnnModulesPathPrefix>/${SolutionName}</DnnModulesPathPrefix>
 		<CustomExcludeFiles></CustomExcludeFiles>
     </PropertyGroup>
