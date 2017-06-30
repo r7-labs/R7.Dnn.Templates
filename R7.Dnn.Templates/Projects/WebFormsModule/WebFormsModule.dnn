@@ -14,13 +14,13 @@
 			<releaseNotes src="releaseNotes.htm" />
 			<dependencies>
 				<dependency type="coreVersion">08.00.00</dependency>
-				<dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
+                <dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
 			</dependencies>
 			<components>
 				<component type="Module">
 					<desktopModule>
 						<moduleName>${ProjectName}</moduleName>
-						<foldername>${ProjectName}</foldername>
+						<foldername>${SolutionName}/${ProjectName}</foldername>
 						<businessControllerClass>${ProjectName}.Components.${ProjectName}Controller</businessControllerClass>
 						<supportedFeatures>
 							<supportedFeature type="Portable" />
@@ -34,7 +34,7 @@
 								<moduleControls>
 									<moduleControl>
 										<controlKey />
-										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/View.ascx</controlSrc>
+										<controlSrc>DesktopModules/${SolutionName}/${ProjectName}/View.ascx</controlSrc>
 										<controlTitle />
 										<controlType>View</controlType>
 										<iconFile />
@@ -45,7 +45,7 @@
 									</moduleControl>
 									<moduleControl>
 										<controlKey>Edit</controlKey>
-										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Edit.ascx</controlSrc>
+										<controlSrc>DesktopModules/${SolutionName}/${ProjectName}/Edit.ascx</controlSrc>
 										<controlTitle>Edit</controlTitle>
 										<controlType>Edit</controlType>
 										<iconFile />
@@ -56,7 +56,7 @@
 									</moduleControl>
 									<moduleControl>
 										<controlKey>Settings</controlKey>
-										<controlSrc>DesktopModules/${ProjectName}/${ProjectName}/Settings.ascx</controlSrc>
+										<controlSrc>DesktopModules/${SolutionName}/${ProjectName}/Settings.ascx</controlSrc>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
 										<iconFile />
@@ -72,7 +72,7 @@
 				</component>
 				<component type="Script">
 					<scripts>
-						<basePath>DesktopModules\${ProjectName}\${ProjectName}</basePath>
+						<basePath>DesktopModules\${SolutionName}\${ProjectName}</basePath>
 						<script type="Install">
 							<name>SqlDataProvider\00.01.00.SqlDataProvider</name>
 							<version>00.01.00</version>
@@ -84,7 +84,7 @@
 				</component>
 				<component type="ResourceFile">
 					<resourceFiles>
-						<basePath>DesktopModules\${ProjectName}</basePath>
+						<basePath>DesktopModules\${SolutionName}</basePath>
 						<resourceFile>
 							<name>Resources.zip</name>
 						</resourceFile>

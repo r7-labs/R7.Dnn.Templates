@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Deploy</RootNamespace>
     <AssemblyName>Deploy</AssemblyName>
-    <ReleaseVersion>0.9.0</ReleaseVersion>
+    <ReleaseVersion>0.9.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>

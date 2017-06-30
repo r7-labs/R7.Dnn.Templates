@@ -19,13 +19,13 @@
 				<component type="SkinObject">
 					<moduleControl>
 						<controlKey>${ProjectName}</controlKey>
-						<controlSrc>/DesktopModules/${ProjectName}/${ProjectName}/${ProjectName}.ascx</controlSrc>
+						<controlSrc>/DesktopModules/${SolutionName}/${ProjectName}/${ProjectName}.ascx</controlSrc>
 						<supportsPartialRendering>false</supportsPartialRendering>
 					</moduleControl>
 				</component>
                 <component type="ResourceFile">
 					<resourceFiles>
-						<basePath>DesktopModules\${ProjectName}</basePath>
+						<basePath>DesktopModules\${SolutionName}</basePath>
 						<resourceFile>
 							<name>Resources.zip</name>
 						</resourceFile>
