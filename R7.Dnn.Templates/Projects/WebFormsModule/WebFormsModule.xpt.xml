@@ -45,8 +45,8 @@ NOTE: Ensure that 'Create a project directory within the solution directory' fla
 					<File name="View.ascx.ru-RU.resx" src="App_LocalResources/View.ascx.ru-RU.resx" />
 					<File name="Edit.ascx.resx" src="App_LocalResources/Edit.ascx.resx" />
                     <File name="Edit.ascx.ru-RU.resx" src="App_LocalResources/Edit.ascx.ru-RU.resx" />
-					<File name="Settings.ascx.resx" src="App_LocalResources/Settings.ascx.resx" />
-                    <File name="Settings.ascx.ru-RU.resx" src="App_LocalResources/Settings.ascx.ru-RU.resx" />
+					<File name="EditSettings.ascx.resx" src="App_LocalResources/EditSettings.ascx.resx" />
+                    <File name="EditSettings.ascx.ru-RU.resx" src="App_LocalResources/EditSettings.ascx.ru-RU.resx" />
 				</Directory>
 				<Directory name="Components">
 					<File name="${ProjectName}Controller.cs" src="Components/Controller.cs" AddStandardHeader="True" />
@@ -59,8 +59,8 @@ NOTE: Ensure that 'Create a project directory within the solution directory' fla
 				<File name="View.ascx.cs" src="View.ascx.cs" DependsOn="View.ascx" AddStandardHeader="True" />
 			    <File name="Edit.ascx" src="Edit.ascx" />
 				<File name="Edit.ascx.cs" src="Edit.ascx.cs" DependsOn="Edit.ascx" AddStandardHeader="True" />
-				<File name="Settings.ascx" src="Settings.ascx" />
-                <File name="Settings.ascx.cs" src="Settings.ascx.cs" DependsOn="Settings.ascx" AddStandardHeader="True" />
+				<File name="EditSettings.ascx" src="EditSettings.ascx" />
+                <File name="EditSettings.ascx.cs" src="EditSettings.ascx.cs" DependsOn="EditSettings.ascx" AddStandardHeader="True" />
 				<File name="${ProjectName}.dnn" src="WebFormsModule.dnn" />
 				<File name="license.htm" src="../../Files/license.htm" />
 				<File name="releaseNotes.htm" src="../../Files/releaseNotes.htm" />
