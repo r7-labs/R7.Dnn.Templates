@@ -56,7 +56,7 @@
 									</moduleControl>
 									<moduleControl>
 										<controlKey>Settings</controlKey>
-										<controlSrc>DesktopModules/${SolutionName}/${ProjectName}/Settings.ascx</controlSrc>
+										<controlSrc>DesktopModules/${SolutionName}/${ProjectName}/EditSettings.ascx</controlSrc>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
 										<iconFile />
