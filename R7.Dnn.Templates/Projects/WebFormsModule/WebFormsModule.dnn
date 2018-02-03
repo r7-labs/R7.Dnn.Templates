@@ -21,7 +21,7 @@
 					<desktopModule>
 						<moduleName>${ProjectName}</moduleName>
 						<foldername>${SolutionName}/${ProjectName}</foldername>
-						<businessControllerClass>${ProjectName}.Components.${ProjectName}Controller</businessControllerClass>
+						<businessControllerClass>${ProjectName}.Components.${SafeProjectName}Controller</businessControllerClass>
 						<supportedFeatures>
 							<supportedFeature type="Portable" />
 							<supportedFeature type="Searchable" />
@@ -29,7 +29,7 @@
 						<moduleDefinitions>
 							<moduleDefinition>
 								<friendlyName>${ProjectName}</friendlyName>
-                                <definitionName>${ProjectName}</definitionName>
+                                <definitionName>${SafeProjectName}</definitionName>
 								<defaultCacheTime>0</defaultCacheTime>
 								<moduleControls>
 									<moduleControl>

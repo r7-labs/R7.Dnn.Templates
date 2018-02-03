@@ -49,11 +49,11 @@ NOTE: Ensure that 'Create a project directory within the solution directory' fla
                     <File name="EditSettings.ascx.ru-RU.resx" src="App_LocalResources/EditSettings.ascx.ru-RU.resx" />
 				</Directory>
 				<Directory name="Components">
-					<File name="${ProjectName}Controller.cs" src="Components/Controller.cs" AddStandardHeader="True" />
+					<File name="${SafeProjectName}Controller.cs" src="Components/Controller.cs" AddStandardHeader="True" />
                 </Directory>
                 <Directory name="Models">
-			        <File name="${ProjectName}Info.cs" src="Models/Info.cs" AddStandardHeader="True" />
-					<File name="${ProjectName}Settings.cs" src="Models/Settings.cs" AddStandardHeader="True" />
+			        <File name="${SafeProjectName}Info.cs" src="Models/Info.cs" AddStandardHeader="True" />
+					<File name="${SafeProjectName}Settings.cs" src="Models/Settings.cs" AddStandardHeader="True" />
 				</Directory>
 				<File name="View.ascx" src="View.ascx" />
 				<File name="View.ascx.cs" src="View.ascx.cs" DependsOn="View.ascx" AddStandardHeader="True" />

@@ -12,7 +12,7 @@ using ${ProjectName}.Models;
 
 namespace ${Namespace}
 {
-    public class View : PortalModuleBase<${ProjectName}Settings>, IActionable
+    public class View : PortalModuleBase<${SafeProjectName}Settings>, IActionable
     {
         #region Controls
 
@@ -27,7 +27,7 @@ namespace ${Namespace}
         	try {
         		if (!IsPostBack) {
         			var dataProvider = new Dal2DataProvider ();
-                    var items = dataProvider.GetObjects<${ProjectName}Info> (ModuleId);
+                    var items = dataProvider.GetObjects<${SafeProjectName}Info> (ModuleId);
 
         			// check if we have some content to display
                     if (IsEditable && !items.Any ()) {

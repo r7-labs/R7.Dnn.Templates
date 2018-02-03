@@ -18,7 +18,7 @@
 			<components>
 				<component type="SkinObject">
 					<moduleControl>
-						<controlKey>${ProjectName}</controlKey>
+						<controlKey>${SafeProjectName}</controlKey>
 						<controlSrc>/DesktopModules/${SolutionName}/${ProjectName}/${ProjectName}.ascx</controlSrc>
 						<supportsPartialRendering>false</supportsPartialRendering>
 					</moduleControl>

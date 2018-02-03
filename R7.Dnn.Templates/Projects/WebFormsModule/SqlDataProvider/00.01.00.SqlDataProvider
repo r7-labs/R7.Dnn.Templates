@@ -2,21 +2,21 @@
 -- replace {databaseOwner} and {objectQualifier} with real values. 
 -- Defaults is "dbo." for database owner and "" for object qualifier 
 
-IF NOT EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s]') and type in (N'U'))
+IF NOT EXISTS (select * from sys.objects where object_id = object_id (N'{databaseOwner}[{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s]') and type in (N'U'))
 BEGIN
-    CREATE TABLE {databaseOwner}[{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s]
+    CREATE TABLE {databaseOwner}[{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s]
     (
-        [${ProjectName}ID] int NOT NULL IDENTITY (1, 1),
+        [${SafeProjectName}ID] int NOT NULL IDENTITY (1, 1),
         ModuleID int NOT NULL,
         Content nvarchar(max) NOT NULL,
         CreatedByUserID int NOT NULL,
         CreatedOnDate datetime NOT NULL DEFAULT (GETDATE ())
-        CONSTRAINT [PK_{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s] PRIMARY KEY ([${ProjectName}ID])
-        CONSTRAINT [FK_{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s_Modules] FOREIGN KEY (ModuleID)
+        CONSTRAINT [PK_{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s] PRIMARY KEY ([${SafeProjectName}ID])
+        CONSTRAINT [FK_{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s_Modules] FOREIGN KEY (ModuleID)
             REFERENCES {databaseOwner}[{objectQualifier}Modules] (ModuleID) ON DELETE CASCADE
     )
 
-    CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s_ModuleID]
-        ON {databaseOwner}[{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s] (ModuleID)
+    CREATE NONCLUSTERED INDEX [IX_{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s_ModuleID]
+        ON {databaseOwner}[{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s] (ModuleID)
 END
 GO

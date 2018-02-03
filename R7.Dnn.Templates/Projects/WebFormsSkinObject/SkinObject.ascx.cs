@@ -10,7 +10,7 @@ using DotNetNuke.Services.Localization;
 
 namespace ${Namespace}
 {
-    public class ${ProjectName} : SkinObjectBase
+    public class ${SafeProjectName} : SkinObjectBase
     {
         #region Controls
     
