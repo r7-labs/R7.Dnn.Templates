@@ -5,7 +5,7 @@ using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.UserControls;
-using R7.DotNetNuke.Extensions.Data;
+using R7.Dnn.Extensions.Data;
 using ${ProjectName}.Models;
 
 namespace ${Namespace}

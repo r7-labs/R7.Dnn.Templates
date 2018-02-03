@@ -5,9 +5,9 @@ using DotNetNuke.Entities.Icons;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
 using DotNetNuke.Services.Exceptions;
-using R7.DotNetNuke.Extensions.Data;
-using R7.DotNetNuke.Extensions.ModuleExtensions;
-using R7.DotNetNuke.Extensions.Modules;
+using R7.Dnn.Extensions.Data;
+using R7.Dnn.Extensions.ModuleExtensions;
+using R7.Dnn.Extensions.Modules;
 using ${ProjectName}.Models;
 
 namespace ${Namespace}

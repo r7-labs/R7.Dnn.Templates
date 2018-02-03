@@ -14,7 +14,7 @@
 			<releaseNotes src="releaseNotes.htm" />
 			<dependencies>
 				<dependency type="coreVersion">08.00.00</dependency>
-                <dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
+                <dependency type="managedPackage" version="0.12.0">R7.Dnn.Extensions</dependency>
 			</dependencies>
 			<components>
 				<component type="Module">
@@ -29,7 +29,7 @@
 						<moduleDefinitions>
 							<moduleDefinition>
 								<friendlyName>${ProjectName}</friendlyName>
-								<definitionName>${ProjectName}</definitionName>
+                                <definitionName>${ProjectName}</definitionName>
 								<defaultCacheTime>0</defaultCacheTime>
 								<moduleControls>
 									<moduleControl>
