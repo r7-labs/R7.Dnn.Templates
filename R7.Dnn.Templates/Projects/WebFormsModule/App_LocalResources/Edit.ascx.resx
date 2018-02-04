@@ -16,7 +16,7 @@
         <value>Edit ${ProjectName}</value>
     </data>
     <data name="ModuleHelp.Text" xml:space="preserve">
-        <value>About ${ProjectName} Editing.</value>
+        <value></value>
     </data>
     <data name="lblContent.Text" xml:space="preserve">
         <value>Content:</value>
