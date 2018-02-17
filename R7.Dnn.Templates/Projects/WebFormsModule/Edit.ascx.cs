@@ -38,7 +38,7 @@ namespace ${Namespace}
         	linkCancel.NavigateUrl = Globals.NavigateURL ();
 
         	// add confirmation dialog to delete button
-        	buttonDelete.Attributes.Add ("onClick", "javascript:return confirm('" + Localization.GetString ("DeleteItem") + "');");
+        	buttonDelete.Attributes.Add ("onClick", "javascript:return confirm('" + LocalizeString ("DeleteItem") + "');");
         }
 
         /// <summary>
