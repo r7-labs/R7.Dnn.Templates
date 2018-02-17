@@ -7,7 +7,7 @@
 			<owner>
 				<name>${AuthorName}</name>
 				<organization>${AuthorCompany}</organization>
-				<url />
+				<url>https://github.com/${AuthorCompany}/${ProjectName}</url>
 				<email>${AuthorEmail}</email>
 			</owner>
 			<license src="license.htm" />
