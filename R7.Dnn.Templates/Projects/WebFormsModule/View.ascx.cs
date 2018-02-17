@@ -4,6 +4,7 @@ using System.Web.UI.WebControls;
 using DotNetNuke.Entities.Icons;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
+using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
 using R7.Dnn.Extensions.Data;
 using R7.Dnn.Extensions.ModuleExtensions;
@@ -56,7 +57,7 @@ namespace ${Namespace}
         			IconController.IconURL ("Add"),
         			EditUrl ("Edit"),
         			false,
-        			DotNetNuke.Security.SecurityAccessLevel.Edit,
+        			SecurityAccessLevel.Edit,
         			true,
         			false
         		);
