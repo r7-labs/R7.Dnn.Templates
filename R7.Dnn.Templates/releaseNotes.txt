@@ -1,4 +1,7 @@
-﻿{{0.10.0, 2017-06-30}}
+﻿{{0.11.0, 2018-03-14}}
+* Target MonoDevelop 7.x
+
+{{0.10.0, 2018-03-14}}
 * Fix wrong control source path
 * Rename Settings control to EditSettings
 * Don't exclude binaries from Re-deploy
