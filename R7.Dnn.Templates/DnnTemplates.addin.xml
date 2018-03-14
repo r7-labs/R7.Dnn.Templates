@@ -1,4 +1,4 @@
-<Addin id="R7.DnnTemplates" version="0.9.1" namespace="MonoDevelop">
+<Addin id="R7.DnnTemplates" version="0.10.0" namespace="MonoDevelop">
     <Header>
         <Name>DNN Platform Templates and Support</Name>
         <Category>Web Development</Category>
