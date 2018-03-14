@@ -5,7 +5,7 @@ using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.UserControls;
-using R7.DotNetNuke.Extensions.Data;
+using R7.Dnn.Extensions.Data;
 using ${ProjectName}.Models;
 
 namespace ${Namespace}
@@ -38,7 +38,7 @@ namespace ${Namespace}
         	linkCancel.NavigateUrl = Globals.NavigateURL ();
 
         	// add confirmation dialog to delete button
-        	buttonDelete.Attributes.Add ("onClick", "javascript:return confirm('" + Localization.GetString ("DeleteItem") + "');");
+        	buttonDelete.Attributes.Add ("onClick", "javascript:return confirm('" + LocalizeString ("DeleteItem") + "');");
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace ${Namespace}
         	try {
         		// parse querystring parameters
         		int tmpItemId;
-        		if (int.TryParse (Request.QueryString ["${ProjectName}Id"], out tmpItemId))
+        		if (int.TryParse (Request.QueryString ["${SafeProjectName}Id"], out tmpItemId))
         			itemId = tmpItemId;
 
         		if (!IsPostBack) {
@@ -63,7 +63,7 @@ namespace ${Namespace}
         			if (itemId.HasValue) {
         				// load the item
         				var dataProvider = new Dal2DataProvider ();
-        				var item = dataProvider.Get<${ProjectName}Info> (itemId.Value, ModuleId);
+        				var item = dataProvider.Get<${SafeProjectName}Info> (itemId.Value, ModuleId);
 
         				if (item != null) {
         					// TODO: Fill controls with data
@@ -98,18 +98,18 @@ namespace ${Namespace}
         {
         	try {
         		var dataProvider = new Dal2DataProvider ();
-                ${ProjectName}Info item;
+                ${SafeProjectName}Info item;
 
         		// determine if we are adding or updating
         		// ALT: if (Null.IsNull (itemId))
         		if (!itemId.HasValue) {
         			// TODO: populate new object properties with data from controls 
         			// to add new record
-        			item = new ${ProjectName}Info ();
+        			item = new ${SafeProjectName}Info ();
         		} else {
         			// TODO: update properties of existing object with data from controls 
         			// to update existing record
-        			item = dataProvider.Get<${ProjectName}Info> (itemId.Value, ModuleId);
+        			item = dataProvider.Get<${SafeProjectName}Info> (itemId.Value, ModuleId);
         		}
 
         		// fill the object
@@ -118,9 +118,9 @@ namespace ${Namespace}
 
         		if (!itemId.HasValue) {
         			item.CreatedByUserId = UserId;
-        			dataProvider.Add<${ProjectName}Info> (item);
+        			dataProvider.Add<${SafeProjectName}Info> (item);
         		} else {
-        			dataProvider.Update<${ProjectName}Info> (item);
+        			dataProvider.Update<${SafeProjectName}Info> (item);
         		}
 
         		ModuleController.SynchronizeModule (ModuleId);
@@ -145,7 +145,7 @@ namespace ${Namespace}
         	try {
         		if (itemId.HasValue) {
         			var dataProvider = new Dal2DataProvider ();
-        			dataProvider.Delete<${ProjectName}Info> (itemId.Value);
+        			dataProvider.Delete<${SafeProjectName}Info> (itemId.Value);
         			Response.Redirect (Globals.NavigateURL (), true);
         		}
         	} catch (Exception ex) {

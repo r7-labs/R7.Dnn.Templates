@@ -16,7 +16,7 @@
         <value>Редактирование ${ProjectName}</value>
     </data>
 	<data name="ModuleHelp.Text" xml:space="preserve">
-        <value>О редактировании ${ProjectName}</value>
+        <value></value>
     </data>
     <data name="lblContent.Text" xml:space="preserve">
         <value>Содержимое:</value>

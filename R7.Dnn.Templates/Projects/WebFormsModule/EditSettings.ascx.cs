@@ -2,12 +2,12 @@
 using System.Web.UI.WebControls;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Exceptions;
-using R7.DotNetNuke.Extensions.Modules;
+using R7.Dnn.Extensions.Modules;
 using ${ProjectName}.Models;
 
 namespace ${Namespace}
 {	
-	public class Settings : ModuleSettingsBase<${ProjectName}Settings>
+	public class EditSettings : ModuleSettingsBase<${SafeProjectName}Settings>
 	{
         #region Controls
 
@@ -33,7 +33,7 @@ namespace ${Namespace}
 		}
       
 		/// <summary>
-		/// handles updating the module settings for this control
+		/// Handles updating the module settings for this control
 		/// </summary>
 		public override void UpdateSettings ()
 		{

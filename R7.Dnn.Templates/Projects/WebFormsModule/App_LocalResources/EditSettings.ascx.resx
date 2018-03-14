@@ -16,7 +16,7 @@
         <value>${ProjectName} Settings</value>
     </data>
     <data name="ModuleHelp.Text" xml:space="preserve">
-        <value>About ${ProjectName} Settings.</value>
+        <value></value>
     </data>
 	<data name="BasicSettings.Section" xml:space="preserve">
         <value>Basic Settings</value>

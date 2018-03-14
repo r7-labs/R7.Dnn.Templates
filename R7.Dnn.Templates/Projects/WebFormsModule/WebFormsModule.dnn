@@ -7,21 +7,21 @@
 			<owner>
 				<name>${AuthorName}</name>
 				<organization>${AuthorCompany}</organization>
-				<url />
+				<url>https://github.com/${AuthorCompany}/${ProjectName}</url>
 				<email>${AuthorEmail}</email>
 			</owner>
 			<license src="license.htm" />
 			<releaseNotes src="releaseNotes.htm" />
 			<dependencies>
 				<dependency type="coreVersion">08.00.00</dependency>
-                <dependency type="managedPackage" version="0.10.0">R7.DotNetNuke.Extensions</dependency>
+                <dependency type="managedPackage" version="0.12.0">R7.Dnn.Extensions</dependency>
 			</dependencies>
 			<components>
 				<component type="Module">
 					<desktopModule>
 						<moduleName>${ProjectName}</moduleName>
 						<foldername>${SolutionName}/${ProjectName}</foldername>
-						<businessControllerClass>${ProjectName}.Components.${ProjectName}Controller</businessControllerClass>
+						<businessControllerClass>${ProjectName}.Components.${SafeProjectName}Controller</businessControllerClass>
 						<supportedFeatures>
 							<supportedFeature type="Portable" />
 							<supportedFeature type="Searchable" />
@@ -29,7 +29,7 @@
 						<moduleDefinitions>
 							<moduleDefinition>
 								<friendlyName>${ProjectName}</friendlyName>
-								<definitionName>${ProjectName}</definitionName>
+                                <definitionName>${SafeProjectName}</definitionName>
 								<defaultCacheTime>0</defaultCacheTime>
 								<moduleControls>
 									<moduleControl>
@@ -56,7 +56,7 @@
 									</moduleControl>
 									<moduleControl>
 										<controlKey>Settings</controlKey>
-										<controlSrc>DesktopModules/${SolutionName}/${ProjectName}/Settings.ascx</controlSrc>
+										<controlSrc>DesktopModules/${SolutionName}/${ProjectName}/EditSettings.ascx</controlSrc>
 										<controlTitle>Settings</controlTitle>
 										<controlType>Edit</controlType>
 										<iconFile />

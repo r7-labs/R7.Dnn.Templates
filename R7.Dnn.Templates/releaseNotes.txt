@@ -1,4 +1,13 @@
-﻿{{0.9.1, 2017-06-30}}
+﻿{{0.10.0, 2017-06-30}}
+* Fix wrong control source path
+* Rename Settings control to EditSettings
+* Don't exclude binaries from Re-deploy
+* Use ${SafeProjectName} to generate correct language objects names 
+* Switch to R7.Dnn.Extensions v0.12
+* Empty ModuleHelp resources
+* Convert release notes to a link
+
+{{0.9.1, 2017-06-30}}
 * Update hint for MVC modules in deployment settings
 * Set proper value for folderName tag in the module manifest which used by MVC modules
 * Use SolutionName placeholder for solution folder in manifests

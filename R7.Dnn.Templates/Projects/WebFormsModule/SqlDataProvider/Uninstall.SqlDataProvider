@@ -2,9 +2,9 @@
 -- replace {databaseOwner} and {objectQualifier} with real values. 
 -- Defaults is "dbo." for database owner and "" for object qualifier 
 
-ALTER TABLE {databaseOwner}[{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s] 
-    DROP CONSTRAINT [FK_{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s_Modules]
+ALTER TABLE {databaseOwner}[{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s] 
+    DROP CONSTRAINT [FK_{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s_Modules]
 
-DROP INDEX {databaseOwner}[{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s].[IX_{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s_ModuleID]
+DROP INDEX {databaseOwner}[{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s].[IX_{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s_ModuleID]
 
-DROP TABLE {databaseOwner}[{objectQualifier}${AuthorCompany}_${ProjectName}_${ProjectName}s]
+DROP TABLE {databaseOwner}[{objectQualifier}${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s]

@@ -8,11 +8,11 @@ namespace ${Namespace}
 {
     // http://www.dnnsoftware.com/wiki/dal-2
 
-    [TableName ("${AuthorCompany}_${ProjectName}_${ProjectName}s")]
-    [PrimaryKey (nameof (${ProjectName}Id), AutoIncrement = true)]
+    [TableName ("${AuthorCompany}_${SafeProjectName}_${SafeProjectName}s")]
+    [PrimaryKey (nameof (${SafeProjectName}Id), AutoIncrement = true)]
     [Scope (nameof (ModuleId))]
     [Cacheable]
-    public class ${ProjectName}Info
+    public class ${SafeProjectName}Info
     {
         #region Fields
         
@@ -22,7 +22,7 @@ namespace ${Namespace}
 
         #region Properties
 
-        public int ${ProjectName}Id { get; set; }
+        public int ${SafeProjectName}Id { get; set; }
 
         public int ModuleId { get; set; }
 

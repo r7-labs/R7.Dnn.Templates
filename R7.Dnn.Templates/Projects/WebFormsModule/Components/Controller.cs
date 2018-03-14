@@ -5,12 +5,12 @@ using System.Xml;
 using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Search.Entities;
-using R7.DotNetNuke.Extensions.Data;
+using R7.Dnn.Extensions.Data;
 using ${ProjectName}.Models;
 
 namespace ${Namespace}
 {
-    public class ${ProjectName}Controller : ModuleSearchBase, IPortable
+    public class ${SafeProjectName}Controller : ModuleSearchBase, IPortable
     {
         #region ModuleSearchBase implementaion
 
@@ -38,18 +38,18 @@ namespace ${Namespace}
         {
         	var sb = new StringBuilder ();
         	var dataProvider = new Dal2DataProvider ();
-        	var infos = dataProvider.GetObjects<${ProjectName}Info> (moduleId);
+        	var infos = dataProvider.GetObjects<${SafeProjectName}Info> (moduleId);
 
         	if (infos != null) {
-        		sb.Append ("<${ProjectName}s>");
+        		sb.Append ("<${SafeProjectName}s>");
         		foreach (var info in infos) {
-        			sb.Append ("<${ProjectName}>");
+        			sb.Append ("<${SafeProjectName}>");
         			sb.Append ("<content>");
         			sb.Append (XmlUtils.XMLEncode (info.Content));
         			sb.Append ("</content>");
-        			sb.Append ("</${ProjectName}>");
+        			sb.Append ("</${SafeProjectName}>");
         		}
-        		sb.Append ("</${ProjectName}s>");
+        		sb.Append ("</${SafeProjectName}s>");
         	}
 
         	return sb.ToString ();
@@ -64,16 +64,16 @@ namespace ${Namespace}
         /// <param name="UserID"></param>
         public void ImportModule (int ModuleID, string Content, string Version, int UserID)
         {
-        	var infos = DotNetNuke.Common.Globals.GetContent (Content, "${ProjectName}s");
+        	var infos = DotNetNuke.Common.Globals.GetContent (Content, "${SafeProjectName}s");
         	var dataProvider = new Dal2DataProvider ();
 
-        	foreach (XmlNode info in infos.SelectNodes ("${ProjectName}")) {
-        		var item = new ${ProjectName}Info ();
+        	foreach (XmlNode info in infos.SelectNodes ("${SafeProjectName}")) {
+        		var item = new ${SafeProjectName}Info ();
         		item.ModuleId = ModuleID;
         		item.Content = info.SelectSingleNode ("content").InnerText;
         		item.CreatedByUserId = UserID;
 
-        		dataProvider.Add<${ProjectName}Info> (item);
+        		dataProvider.Add<${SafeProjectName}Info> (item);
         	}
         }
 

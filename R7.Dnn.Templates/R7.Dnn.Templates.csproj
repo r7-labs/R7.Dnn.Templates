@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>R7.Dnn.Templates</RootNamespace>
     <AssemblyName>R7.Dnn.Templates</AssemblyName>
-    <ReleaseVersion>0.9.1</ReleaseVersion>
+    <ReleaseVersion>0.10.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -90,10 +90,10 @@
     <None Include="Projects\WebFormsModule\App_LocalResources\Edit.ascx.ru-RU.resx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Projects\WebFormsModule\App_LocalResources\Settings.ascx.resx">
+    <None Include="Projects\WebFormsModule\App_LocalResources\EditSettings.ascx.resx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Projects\WebFormsModule\App_LocalResources\Settings.ascx.ru-RU.resx">
+    <None Include="Projects\WebFormsModule\App_LocalResources\EditSettings.ascx.ru-RU.resx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Files\license.htm">
@@ -125,11 +125,11 @@
       <DependentUpon>Edit.ascx</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Projects\WebFormsModule\Settings.ascx">
+    <None Include="Projects\WebFormsModule\EditSettings.ascx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Projects\WebFormsModule\Settings.ascx.cs">
-      <DependentUpon>Settings.ascx</DependentUpon>
+    <None Include="Projects\WebFormsModule\EditSettings.ascx.cs">
+      <DependentUpon>EditSettings.ascx</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Projects\WebFormsModule\WebFormsModule.dnn">

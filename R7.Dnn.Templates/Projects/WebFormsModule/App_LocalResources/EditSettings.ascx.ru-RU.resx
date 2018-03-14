@@ -16,7 +16,7 @@
        <value>Настройки ${ProjectName}</value>
     </data>
     <data name="ModuleHelp.Text" xml:space="preserve">
-        <value>О настройках ${ProjectName}.</value>
+        <value></value>
     </data>
     <data name="BasicSettings.Section" xml:space="preserve">
         <value>Основные настройки</value>

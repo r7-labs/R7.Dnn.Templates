@@ -4,15 +4,16 @@ using System.Web.UI.WebControls;
 using DotNetNuke.Entities.Icons;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
+using DotNetNuke.Security;
 using DotNetNuke.Services.Exceptions;
-using R7.DotNetNuke.Extensions.Data;
-using R7.DotNetNuke.Extensions.ModuleExtensions;
-using R7.DotNetNuke.Extensions.Modules;
+using R7.Dnn.Extensions.Data;
+using R7.Dnn.Extensions.ModuleExtensions;
+using R7.Dnn.Extensions.Modules;
 using ${ProjectName}.Models;
 
 namespace ${Namespace}
 {
-    public class View : PortalModuleBase<${ProjectName}Settings>, IActionable
+    public class View : PortalModuleBase<${SafeProjectName}Settings>, IActionable
     {
         #region Controls
 
@@ -27,7 +28,7 @@ namespace ${Namespace}
         	try {
         		if (!IsPostBack) {
         			var dataProvider = new Dal2DataProvider ();
-                    var items = dataProvider.GetObjects<${ProjectName}Info> (ModuleId);
+                    var items = dataProvider.GetObjects<${SafeProjectName}Info> (ModuleId);
 
         			// check if we have some content to display
                     if (IsEditable && !items.Any ()) {
@@ -56,7 +57,7 @@ namespace ${Namespace}
         			IconController.IconURL ("Add"),
         			EditUrl ("Edit"),
         			false,
-        			DotNetNuke.Security.SecurityAccessLevel.Edit,
+        			SecurityAccessLevel.Edit,
         			true,
         			false
         		);
